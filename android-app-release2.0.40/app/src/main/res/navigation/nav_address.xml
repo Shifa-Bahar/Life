@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_address"
+  app:startDestination="@id/addressFragment">
+
+  <fragment
+    android:id="@+id/addressFragment"
+    android:name="com.lifepharmacy.application.ui.address.dailog.AddressFragment"
+    android:label="AddressFragment"
+    tools:layout="@layout/fragment_address" />
+  <fragment
+    android:id="@+id/addNewAddressDialog"
+    android:name="com.lifepharmacy.application.ui.address.dailog.AddNewAddressDialog"
+    android:label="AddNewAddressDialog"
+    tools:layout="@layout/dailog_new_address" />
+
+  <fragment
+    android:id="@+id/addressDetailBottomSheet"
+    android:name="com.lifepharmacy.application.ui.address.dailog.AddressDetailBottomSheet"
+    android:label="AddressDetailBottomSheet"
+    tools:layout="@layout/bottom_sheet_address" />
+  <dialog
+    android:id="@+id/timeTypeBottomSheet"
+    android:name="com.lifepharmacy.application.ui.address.dailog.TimeBottomSheet"
+    android:label="AddressTypeBottomSheet"
+    tools:layout="@layout/bottom_sheet_address_type" />
+  <dialog
+    android:id="@+id/addressTypeBottomSheet"
+    android:name="com.lifepharmacy.application.ui.address.dailog.AddressTypeBottomSheet"
+    android:label="AddressTypeBottomSheet"
+    tools:layout="@layout/bottom_sheet_address_type" />
+</navigation>

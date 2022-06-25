@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isDetail"
+      type="Boolean" />
+
+    <variable
+      name="isDeliveryStatus"
+      type="Boolean" />
+
+    <variable
+      name="isStatusShipment"
+      type="Boolean" />
+
+    <variable
+      name="isLast"
+      type="Boolean" />
+
+    <variable
+      name="subOrderItem"
+      type="com.lifepharmacy.application.model.orders.SubOrderItem" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.shipment.TimeLine" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageView77"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@{!isLast?@dimen/dimen_20dp:@dimen/dimen_0dp}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView183"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@{item.eventTitle}"
+          tools:text="Order Status" />
+
+        <!--        description-->
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView189"
+          style="@style/text_12_blue_dark_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@{item.description}"
+          android:visibility="@{isDetail&amp;&amp;item.description != null &amp;&amp; !item.description.empty?View.VISIBLE:View.GONE}"
+          tools:text="Your Order has been placed."
+          tools:visibility="visible" />
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView196"
+            style="@style/text_12_93A_open_regular"
+            setShipmentStatusDeliveryLabel="@{subOrderItem}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/expected_delivery_by"
+            android:visibility="@{subOrderItem.status != 5 &amp;&amp; !item.happened &amp;&amp; isDeliveryStatus ? View.VISIBLE: View.GONE}"
+            tools:visibility="visible" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView184"
+            style="@style/text_12_93A_open_regular"
+            isDeliveryStatus="@{isDeliveryStatus}"
+            statusDate="@{item.timestamp}"
+            subOrderItem="@{subOrderItem}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_4dp"
+            android:layout_weight="1"
+            android:visibility="@{item.timestamp == null?View.INVISIBLE:View.VISIBLE}"
+            tools:text="Sun, 23th May 2021 - 12:21pm"
+            tools:visibility="visible" />
+        </LinearLayout>
+
+        <!--        <View-->
+        <!--          android:id="@+id/divider46"-->
+        <!--          android:layout_width="match_parent"-->
+        <!--          android:visibility="@{isLast?View.VISIBLE:View.GONE}"-->
+        <!--          android:layout_height="0.dp"-->
+        <!--          android:background="@color/grey_font" />-->
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        android:background="@color/color_faf"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_16dp"
+        android:visibility="@{item.data!=null &amp;&amp; !item.data.empty &amp;&amp; isDetail ? View.VISIBLE : View.GONE}"
+        tools:visibility="visible">
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_key"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:clipToPadding="false"
+          android:orientation="vertical"
+          android:paddingHorizontal="@dimen/dimen_24dp"
+          android:paddingVertical="@dimen/dimen_10dp"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          tools:itemCount="4"
+          tools:listitem="@layout/item_shipment_key_value" />
+
+        <View
+          android:id="@+id/divider44"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen_0.5dp"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          android:background="@color/grey_font" />
+
+        <TextView
+          android:id="@+id/textView190"
+          style="@style/text_10_accent_dark_semi_bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:drawableEnd="@drawable/ic_forward_arrow"
+          android:paddingHorizontal="@dimen/dimen_8dp"
+          android:text="@string/track_shipment"
+          android:textAlignment="center" />
+
+      </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+      android:id="@+id/view9"
+      android:layout_width="@dimen/dimen_0.5dp"
+      android:layout_height="0dp"
+      android:background="@{item.happened?@color/color_26a:@color/grey_font}"
+      android:visibility="@{isLast ? View.GONE : View.VISIBLE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/imageView77"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView77" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView77"
+      android:layout_width="@dimen/dimen_15dp"
+      android:layout_height="@dimen/dimen_15dp"
+      android:tint="@{item.happened?@color/color_26a:@color/grey_font}"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_full_round_gree" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

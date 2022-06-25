@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.productList.viewmodel.ProductListViewModel" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/linearLayout10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/dimen_10dp"
+    android:weightSum="2"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView175"
+      style="@style/text_14_accent_dark_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/bg_accent_border"
+      android:gravity="center"
+      android:minWidth="@dimen/dimen_50dp"
+      android:paddingHorizontal="@dimen/dimen_10dp"
+      android:paddingVertical="@dimen/dimen_6dp"
+      android:text="@{viewModel.appManager.persistenceManager.currency+` `+viewModel.rangeTo}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="1000+" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/linearLayout24"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:paddingVertical="@dimen/dimen_10dp"
+      android:orientation="horizontal"
+      app:layout_constraintBottom_toTopOf="@+id/textView176"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView175">
+
+      <com.google.android.material.slider.RangeSlider
+        android:id="@+id/range_slider"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:rotation="270"
+        android:stepSize="50.0"
+        android:valueFrom="0.0"
+        android:valueTo="1000.0"
+        app:labelStyle="@style/MyTooltip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:thumbColor="@color/accent_blue"
+        app:trackColorActive="@color/accent_blue"
+        app:trackColorInactive="@color/accent_blue_50_alpha"
+        app:values="@array/initial_slider_values" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView176"
+      style="@style/text_14_accent_dark_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/bg_accent_border"
+      android:gravity="center"
+      android:minWidth="@dimen/dimen_50dp"
+      android:paddingHorizontal="@dimen/dimen_10dp"
+      android:paddingVertical="@dimen/dimen_6dp"
+      android:text="@{viewModel.appManager.persistenceManager.currency+` `+viewModel.rangeFrom}"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:text="0" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

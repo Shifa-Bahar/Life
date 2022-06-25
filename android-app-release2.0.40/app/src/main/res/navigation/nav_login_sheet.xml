@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_login_sheet"
+  app:startDestination="@id/userDetailsBottomSheet">
+
+  <dialog
+    android:id="@+id/userDetailsBottomSheet"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.UserDetailsBottomSheet"
+    android:label="UserDetailsBottomSheet"
+    tools:layout="@layout/bottom_sheet_user_details" />
+</navigation>

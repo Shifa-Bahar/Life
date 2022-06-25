@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isInCart"
+      type="Boolean" />
+    <!--    <variable-->
+    <!--      name="offers"-->
+    <!--      type="com.lifepharmacy.application.model.product.Offers" />-->
+    <variable
+      name="isSelected"
+      type="Boolean" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.pcr.pcrlist.Products" />
+    <variable
+      name="position"
+      type="int" />
+    <variable
+      name="qty"
+      type="String" />
+
+    <variable
+      name="price"
+      type="com.lifepharmacy.application.model.pcr.pcrlist.Prices" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.pcr.adapters.ClickPcrProduct" />
+    <variable
+      name="showEmpty"
+      type="Boolean" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_5dp"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/imageView25"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingTop="@dimen/dimen_20dp"
+      android:paddingStart="@dimen/dimen_10dp"
+      android:paddingEnd="@dimen/dimen_1dp"
+      android:elevation="@dimen/dimen_4dp"
+      android:gravity="center_vertical"
+      android:visibility="@{item.label ==null || item.label.label_text == null || item.label.label_text.equals(``)? View.GONE : View.VISIBLE}"
+      tools:ignore="MissingConstraints"
+      tools:visibility="visible">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView43"
+        setTintColor="@{item.label.color_code}"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/textView113"
+        app:layout_constraintStart_toEndOf="@+id/textView113"
+        app:layout_constraintTop_toTopOf="@+id/textView113"
+        app:srcCompat="@drawable/ic_side_corner"
+        app:tint="@color/flat_red_1" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView42"
+        setTintColor="@{item.label.color_code}"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textView113"
+        app:layout_constraintTop_toBottomOf="@+id/textView113"
+        app:srcCompat="@drawable/ic_bottom_corner"
+        app:tint="@color/flat_red_1" />
+
+      <TextView
+        android:id="@+id/textView113"
+        style="@style/text_10_white_semi_bold"
+        setTextBackTint="@{item.label.color_code}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/flat_red_1"
+        android:drawableEnd="@{item.label.icon_type ==1? @drawable/ic_new_stars:item.label.icon_type ==2?@drawable/ic_best_seller_stars:item.label.icon_type ==3?@drawable/ic_trending_stars:@drawable/stars}"
+        android:drawablePadding="@dimen/dimen_4dp"
+        android:paddingHorizontal="@dimen/dimen_4dp"
+        android:text="@{item.label.label_text}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Seller" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginVertical="@dimen/dimen_4dp"
+      app:cardCornerRadius="@dimen/dimen_5dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+
+    <!--    android:background="@{isSelected ? @drawable/bg_rect_blue_border : @drawable/bg_transparent}"-->
+<!--      android:background="@drawable/ic_rectangle"-->
+      <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="horizontal"
+      android:layout_margin="@dimen/dimen_2dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:ignore="MissingConstraints">
+      <!--      loadImageFromURl="@{item.images.featured_image}"-->
+
+        <androidx.cardview.widget.CardView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginVertical="@dimen/dimen_6dp"
+          android:layout_margin="@dimen/dimen_4dp"
+          app:cardCornerRadius="@dimen/dimen_5dp">
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_product"
+        loadImageFromURl="@{item.images.featured_image}"
+        android:layout_width="108dp"
+        android:layout_height="98dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+      <!--      setAddCartVisibility="@{item}"-->
+      <!--      isInCart="@{isInCart}"-->
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_2dp"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="@dimen/dimen_6dp"
+          android:orientation="vertical">
+<!--          android:minLines="1"-->
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_product_name"
+            style="@style/text_14_accent_dark_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_3dp"
+            tools:text="hhrfjhbhfhdgfhggfhd hfdgfhjgfhghfgr hfhfghdgfhd hdfg hfgdfh hfgdhfghdf"
+            android:layout_marginTop="@dimen/dimen_4dp"
+            android:text="@{item.title}"
+            android:textAlignment="gravity"
+            tools:layout_editor_absoluteX="115dp"
+            tools:layout_editor_absoluteY="12dp" />
+<!--          android:layout_margin="@dimen/dimen_2dp"-->
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_tags"
+            style="@style/text_8_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_4dp"
+            tools:text="hhrfjhbhfhdgfhggfhd hfdgfhjgfhghfgr hfhfghdgfhd hdfg hfgdfh hfgdhfghdf"
+            android:padding="@dimen/dimen_2dp"
+            android:visibility="visible" />
+
+
+
+        <!--    android:visibility="@{offers!=null &amp;&amp; offers.type.equals(`bxgy`) &amp;&amp; position == 0 ? View.VISIBLE: View.GONE}"-->
+
+        <!--        android:src="@{item.productDetails.availability !=null &amp;&amp; item.productDetails.availability.instant.isAvailable ? @drawable/ic_instant_tag :@drawable/ic_express_tag}"-->
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_4dp"
+          android:orientation="horizontal">
+<!--          android:layout_marginRight="@dimen/dimen_6dp"-->
+          <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintStart_toStartOf="@+id/tv_product_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tags">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_aed"
+              style="@style/text_14_accent_dark_open_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:text="AED" />
+            <!--        offers="@{offers}"-->
+            <!--        setFormatePrice="@{price.price.offerPrice}"-->
+            <!--        product="@{item}"-->
+            <!--            offers="@{item.offers}"-->
+            <!--            product="@{item}"-->
+            <!--            setFormatePcrPrice="@{price.price.regularPrice}"-->
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_offerpr"
+              style="@style/text_16_accent_dark_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/dimen_12dp"
+              android:layout_gravity="center"
+              android:padding="@dimen/dimen_2dp"
+              android:layout_marginStart="@dimen/dimen_4dp"
+              tools:text="200" />
+            <!--              checkAndSetPrice="@{item.prices[1].price}"-->
+            <!--            offers="@{item.offers}"-->
+            <!--            product="@{item}"-->
+            <!--            setRegularPrice="@{price.price.regularPrice}"-->
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_cur"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:padding="@dimen/dimen_2dp"
+              android:layout_marginStart="@dimen/dimen_4dp"
+              tools:text="200" />
+
+          </LinearLayout>
+
+          <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_6dp"
+            android:orientation="horizontal">
+            <!--              isInCart="@{isInCart}"-->
+            <!--              setAddPcrCartVisibility="@{item}"-->
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:id="@+id/adddelbtn"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentEnd="true"
+              android:layout_marginStart="6dp"
+              android:visibility="gone">
+
+              <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_minus"
+                android:layout_width="@dimen/dimen_24dp"
+                android:layout_height="@dimen/dimen_24dp"
+                android:src="@drawable/ic_basket_whit_border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_qty"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+              <!--              android:text="@{item.selected_qty}"-->
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_qty"
+                style="@style/text_18_1d1d_bold"
+                android:layout_width="@dimen/dimen_24dp"
+                android:layout_height="@dimen/dimen_24dp"
+                android:gravity="center"
+                android:padding="@dimen/dimen_2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+                app:layout_constraintStart_toEndOf="@+id/btn_minus" />
+
+              <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_plus"
+                android:layout_width="@dimen/dimen_24dp"
+                android:layout_height="@dimen/dimen_24dp"
+                android:background="@drawable/ic_plus_flate"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@+id/tv_qty" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/img_cart"
+              style="@style/text_12_white_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentEnd="true"
+              android:background="@drawable/bg_116_round"
+              android:drawableStart="@drawable/ic_cart_white"
+              android:gravity="center"
+              android:paddingHorizontal="@dimen/dimen_8dp"
+              android:paddingVertical="@dimen/dimen_4dp"
+              android:text="@string/add"
+              android:textAllCaps="true" />
+
+          </RelativeLayout>
+        </LinearLayout>
+        </LinearLayout>
+      </LinearLayout>
+
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

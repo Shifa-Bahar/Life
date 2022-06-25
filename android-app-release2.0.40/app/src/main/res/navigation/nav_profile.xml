@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_profile"
+  app:startDestination="@id/profileFragment">
+
+  <fragment
+    android:id="@+id/profileFragment"
+    android:name="com.lifepharmacy.application.ui.profile.fragments.ProfileFragment"
+    android:label="ProfileFragment"
+    tools:layout="@layout/fragment_profile" />
+
+  <fragment
+    android:id="@+id/userBasicFragment"
+    android:name="com.lifepharmacy.application.ui.profile.fragments.UserBasicFragment"
+    android:label="UserBasicFragment"
+    tools:layout="@layout/fragment_user_basic" />
+  <fragment
+    android:id="@+id/buyItAgainFragment"
+    android:name="com.lifepharmacy.application.ui.buyitagain.fragments.BuyItAgainFragment"
+    android:label="BuyItAgainFragment"
+    tools:layout="@layout/fragment_buy_it_again" />
+  <include app:graph="@navigation/nav_voucher" />
+  <include app:graph="@navigation/nav_orders" />
+  <include app:graph="@navigation/nav_outlet" />
+  <include app:graph="@navigation/nav_appoinment" />
+  <include app:graph="@navigation/nav_returns" />
+  <include app:graph="@navigation/nav_rewards" />
+
+<!--  <fragment-->
+<!--    android:id="@+id/RewardsFragment"-->
+<!--    android:name="com.lifepharmacy.application.ui.rewards.fragment.RewardsFragment"-->
+<!--    android:label="RewardsFragment"-->
+<!--    tools:layout="@layout/fragment_rewards" />-->
+
+  <fragment
+    android:id="@+id/wishListFragment"
+    android:name="com.lifepharmacy.application.ui.whishlist.fragments.WishListFragment"
+    android:label="WishListFragment"
+    tools:layout="@layout/fragment_wishlist" />
+
+  <fragment
+    android:id="@+id/notificationsFragment"
+    android:name="com.lifepharmacy.application.ui.notifications.fragments.NotificationsFragment"
+    android:label="NotificationsFragment"
+    tools:layout="@layout/fragment_notifications" />
+  <fragment
+    android:id="@+id/notificationDetailFragment"
+    android:name="com.lifepharmacy.application.ui.notifications.fragments.NotificationDetailFragment"
+    android:label="NotificationDetailFragment"
+    tools:layout="@layout/fragment_notifications_details" />
+  <include app:graph="@navigation/nav_login_sheet" />
+  <fragment
+    android:id="@+id/pageFragment"
+    android:name="com.lifepharmacy.application.ui.pages.fragment.PageFragment"
+    android:label="PageFragment"
+    tools:layout="@layout/fragment_page" />
+  <!--  <fragment-->
+  <!--    android:id="@+id/userDetailsBottomSheet"-->
+  <!--    tools:layout="@layout/bottom_sheet_user_details"-->
+  <!--    android:name="com.lifepharmacy.application.ui.cart.fragmets.UserDetailsBottomSheet"-->
+  <!--    android:label="UserDetailsBottomSheet" />-->
+  <dialog
+    android:id="@+id/genderSelectionBottomSheet"
+    android:name="com.lifepharmacy.application.ui.profile.dialog.GenderSelectionBottomSheet"
+    android:label="GenderSelectionBottomSheet"
+    tools:layout="@layout/bottom_geneder" />
+  <!--  <include app:graph="@navigation/nav_out_of_stock_order" />-->
+  <fragment
+    android:id="@+id/orderOutOFStockFragment"
+    android:name="com.lifepharmacy.application.ui.outofstockorder.OrderOutOFStockFragment"
+    android:label="OrderOutOFStockFragment"
+    tools:layout="@layout/fragment_out_of_stock_order" />
+  <dialog
+    android:id="@+id/orderWalletTopUpBottomSheet"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderWalletTopUpBottomSheet"
+    android:label="OrderWalletTopUpBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_wallet_top" />
+  <dialog
+    android:id="@+id/orderSummaryOutOfStockBottomSheet"
+    android:name="com.lifepharmacy.application.ui.outofstockorder.fragments.OrderSummaryOutOfStockBottomSheet"
+    android:label="OrderSummaryOutOfStockBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_summary_out_stock" />
+  <dialog
+    android:id="@+id/orderPlacedDialog"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderPlacedDialog"
+    android:label="OrderPlacedDialog"
+    tools:layout="@layout/dailog_order_placed" />
+</navigation>

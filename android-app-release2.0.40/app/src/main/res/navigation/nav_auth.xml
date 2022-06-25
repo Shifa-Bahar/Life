@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_auth"
+    app:startDestination="@id/numberFragment">
+
+  <fragment
+    android:id="@+id/numberFragment"
+    android:name="com.lifepharmacy.application.ui.auth.fragments.NumberFragment"
+    android:label="NumberFragment"
+    tools:layout="@layout/fragment_number">
+
+    <action
+      android:id="@+id/toEmailFragment"
+      app:destination="@id/emailFragment"
+      app:enterAnim="@anim/slide_from_right"
+      app:exitAnim="@anim/slide_to_left" />
+    <deepLink
+      android:id="@+id/deepLink3"
+      app:uri="https://beta.lifepharmacy.com/login" />
+  </fragment>
+    <fragment
+        android:id="@+id/OTPFragment"
+        tools:layout="@layout/fragment_otp"
+        android:name="com.lifepharmacy.application.ui.auth.fragments.OTPFragment"
+        android:label="OTPFragment" >
+
+        <argument
+            android:name="sendTo"
+            android:defaultValue=""
+            app:argType="string" />
+
+        <argument
+            android:name="title"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+    <action
+        app:enterAnim="@anim/slide_from_right"
+        app:exitAnim="@anim/slide_to_left"
+        android:id="@+id/toOTP"
+        app:destination="@id/OTPFragment" >
+
+    </action>
+    <fragment
+        android:id="@+id/emailFragment"
+        tools:layout="@layout/fragment_enter_email"
+        android:name="com.lifepharmacy.application.ui.auth.fragments.EmailFragment"
+        android:label="EmailFragment" />
+  <fragment
+    android:id="@+id/pageFragment"
+    tools:layout="@layout/fragment_page"
+    android:name="com.lifepharmacy.application.ui.pages.fragment.PageFragment"
+    android:label="PageFragment" />
+</navigation>

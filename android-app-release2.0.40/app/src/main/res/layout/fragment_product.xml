@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.products.viewmodel.ProductViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.products.fragment.ClickProductFragment" />
+
+    <!--    <variable-->
+    <!--      name="isOverViewSelected"-->
+    <!--      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />-->
+
+    <!--    <variable-->
+    <!--      name="isDetailSelected"-->
+    <!--      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />-->
+
+    <!--    <variable-->
+    <!--      name="isMoreSelected"-->
+    <!--      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />-->
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_faf">
+
+    <include
+      android:id="@+id/layout_search"
+      layout="@layout/layout_search_bar_product"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+      android:id="@+id/layout_add_to_cart"
+      layout="@layout/layout_add_to_cart"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:paddingEnd="@dimen/dimen_16dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:menu="@menu/bottom_navigation_menu" />
+
+    <androidx.core.widget.NestedScrollView
+      android:id="@+id/scrollView2"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@+id/layout_add_to_cart"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/layout_search"
+      app:layout_constraintVertical_bias="1.0">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+          android:id="@+id/layout_product"
+          layout="@layout/layout_products"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_4dp"
+          android:paddingEnd="@dimen/dimen_16dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:visibility="visible" />
+
+        <include
+          android:id="@+id/layout_address"
+          layout="@layout/layout_delivery_address"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/layout_product"
+          tools:visibility="visible" />
+
+        <include
+          android:id="@+id/layout_addons"
+          layout="@layout/layout_horizontal_addons"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:visibility="@{viewModel.mainProductMut.frequentlyBroughtTogether == null ||viewModel.mainProductMut.frequentlyBroughtTogether.empty ? View.GONE : View.VISIBLE}"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/layout_address" />
+
+        <include
+          android:id="@+id/recyclerView_discounts"
+          layout="@layout/layout_banner_add"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_16dp"
+          android:visibility="gone"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/layout_addons"
+          tools:itemCount="4"
+          tools:listitem="@layout/item_discounts" />
+
+        <include
+          android:id="@+id/layout_super"
+          layout="@layout/layout_horizontal_products"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="24dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/recyclerView_discounts" />
+
+        <LinearLayout
+          android:id="@+id/linearLayout2"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:orientation="horizontal"
+          app:layout_constraintEnd_toEndOf="@+id/layout_super"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/layout_super">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_overview"
+            style="@style/text_14_0025_open_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginStart="@dimen/dimen_12dp"
+            android:layout_weight="1"
+            android:background="@{viewModel.selectedDetails.name().toLowerCase().equals(`overview`) ? @drawable/white_with_top_round_corner : @drawable/grey_with_top_round_corner}"
+            android:elevation="@dimen/dimen_2dp"
+            android:gravity="center"
+            android:onClick="@{()->click.onClickOverview()}"
+            android:text="@string/overview"
+            android:textAllCaps="false" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/button6"
+            style="@style/text_14_0025_open_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dimen_5dp"
+            android:layout_weight="1"
+            android:background="@{viewModel.selectedDetails.name().toLowerCase().equals(`detail`) ? @drawable/white_with_top_round_corner : @drawable/grey_with_top_round_corner}"
+            android:elevation="@dimen/dimen_2dp"
+            android:gravity="center"
+            android:onClick="@{()->click.onClickDetails()}"
+            android:text="Details"
+            android:textAllCaps="false" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/button5"
+            style="@style/text_14_0025_open_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dimen_5dp"
+            android:layout_marginEnd="@dimen/dimen_12dp"
+            android:layout_weight="1"
+            android:background="@{viewModel.selectedDetails.name().toLowerCase().equals(`more_info`) ? @drawable/white_with_top_round_corner : @drawable/grey_with_top_round_corner}"
+            android:elevation="@dimen/dimen_2dp"
+            android:gravity="center"
+            android:onClick="@{()->click.onClickMoreInfo()}"
+            android:text="@string/more_info"
+            android:textAllCaps="false" />
+        </LinearLayout>
+
+
+        <include
+          android:id="@+id/layout_overview"
+          layout="@layout/layout_overview"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <!--                <include-->
+        <!--                    android:id="@+id/layout_ratings"-->
+        <!--                    layout="@layout/layout_product_rating"-->
+        <!--                    android:layout_width="0dp"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                    app:layout_constraintStart_toStartOf="parent"-->
+        <!--                    app:layout_constraintTop_toBottomOf="@+id/layout_description" />-->
+
+        <!--                <include-->
+        <!--                    android:id="@+id/layout_product_review"-->
+        <!--                    layout="@layout/layout_product_review"-->
+        <!--                    android:layout_width="0dp"-->
+        <!--                    android:layout_marginBottom="@dimen/dimen_16dp"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                    app:layout_constraintStart_toStartOf="parent"-->
+        <!--                    app:layout_constraintTop_toBottomOf="@+id/layout_ratings" />-->
+
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

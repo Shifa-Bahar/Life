@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.payment.CardMainModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.card.ClickCard" />
+
+    <variable
+      name="selected"
+      type="Boolean" />
+
+    <variable
+      name="position"
+      type="int" />
+    <variable
+      name="pg"
+      type="int" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatRadioButton
+      android:id="@+id/rg_card"
+      style="@style/text_12_1d1d_regular"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/white"
+      android:button="@drawable/simple_radio_selector"
+      android:checked="@{selected}"
+      tools:drawableStart="@drawable/ic_visa"
+      android:drawableStart="@{item.cardData.paymentInfo.cardScheme.toLowerCase().equals(`visa`)?@drawable/ic_visa:@drawable/ic_master_card}"
+      android:drawablePadding="@dimen/dp_10"
+      android:elevation="@dimen/dimen_2dp"
+      android:onClick="@{()->click.onCardSelect(position,item,pg)}"
+      android:paddingHorizontal="@dimen/dimen_10dp"
+      android:text="@{item.cardData.paymentInfo.paymentDescription}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+      android:id="@+id/divider6"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dimen_0.5dp"
+      android:background="@color/color_e8e8"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/rg_card" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="productModel"
+      type="com.lifepharmacy.application.model.product.ProductDetails" />
+    <variable
+      name="productViewModel"
+      type="com.lifepharmacy.application.ui.products.viewmodel.ProductViewModel" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.config.DeliverySlot" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.interfaces.ClickLayoutDeliveryAddress" />
+    <variable
+      name="mViewModel"
+      type="com.lifepharmacy.application.ui.address.AddressViewModel" />
+    <variable
+      name="selectedAddress"
+      type="androidx.databinding.ObservableField&lt;com.lifepharmacy.application.model.address.AddressModel&gt;" />
+    <variable
+      name="qty"
+      type="androidx.databinding.ObservableField&lt;Double&gt;" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dp_10"
+      android:layout_marginTop="@dimen/dimen_4dp"
+      android:layout_marginBottom="@dimen/dimen_4dp"
+      android:elevation="2dp"
+      app:cardCornerRadius="@dimen/dp_10"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+          android:id="@+id/linearLayout4"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/txtView_deliverToHeading"
+              style="@style/text_12_8585_regular"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="0.9"
+              android:text="@string/delivery_to" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/txtView_deliverTo"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="0dp"
+              android:drawablePadding="@dimen/dimen_10dp"
+              android:singleLine="true"
+              android:text="@{mViewModel.deliveredAddressMut.type == null || mViewModel.deliveredAddressMut.type.empty  ?` `+mViewModel.deliveredAddressMut.streetAddress:mViewModel.deliveredAddressMut.type+`: `+mViewModel.deliveredAddressMut.streetAddress+`,`+mViewModel.deliveredAddressMut.area}"
+              android:drawableStart="@{mViewModel.deliveredAddressMut.type.equals(`Work`) ? @drawable/ic_work_location : mViewModel.deliveredAddressMut.type.equals(`Home`) ? @drawable/ic_home_location : @drawable/ic_fav_location }"
+              android:layout_height="wrap_content"
+              android:layout_weight="3.1"
+              tools:text="@string/abu_dhabi" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_change"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="0dp"
+              android:visibility="@{productViewModel.appManager.persistenceManager.loggedIn?View.VISIBLE:View.INVISIBLE}"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:onClick="@{()->click.onClickChangeAddress()}"
+              android:text="@string/change"
+              android:textAllCaps="true" />
+          </LinearLayout>
+
+          <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0.5dp"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:background="@color/color_b6b6" />
+
+          <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10">
+
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/imageView_delivery"
+              android:layout_width="@dimen/dimen_56dp"
+              android:layout_height="@dimen/dimen_16dp"
+              availabilityForDetails="@{productModel.availability}"
+              enteredQty="@{String.valueOf(qty)}"
+              setShippingTagVisibility="@{productModel}"
+              app:layout_constraintBottom_toBottomOf="@+id/constraintLayout_quantity"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintTop_toTopOf="@+id/constraintLayout_quantity" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/imageView_info"
+              android:layout_width="@dimen/dimen_16dp"
+              android:layout_height="@dimen/dimen_16dp"
+              android:onClick="@{()->click.onClickInfoDeliverType()}"
+              android:layout_marginStart="@dimen/dimen_6dp"
+              setShippingTagVisibility="@{productModel}"
+              android:src="@mipmap/ic_question"
+              app:layout_constraintBottom_toBottomOf="@+id/constraintLayout_quantity"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintTop_toTopOf="@+id/constraintLayout_quantity" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10">
+
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--              style="@style/text_12_8585_regular"-->
+<!--              android:layout_width="wrap_content"-->
+<!--              android:layout_height="wrap_content"-->
+<!--              android:text="@string/order_in_2_hrs_5mins" />-->
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              ifItemSoldOutVisibilityLL="@{productModel}"
+              enteredQtyLL="@{qty}"
+              android:orientation="horizontal">
+
+              <androidx.appcompat.widget.AppCompatTextView
+                style="@style/text_13_1d1d_semi_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/delivery_by" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                style="@style/text_13_blue_semi_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                setDeliveryTime="@{productModel.availability}"
+                deliverySlot="@{productViewModel.appManager.storageManagers.firstActiveSlot}"
+                enteredQty="@{String.valueOf(qty)}"
+                android:layout_marginStart="@dimen/dimen_2dp"
+                tools:text="@string/today_jan_2" />
+            </LinearLayout>
+
+            <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              enteredQtyForLL="@{String.valueOf(qty)}"
+              setCounterVisibilityLL="@{productModel}"
+              android:layout_marginTop="@dimen/dimen_4dp"
+              android:orientation="horizontal">
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView191"
+                android:layout_width="wrap_content"
+                style="@style/text_13_1d1d_regular"
+                android:layout_height="wrap_content"
+                android:text="If you order in next" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                style="@style/text_13_blue_semi_bold"
+                enteredQty="@{String.valueOf(qty)}"
+                setCounterVisibility="@{productModel}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_4dp"
+                android:text="@{productViewModel.countDown}"
+                android:textColor="@color/flat_green_1"
+                tools:text="@string/today_jan_2" />
+            </LinearLayout>
+
+          </LinearLayout>
+        </LinearLayout>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

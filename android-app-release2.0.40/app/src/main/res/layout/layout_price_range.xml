@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="title"
+      type="String" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.productList.viewmodel.ProductListViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.interfaces.ClickSearchBarProduct" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingVertical="@dimen/dimen_10dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView175"
+      style="@style/text_12_accent_semi_bole"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/dimen_6dp"
+      android:background="@drawable/bg_accent_border"
+      android:gravity="center"
+      android:minWidth="@dimen/dimen_40dp"
+      android:paddingHorizontal="@dimen/dimen_6dp"
+      android:paddingVertical="@dimen/dimen_4dp"
+      android:text="@{viewModel.appManager.persistenceManager.currency+` `+viewModel.rangeFrom}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="0" />
+
+    <com.google.android.material.slider.RangeSlider
+      android:id="@+id/range_slider"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:stepSize="50.0"
+      android:valueFrom="0.0"
+      android:valueTo="1000.0"
+      app:labelStyle="@style/MyTooltip"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/textView176"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toEndOf="@+id/textView175"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.478"
+      app:values="@array/initial_slider_values" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView176"
+      style="@style/text_12_accent_semi_bole"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/dimen_6dp"
+      android:background="@drawable/bg_accent_border"
+      android:gravity="center"
+      android:minWidth="@dimen/dimen_40dp"
+      android:paddingHorizontal="@dimen/dimen_6dp"
+      android:paddingVertical="@dimen/dimen_4dp"
+      android:text="@{viewModel.appManager.persistenceManager.currency+` `+viewModel.rangeTo}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="1000+" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isHeartVisible"
+      type="Boolean" />
+    <variable
+      name="isLoggedIn"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="mVieModel"
+      type="com.lifepharmacy.application.ui.profile.viewmodel.ProfileViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.profile.fragments.ClickProfileHeader" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView21"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:scaleType="fitXY"
+      app:layout_constraintDimensionRatio="375:215"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_header_back" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/iv_settings"
+      android:layout_width="@dimen/dimen_16dp"
+      android:layout_height="@dimen/dimen_16dp"
+      android:layout_marginTop="8dp"
+      android:onClick="@{()->click.onClickEdit()}"
+      android:visibility="gone"
+      app:layout_constraintBottom_toTopOf="@+id/divider13"
+      app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+      app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+      app:layout_constraintVertical_bias="0.423"
+      app:srcCompat="@drawable/ic_settings"
+      tools:visibility="gone" />
+
+    <LinearLayout
+      android:id="@+id/linearLayout3"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:onClick="@{()->click.onClickEdit()}"
+      android:orientation="vertical"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+      app:layout_constraintStart_toEndOf="@+id/iv_profile"
+      app:layout_constraintTop_toTopOf="@+id/iv_profile"
+      tools:visibility="visible">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        style="@style/text_16_white_opnesans_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/dimen_8dp"
+        android:drawableTint="@color/white"
+        android:text="@{mVieModel.userObjectMut.name ==null || mVieModel.userObjectMut.name.empty ? ``:mVieModel.userObjectMut.name}"
+        tools:text="Sarah Conner" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        style="@style/text_12_white_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{mVieModel.userObjectMut.email ==null || mVieModel.userObjectMut.email.empty ? ``:mVieModel.userObjectMut.email}"
+        tools:text="sarahconner@email.com" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        style="@style/text_12_white_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{mVieModel.userObjectMut.phone ==null || mVieModel.userObjectMut.phone.empty ? ``:mVieModel.userObjectMut.phone}"
+        tools:text="+971 123456789" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:onClick="@{()->click.onClickEdit()}"
+        android:layout_height="wrap_content"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_marginVertical="@dimen/dimen_4dp"
+        android:paddingHorizontal="@dimen/dimen_16dp"
+        android:background="@drawable/white_with_round_corner"
+        android:text="@string/edit"
+        />
+    </LinearLayout>
+
+    <View
+      android:id="@+id/divider13"
+      android:layout_width="0dp"
+      android:layout_height="3dp"
+      android:background="@color/transparent"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView21"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/imageView21"
+      app:layout_constraintVertical_bias="0.72" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/iv_profile"
+      errorImage="@{@drawable/ic_profile_placeholder}"
+      loadImageFromURl="@{mVieModel.userObjectMut.photo}"
+      android:layout_width="@dimen/dimen_80dp"
+      android:layout_height="@dimen/dimen_80dp"
+      android:layout_marginStart="@dimen/dimen_16dp"
+      android:scaleType="centerCrop"
+      app:layout_constraintBottom_toTopOf="@+id/divider13"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+      app:srcCompat="@drawable/ic_profile_placeholder"
+      tools:visibility="visible" />
+
+    <info.hoang8f.android.segmented.SegmentedGroup
+      android:id="@+id/segmented2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layoutDirection="ltr"
+      android:orientation="horizontal"
+      android:visibility="@{mVieModel.isArabicEnabled ? View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/divider13"
+      app:sc_border_width="1dp"
+      app:sc_checked_text_color="@color/white"
+      app:sc_tint_color="@color/accent_blue"
+      tools:visibility="visible">
+
+      <RadioButton
+        android:id="@+id/btn_english"
+        style="@style/RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="@string/english" />
+
+      <RadioButton
+        android:id="@+id/btn_arabic"
+        style="@style/RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/arabic" />
+    </info.hoang8f.android.segmented.SegmentedGroup>
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView66"
+      android:layout_width="@dimen/dimen_30dp"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:onClick="@{()->click.onClickNotifications()}"
+      android:layout_height="@dimen/dimen_30dp"
+      app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/iv_profile"
+      app:srcCompat="@drawable/ic_notification" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="counts"
+      type="androidx.databinding.ObservableField&lt;String&gt;" />
+
+    <variable
+      name="selectedCount"
+      type="androidx.databinding.ObservableField&lt;String&gt;" />
+
+    <variable
+      name="isAllSelected"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickCartFragment" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:visibility="visible"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:gravity="center_vertical"
+      android:orientation="horizontal"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_checked"
+        android:layout_width="@dimen/dimen_24dp"
+        android:visibility="gone"
+        android:layout_height="@dimen/dimen_24dp"
+        android:onClick="@{()->click.onClickAllSelected()}"
+        android:padding="@dimen/dimen_4dp"
+        android:src="@{isAllSelected ? @drawable/ic_checked : @drawable/ic_squar_rec_blue}"
+        tools:src="@drawable/ic_squar_rec_blue" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView37"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:text="@{selectedCount}"
+        tools:text="3" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView38"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_4dp"
+        android:layout_weight="1"
+        android:text="/"
+        tools:text="/" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_total"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:text="@{counts}"
+        tools:text="6" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView40"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:text="@string/items_selected"
+        app:textAllCaps="true" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:orientation="horizontal"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_basked"
+        android:layout_width="@dimen/dimen_24dp"
+        android:layout_height="@dimen/dimen_24dp"
+        android:layout_marginEnd="@dimen/dimen_8dp"
+        android:padding="@dimen/dimen_2dp"
+        android:onClick="@{()->click.onClickDeleteCart()}"
+        app:srcCompat="@drawable/ic_basket_blue" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_heart"
+        android:layout_width="@dimen/dimen_20dp"
+        android:layout_height="@dimen/dimen_20dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_heart" />
+    </LinearLayout>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.card.ClickCardLayout" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.dashboard.viewmodel.DashboardViewModel" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:visibility="@{viewModel.showStickyMessages &amp;&amp;viewModel.isMainView?View.VISIBLE:View.GONE}"
+    app:layout_constraintBottom_toBottomOf="@+id/textView245"
+    app:layout_constraintTop_toBottomOf="@+id/textView245"
+    tools:visibility="visible">
+<!--    viewModel.showStickyMessages &amp;&amp;-->
+    <androidx.recyclerview.widget.RecyclerView
+      android:layout_width="match_parent"
+      android:id="@+id/rv_messages"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/dimen_8dp"
+      android:clipToPadding="false"
+      android:orientation="horizontal"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:itemCount="4"
+      tools:listitem="@layout/item_stick_message" />
+
+    <com.rd.PageIndicatorView
+      android:id="@+id/pageIndicatorView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:layout_margin="@dimen/dimen_2dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:piv_animationType="thinWorm"
+      app:piv_dynamicCount="true"
+      app:piv_interactiveAnimation="true"
+      app:piv_padding="@dimen/dimen_6dp"
+      app:piv_radius="@dimen/dimen_2dp"
+      app:piv_selectedColor="@color/accent_blue_darker"
+      app:piv_unselectedColor="@color/grey_font" />
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--      android:id="@+id/constraintLayout20"-->
+    <!--      android:layout_width="0dp"-->
+    <!--      android:layout_height="0dp"-->
+    <!--      android:background="@color/color_grey_f4f4"-->
+    <!--      app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--      app:layout_constraintEnd_toEndOf="parent"-->
+    <!--      app:layout_constraintHorizontal_bias="0.0"-->
+    <!--      app:layout_constraintStart_toStartOf="parent"-->
+    <!--      app:layout_constraintTop_toTopOf="parent"-->
+    <!--      app:layout_constraintVertical_bias="0.0">-->
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--    <ImageView-->
+    <!--      android:id="@+id/imageView92"-->
+    <!--      android:layout_width="@dimen/dimen_30dp"-->
+    <!--      android:layout_height="@dimen/dimen_30dp"-->
+    <!--      android:layout_margin="@dimen/dimen_10dp"-->
+    <!--      app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--      app:layout_constraintStart_toStartOf="parent"-->
+    <!--      app:layout_constraintTop_toTopOf="parent"-->
+    <!--      tools:srcCompat="@drawable/ic_scooter_2"-->
+    <!--      tools:tint="@color/accent_blue" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatTextView-->
+    <!--      android:id="@+id/textView245"-->
+    <!--      style="@style/text_12_1d1d_regular"-->
+    <!--      android:layout_width="wrap_content"-->
+    <!--      android:layout_height="wrap_content"-->
+    <!--      android:layout_marginStart="16dp"-->
+    <!--      android:text="TextView"-->
+    <!--      app:layout_constraintStart_toEndOf="@+id/imageView92"-->
+    <!--      app:layout_constraintTop_toTopOf="@+id/imageView92"-->
+    <!--      tools:text="Rate Your Experience!" />-->
+
+    <!--    <TextView-->
+    <!--      android:id="@+id/textView246"-->
+    <!--      style="@style/text_10_accent_dark_regular"-->
+    <!--      android:layout_width="wrap_content"-->
+    <!--      android:layout_height="wrap_content"-->
+    <!--      android:text="TextView"-->
+    <!--      app:layout_constraintBottom_toBottomOf="@+id/imageView92"-->
+    <!--      app:layout_constraintStart_toStartOf="@+id/textView245"-->
+    <!--      app:layout_constraintTop_toBottomOf="@+id/textView245"-->
+    <!--      tools:text="Your order #AE123456 on the way" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatTextView-->
+    <!--      android:id="@+id/textView247"-->
+    <!--      style="@style/text_10_blue_dark_semi_bold"-->
+    <!--      android:layout_width="wrap_content"-->
+    <!--      android:layout_height="wrap_content"-->
+    <!--      android:layout_marginEnd="@dimen/dimen_8dp"-->
+    <!--      android:text="@string/view"-->
+    <!--      android:textAllCaps="true"-->
+    <!--      app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--      app:layout_constraintEnd_toStartOf="@+id/imageView93"-->
+    <!--      app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    <ImageView-->
+    <!--      android:id="@+id/imageView93"-->
+    <!--      android:layout_width="@dimen/dimen_20dp"-->
+    <!--      android:layout_height="@dimen/dimen_20dp"-->
+    <!--      android:layout_marginEnd="8dp"-->
+    <!--      android:padding="@dimen/dimen_4dp"-->
+    <!--      app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--      app:layout_constraintEnd_toEndOf="@+id/constraintLayout20"-->
+    <!--      app:layout_constraintTop_toTopOf="parent"-->
+    <!--      app:srcCompat="@drawable/ic_simple_cross" />-->
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

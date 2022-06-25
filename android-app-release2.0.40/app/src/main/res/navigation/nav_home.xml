@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_home"
+  app:startDestination="@id/home">
+  <fragment
+    android:id="@+id/home"
+    android:name="com.lifepharmacy.application.ui.home.fragments.HomeRecyclerFragment"
+    android:label="dashboomeFragme"
+    tools:layout="@layout/fragment_home_recyclerview">
+    <deepLink
+      android:id="@+id/deepLink4"
+      app:uri="https://beta.lifepharmacy.com" />
+    <deepLink
+      android:id="@+id/deepLink14"
+      app:uri="https://lifepharmacy.com" />
+    <deepLink
+      android:id="@+id/deepLink16"
+      app:uri="https://www.lifepharmacy.com" />
+<!--    <deepLink-->
+<!--      android:id="@+id/deepLink15"-->
+<!--      app:uri="lifeapp://home/{slug}" />-->
+<!--    <argument-->
+<!--      android:name="slug"-->
+<!--      app:argType="string"-->
+<!--      app:nullable="true"-->
+<!--      android:defaultValue="@null" />-->
+<!--    <deepLink-->
+<!--      android:id="@+id/deepLink17"-->
+<!--      app:uri="lifeapp://home" />-->
+  </fragment>
+  <argument
+    android:name="id"
+    android:defaultValue=""
+    app:argType="string" />
+  <include app:graph="@navigation/nav_login_sheet" />
+  <include app:graph="@navigation/nav_search" />
+  <!--  <include app:graph="@navigation/nav_product" />-->
+  <include app:graph="@navigation/nav_product_listing" />
+  <include app:graph="@navigation/nav_pcr" />
+  <include app:graph="@navigation/nav_rewards" />
+  <fragment
+    android:id="@+id/offerListingFragment"
+    android:name="com.lifepharmacy.application.ui.offers.fragments.OfferListingFragment"
+    android:label="OfferListingFragment"
+    tools:layout="@layout/fragment_offer_listing" />
+  <dialog
+    android:id="@+id/inappmessageDialog"
+    android:name="com.lifepharmacy.application.ui.home.fragments.InappmessageDialog"
+    android:label="InappmessageDialog"
+    tools:layout="@layout/dailog_inappmessage"/>
+  <dialog
+    android:id="@+id/orderRatingInappBottomSheet"
+    android:name="com.lifepharmacy.application.ui.home.fragments.OrderRatingInappBottomSheet"
+    android:label="OrderRatingInappBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_rating_inapp" />
+  <fragment
+    android:id="@+id/homeLandingFragment"
+    android:name="com.lifepharmacy.application.ui.home.fragments.HomeLandingFragment"
+    android:label="HomeLandingFragment"
+    tools:layout="@layout/fragment_landing_page">
+    <argument
+      android:name="title"
+      android:defaultValue=""
+      app:argType="string" />
+    <argument
+      android:name="id"
+      android:defaultValue=""
+      app:argType="string" />
+  </fragment>
+  <fragment
+    android:id="@+id/orderOutOFStockFragment"
+    tools:layout="@layout/fragment_out_of_stock_order"
+    android:name="com.lifepharmacy.application.ui.outofstockorder.OrderOutOFStockFragment"
+    android:label="OrderOutOFStockFragment" />
+  <dialog
+    android:id="@+id/orderWalletTopUpBottomSheet"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderWalletTopUpBottomSheet"
+    android:label="OrderWalletTopUpBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_wallet_top" />
+  <dialog
+    android:id="@+id/orderSummaryOutOfStockBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_summary_out_stock"
+    android:name="com.lifepharmacy.application.ui.outofstockorder.fragments.OrderSummaryOutOfStockBottomSheet"
+    android:label="OrderSummaryOutOfStockBottomSheet" />
+  <dialog
+    android:id="@+id/orderPlacedDialog"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderPlacedDialog"
+    android:label="OrderPlacedDialog"
+    tools:layout="@layout/dailog_order_placed" />
+</navigation>

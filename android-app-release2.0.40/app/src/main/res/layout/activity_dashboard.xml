@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.dashboard.DashboardActivity">
+
+    <fragment
+      android:id="@+id/fragment"
+      android:name="androidx.navigation.fragment.NavHostFragment"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      app:defaultNavHost="true"
+      app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0"
+      app:navGraph="@navigation/nav_dashboard" />
+
+    <include
+      android:id="@+id/bottom_navigation"
+      layout="@layout/layout_bottom_bar"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+      android:id="@+id/ll_loading"
+      layout="@layout/layout_loading"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+      android:id="@+id/ll_animation"
+      layout="@layout/layout_animation"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--        <com.wwdablu.soumya.lottiebottomnav.LottieBottomNav-->
+    <!--            android:id="@+id/bottom_navigation"-->
+    <!--            style="@style/BottomNav"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:backgroundTint="@color/white"-->
+    <!--            android:elevation="@dimen/dimen_7dp"-->
+    <!--            app:menu_selected_height="@dimen/dimen_20dp"-->
+    <!--            app:menu_selected_width="@dimen/dimen_20dp"-->
+    <!--            app:menu_text_show_on_unselected="true"-->
+    <!--            app:menu_unselected_height="@dimen/dimen_20dp"-->
+    <!--            app:menu_unselected_width="@dimen/dimen_20dp"-->
+    <!--            android:background="@android:color/white"-->
+    <!--            android:padding="@dimen/dimen_7dp"-->
+    <!--            android:visibility="visible"-->
+    <!--            app:itemHorizontalTranslationEnabled="true"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--             />-->
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout><!--    app:labelVisibilityMode="labeled"-->
+  <!--    app:itemTextColor="@drawable/bottom_nav_selector"-->
+  <!--    app:menu="@menu/bottom_navigation_menu"-->
+  <!--    app:itemBackground="@color/transparent"-->

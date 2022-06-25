@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="showEmpty"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.address.dailog.ClickAddressFragment" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView27"
+      style="@style/text_14_1d1d_open_regular"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/dp_10"
+      android:text="@string/add_a_new_address" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_add_new_address"
+      style="@style/text_16_accent_open_regular"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/button_height"
+      android:layout_marginHorizontal="@dimen/dp_10"
+      android:layout_marginTop="@dimen/dp_10"
+      android:layout_marginBottom="@dimen/dp_10"
+      android:background="@drawable/white_with_round_corner"
+      android:elevation="@dimen/dimen_2dp"
+      android:gravity="center"
+      android:onClick="@{()->click.onClickAddNew()}"
+      android:padding="@dimen/dp_10"
+      android:text="@string/add_a_new_address"
+      android:textAllCaps="false" />
+  </LinearLayout>
+</layout>

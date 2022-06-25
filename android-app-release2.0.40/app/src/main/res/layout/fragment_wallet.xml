@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.wallet.viewmodels.WalletViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.wallet.fragments.ClickWalletFragment" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBottomSheetBackground">
+
+    <include
+      android:id="@+id/ly_top_bar"
+      layout="@layout/layout_top_round_back"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/ly_top_bar">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <include
+          android:id="@+id/ly_wallet_amount"
+          layout="@layout/layout_wallet_amount"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_6dp"
+          android:layout_marginTop="@dimen/dimen_6dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+          android:id="@+id/ly_cards"
+          layout="@layout/layout_wallet_cards"
+          android:visibility="@{viewModel.isThereAnyCard ? View.VISIBLE: View.GONE}"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_6dp"
+          android:layout_marginTop="@dimen/dimen_6dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/ly_wallet_amount" />
+
+        <include
+          android:id="@+id/ly_transactions"
+          layout="@layout/layout_wallet_recent_transactions"
+          android:layout_width="0dp"
+          android:visibility="@{viewModel.isThereAnyTransactions ? View.VISIBLE: View.GONE}"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_6dp"
+          android:layout_marginTop="@dimen/dimen_6dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/ly_cards" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

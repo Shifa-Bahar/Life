@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isSelected"
+      type="Boolean" />
+
+    <variable
+      name="position"
+      type="int" />
+
+    <variable
+      name="loading"
+      type="Boolean" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.category.Section" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.productList.adapter.SuperSellerQuickOption" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/dimen_10dp"
+    android:background="@{isSelected ? @drawable/bg_text_accent : @drawable/bg_8b_border}"
+    android:onClick="@{()->click.onClickSubQuickSelection(item,position)}"
+    tools:background="@drawable/bg_8b_border">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_location"
+      style="@style/text_10_accent_dark_regular"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:minWidth="@dimen/dimen_50dp"
+      android:paddingHorizontal="@dimen/dimen_6dp"
+      android:paddingVertical="@dimen/dimen_8dp"
+      setTextAlpha="@{loading?false:true}"
+      android:text="@{item.name}"
+      android:textAlignment="center"
+      android:textColor="@{isSelected ? @color/white : @color/color_1d1d}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="E"
+      tools:textColor="@color/color_1d1d" />
+
+
+    <ProgressBar
+      android:id="@+id/progressBar5"
+      style="?android:attr/progressBarStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="@dimen/dimen_20dp"
+      android:indeterminateTint="@color/accent_blue"
+      android:visibility="@{loading?View.VISIBLE:View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:layout_marginBottom="@dimen/dimen_20dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageView77"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView183"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          tools:text="Order Status" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView184"
+          style="@style/text_12_93A_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          tools:text="Sun, 23th May 2021 - 12:21pm" />
+      </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+      android:id="@+id/view9"
+      android:layout_width="1dp"
+      android:layout_height="0dp"
+      android:background="@color/color_26a"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/imageView77"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView77" />
+
+    <ImageView
+      android:id="@+id/imageView77"
+      android:layout_width="@dimen/dimen_20dp"
+      android:layout_height="@dimen/dimen_20dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_full_round_gree" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

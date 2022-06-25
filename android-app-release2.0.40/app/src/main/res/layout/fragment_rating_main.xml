@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="subOrderReview"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="driverReview"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.rating.OnClickRatingMain" />
+
+    <variable
+      name="viewmodel"
+      type="com.lifepharmacy.application.ui.rating.RatingsViewModel" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+
+    android:background="@color/backGroundColor">
+
+    <include
+      android:id="@+id/toll_bar"
+      layout="@layout/layout_rating_top_back_"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+      android:id="@+id/sv_main"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:paddingBottom="@dimen/dimen_60dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toll_bar">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+          android:id="@+id/imageView90"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginVertical="@dimen/dimen_10dp"
+          android:visibility="@{viewmodel.ratingState.name().toLowerCase().equals(`start`)?View.VISIBLE:View.GONE}"
+          app:srcCompat="@drawable/ic_stars_with_people"
+          tools:visibility="gone" />
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="@dimen/dimen_16dp"
+          android:background="@color/color_blue_f4fbff"
+          android:orientation="vertical"
+          android:paddingVertical="@dimen/dimen_16dp">
+
+          <View
+            android:id="@+id/divider50"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="@{viewmodel.ratingState.name().toLowerCase().equals(`start`)?View.VISIBLE:View.GONE}"
+            tools:visibility="gone" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView240"
+            style="@style/text_14_accent_semi_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@{viewmodel.ratingState.name().toLowerCase().equals(`start`)?@string/not_rated:viewmodel.mainRatingTag}"
+            android:textAlignment="center"
+            tools:text="@string/not_rated" />
+
+          <com.willy.ratingbar.ScaleRatingBar
+            android:id="@+id/simpleRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView231"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srb_clearRatingEnabled="true"
+            app:srb_drawableEmpty="@drawable/ic_empty_start_3"
+            app:srb_drawableFilled="@drawable/ic_fill_star_3"
+            app:srb_minimumStars="0"
+            app:srb_numStars="5"
+            app:srb_rating="0"
+            app:srb_starHeight="@dimen/dimen_30dp"
+            app:srb_starPadding="@dimen/dimen_4dp"
+            app:srb_starWidth="@dimen/dimen_30dp"
+            app:srb_stepSize="1" />
+
+          <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="@{viewmodel.ratingState.name().toLowerCase().equals(`start`)?View.GONE:View.VISIBLE}" />
+
+          <com.lifepharmacy.application.ui.utils.taglayout.TagContainerLayout
+            android:id="@+id/tag_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@color/white"
+            android:paddingVertical="@dimen/dimen_10dp"
+            android:visibility="@{viewmodel.ratingState.name().toLowerCase().equals(`start`)?View.GONE:View.VISIBLE}"
+            app:container_background_color="@color/color_blue_f4fbff"
+            app:container_border_color="@color/white"
+            app:container_enable_drag="false"
+            app:horizontal_interval="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:tag_background_color="@color/white"
+            app:tag_border_color="@color/grey"
+            app:tag_clickable="true"
+            app:tag_horizontal_padding="@dimen/dimen_8dp"
+            app:tag_selectable="true"
+            app:tag_text_color="@color/accent_blue_darker"
+            app:tag_theme="none"
+            app:vertical_interval="10dp" />
+
+          <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/ed_review"
+            style="@style/text_12_black_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            android:layout_marginVertical="@dimen/dimen_4dp"
+            android:background="@drawable/white_with_round_corner_grey_border"
+            android:gravity="start"
+            android:hint="@string/write_your_feedback"
+            android:minHeight="@dimen/dimen_80dp"
+            android:padding="@dimen/dimen_16dp"
+            android:text="@={subOrderReview.value}"
+            android:visibility="@{viewmodel.ratingState.name().toLowerCase().equals(`start`)?View.GONE:View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textChangedListener="@{subOrderReview.textWatcher}" />
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@color/white"
+            android:paddingHorizontal="@dimen/dimen_16dp"
+            android:paddingVertical="@dimen/dimen_8dp"
+            android:visibility="@{viewmodel.ratingState.name().toLowerCase().equals(`start`)?View.GONE:View.VISIBLE}">
+
+            <TextView
+              android:id="@+id/textView241"
+              style="@style/text_14_accent_dark_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/delivered_by"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+              android:id="@+id/imageView91"
+              errorImage="@{@drawable/ic_profile_placeholder}"
+              loadImageFromURl="@{viewmodel.selectedSubOrderItem.shipment.driver.photo}"
+              android:layout_width="@dimen/dimen_50dp"
+              android:layout_height="@dimen/dimen_50dp"
+              android:layout_marginTop="8dp"
+              android:src="@drawable/ic_profile_placeholder"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/textView241"
+              app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+            <LinearLayout
+              android:id="@+id/linearLayout31"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              app:layout_constraintBottom_toBottomOf="@+id/imageView91"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toEndOf="@+id/imageView91"
+              app:layout_constraintTop_toTopOf="@+id/imageView91">
+
+              <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                  android:id="@+id/textView248"
+                  android:layout_width="wrap_content"
+                  style="@style/text_12_blue_dark_open_regular"
+                  android:layout_height="wrap_content"
+                  android:text="@string/add_a_rating_for"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                  android:id="@+id/textView243"
+                  style="@style/text_12_accent_dark_bold"
+                  android:layout_width="0dp"
+                  android:layout_marginStart="@dimen/dimen_4dp"
+                  android:layout_height="wrap_content"
+                  android:text="@{viewmodel.selectedSubOrderItem.shipment.driver.name}"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintStart_toEndOf="@+id/textView248"
+                  app:layout_constraintTop_toTopOf="parent"
+                  tools:text="John Doe" />
+              </androidx.constraintlayout.widget.ConstraintLayout>
+
+              <com.willy.ratingbar.ScaleRatingBar
+                android:id="@+id/driver_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView231"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srb_clearRatingEnabled="true"
+                app:srb_drawableEmpty="@drawable/ic_empty_start_3"
+                app:srb_drawableFilled="@drawable/ic_fill_star_3"
+                app:srb_minimumStars="0"
+                app:srb_numStars="5"
+                app:srb_rating="3"
+                app:srb_starHeight="@dimen/dimen_20dp"
+                app:srb_starPadding="3dp"
+                app:srb_starWidth="@dimen/dimen_20dp"
+                app:srb_stepSize="1" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+              android:id="@+id/ed_driver_review"
+              style="@style/text_12_black_regular"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginVertical="@dimen/dimen_4dp"
+              android:background="@drawable/white_with_round_corner_grey_border"
+              android:gravity="start"
+              android:hint="@string/write_your_feedback"
+              android:minHeight="@dimen/dimen_80dp"
+              android:padding="@dimen/dimen_16dp"
+              android:text="@={driverReview.value}"
+              android:visibility="@{viewmodel.isReviewDriver?View.VISIBLE:View.GONE}"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/imageView91"
+              app:textChangedListener="@{driverReview.textWatcher}" />
+
+            <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/button23"
+              style="@style/blueBottonWithoutPadding"
+              android:layout_width="wrap_content"
+              android:layout_height="@dimen/dimen_20dp"
+              android:onClick="@{()->click.onClickRightDriverReview()}"
+              android:text="@string/write_review"
+              android:textSize="@dimen/text_size_8sp"
+              android:visibility="@{viewmodel.isDriverRated?View.VISIBLE:View.GONE}"
+              app:layout_constraintBottom_toBottomOf="@+id/linearLayout31"
+              app:layout_constraintEnd_toEndOf="parent" />
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView244"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/color_blue_f4fbff"
+          android:drawableEnd="@drawable/ic_arrow_down"
+          android:onClick="@{()->click.onClickHideShowProducts()}"
+          android:paddingHorizontal="@dimen/dimen_10dp"
+          android:paddingVertical="@dimen/dimen_10dp"
+          android:text="@string/add_product_review" />
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_products"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/white"
+          android:clipToPadding="false"
+          android:nestedScrollingEnabled="false"
+          android:orientation="vertical"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          app:spanCount="1"
+          tools:itemCount="2"
+          tools:listitem="@layout/item_order_rating_product" />
+        <!--        android:visibility="@{viewmodel.showProducts?View.VISIBLE:View.GONE}"-->
+
+      </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/button22"
+      style="@style/blueBotton"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dimen_10dp"
+      android:onClick="@{()->click.onClickSubmit()}"
+      android:text="@string/submit"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

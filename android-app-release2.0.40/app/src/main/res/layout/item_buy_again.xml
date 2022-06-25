@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.product.ProductDetails" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.whishlist.adapters.ClickItemWish" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_gery_f4f4">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView_icon"
+      android:layout_width="@dimen/dimen_70dp"
+      android:layout_height="@dimen/dimen_70dp"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      loadingImageUsingPicasso="@{item.images.featuredImage}"
+      errorImage="@{@drawable/image_place_holder}"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/image_place_holder" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_product_name"
+      style="@style/text_12_blue_dark_open_regular"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+
+      android:text="@{item.title}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageView_icon"
+      app:layout_constraintTop_toTopOf="@+id/imageView_icon"
+      tools:text="@string/puressentiel_purifying_antibacterial_lotion_spray_hands_and_surfaces" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_date"
+      style="@style/text_10_93a_regular"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="12 Jan 2020"
+      app:layout_constraintStart_toStartOf="@+id/tv_product_name"
+      app:layout_constraintTop_toBottomOf="@+id/tv_product_name" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_price"
+      style="@style/text_14_accent_dark_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      prices="@{item.prices}"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView_icon"
+      app:layout_constraintStart_toStartOf="@+id/tv_product_name" />
+
+    <View
+      android:id="@+id/divider20"
+      android:layout_width="0dp"
+      android:layout_height="0.5dp"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:background="?android:attr/listDivider"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="@+id/imageView_icon"
+      app:layout_constraintTop_toBottomOf="@+id/tv_price"
+      app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView27"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView_icon"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:srcCompat="@drawable/ic_cart_blue_back" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="offerTitle"
+      type="String" />
+
+    <variable
+      name="isFreeGift"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.utils.dailogs.ClickAnimationComboActionDialog" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_alpha"
+    app:layoutDescription="@xml/dailog_animation_combo_box_xml_constraintlayout10_scene">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/cl_main"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/white_with_round_corner_15dp"
+      android:elevation="@dimen/dimen_4dp"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView29"
+        android:layout_width="@dimen/dimen_30dp"
+        android:layout_height="@dimen/dimen_30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/white_full_round"
+        android:elevation="@dimen/dimen_4dp"
+        android:onClick="@{()->click.onClickLater()}"
+        android:padding="@dimen/dimen_8dp"
+        app:layout_constraintEnd_toEndOf="@+id/cl_main"
+        app:layout_constraintTop_toTopOf="@+id/cl_main"
+        app:srcCompat="@drawable/ic_simple_cross" />
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+          android:id="@+id/animation_view"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/dimen_80dp"
+          android:layout_marginHorizontal="@dimen/dimen_8dp"
+          android:scaleType="centerInside"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.0" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_4dp"
+        android:paddingVertical="@dimen/dimen_4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView151"
+          style="@style/text_15_blue_dark_semi_bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/hurray"
+          android:textAlignment="center" />
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:gravity="center"
+          android:orientation="horizontal">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView153"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{isFreeGift?@string/you_have_received:@string/you_have_unlocked}" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView150"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_2dp"
+            android:background="@drawable/bg_error_border"
+            android:paddingHorizontal="@dimen/dimen_8dp"
+            android:paddingVertical="@dimen/dimen_4dp"
+            android:text="@{offerTitle}"
+            android:textAllCaps="true"
+            tools:text=" BUY 2 GET 2" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView168"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_4dp"
+            android:layout_weight="1"
+            android:text="@string/offer"
+            android:visibility="@{isFreeGift?View.GONE:View.VISIBLE}" />
+        </LinearLayout>
+
+        <LinearLayout
+          android:layout_width="@dimen/dimen_145dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_10dp"
+          android:orientation="horizontal">
+
+          <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button14"
+            style="@style/green36C963Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_4dp"
+            android:layout_weight="1"
+            android:elevation="@dimen/dimen_2dp"
+            android:onClick="@{()->click.onClickClaim()}"
+            android:text="@string/claim"
+            android:visibility="@{isFreeGift?View.GONE:View.VISIBLE}"
+            tools:visibility="gone" />
+          <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button15"
+            style="@style/green36C963Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_4dp"
+            android:layout_weight="1"
+            android:elevation="@dimen/dimen_2dp"
+            android:visibility="@{!isFreeGift?View.GONE:View.VISIBLE}"
+            android:onClick="@{()->click.onClickLater()}"
+            android:text="@string/view_details" />
+        </LinearLayout>
+      </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+  <!--  app:layout_constraintDimensionRatio="w,1:1"-->
+</layout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.utils.dailogs.ClickAskPermissionDialog" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView88"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dimen_30dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_location_missing" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView236"
+      android:layout_width="wrap_content"
+      style="@style/text_18_accent_dark_semi_bold"
+      android:layout_marginTop="@dimen/dimen_30dp"
+      android:layout_height="wrap_content"
+      android:text="@string/cant_fetch_location"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView88" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/button21"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      style="@style/blueBoldBotton"
+      android:text="@string/enable_location_service"
+      android:layout_marginHorizontal="@dimen/dimen_40dp"
+      android:onClick="@{()->click.onClickEnablePermission()}"
+      android:layout_marginBottom="@dimen/dimen_40dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+      android:id="@+id/textView237"
+      android:layout_width="0dp"
+      style="@style/text_14_accent_dark_open_regular"
+      android:layout_height="wrap_content"
+      android:text="@string/we_need_to_know_your_location_in_order_to_find_nearby_stores_amp_ensure_fast_delivery"
+      android:textAlignment="center"
+      app:layout_constraintBottom_toTopOf="@+id/button21"
+      app:layout_constraintEnd_toEndOf="@+id/button21"
+      app:layout_constraintStart_toStartOf="@+id/button21"
+      app:layout_constraintTop_toBottomOf="@+id/textView236" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

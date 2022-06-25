@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_product"
+  app:startDestination="@id/productFragment">
+
+  <fragment
+    android:id="@+id/productFragment"
+    android:name="com.lifepharmacy.application.ui.products.fragment.ProductFragment"
+    android:label="ProductFragment"
+    tools:layout="@layout/fragment_product">
+    <argument
+      android:name="id"
+      android:defaultValue="@null"
+      app:argType="string"
+      app:nullable="true"/>
+    <deepLink
+      android:id="@+id/deepLink12"
+      app:uri="https://lifepharmacy.com/product/{slug}" />
+    <deepLink
+      android:id="@+id/deepLink"
+      app:uri="https://beta.lifepharmacy.com/product/{slug}" />
+    <deepLink
+      android:id="@+id/deepLink13"
+      app:uri="https://www.lifepharmacy.com/product/{slug}" />
+    <deepLink
+      android:id="@+id/deepLink14"
+      app:uri="lifeapp://product/{slug}" />
+<!--    <deepLink-->
+<!--      android:id="@+id/deepLink15"-->
+<!--      app:uri="lifeapp://products" />-->
+    <argument
+      android:name="slug"
+      app:argType="string"
+      app:nullable="true"
+      android:defaultValue="@null" />
+  </fragment>
+  <dialog
+    android:id="@+id/productReviewsSheet"
+    tools:layout="@layout/bottom_sheet_product_reviews"
+    android:name="com.lifepharmacy.application.ui.products.fragment.ProductReviewsSheet"
+    android:label="ProductReviewsSheet" />
+
+  <dialog
+    android:id="@+id/animationShipmentTypeChangedDialog"
+    android:name="com.lifepharmacy.application.ui.products.fragment.AnimationShipmentTypeChangedDialog"
+    android:label="AnimationShipmentTypeChangedDialog"
+    tools:layout="@layout/dailog_animation_shipment_type_change"/>
+
+  <dialog
+    android:id="@+id/productPreviewBottomSheet"
+    tools:layout="@layout/bottom_sheet_product_preview"
+    android:name="com.lifepharmacy.application.ui.products.fragment.ProductPreviewBottomSheet"
+    android:label="ProductPreviewBottomSheet" />
+  <fragment
+    android:id="@+id/orderOutOFStockFragment"
+    tools:layout="@layout/fragment_out_of_stock_order"
+    android:name="com.lifepharmacy.application.ui.outofstockorder.OrderOutOFStockFragment"
+    android:label="OrderOutOFStockFragment" />
+  <dialog
+    android:id="@+id/orderWalletTopUpBottomSheet"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderWalletTopUpBottomSheet"
+    android:label="OrderWalletTopUpBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_wallet_top" />
+  <dialog
+    android:id="@+id/orderSummaryOutOfStockBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_summary_out_stock"
+    android:name="com.lifepharmacy.application.ui.outofstockorder.fragments.OrderSummaryOutOfStockBottomSheet"
+    android:label="OrderSummaryOutOfStockBottomSheet" />
+  <dialog
+    android:id="@+id/orderPlacedDialog"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderPlacedDialog"
+    android:label="OrderPlacedDialog"
+    tools:layout="@layout/dailog_order_placed" />
+<!--  <include app:graph="@navigation/nav_search" />-->
+  <!--  <include app:graph="@navigation/nav_login_sheet" />-->
+
+<!--  <dialog-->
+<!--    android:id="@+id/userDetailsBottomSheet"-->
+<!--    android:name="com.lifepharmacy.application.ui.cart.fragmets.UserDetailsBottomSheet"-->
+<!--    android:label="UserDetailsBottomSheet"-->
+<!--    tools:layout="@layout/bottom_sheet_user_details" />-->
+</navigation>

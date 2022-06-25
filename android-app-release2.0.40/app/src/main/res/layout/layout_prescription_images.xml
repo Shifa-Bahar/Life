@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="cardFrontUrl"
+      type="androidx.databinding.ObservableField&lt;String&gt;" />
+
+    <variable
+      name="cardBackUrl"
+      type="androidx.databinding.ObservableField&lt;String&gt;" />
+
+    <variable
+      name="insuranceURl"
+      type="androidx.databinding.ObservableField&lt;String&gt;" />
+
+    <variable
+      name="insuranceBackUrl"
+      type="androidx.databinding.ObservableField&lt;String&gt;" />
+
+    <variable
+      name="isThereImages"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="note"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.prescription.fragments.ClickPrescriptionFiles" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dimen_8dp">
+
+
+        <!--        <include-->
+        <!--          android:id="@+id/ly_prescription_details"-->
+        <!--          layout="@layout/layout_prescription_details"-->
+        <!--          android:layout_width="0dp"-->
+        <!--          android:layout_height="wrap_content"-->
+        <!--          android:layout_marginHorizontal="@dimen/dimen_8dp"-->
+        <!--          -->
+        <!--          android:layout_marginTop="@dimen/dimen_8dp"-->
+        <!--          android:visibility="@{profileViewModel.isLoggedIn() ? View.VISIBLE: View.GONE}"-->
+        <!--          app:layout_constraintEnd_toEndOf="parent"-->
+        <!--          app:layout_constraintStart_toStartOf="parent"-->
+        <!--          app:layout_constraintTop_toBottomOf="@+id/imageView18" />-->
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+      <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_8dp"
+        android:onClick="@{()->click.onClickUploadCardFrontImage()}"
+        app:cardCornerRadius="@dimen/dimen_5dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:paddingHorizontal="@dimen/dimen_8dp"
+          android:paddingVertical="@dimen/dimen_8dp">
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView50"
+            android:layout_width="@dimen/dimen_42dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="42:23"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_eid_front" />
+
+          <View
+            android:id="@+id/divider38"
+            android:layout_width="@dimen/dimen_0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView50"
+            app:layout_constraintTop_toTopOf="parent" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView158"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:text="@string/emirates_id_front"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/divider38"
+            app:layout_constraintTop_toTopOf="parent" />
+
+          <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView51"
+            prescriptionImageUploadingIcon="@{cardFrontUrl}"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="0dp"
+            android:onClick="@{()->click.onClickUploadCardFrontImage()}"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="50:50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent"
+            app:srcCompat="@drawable/ic_pluse_white_with_blue_back" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+      </androidx.cardview.widget.CardView>
+
+      <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_8dp"
+        android:onClick="@{()->click.onClickUploadCardBackImage()}"
+        app:cardCornerRadius="@dimen/dimen_5dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:paddingHorizontal="@dimen/dimen_8dp"
+          android:paddingVertical="@dimen/dimen_8dp">
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView53"
+            android:layout_width="@dimen/dimen_42dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="42:23"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_eid_back" />
+
+          <View
+            android:id="@+id/divider39"
+            android:layout_width="@dimen/dimen_0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView53"
+            app:layout_constraintTop_toTopOf="parent" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView159"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:text="@string/emirates_id_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/divider39"
+            app:layout_constraintTop_toTopOf="parent" />
+
+          <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView52"
+            prescriptionImageUploadingIcon="@{cardBackUrl}"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="50:50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent"
+            app:srcCompat="@drawable/ic_pluse_white_with_blue_back" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+      </androidx.cardview.widget.CardView>
+
+      <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_8dp"
+        android:onClick="@{()->click.onClickUploadInsurance()}"
+        app:cardCornerRadius="@dimen/dimen_5dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:paddingHorizontal="@dimen/dimen_8dp"
+          android:paddingVertical="@dimen/dimen_8dp">
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView54"
+            android:layout_width="@dimen/dimen_42dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="42:23"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_insurance" />
+
+          <View
+            android:id="@+id/divider40"
+            android:layout_width="@dimen/dimen_0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView54"
+            app:layout_constraintTop_toTopOf="parent" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView160"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:text="@string/insurance_card_front"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/divider40"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textAllCaps="true" />
+
+          <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView55"
+            prescriptionImageUploadingIcon="@{insuranceURl}"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="0dp"
+            android:onClick="@{()->click.onClickUploadInsurance()}"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="50:50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent"
+            app:srcCompat="@drawable/ic_pluse_white_with_blue_back" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView161"
+            style="@style/text_10_93a_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_4dp"
+            android:text="@string/optional"
+            app:layout_constraintBottom_toBottomOf="@+id/textView160"
+            app:layout_constraintStart_toEndOf="@+id/textView160" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+      </androidx.cardview.widget.CardView>
+
+      <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_8dp"
+        android:onClick="@{()->click.onClickUploadInsuranceBack()}"
+        app:cardCornerRadius="@dimen/dimen_5dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:paddingHorizontal="@dimen/dimen_8dp"
+          android:paddingVertical="@dimen/dimen_8dp">
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView5"
+            android:layout_width="@dimen/dimen_42dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="42:23"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_insurance_card_back" />
+
+          <View
+            android:id="@+id/divider4"
+            android:layout_width="@dimen/dimen_0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView1"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:text="@string/insurance_card_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/divider4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textAllCaps="true" />
+
+          <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView"
+            prescriptionImageUploadingIcon="@{insuranceBackUrl}"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="0dp"
+            android:onClick="@{()->click.onClickUploadInsuranceBack()}"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="50:50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent"
+            app:srcCompat="@drawable/ic_pluse_white_with_blue_back" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView12"
+            style="@style/text_10_93a_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_4dp"
+            android:text="@string/optional"
+            app:layout_constraintBottom_toBottomOf="@+id/textView1"
+            app:layout_constraintStart_toEndOf="@+id/textView1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+      </androidx.cardview.widget.CardView>
+
+      <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_8dp"
+        android:onClick="@{()->click.onClickUploadImage()}"
+        app:cardCornerRadius="@dimen/dimen_5dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:paddingHorizontal="@dimen/dimen_8dp"
+          android:paddingVertical="@dimen/dimen_8dp">
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView56"
+            android:layout_width="@dimen/dimen_42dp"
+            android:layout_height="@dimen/dimen_27dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="21:27"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_prescription" />
+
+          <View
+            android:id="@+id/divider41"
+            android:layout_width="@dimen/dimen_0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView56"
+            app:layout_constraintTop_toTopOf="parent" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView162"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:text="@string/prescription"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/divider41"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textAllCaps="true" />
+
+          <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView57"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="0dp"
+            android:onClick="@{()->click.onClickUploadImage()}"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="50:50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent"
+            app:srcCompat="@drawable/ic_pluse_white_with_blue_back" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+      </androidx.cardview.widget.CardView>
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_images"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_16dp"
+        android:visibility="@{isThereImages? View.VISIBLE :View.GONE}"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView51"
+        app:spanCount="1"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_images"
+        tools:visibility="visible" />
+
+      <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ed_note"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_8dp"
+        android:background="@drawable/white_with_round_corner"
+        android:elevation="2dp"
+        android:gravity="start"
+        android:hint="@string/notes"
+        android:minHeight="@dimen/dimen_80dp"
+        android:paddingHorizontal="@dimen/dimen_16dp"
+        android:paddingVertical="@dimen/dimen_8dp"
+        android:text="@={note.value}"
+        android:textColorHint="@color/accent_blue_darker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:textChangedListener="@{note.textWatcher}" />
+
+    </LinearLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

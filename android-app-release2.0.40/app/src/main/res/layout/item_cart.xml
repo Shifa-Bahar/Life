@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.cart.CartModel" />
+
+    <variable
+      name="price"
+      type="com.lifepharmacy.application.model.home.Price" />
+
+    <variable
+      name="isChecked"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.adapter.ClickCartProduct" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      app:cardCornerRadius="@dimen/dimen_10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_8dp"
+        android:paddingVertical="@dimen/dimen_8dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_remove"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_marginStart="4dp"
+          android:layout_marginTop="@dimen/dp_10"
+          android:text="@string/remove"
+          android:textAlignment="center"
+          android:visibility="gone"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/divider2"
+          app:layout_constraintStart_toStartOf="@+id/img_product"
+          app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_move_wishlist"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:text="@string/move_to_wishlist"
+          android:textAlignment="center"
+          android:textAllCaps="true"
+          android:visibility="gone"
+          app:layout_constraintBottom_toBottomOf="@+id/tv_remove"
+          app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+          app:layout_constraintStart_toEndOf="@+id/divider2"
+          app:layout_constraintTop_toTopOf="@+id/tv_remove" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/img_product"
+          errorImage="@{@drawable/image_place_holder}"
+          loadImageFromURl="@{item.productDetails.images.featuredImage}"
+          android:layout_width="@dimen/dimen_70dp"
+          android:layout_height="0dp"
+          android:layout_marginVertical="@dimen/dimen_10dp"
+          android:layout_marginStart="@dimen/dimen_4dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintDimensionRatio="h,1:1"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:srcCompat="@color/accent_blue_darker" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/img_checked"
+          android:layout_width="@dimen/dimen_24dp"
+          android:layout_height="@dimen/dimen_24dp"
+          android:layout_marginTop="@dimen/dimen_4dp"
+          android:padding="@dimen/dimen_4dp"
+          android:src="@{isChecked ? @drawable/ic_checked : @drawable/ic_squar_rec_blue}"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:src="@drawable/ic_checked" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_product_name"
+          style="@style/text_13_accent_dark_regular"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dp_10"
+          android:layout_marginTop="@dimen/dimen_4dp"
+          android:text="@{item.productDetails.title}"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/img_product"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="Puressentiel Purifying Antibacterial Lotion Spray Hands and Surfaces " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_tags"
+          style="@style/text_8_accent_dark_semi_bole"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp_10"
+          android:layout_marginEnd="@dimen/dimen_6dp"
+          android:background="@drawable/ic_tag_rect"
+          android:paddingHorizontal="@dimen/dp_10"
+          android:paddingVertical="@dimen/dimen_6dp"
+          android:text="@{@string/buy+` `+item.productDetails.offers.xValue +` `+@string/get + ` `++item.productDetails.offers.yValue}"
+          android:visibility="@{item.productDetails.offers!=null &amp;&amp; item.productDetails.offers.type.equals(`bxgy`) ? View.VISIBLE: View.GONE}"
+          app:layout_constraintEnd_toEndOf="@+id/tv_product_name"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="@+id/tv_product_name"
+          app:layout_constraintTop_toBottomOf="@+id/tv_product_name"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/imageView_delivery2"
+          availability="@{item.productDetails.availability}"
+          enteredQty="@{String.valueOf(item.qty)}"
+          android:layout_width="@dimen/dimen_56dp"
+          android:layout_height="@dimen/dimen_16dp"
+          android:visibility="visible"
+          app:layout_constraintBottom_toBottomOf="@+id/img_product"
+          app:layout_constraintEnd_toEndOf="@+id/img_product"
+          app:layout_constraintStart_toStartOf="@+id/img_product"
+          app:layout_constraintTop_toBottomOf="@+id/img_product"
+          tools:src="@drawable/ic_instant_tag" />
+        <!--        android:src="@{item.productDetails.availability !=null &amp;&amp; item.productDetails.availability.instant.isAvailable ? @drawable/ic_instant_tag :@drawable/ic_express_tag}"-->
+
+        <LinearLayout
+          android:id="@+id/linearLayout9"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          app:layout_constraintBottom_toBottomOf="@+id/img_product"
+          app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+          app:layout_constraintStart_toStartOf="@+id/tv_product_name">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            style="@style/text_14_accent_dark_open_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@{price.currency}"
+            tools:text="Dummy" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_price"
+            style="@style/text_14_0025_open_semi_bold"
+            setFormatePrice="@{price.price.offerPrice}"
+            product="@{item.productDetails}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dimen_4dp"
+            tools:text="Dummy" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_orignal_price"
+            style="@style/text_10_8585_semi_bold"
+            setFormatePrice="@{price.price.regularPrice}"
+            product="@{item.productDetails}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dimen_6dp"
+            tools:text="Dummy" />
+
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintLayout2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="8dp"
+          app:layout_constraintBottom_toBottomOf="@+id/linearLayout9"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="1.0"
+          app:layout_constraintStart_toEndOf="@+id/linearLayout9"
+          app:layout_constraintTop_toTopOf="@+id/linearLayout9">
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_minus"
+            loadMinusORBasket="@{String.valueOf(item.qty)}"
+            android:layout_width="@dimen/dimen_24dp"
+            android:layout_height="@dimen/dimen_24dp"
+            android:text="-"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_qty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_qty"
+            style="@style/text_18_1d1d_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_24dp"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:gravity="center"
+            android:text="@{String.valueOf(item.qty)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+            app:layout_constraintStart_toEndOf="@+id/btn_minus"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1" />
+
+          <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_plus"
+            android:layout_width="@dimen/dimen_24dp"
+            android:layout_height="@dimen/dimen_24dp"
+            android:background="@drawable/ic_plus_flate"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_qty"
+            app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+          android:id="@+id/divider"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/dimen_0.5dp"
+          android:layout_marginTop="@dimen/dp_10"
+          android:background="@color/color_e8e8"
+          android:visibility="gone"
+          app:layout_constraintEnd_toEndOf="@+id/tv_product_name"
+          app:layout_constraintStart_toStartOf="@+id/img_product"
+          app:layout_constraintTop_toBottomOf="@+id/img_product" />
+
+        <View
+          android:id="@+id/divider2"
+          android:layout_width="@dimen/dimen_0.5dp"
+          android:layout_height="0dp"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:background="@color/color_e8e8"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/tv_move_wishlist"
+          app:layout_constraintStart_toEndOf="@+id/tv_remove"
+          app:layout_constraintTop_toBottomOf="@+id/divider" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

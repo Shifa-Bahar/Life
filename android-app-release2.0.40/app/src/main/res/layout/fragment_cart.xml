@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickCartFragment" />
+
+
+    <variable
+      name="cartTotal"
+      type="androidx.databinding.ObservableField&lt;Double&gt;" />
+
+    <variable
+      name="isLoggedIn"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_faf">
+
+    <LinearLayout
+      android:id="@+id/linearLayout14"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toTopOf="@+id/constraintLayout21"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+
+      <include
+        android:id="@+id/toll_bar"
+        layout="@layout/layout_top_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_8dp" />
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_12dp"
+        android:layout_marginVertical="@dimen/dimen_8dp"
+        android:orientation="vertical"
+        android:visibility="@{viewModel.isAnyOutOfStock || viewModel.isCartChanged || viewModel.isThereCart ? View.GONE : View.VISIBLE}"
+        app:cardCornerRadius="@dimen/dimen_10dp"
+        tools:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/imageView58"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:srcCompat="@drawable/ic_empty_cart" />
+
+        <!--        <androidx.appcompat.widget.AppCompatTextView-->
+        <!--          style="@style/text_18_93_semi_bold"-->
+        <!--          android:layout_width="match_parent"-->
+        <!--          android:layout_height="wrap_content"-->
+        <!--          android:drawablePadding="@dimen/dimen_16dp"-->
+        <!--          android:text="@string/oh"-->
+        <!--          android:textAlignment="center"-->
+        <!--          app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--          app:layout_constraintEnd_toEndOf="parent"-->
+        <!--          app:layout_constraintStart_toStartOf="parent"-->
+        <!--          app:layout_constraintTop_toTopOf="parent" />-->
+        <androidx.appcompat.widget.AppCompatTextView
+          style="@style/text_14_93A_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:drawablePadding="@dimen/dimen_16dp"
+          android:text="@string/your_cart_is_empty"
+          android:textAlignment="center"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/button9"
+          style="@style/blueBotton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginTop="@dimen/dimen_32dp"
+          android:onClick="@{()->click.onClickGoShopping()}"
+          android:paddingHorizontal="@dimen/dimen_24dp"
+          android:text="@string/start_shopping" />
+      </LinearLayout>
+
+      <include
+        android:id="@+id/layout_location"
+        layout="@layout/layout_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-16dp"
+        android:visibility="@{viewModel.isThereCart &amp;&amp; isLoggedIn ? View.VISIBLE : View.GONE}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+      <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:visibility="visible">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+          <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_12dp"
+            android:layout_marginVertical="@dimen/dimen_8dp"
+            android:visibility="@{viewModel.isAnyOutOfStock || viewModel.isCartChanged ? View.VISIBLE : View.GONE}"
+            app:cardCornerRadius="@dimen/dimen_10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView16"
+                style="@style/text_14_0025_open_semi_bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_8dp"
+                android:layout_marginVertical="@dimen/dp_10"
+                android:drawableStart="@drawable/ic_info_button"
+                android:drawablePadding="@dimen/dp_10"
+                android:text="@string/some_items_in_cart_are_updated"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/some_items_in_cart_are_updated" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+          </androidx.cardview.widget.CardView>
+
+          <include
+            android:id="@+id/layout_offers"
+            layout="@layout/layout_offers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_location"
+            tools:visibility="gone" />
+
+          <!--          <include-->
+          <!--            android:id="@+id/ll_selected"-->
+          <!--            layout="@layout/layout_selected_items"-->
+          <!--            android:layout_width="match_parent"-->
+          <!--            android:layout_height="wrap_content"-->
+          <!--            android:layout_marginHorizontal="@dimen/dimen_12dp"-->
+          <!--            android:layout_marginVertical="@dimen/dimen_8dp"-->
+          <!--            android:visibility="@{isThereCart ? View.VISIBLE : View.GONE}"-->
+          <!--            tools:visibility="visible" />-->
+
+
+          <include
+            android:id="@+id/layout_freeship"
+            layout="@layout/layout_free_shipping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isThereCart ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_offers"
+            tools:visibility="visible" />
+
+          <include
+            android:id="@+id/ll_free_gift"
+            layout="@layout/layout_free_gift"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.freeGiftMessage.type.toLowerCase().equals(`pending`) &amp;&amp; viewModel.isThereCart ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_offers"
+            tools:visibility="visible" />
+
+          <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.isThereCart ? View.VISIBLE : View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_freeship"
+            app:spanCount="1"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_cart"
+            tools:visibility="gone">
+
+          </androidx.recyclerview.widget.RecyclerView>
+
+          <TextView
+            android:id="@+id/textView217"
+            style="@style/text_14_0025_open_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dimen_8dp"
+            android:paddingHorizontal="@dimen/dimen_10dp"
+            android:paddingTop="@dimen/dimen_8dp"
+            android:text="@string/free_gift"
+            android:visibility="@{viewModel.isAnyFreeGift ? View.VISIBLE : View.GONE}"
+            app:drawableStartCompat="@drawable/ic_gift_box" />
+
+          <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_gifts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.isAnyFreeGift ? View.VISIBLE : View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_freeship"
+            app:spanCount="1"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_cart_free_gift"
+            tools:visibility="visible" />
+
+          <include
+            android:id="@+id/ll_out_of_stock"
+            layout="@layout/layout_horizontal_products_out_of_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isAnyOutOfStock ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone" />
+
+          <include
+            android:id="@+id/layout_coupone"
+            layout="@layout/layout_coupone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isThereCart ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ly_recommendations"
+            tools:visibility="gone" />
+
+          <include
+            android:id="@+id/ly_payment_detail"
+            layout="@layout/layout_payment_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            android:visibility="@{viewModel.isThereCart ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_coupone"
+            tools:visibility="visible" />
+
+          <include
+            android:id="@+id/ly_recommendations"
+            layout="@layout/layout_horizontal_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_145dp"
+            android:visibility="@{isLoggedIn &amp;&amp; viewModel.isThereCart ? View.VISIBLE: View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_cart" />
+        </LinearLayout>
+
+      </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout21"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/color_grey_92a2b0"
+      android:visibility="@{!viewModel.isOrderTotalGreaterThanMinimumOrder&amp;&amp;viewModel.isThereCart ?View.VISIBLE:View.GONE}"
+      app:layout_constraintBottom_toTopOf="@+id/cardView"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+      <TextView
+        android:id="@+id/textView250"
+        style="@style/text_12_white_semi_bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dimen_4dp"
+        android:text="@{viewModel.appManager.persistenceManager.currency+` `+viewModel.appManager.storageManagers.config.minimumOrderValue+` `+@string/minimum_order_trailing_text }"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="AED 100 minimum order total to place an order" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cardView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="@{viewModel.isThereCart ? View.VISIBLE : View.GONE}"
+      app:cardMaxElevation="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:visibility="visible">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="visible">
+
+        <LinearLayout
+          android:id="@+id/linearLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dimen_16dp"
+          android:gravity="center"
+
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="@+id/btn_check_out"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="@+id/btn_check_out">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_amount"
+            style="@style/text_14_0025_open_bold"
+            setPriceWithPrefsCurrency="@{viewModel.totalAmount}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="AED 228.3" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_view_details"
+            style="@style/text_13_accent_dark_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->click.onClickVieDetails()}"
+            android:text="@string/view_details"
+            app:textAllCaps="true" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/btn_check_out"
+          style="@style/blueBotton"
+          setAlpha="@{viewModel.isThereCart &amp;&amp; !viewModel.isUpdatingCart &amp;&amp; viewModel.isOrderTotalGreaterThanMinimumOrder}"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/button_height"
+          android:layout_marginHorizontal="@dimen/dimen_16dp"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          android:onClick="@{()->click.onClickProceed()}"
+          android:text="@{viewModel.isUpdatingCart ? @string/loading :@string/proceed_to_checkout }"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/linearLayout"
+          app:layout_constraintTop_toTopOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickOrderWalletTopUpSheet" />
+
+    <variable
+      name="addressViewModel"
+      type="com.lifepharmacy.application.ui.address.AddressViewModel" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/white_with_top_round_corner"
+      android:orientation="vertical"
+      android:paddingHorizontal="@dimen/dimen_20dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView218"
+        style="@style/text_14_accent_dark_semi_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen_10dp"
+        android:text="@string/uh_oh"
+        android:textAlignment="center" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView223"
+        style="@style/text_12_8585_open_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/you_don_t_have_sufficient_balance_in_your_wallet" />
+
+      <View
+        android:id="@+id/divider48"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0.5dp"
+        android:layout_marginVertical="@dimen/dimen_10dp"
+        android:background="@color/color_4848" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView224"
+        style="@style/text_11_blue_dark_open_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dimen_10dp"
+        android:text="@{@string/top_up_aed+` `+viewModel.walletDifference +` `+@string/with}"
+        tools:text="@string/top_up_aed" />
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:spanCount="1"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_card"
+        tools:visibility="visible" />
+
+      <androidx.appcompat.widget.AppCompatRadioButton
+        android:id="@+id/rg_new_card"
+        style="@style/text_12_1d1d_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen_6dp"
+        android:background="@color/white"
+        android:button="@drawable/simple_radio_selector"
+        android:checked="@{viewModel.selectedPaymentType.name().toLowerCase().equals(`new_for_wallet`)?true:false}"
+        android:drawableStart="@drawable/ic_card"
+        android:drawablePadding="@dimen/dp_10"
+        android:paddingHorizontal="@dimen/dimen_10dp"
+        android:text="@string/pay_via_new_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <View
+        android:id="@+id/divider6"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0.5dp"
+        android:layout_marginVertical="@dimen/dimen_10dp"
+        android:background="@color/color_e8e8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_card" />
+<!--      setAlpha="@{viewModel.isThereCart &amp;&amp; viewModel.appManager.storageManagers.config.oRDERINGENABLED ? true : false}"-->
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_confirm"
+        style="@style/blueBotton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginVertical="@dimen/dimen_10dp"
+        android:onClick="@{()->click.onClickProceed()}"
+        android:text="@string/proceed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/nav_home"
+    android:enabled="true"
+    android:icon="@drawable/bottom_home_icon"
+    android:title="@string/home" />
+  <item
+    android:id="@+id/nav_categories"
+    android:enabled="true"
+    android:icon="@drawable/bottom_category_icon"
+    android:title="@string/category" />
+  <item
+    android:id="@+id/nav_prescription"
+    android:enabled="true"
+    android:icon="@drawable/bottom_prescription_icon"
+    android:title="@string/medicines" />
+  <item
+    android:id="@+id/nav_profile"
+    android:enabled="true"
+    android:icon="@drawable/bottom_profile_icon"
+    android:title="@string/profile" />
+  <item
+    android:id="@+id/nav_cart"
+    android:enabled="true"
+    android:icon="@drawable/bottom_cart"
+    android:title="@string/cart" />
+</menu><!--    android:menuCategory="secondary"-->

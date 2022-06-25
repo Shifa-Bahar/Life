@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="phone"
+            type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+        <variable
+            name="name"
+            type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            app:cardCornerRadius="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textView28"
+                    style="@style/text_16_accent_dark_semi_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/personal_details"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ly_phone"
+                    style="@style/TextInputLayoutStyleBlue_b6b6hint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@drawable/bg_e9_round_corner"
+                    android:paddingTop="@dimen/dimen_4dp"
+                    android:textColorHint="@color/color_b6b6"
+                    app:errorEnabled="false"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView28"
+                    app:layout_constraintTop_toBottomOf="@+id/textView28">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_phone"
+                        style="@style/text_12_accent_dark_semi_bole"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:hint="@string/mobile_number"
+                        tools:text="@string/mobile_number"
+                        android:inputType="phone"
+                        android:textCursorDrawable="@drawable/black_cursor"
+                        android:padding="@dimen/dimen_8dp"
+                        android:textAlignment="textStart"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ccp"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ly_firstname"
+                    style="@style/TextInputLayoutStyleBlue_b6b6hint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:background="@drawable/bg_e9_round_corner"
+                    android:paddingTop="@dimen/dimen_4dp"
+                    android:textColorHint="@color/color_b6b6"
+                    app:errorEnabled="false"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="@+id/ly_phone"
+                    app:layout_constraintStart_toStartOf="@+id/ly_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/ly_phone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_firstname"
+                        style="@style/text_12_accent_dark_semi_bole"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:hint="@string/full_name"
+                        android:inputType="textPersonName"
+                        android:padding="@dimen/dimen_8dp"
+                        android:textAlignment="textStart"
+                        android:textCursorDrawable="@drawable/black_cursor"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ccp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="@string/full_name"
+                        android:text="@={name.value}"
+                        app:textChangedListener="@{name.textWatcher}"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

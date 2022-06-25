@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.rewards.viewmodels.RewardsViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.rewards.fragment.ClickRewardsFragment" />
+
+    <variable
+      name="rewardText"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+      android:id="@+id/ed_coupon"
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/ic_coupon_bg_edit"
+      android:drawablePadding="@dimen/dimen_10dp"
+      android:text="@={rewardText.value}"
+      app:textChangedListener="@{rewardText.textWatcher}"
+      android:ems="10"
+      android:gravity="center_vertical"
+      android:hint="@string/enter_coupon_code"
+      android:inputType="textPersonName"
+      android:paddingHorizontal="@dimen/dimen_10dp"
+      android:paddingVertical="@dimen/dimen_10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/txtapl"
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="109dp"
+      android:layout_height="46dp"
+      android:gravity="center"
+      android:onClick="@{()->click.onClickApplyRewards()}"
+      android:text="Apply"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/ed_coupon"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/ed_coupon"
+      app:layout_constraintVertical_bias="1.0" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

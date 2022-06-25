@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="position"
+      type="int" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.BottomBarModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.dashboard.adapter.ClickBottomBar" />
+
+  </data>
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_main"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content">
+
+    <com.airbnb.lottie.LottieAnimationView
+      android:id="@+id/animation_view"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dimen_20dp"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:scaleType="centerInside"
+      app:layout_constraintDimensionRatio="w,1:2"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:lottie_repeatCount="0" />
+
+    <TextView
+      android:id="@+id/tv_title"
+      style="@style/text_10_blue_dark_semi_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginTop="@dimen/dimen_2dp"
+      android:layout_marginBottom="@dimen/dimen_8dp"
+      android:textAlignment="center"
+      android:textColor="@color/color_1d1d"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/animation_view"
+      tools:text="TextView" />
+
+    <TextView
+      android:id="@+id/tv_cart_number"
+      style="@style/text_8_white_bold"
+      android:layout_width="@dimen/dimen_16dp"
+      android:layout_height="@dimen/dimen_16dp"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginTop="@dimen/dimen_2dp"
+      android:background="@drawable/red_full_round"
+      android:gravity="center"
+      android:minWidth="0dp"
+      android:minHeight="@dimen/dimen_0dp"
+      android:padding="@dimen/dimen_0dp"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="31"
+      tools:visibility="visible" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

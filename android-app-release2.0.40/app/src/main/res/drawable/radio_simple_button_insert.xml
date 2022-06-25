@@ -1,0 +1,3 @@
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/simple_radio_selector"
+    android:insetLeft="@dimen/dp_10"/>

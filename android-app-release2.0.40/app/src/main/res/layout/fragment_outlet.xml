@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="showEmpty"
+      type="Boolean" />
+
+    <variable
+      name="imageTitle"
+      type="String" />
+    <variable
+      name="available"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.outlet.fragment.ClickOutletHeader" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_outletbg">
+
+    <include
+      android:id="@+id/toolbar_title"
+      layout="@layout/layout_top_back"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent" />
+<!--    android:visibility="@{available?View.VISIBLE:View.GONE}"-->
+    <LinearLayout
+      android:id="@+id/linearLayout39"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="@dimen/dimen_50dp"
+      android:layout_marginBottom="@dimen/dimen_5dp"
+      android:layout_marginHorizontal="@dimen/dimen_4dp"
+      android:orientation="vertical"
+      android:visibility="@{available?View.VISIBLE:View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_title">
+
+
+      <include
+        android:id="@+id/ly_header"
+        layout="@layout/layout_outlet_header"
+        android:layout_marginHorizontal="@dimen/dimen_4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimen_4dp"
+        android:layout_marginHorizontal="@dimen/dimen_4dp"
+        android:layout_gravity="center">
+        <!--      <androidx.cardview.widget.CardView-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_gravity="center"-->
+        <!--        app:cardPreventCornerOverlap="false"-->
+        <!--        app:cardCornerRadius="@dimen/dimen_5dp">-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintLayout9"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_margin="@dimen/dimen_5dp"
+          android:padding="@dimen/dimen_8dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+          <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/backAnimation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            tools:visibility="visible">
+            <!--          app:cardPreventCornerOverlap="false"-->
+          </com.airbnb.lottie.LottieAnimationView>
+
+          <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="@dimen/dimen_5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/backAnimation"
+            app:layout_constraintEnd_toEndOf="@+id/backAnimation"
+            app:layout_constraintStart_toStartOf="@+id/backAnimation"
+            app:layout_constraintTop_toTopOf="@+id/backAnimation">
+
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/img_product"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:scaleType="fitXY" />
+          </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--      </androidx.cardview.widget.CardView>-->
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+<!--    app:srcCompat="@drawable/ic_please_login_rtpcr"-->
+<!--    android:visibility="@{available?View.GONE:View.VISIBLE}"-->
+<!--    loadImageFromURl="@{imageTitle}"-->
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageerror"
+      android:layout_width="match_parent"
+      android:layout_height="750dp"
+      android:layout_margin="@dimen/dimen_5dp"
+      android:onClick="@{()->click.onClickEdit()}"
+      android:visibility="@{available?View.GONE:View.VISIBLE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/linearLayout39"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_title"
+      app:srcCompat="@drawable/outlet"
+      tools:visibility="gone" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

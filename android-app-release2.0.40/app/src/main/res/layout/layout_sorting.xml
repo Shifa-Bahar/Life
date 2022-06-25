@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:id="@+id/rg_sorting"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/rd_popularity"
+                style="@style/text_12_1d1d_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/accent_blue"
+                android:checked="true"
+                android:padding="@dimen/dimen_16dp"
+                android:text="@string/popularity"
+                android:textAlignment="viewStart" />
+
+            <RadioButton
+                android:id="@+id/rd_rating"
+                style="@style/text_12_1d1d_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/accent_blue"
+                android:padding="@dimen/dimen_16dp"
+                android:text="@string/rating_high_to_low"
+                android:textAlignment="viewStart" />
+
+            <RadioButton
+                android:id="@+id/rd_delivery_time"
+                style="@style/text_12_1d1d_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/accent_blue"
+                android:padding="@dimen/dimen_16dp"
+                android:text="@string/delivery_time"
+                android:textAlignment="viewStart" />
+
+            <RadioButton
+                android:id="@+id/rd_price_low_to_high"
+                style="@style/text_12_1d1d_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/accent_blue"
+                android:padding="@dimen/dimen_16dp"
+                android:text="@string/cost_low_to_high"
+                android:textAlignment="viewStart" />
+
+            <RadioButton
+                android:id="@+id/rd_price_high_to_low"
+                style="@style/text_12_1d1d_regular"
+                android:layout_width="match_parent"
+                android:buttonTint="@color/accent_blue"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_16dp"
+                android:text="@string/cost_high_to_low"
+                android:textAlignment="viewStart" />
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

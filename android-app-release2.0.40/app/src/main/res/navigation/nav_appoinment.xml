@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_appoinment"
+  app:startDestination="@id/appoinmentFragment">
+  <fragment
+    android:id="@+id/appoinmentFragment"
+    android:name="com.lifepharmacy.application.ui.pcr.fragments.AppoinmentFragment"
+    android:label="AppoinmentFragment"
+    tools:layout="@layout/fragment_appoinment" />
+  <fragment
+    android:id="@+id/appoinmentDetailFragment"
+    android:name="com.lifepharmacy.application.ui.pcr.fragments.AppoinmentDetailFragment"
+    android:label="AppoinmentDetailFragment"
+    tools:layout="@layout/fragment_appoinment_details" />
+<!--  <fragment-->
+<!--    android:id="@+id/orderDetailFragment"-->
+<!--    android:name="com.lifepharmacy.application.ui.orders.fragments.OrderDetailFragment"-->
+<!--    android:label="OrderDetailFragment"-->
+<!--    tools:layout="@layout/fragment_order_detail">-->
+<!--    <argument-->
+<!--      android:name="order"-->
+<!--      android:defaultValue=" "-->
+<!--      app:argType="string" />-->
+<!--  </fragment>-->
+
+
+<!--  <fragment-->
+<!--    android:id="@+id/prescriptionOrderDetailFragment"-->
+<!--    tools:layout="@layout/fragment_order_prescriptions"-->
+<!--    android:name="com.lifepharmacy.application.ui.orders.fragments.PrescriptionOrderDetailFragment"-->
+<!--    android:label="PrescriptionOrderDetailFragment" />-->
+<!--  <include app:graph="@navigation/nav_returns" />-->
+<!--  <include app:graph="@navigation/nav_order_details" >-->
+<!--    <argument-->
+<!--      android:name="order"-->
+<!--      android:defaultValue=" "-->
+<!--      app:argType="string" />-->
+<!--    <argument-->
+<!--      android:name="sub_orderId"-->
+<!--      android:defaultValue=" "-->
+<!--      app:argType="string" />-->
+<!--  </include>-->
+<!--  <include app:graph="@navigation/nav_login_sheet" />-->
+<!--  <include app:graph="@navigation/nav_rating" >-->
+<!--    <argument-->
+<!--      android:name="subOrderId"-->
+<!--      android:defaultValue=""-->
+<!--      app:argType="string" />-->
+<!--  </include>-->
+</navigation>

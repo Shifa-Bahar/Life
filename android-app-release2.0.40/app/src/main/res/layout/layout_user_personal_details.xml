@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="state"
+      type="androidx.databinding.ObservableField&lt;com.lifepharmacy.application.enums.UserSignUpState&gt;" />
+
+    <variable
+      name="numberValid"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="isFirstTime"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="phone"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="email"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickUserDetailBottom" />
+
+    <variable
+      name="name"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+  </data>
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/dimen_26dp"
+    android:paddingBottom="@dimen/dimen_80dp">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingBottom="@dimen/dimen_50dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView28"
+        style="@style/text_16_accent_dark_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{state.name().toLowerCase().equals(`update_profile`) ? @string/please_enter_details : state.name().toLowerCase().equals(`skip`) ? @string/please_enter_number : state.name().toLowerCase().equals(`otp`)?@string/verify_phone:@string/please_enter_details}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ly_name"
+        style="@style/TextInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:visibility="@{state.name().toLowerCase().equals(`update_profile`)?View.VISIBLE:View.GONE}"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/black"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/ed_name"
+          style="@style/text_12_1d1d_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@drawable/bg_rect_sevety"
+          android:drawableEnd="@{name.value.empty ? @drawable/bg_transparent : !name.error ? @drawable/ic_blue_checked : @drawable/ic_cancel}"
+          android:drawablePadding="@dimen/dimen_8dp"
+          android:hint="@string/full_name"
+          android:inputType="textPersonName"
+          android:padding="@dimen/dimen_12dp"
+          android:text="@={name.value}"
+          android:textAlignment="textStart"
+          android:textCursorDrawable="@drawable/black_cursor"
+          android:visibility="visible"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/ccp"
+          app:layout_constraintTop_toTopOf="parent"
+          app:textChangedListener="@{name.textWatcher}" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ly_email"
+        style="@style/TextInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:visibility="@{state.name().toLowerCase().equals(`update_profile`)?View.VISIBLE:View.GONE}"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/black"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/ed_email"
+          style="@style/text_12_1d1d_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@drawable/bg_rect_sevety"
+          android:drawableEnd="@{email.value.empty ? @drawable/bg_transparent : !email.error ? @drawable/ic_blue_checked : @drawable/ic_cancel}"
+          android:drawablePadding="@dimen/dimen_8dp"
+          android:hint="@string/email"
+          android:inputType="textEmailAddress"
+          android:padding="@dimen/dimen_12dp"
+          android:text="@={email.value}"
+          android:textAlignment="textStart"
+          android:textCursorDrawable="@drawable/black_cursor"
+          android:visibility="visible"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/ccp"
+          app:layout_constraintTop_toTopOf="parent"
+          app:textChangedListener="@{email.textWatcher}" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ly_phone"
+        style="@style/TextInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:visibility="@{state.name().toLowerCase().equals(`skip_or_email`)?View.VISIBLE:View.GONE}"
+        app:errorEnabled="true"
+        android:inputType="number"
+        app:errorTextColor="@color/black"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/ed_phone"
+          style="@style/text_12_1d1d_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@drawable/bg_rect_sevety"
+          android:drawableEnd="@{phone.value.empty ? @drawable/bg_transparent : !phone.error ? @drawable/ic_blue_checked : @drawable/ic_cancel}"
+          android:drawablePadding="@dimen/dimen_8dp"
+          android:hint="@string/mobile_number"
+          android:inputType="phone"
+          android:padding="@dimen/dimen_12dp"
+          android:textAlignment="textStart"
+          android:textCursorDrawable="@drawable/black_cursor"
+          android:visibility="visible"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/ccp"
+          app:layout_constraintTop_toTopOf="parent"
+          app:textChangedListener="@{phone.textWatcher}" />
+      </com.google.android.material.textfield.TextInputLayout>
+<!--      android:text="@={phone.value}"-->
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView115"
+        style="@style/text_12_1d1d_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_20dp"
+        android:text="@string/we_will_send_code"
+        android:textAlignment="center" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_confirm"
+        style="@style/blueBotton"
+        setAlpha="@{!name.error &amp;&amp; !email.error &amp;&amp; numberValid ? true : false}"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginVertical="@dimen/dimen_16dp"
+        android:onClick="@{()->click.onClickDetailsProceed()}"
+        android:text="@string/continue1" />
+    </LinearLayout>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

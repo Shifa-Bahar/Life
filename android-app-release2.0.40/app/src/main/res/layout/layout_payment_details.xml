@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="mViewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+
+    <variable
+      name="isPayment"
+      type="Boolean" />
+
+    <variable
+      name="isShipping"
+      type="Boolean" />
+
+    <variable
+      name="isCashSelected"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickPaymentDetails" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dp_10"
+      app:cardCornerRadius="@dimen/dp_10"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_title"
+            style="@style/text_14_0025_open_semi_bold"
+            setPriceDetailsCount="@{mViewModel.offersManagers.cartQtyCountMut.toString()}"
+            firstTitle="@{mViewModel.paymentDetailsTitle}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Price Details (3 Items)" />
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView5"
+              style="@style/text_13_1d1d_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@{mViewModel.paymentDetailsSubTotalTitle}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_order_amount"
+              style="@style/text_13_1d1d_regular"
+              setPriceWithPrefsCurrency="@{mViewModel.sunOfGroupsAmountWithoutDiscount}"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd"
+              tools:text="AED193.80" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            tools:visibility="visible">
+            <!--            android:visibility="@{isPayment? View.GONE: View.VISIBLE}"-->
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView6"
+              style="@style/text_12_color_1ec_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/items_discount" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView8"
+              android:layout_weight="1"
+              style="@style/text_10_93a_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textAlignment="viewEnd"
+              android:text="@string/ex_vat"
+              tools:text="ex VAT" />
+            <TextView
+              android:id="@+id/textView181"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="@dimen/dimen_4dp"
+              setPriceWithPrefsCurrency="@{mViewModel.discountAmount}"
+              style="@style/text_12_color_1ec_semi_bold"
+              tools:text="AED 30.00"
+              android:textAlignment="textEnd" />
+
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:visibility="@{!isPayment &amp;&amp; mViewModel.isCouponApplied ? View.VISIBLE: View.GONE}"
+            tools:visibility="visible">
+            <!--            android:visibility="@{!isPayment &amp;&amp; mViewModel.isCouponApplied ? View.VISIBLE: View.GONE}"-->
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView10"
+              style="@style/text_13_1d1d_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/coupon_discount" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView9"
+              style="@style/text_13_1d1d_regular"
+              setPriceWithPrefsCurrency="@{mViewModel.couponModel.couponValue}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:visibility="@{isShipping? View.VISIBLE: View.GONE}"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_weight="1">
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView17"
+                style="@style/text_13_1d1d_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shipping"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_know_more"
+                style="@style/text_13_accent_semi_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_6dp"
+                android:layout_weight="1"
+                android:onClick="@{()->click.onClickKnowMore()}"
+                android:text="@string/know_more"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/textView17"
+                app:layout_constraintTop_toTopOf="@+id/textView17" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView12"
+              style="@style/text_13_1d1d_regular"
+              setPriceWithPrefsCurrency="@{mViewModel.shipmentCharges}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd" />
+
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:visibility="@{isPayment &amp;&amp; mViewModel.selectedPaymentType.name().toLowerCase().equals(`cash`) ? View.VISIBLE: View.GONE}">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView7"
+              style="@style/text_13_1d1d_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/cod" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_cod"
+              style="@style/text_13_1d1d_regular"
+              setPriceWithPrefsCurrency="@{mViewModel.codCharges}"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd"
+              tools:text="AED 193.80" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView11"
+              style="@style/text_13_1d1d_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/estimate_vat" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_vat_amount"
+              style="@style/text_13_1d1d_regular"
+              setPriceWithPrefsCurrency="@{mViewModel.vatPrices}"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd"
+              tools:text="AED 193.80" />
+          </LinearLayout>
+
+          <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0.5dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/color_e8e8" />
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_weight="1">
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView120"
+                style="@style/text_14_0025_open_semi_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_amount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_vat_title"
+                style="@style/text_12_8585_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_6dp"
+                android:layout_weight="1"
+                android:text="@string/inclusive_of_vat"
+                app:layout_constraintBottom_toBottomOf="@+id/textView120"
+                app:layout_constraintStart_toEndOf="@+id/textView120" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView15"
+              style="@style/text_14_0025_open_semi_bold"
+              setPriceWithPrefsCurrency="@{mViewModel.totalAmount}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd"
+              tools:text="AED 30.00" />
+          </LinearLayout>
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:visibility="@{isPayment? View.GONE: View.VISIBLE}"
+            app:srcCompat="@drawable/ic_payment_methos"
+            tools:visibility="gone" />
+
+          <!--                <androidx.recyclerview.widget.RecyclerView-->
+          <!--                    android:layout_width="match_parent"-->
+          <!--                    android:layout_height="wrap_content" />-->
+
+        </LinearLayout>
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

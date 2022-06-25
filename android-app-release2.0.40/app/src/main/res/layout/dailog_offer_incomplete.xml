@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.dailog.ClickOfferIncompleteDialog" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_alpha"
+    app:layoutDescription="@xml/dailog_animation_combo_box_xml_constraintlayout10_scene">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/cl_main"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/white_with_round_corner_15dp"
+      android:elevation="@dimen/dimen_4dp"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dimen_16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@drawable/color_ffe0a5_top_round_corner">
+
+          <ImageView
+            android:id="@+id/imageView79"
+            android:layout_width="@dimen/dimen_56dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_marginVertical="@dimen/dimen_8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_gift_box" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+          android:id="@+id/textView198"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          android:text="@string/you_re_leaving_without_claiming_offer" />
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/button16"
+          style="@style/green36C963ButtonGradiant30dp"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen_30dp"
+          android:layout_marginHorizontal="@dimen/dimen_36dp"
+          android:onClick="@{()->click.onClickClaimOffer()}"
+          android:text="@string/claim_offer" />
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/button17"
+          style="@style/yellowFFF7CEButton"
+          setAlpha="@{!viewModel.isUpdatingCart}"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen_30dp"
+          android:layout_marginHorizontal="@dimen/dimen_36dp"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          android:onClick="@{()->click.onClickWithoutOffer()}"
+          android:text="@string/proceed_without_offer" />
+      </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+  <!--  app:layout_constraintDimensionRatio="w,1:1"-->
+</layout>

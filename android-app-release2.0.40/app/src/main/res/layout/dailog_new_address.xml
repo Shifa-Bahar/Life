@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.address.AddressViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.address.ClickNewAddressDialog" />
+
+    <variable
+      name="address"
+      type="androidx.databinding.ObservableField&lt;android.location.Address&gt;" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gery_f4f4">
+
+    <include
+      android:id="@+id/toll_bar"
+      layout="@layout/layout_top_back"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.gms.maps.MapView
+      android:id="@+id/mapView"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@+id/cardView"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toll_bar" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+      android:id="@+id/editTextTextPersonName"
+      style="@style/text_14_a8a8_open_regular"
+      android:layout_width="0dp"
+      android:paddingVertical="@dimen/dimen_12dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dimen_16dp"
+      android:background="@drawable/white_with_round_corner_grey_border"
+      android:drawableStart="@drawable/ic_location"
+      android:drawablePadding="@dimen/dp_10"
+      android:ems="10"
+      android:focusable="false"
+      android:hint="@string/search_address"
+      android:inputType="textPersonName"
+      android:onClick="@{()->click.onClickSearch()}"
+      android:paddingHorizontal="@dimen/dp_10"
+      android:text="@{address.adminArea !=null  &amp;&amp;  address.subLocality != null ? address.subLocality+`,`+address.adminArea  : address.getAddressLine(0)}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toll_bar" />
+
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cardView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:cardMaxElevation="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/btn_confirm"
+          style="@style/blueBotton"
+          setAlpha="@{!viewModel.isMapMoving}"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/button_height"
+          android:layout_marginHorizontal="@dimen/dimen_16dp"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          android:onClick="@{()->click.onConfirm()}"
+          android:text="@{viewModel.isMapMoving?@string/loading:@string/confirm}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView9"
+      android:layout_width="@dimen/dimen_24dp"
+      android:layout_height="@dimen/dimen_24dp"
+      app:layout_constraintBottom_toBottomOf="@+id/mapView"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toll_bar"
+      app:srcCompat="@drawable/ic_location" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/img_current_location"
+      android:layout_width="@dimen/dimen_40dp"
+      android:layout_height="@dimen/dimen_40dp"
+      android:layout_marginVertical="@dimen/dimen_6dp"
+      android:onClick="@{()->click.onClickCurrent()}"
+      app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+      app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+      app:srcCompat="@drawable/ic_current_location" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:layout_marginTop="@dimen/dimen_30dp"
+      android:layout_marginBottom="@dimen/dimen_4dp"
+      android:background="@drawable/white_with_round_corner_10"
+      android:visibility="@{viewModel.nearByPlaces.size()>0?View.VISIBLE:View.GONE}"
+      android:paddingVertical="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="@+id/mapView"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView9"
+      app:layout_constraintVertical_bias="1.0">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView233"
+        style="@style/text_14_1d1d_open_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_6dp"
+        android:text="@string/select_nearby_places"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_near_by"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:nestedScrollingEnabled="true"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView233"
+        app:spanCount="1"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_near_by_address" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

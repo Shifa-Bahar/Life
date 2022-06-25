@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="isLoggedIn"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickCartFragment" />
+
+    <variable
+      name="couponText"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dp_10"
+      app:cardCornerRadius="@dimen/dp_10"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+       >
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/button12"
+          style="@style/LightBlueButton"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:onClick="@{()->click.onClickLogin()}"
+          android:text="@string/login_to_apply_coupon"
+          android:textAllCaps="false"
+          android:visibility="@{isLoggedIn? View.GONE :View.VISIBLE}"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/divider4"
+          tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView4"
+          style="@style/text_14_0025_open_semi_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:drawableStart="@drawable/ic_tag"
+          android:drawablePadding="@dimen/dp_10"
+          android:text="@string/apply_coupon"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+          android:id="@+id/divider4"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/dimen_0.5dp"
+          android:layout_marginTop="@dimen/dp_10"
+          android:background="@color/color_e8e8"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintLayout8"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:visibility="@{viewModel.isCouponApplied ? View.VISIBLE : View.GONE}"
+          app:layout_constraintEnd_toEndOf="@+id/divider4"
+          app:layout_constraintStart_toStartOf="@+id/textView4"
+          app:layout_constraintTop_toBottomOf="@+id/divider4"
+          tools:visibility="visible">
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@{viewModel.isCouponApplied  ? @drawable/ic_apply_coupon_bg : @drawable/bg_transparent}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/ic_apply_coupon_bg"
+            tools:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView139"
+              style="@style/text_12_ff00_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginEnd="@dimen/dp_10"
+              android:onClick="@{()->click.onClickRemoveCoupon()}"
+              android:text="@string/remove"
+              android:textColor="#FF4E00"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:textAllCaps="true"
+              tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/imageView8"
+              android:layout_width="@dimen/dimen_24dp"
+              android:layout_height="@dimen/dimen_24dp"
+              android:layout_marginVertical="@dimen/dimen_10dp"
+              android:layout_marginStart="@dimen/dimen_16dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:srcCompat="@drawable/ic_coupon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView11"
+              style="@style/text_12_color_499001_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@{@string/you_saved + ` `+viewModel.couponModel.getCouponValueFormat + `AED ` + @string/this_order}"
+              app:layout_constraintStart_toStartOf="@+id/textView13"
+              app:layout_constraintTop_toBottomOf="@+id/textView13"
+              app:textAllCaps="true"
+              tools:text="YOU SAVED 5% ON THE ORDER" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView13"
+              style="@style/text_12_1d1d_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="@dimen/dimen_8dp"
+              android:layout_marginTop="@dimen/dimen_8dp"
+              android:text="@{viewModel.couponModel.couponCode}"
+              app:layout_constraintStart_toEndOf="@+id/imageView8"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:text="TEST40" />
+
+          </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+          android:id="@+id/ed_coupon"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:background="@drawable/ic_coupon_bg_edit"
+          android:drawableStart="@drawable/ic_coupon"
+          android:drawablePadding="@dimen/dimen_10dp"
+          android:ems="10"
+          android:gravity="center_vertical"
+          android:hint="@string/enter_coupon_code"
+          android:inputType="textPersonName"
+          android:paddingHorizontal="@dimen/dimen_10dp"
+          android:paddingVertical="@dimen/dimen_10dp"
+          android:text="@={couponText.value}"
+          android:visibility="@{viewModel.isCouponApplied &amp;&amp; isLoggedIn ?View.GONE:View.VISIBLE}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.521"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/divider4"
+          app:layout_constraintVertical_bias="0.0"
+          app:textChangedListener="@{couponText.textWatcher}"
+          tools:background="@drawable/ic_coupon_bg_edit"
+          tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView14"
+          style="@style/text_14_2BA_open_bold"
+          setTextAlpha="@{!couponText.error ? true : false}"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="@dimen/dp_10"
+          android:onClick="@{()->click.onClickApplyCoupon()}"
+          android:text="@string/apply"
+          android:visibility="@{viewModel.isCouponApplied &amp;&amp; isLoggedIn  ? View.GONE : View.VISIBLE}"
+          app:layout_constraintBottom_toBottomOf="@+id/ed_coupon"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="@+id/ed_coupon"
+          tools:visibility="gone" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

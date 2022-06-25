@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="addressViewModel"
+      type="com.lifepharmacy.application.ui.address.AddressViewModel" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+
+    <variable
+      name="isOrderPlaced"
+      type="Boolean" />
+
+    <variable
+      name="isLoggedIn"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickPaymentFragment" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/backGroundColor">
+    <LinearLayout
+      android:id="@+id/llnew"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+    <include
+      android:id="@+id/toll_bar"
+      layout="@layout/layout_top_back_pay"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+    <include
+      android:id="@+id/layout_location"
+      layout="@layout/layout_location_pay"
+      android:layout_width="match_parent"
+      android:layout_marginBottom="@dimen/dimen_8dp"
+      android:elevation="@dimen/dimen_8dp"
+      android:layout_height="wrap_content"
+      android:visibility="@{isLoggedIn &amp;&amp; addressViewModel.isThereAnyAddress ?View.VISIBLE:View.GONE}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toll_bar"
+      tools:visibility="visible" />
+
+      <include
+        android:id="@+id/layout_delivery"
+        layout="@layout/layout_delivery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-16dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_location"
+        tools:visibility="visible" />
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+      android:id="@+id/nestedScrollView"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:fillViewport="true"
+      app:layout_constraintBottom_toTopOf="@+id/cardView2"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/llnew">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_item_count"
+          style="@style/text_14_1d1d_open_regular"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/dp_10"
+          android:text="@{viewModel.appManager.offersManagers.cartQtyCountMut.toString() + ` items`}"
+          android:visibility="gone"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView24"
+          style="@style/text_14_a8a8_open_regular"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dimen_8dp"
+          android:text="@string/in_your_cart"
+          android:visibility="gone"
+          app:layout_constraintStart_toEndOf="@+id/tv_item_count"
+          app:layout_constraintTop_toTopOf="@+id/tv_item_count"
+          tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView25"
+          style="@style/text_12_7070_regular"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="@dimen/dimen_16dp"
+          android:text="@string/total"
+          android:textAllCaps="true"
+          android:visibility="gone"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="@+id/tv_item_count" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView26"
+          style="@style/text_16_accent_dark_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_4dp"
+          android:textAllCaps="true"
+          android:visibility="gone"
+          app:layout_constraintEnd_toEndOf="@+id/textView25"
+          app:layout_constraintTop_toBottomOf="@+id/textView25"
+          tools:text="AED 200"
+          tools:visibility="gone" />
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+          <!--          android:visibility="@{isLoggedIn &amp;&amp; addressViewModel.isThereAnyAddress ?View.VISIBLE:View.GONE}"-->
+          <include
+            android:id="@+id/ly_address"
+            layout="@layout/item_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="gone" />
+
+          <include
+            android:id="@+id/ly_delivery_options"
+            layout="@layout/layout_delivery_option"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:visibility="visible" />
+
+          <include
+            android:id="@+id/ll_return_policy"
+            layout="@layout/layout_return_policy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:visibility="visible" />
+
+          <include
+            android:id="@+id/ly_payment_methods"
+            layout="@layout/layout_payment_methods_flat_design"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+          <include
+            android:id="@+id/ly_order_summary"
+            layout="@layout/layout_payment_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:visibility="visible" />
+
+        </LinearLayout>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cardView2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:cardMaxElevation="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_selectpayment"
+        style="@style/blueBotton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:layout_marginBottom="8dp"
+        tools:visibility="gone"
+        android:onClick="@{()->click.onClickPaymentpage()}"
+        android:text="@string/selectpaymentmethod"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimen_4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/imageView25"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dimen_10dp"
+          android:background="@drawable/ic_tag_rect_date"
+          android:elevation="@dimen/dimen_2dp"
+          android:gravity="center"
+          android:paddingVertical="@dimen/dimen_3dp"
+          android:textSize="@dimen/dimen_10dp"
+          app:layout_constraintStart_toStartOf="@+id/cl_bottom"
+          app:layout_constraintTop_toTopOf="@+id/cl_bottom"
+          tools:visibility="visible">
+          <!--              android:drawableEnd="@drawable/ic_mastercardsmall"-->
+          <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="@dimen/dimen_4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+              android:id="@+id/payingwith"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              style="@style/text_12_black_semi_bold"
+              android:layout_marginStart="@dimen/dimen_2dp"
+              android:paddingStart="@dimen/dimen_2dp"
+              android:textColor="@color/black"
+              android:text="PAYING WITH"
+              android:textSize="@dimen/dimen_8dp" />
+<!--            app:srcCompat="@drawable/ic_card"-->
+<!--            errorImage="@{@drawable/ic_card}"-->
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/img_type"
+              android:layout_width="@dimen/dimen_30dp"
+              android:layout_height="@dimen/dimen_12dp"
+              android:layout_gravity="center"
+              android:paddingStart="@dimen/dimen_4dp"
+              android:paddingRight="@dimen/dimen_4dp" />
+
+<!--            <androidx.appcompat.widget.AppCompatImageView-->
+<!--              android:id="@+id/img_type"-->
+<!--              android:layout_width="wrap_content"-->
+<!--              android:layout_height="15dp"-->
+<!--              android:layout_gravity="start"-->
+<!--              android:paddingRight="@dimen/dimen_4dp"-->
+<!--              android:layout_marginStart="@dimen/dimen_2dp"-->
+<!--              android:layout_marginRight="@dimen/dimen_4dp"-->
+<!--              android:paddingVertical="@dimen/dimen_2dp"-->
+<!--              app:layout_constraintEnd_toEndOf="parent"-->
+<!--              app:layout_constraintTop_toTopOf="@+id/payingwith" />-->
+          </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+          android:id="@+id/linearLayout42"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_margin="@dimen/dimen_4dp"
+          android:orientation="horizontal"
+          android:paddingHorizontal="@dimen/dimen_4dp"
+          tools:layout_editor_absoluteX="9dp"
+          tools:layout_editor_absoluteY="4dp">
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_main2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@{@drawable/bg_rect_blue_border}"
+            android:layout_weight="0.7"
+            android:animateLayoutChanges="true"
+            android:paddingBottom="@dimen/dimen_4dp">
+
+            <LinearLayout
+              android:id="@+id/linearLayout40"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:orientation="horizontal"
+              android:paddingHorizontal="@dimen/dimen_4dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent">
+
+              <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_typee"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_weight="0.2"
+                android:paddingStart="@dimen/dimen_4dp"
+                android:layout_gravity="center"
+                android:paddingVertical="@dimen/dimen_2dp"
+                app:srcCompat="@drawable/ic_downarrow" />
+<!--              android:drawableStart="@drawable/ic_downarrow"-->
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_paymenttype"
+                style="@style/text_10_accent_dark_semi_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/dimen_4dp"
+                android:layout_weight="0.7"
+                android:background="@drawable/ic_tag_rect_date"
+                android:hint="@string/select_payment"
+                android:onClick="@{()->click.onClickPaymentpage()}"
+                android:paddingVertical="@dimen/dimen_8dp"
+                android:textAlignment="center"
+                android:textSize="@dimen/dimen_12dp" />
+
+              <!--              <androidx.appcompat.widget.AppCompatTextView-->
+              <!--                android:id="@+id/tv_cvv"-->
+              <!--                style="@style/text_10_accent_dark_semi_bold"-->
+              <!--                android:layout_width="wrap_content"-->
+              <!--                android:layout_height="wrap_content"-->
+              <!--                android:layout_marginVertical="@dimen/dimen_4dp"-->
+              <!--                android:layout_weight="1"-->
+              <!--                android:background="@drawable/ic_tag_cvv_lightblue"-->
+              <!--                android:hint="cvv"-->
+              <!--                android:paddingVertical="@dimen/dimen_8dp"-->
+              <!--                android:textAlignment="center"-->
+              <!--                android:textSize="@dimen/dimen_14dp"-->
+              <!--                tools:ignore="RtlCompat" />-->
+            </LinearLayout>
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+          <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_confirm"
+            style="@style/blueBotton"
+            setAlpha="@{viewModel.isThereCart &amp;&amp; viewModel.appManager.storageManagers.config.oRDERINGENABLED ? true : false}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            android:layout_marginVertical="@dimen/dimen_8dp"
+            android:layout_weight="0.3"
+            android:onClick="@{()->click.onClickProceed()}"
+            android:text="@string/place_order"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <include
+      android:id="@+id/ll_order_placed"
+      layout="@layout/layout_order_place_greating"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:paddingTop="@dimen/dimen_4dp"
+      android:visibility="@{isOrderPlaced?View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/nestedScrollView"
+      app:layout_constraintVertical_bias="0.19"
+      tools:visibility="gone" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

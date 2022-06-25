@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.orders.fragments.ClickMainOrdersFragment" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_faf">
+
+    <include
+      android:id="@+id/toolbar_title"
+      layout="@layout/layout_top_back"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+      android:id="@+id/tabs_orders"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/color_faf"
+      android:tabStripEnabled="true"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_title"
+      app:tabGravity="center"
+      app:tabIndicatorColor="@color/accent_blue_darker"
+      app:tabIndicatorGravity="bottom"
+      app:tabIndicatorHeight="1dp"
+      app:tabMode="fixed"
+      app:tabRippleColor="@android:color/transparent"
+      app:tabSelectedTextColor="@color/accent_blue_darker"
+      app:tabTextAppearance="@style/TabTextStyle" />
+
+
+    <androidx.viewpager2.widget.ViewPager2
+      android:id="@+id/pager_orders"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="@color/color_faf"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tabs_orders"
+      app:layout_constraintVertical_bias="0.0">
+
+    </androidx.viewpager2.widget.ViewPager2>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

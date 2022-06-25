@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.orders.viewmodels.OrderDetailViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.orders.fragments.ClickOrderDetailFragment" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gery_f4f4">
+
+    <include
+      android:id="@+id/toolbar_title"
+      layout="@layout/layout_top_back"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fillViewport="true"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_title">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="@{viewModel.subOrderItemMut == null ? View.GONE: View.VISIBLE}"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dimen_80dp">
+
+
+        <include
+          android:id="@+id/ly_order_header"
+          layout="@layout/layout_order_detail_header"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_shipments"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/ly_order_header"
+          app:spanCount="1"
+          tools:itemCount="1"
+          tools:listitem="@layout/item_order_shipment" />
+
+        <include
+          android:id="@+id/ly_payment_methods"
+          layout="@layout/layout_order_payment_method"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/rv_shipments" />
+
+        <include
+          android:id="@+id/ly_order_summary"
+          layout="@layout/layout_order_detail_order_summary"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/ly_payment_methods" />
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/btn_return"
+          style="@style/blueBotton"
+          setAlpha="@{viewModel.subOrderItemMut.status == 5 &amp;&amp; viewModel.subOrderItemMut.isOrderReturnable ? true : false}"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/button_height"
+          android:layout_marginHorizontal="@dimen/dimen_10dp"
+          android:layout_marginTop="@dimen/dimen_16dp"
+          android:onClick="@{()->click.onClickReturn()}"
+          android:text="@string/return_title" />
+
+
+      </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

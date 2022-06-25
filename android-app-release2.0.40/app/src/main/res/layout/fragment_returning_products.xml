@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.orders.viewmodels.OrderDetailViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.orders.fragments.ClickOrderDetailFragment" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_faf">
+
+    <include
+      android:id="@+id/toolbar"
+      layout="@layout/layout_top_round_back"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_products"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:nestedScrollingEnabled="true"
+      android:clipToPadding="false"
+      android:orientation="vertical"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      android:paddingTop="@dimen/dimen_16dp"
+      android:paddingBottom="@dimen/dimen_60dp"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:layout_constraintBottom_toTopOf="@+id/btn_return"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar"
+      tools:itemCount="3"
+      tools:listitem="@layout/item_returing_products" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_return"
+      style="@style/blueBotton"
+      setAlpha="@{viewModel.isAnyProductToReturn}"
+      android:onClick="@{()->click.onClickReturn()}"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/button_height"
+      android:layout_marginHorizontal="@dimen/dimen_10dp"
+      android:layout_marginBottom="8dp"
+      android:text="@string/return_title"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.SubOrderItem" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dimen_4dp"
+      android:background="@drawable/white_with_round_corner"
+      android:elevation="2dp"
+      android:paddingHorizontal="@dimen/dimen_16dp"
+      android:paddingVertical="@dimen/dimen_16dp">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView182"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rate_your_delivery_experience"
+        android:textAllCaps="true"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+
+      <View
+        android:id="@+id/divider42"
+        android:layout_width="@dimen/dimen_0.5dp"
+        android:layout_height="0dp"
+        android:background="@color/color_e8e8"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout27"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout27" />
+
+      <LinearLayout
+        android:id="@+id/linearLayout27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider42"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView186"
+          style="@style/text_12_93A_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="@string/courier_name"
+          android:textAlignment="center" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView185"
+          style="@style/text_12_blue_dark_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="@{item.shipment.logisticCompany.name}"
+          android:textAlignment="center"
+          tools:text="LIFE Logistics" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/linearLayout28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/divider42"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout27">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView187"
+          style="@style/text_12_93A_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/delivered_by"
+          android:textAlignment="center" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView188"
+          style="@style/text_12_blue_dark_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@{item.shipment.driver.name}"
+          android:textAlignment="center"
+          tools:text="Superman" />
+      </LinearLayout>
+
+      <View
+        android:id="@+id/divider43"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_0.5dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/color_e8e8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout27"
+        tools:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_margin="@dimen/dimen_4dp"
+      android:background="@drawable/white_with_round_corner"
+      android:elevation="2dp"
+      android:paddingHorizontal="@dimen/dimen_16dp"
+      android:paddingVertical="@dimen/dimen_16dp">
+
+      <TextView
+        android:id="@+id/textView249"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rate_your_experience"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <View
+        android:id="@+id/divider51"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_0.5dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/color_e8e8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView249" />
+
+      <com.willy.ratingbar.ScaleRatingBar
+        android:id="@+id/simpleRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="@{item.status == 5 ? View.VISIBLE: View.GONE}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider51"
+        app:srb_clearRatingEnabled="true"
+        app:srb_drawableEmpty="@drawable/ic_star"
+        app:srb_drawableFilled="@drawable/ic_star_fill"
+        app:srb_minimumStars="0"
+        app:srb_numStars="5"
+        app:srb_rating="0"
+        app:srb_scrollable="false"
+        app:srb_starHeight="@dimen/dimen_20dp"
+        app:srb_starPadding="@dimen/dimen_10dp"
+        app:srb_starWidth="@dimen/dimen_20dp"
+        app:srb_stepSize="1">
+
+      </com.willy.ratingbar.ScaleRatingBar>
+<!--      android:clickable="@{item.rating == null ||  item.rating ==0.0f ? true : false}"-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </LinearLayout>
+
+
+</layout>

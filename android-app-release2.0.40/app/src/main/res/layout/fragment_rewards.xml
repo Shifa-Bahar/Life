@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.rewards.viewmodels.RewardsViewModel" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.rewards.adapters.ClickItemRewards" />
+    <variable
+      name="viewmodel"
+      type="com.lifepharmacy.application.ui.rewards.viewmodels.RewardsViewModel" />
+    <variable
+      name="clickRewards"
+      type="com.lifepharmacy.application.ui.rewards.fragment.ClickRewardsFragment" />
+
+    <variable
+      name="showEmpty"
+      type="Boolean" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_eff"  >
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textnoreward"
+      android:layout_width="wrap_content"
+      style="@style/text_14_accent_dark_semi_bold"
+      android:layout_height="wrap_content"
+      android:text="@string/no_reward_items"
+      tools:text="No Rewards found"
+      android:visibility="@{showEmpty?View.VISIBLE:View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+<!--    android:background="@color/color_gery_f4f4"-->
+    <include
+      android:id="@+id/toolbar_title"
+      layout="@layout/layout_top_back"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--      android:id="@+id/scrollview_main"-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      tools:visibility="visible">-->
+
+    <LinearLayout
+      android:background="@color/color_eff"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_title">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView255"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:text="Redeem your reward coupon"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout37"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_title"
+        app:layout_constraintVertical_bias="0.0" />
+
+      <include
+        android:id="@+id/layout_rewards"
+        layout="@layout/layout_rewards"
+        android:layout_width="405dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="@dimen/dimen_5dp"
+        android:layout_marginLeft="@dimen/dimen_5dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout37"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView255"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+<!--    <LinearLayout-->
+<!--      android:id="@+id/linearLayout37"-->
+<!--      android:layout_width="412dp"-->
+<!--      android:layout_height="604dp"-->
+<!--      android:orientation="vertical"-->
+<!--      app:layout_constraintBottom_toBottomOf="parent"-->
+<!--      tools:ignore="MissingConstraints"-->
+<!--      tools:layout_editor_absoluteX="-1dp">-->
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:background="@color/color_eff"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_rewards" />
+    </LinearLayout>
+<!--    </LinearLayout>-->
+
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

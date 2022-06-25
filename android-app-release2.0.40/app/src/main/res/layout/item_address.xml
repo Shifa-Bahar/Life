@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isSelector"
+      type="Boolean" />
+
+    <variable
+      name="isShipment"
+      type="Boolean" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.address.AddressModel" />
+
+    <variable
+      name="clicklayout"
+      type="com.lifepharmacy.application.ui.address.dailog.ClickLayoutAddress" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.address.adapters.ClickItemAddress" />
+
+    <variable
+      name="position"
+      type="int" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginVertical="@dimen/dimen_4dp"
+      android:onClick="@{()->click.onClickAddress(item,position)}"
+      app:cardCornerRadius="@dimen/dimen_5dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        tools:background="@drawable/bg_rect_blue_border"
+        android:layout_height="wrap_content"
+        android:background="@{isSelector ? @drawable/bg_rect_blue_border : @drawable/bg_transparent}"
+        android:padding="@dimen/dp_10">
+
+        <LinearLayout
+          android:id="@+id/linearLayout4"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            android:orientation="horizontal"
+            android:visibility="@{isShipment ? View.VISIBLE : View.GONE}"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView23"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="0dp"
+              android:minLines="1"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/ship_to" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_change"
+              android:background="@drawable/bg_button_accent"
+              style="@style/text_12_white_regular"
+              android:layout_width="wrap_content"
+              android:paddingHorizontal="@dimen/dimen_8dp"
+              android:paddingVertical="@dimen/dimen_4dp"
+              android:layout_height="wrap_content"
+              android:visibility="@{isShipment ? View.VISIBLE : View.GONE}"
+              android:onClick="@{()->clicklayout.changeAddress()}"
+              android:text="@string/change"
+              android:textAllCaps="true" />
+          </LinearLayout>
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!--                        <ImageView-->
+            <!--                            android:id="@+id/imageView46"-->
+            <!--                            android:layout_width="0dp"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_weight="1"-->
+            <!--                            android:src="@{item.type.equals(`Work`) ? @drawable/ic_work_location : item.type.equals(`Home`) ? @drawable/ic_home_location : @drawable/ic_fav_location }"-->
+            <!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                            app:layout_constraintStart_toStartOf="parent"-->
+            <!--                            app:layout_constraintTop_toTopOf="parent"-->
+            <!--                            tools:srcCompat="@drawable/ic_work_location" />-->
+            <!--                        : item.type == `Home` ? @drawable/ic_home_location-->
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_address_title"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:drawableStart="@{item.type.equals(`Work`) ? @drawable/ic_work_location : item.type.equals(`Home`) ? @drawable/ic_home_location : @drawable/ic_fav_location }"
+              android:drawablePadding="@dimen/dp_10"
+              android:text="@{item.type}"
+              android:minLines="1"
+              android:visibility="@{item.type == null ? View.GONE : View.VISIBLE}"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:drawableStart="@drawable/ic_work_location"
+              tools:text="Work" />
+            <!--                        android:drawableStart="@{item.type == `Work` ? @drawable/ic_work_location : item.type == `Home` ? @drawable/ic_home_location : @drawable/ic_fav_location }"-->
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_address"
+            style="@style/text_12_8585_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="2"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:text="@{item.streetAddress+`,`+item.area+`,`+item.city }"
+            android:visibility="@{item.type == null ? View.GONE : View.VISIBLE}"
+            tools:text="Marasi Drive, Business Bay, Dubai  " />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_phone"
+            style="@style/text_12_1d1d_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:drawablePadding="@dimen/dp_10"
+            android:minLines="1"
+            android:text="@{item.phone}"
+            android:visibility="@{item.type == null ? View.GONE : View.VISIBLE}"
+            tools:text="+971-54-1234567" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/img_delete"
+          android:layout_width="@dimen/dimen_24dp"
+          android:layout_height="@dimen/dimen_24dp"
+          android:onClick="@{()->click.onClickDeleteAddress(item,position)}"
+          android:padding="@dimen/dimen_4dp"
+          android:visibility="@{!isShipment ? View.VISIBLE : View.GONE}"
+          app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+          app:layout_constraintTop_toTopOf="@+id/linearLayout4"
+          app:srcCompat="@drawable/ic_delete"
+          tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/img_edite"
+          android:layout_width="@dimen/dimen_24dp"
+          android:layout_height="@dimen/dimen_24dp"
+          android:layout_marginEnd="@dimen/dimen_24dp"
+          android:onClick="@{()->click.onClickEditAddress(item,position)}"
+          android:padding="@dimen/dimen_4dp"
+          android:visibility="@{!isShipment ? View.VISIBLE : View.GONE}"
+          app:layout_constraintBottom_toBottomOf="@+id/img_delete"
+          app:layout_constraintEnd_toStartOf="@+id/img_delete"
+          app:layout_constraintTop_toTopOf="@+id/img_delete"
+          app:srcCompat="@drawable/ic_pen"
+          tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/img_selector"
+          android:layout_width="@dimen/dimen_24dp"
+          android:layout_height="@dimen/dimen_24dp"
+          android:padding="@dimen/dimen_4dp"
+          android:src="@{isSelector ? @drawable/ic_blue_checked_filled : @drawable/ic_grey_circle}"
+          android:visibility="gone"
+          app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+          app:layout_constraintEnd_toEndOf="@+id/linearLayout4" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.interfaces.ClickSearchBarProduct" />
+
+    <variable
+      name="isBackVisible"
+      type="Boolean" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_rect_bottom_radius"
+    android:elevation="@dimen/dimen_4dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout_search"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      android:layout_marginHorizontal="@dimen/dp_10"
+      android:onClick="@{()->click.onClickSearch()}"
+      android:background="@drawable/bg_rect_home_search"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView_logo"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageView_logo"
+      app:layout_constraintTop_toTopOf="@+id/imageView_logo">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/editText_search"
+        style="@style/text_13_8585_open_regular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->click.onClickSearch()}"
+        android:layout_marginStart="@dimen/dimen_6dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:background="@color/transparent"
+        android:hint="@string/search_medicine_and_healthcare_products"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_search"
+        app:layout_constraintTop_toTopOf="@+id/imageView_search" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_search"
+        android:layout_width="@dimen/dimen_14dp"
+        android:layout_height="@dimen/dimen_14dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginBottom="@dimen/dimen_9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_search" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView_logo"
+      android:layout_width="@dimen/dimen_30dp"
+      android:layout_height="@dimen/dimen_30dp"
+      android:onClick="@{()->click.onClickBacK()}"
+      android:padding="@dimen/dimen_6dp"
+      android:layout_marginStart="@dimen/dimen_6dp"
+      android:visibility="@{isBackVisible ? View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_back" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+

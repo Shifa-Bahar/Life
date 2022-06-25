@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_pcr"
+    app:startDestination="@id/pcrlistFragment">
+
+    <fragment
+        android:id="@+id/pcrlistFragment"
+        tools:layout="@layout/fragment_pcr_list"
+        android:name="com.lifepharmacy.application.ui.pcr.fragments.PcrListFragment"
+        android:label="PcrListFragment" />
+
+  <dialog
+    android:id="@+id/pcrDetailsBottomSheet"
+    android:name="com.lifepharmacy.application.ui.pcr.fragments.PcrDetailsBottomSheet"
+    android:label="PcrDetailsBottomSheet"
+    tools:layout="@layout/bottom_sheet_pcr_details" />
+
+<!--  <fragment-->
+<!--    android:id="@+id/appoinmentFragment"-->
+<!--    android:name="com.lifepharmacy.application.ui.pcr.fragments.AppoinmentFragment"-->
+<!--    android:label="AppoinmentFragment"-->
+<!--    tools:layout="@layout/fragment_appoinment" />-->
+  <dialog
+    android:id="@+id/appoinmentPlacedDialog"
+    android:name="com.lifepharmacy.application.ui.pcr.fragments.AppoinmentPlacedDialog"
+    android:label="AppoinmentPlacedDialog"
+    tools:layout="@layout/dailog_appoinment_placed" />
+
+  <dialog
+    android:id="@+id/orderSheetPcrBottomSheet"
+    android:name="com.lifepharmacy.application.ui.pcr.fragments.OrderSheetPcrBottomSheet"
+    android:label="OrderSheetPcrBottomSheet"
+    tools:layout="@layout/bottom_sheet_pcr_order_summary" />
+  <include app:graph="@navigation/nav_appoinment" />
+  <include app:graph="@navigation/nav_address" />
+<!--  <fragment-->
+<!--    android:id="@+id/appoinmentDetailFragment"-->
+<!--    android:name="com.lifepharmacy.application.ui.pcr.fragments.AppoinmentDetailFragment"-->
+<!--    android:label="AppoinmentDetailFragment"-->
+<!--    tools:layout="@layout/fragment_appoinment_details" />-->
+  <fragment
+    android:id="@+id/pageFragment"
+    tools:layout="@layout/fragment_page"
+    android:name="com.lifepharmacy.application.ui.pages.fragment.PageFragment"
+    android:label="PageFragment" />
+
+  <dialog
+    android:id="@+id/orderWalletTopUpBottomSheet"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderWalletTopUpBottomSheet"
+    android:label="OrderWalletTopUpBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_wallet_top" />
+
+<!--    <dialog-->
+<!--        android:id="@+id/dialogPrescriptionUploaded"-->
+<!--        tools:layout="@layout/dailog_prescription_upload"-->
+<!--        android:name="com.lifepharmacy.application.ui.prescription.dialog.PrescriptionUploadedDialog"-->
+<!--        android:label="AddNewAddressDialog" />-->
+  <fragment
+    android:id="@+id/pcrStartFragment"
+    tools:layout="@layout/fragment_pcr_start"
+    android:name="com.lifepharmacy.application.ui.pcr.fragments.PcrStartFragment"
+    android:label="PcrStartFragment" />
+  <fragment
+    android:id="@+id/pcrdateFragment"
+    tools:layout="@layout/fragment_pcr_date"
+    android:name="com.lifepharmacy.application.ui.pcr.fragments.PcrDateFragment"
+    android:label="PcrdateFragment" />
+  <fragment
+    android:id="@+id/addressFragment"
+    android:name="com.lifepharmacy.application.ui.address.dailog.AddressFragment"
+    android:label="AddressFragment"
+    tools:layout="@layout/fragment_address" />
+  <fragment
+    android:id="@+id/addNewAddressDialog"
+    android:name="com.lifepharmacy.application.ui.address.dailog.AddNewAddressDialog"
+    android:label="AddNewAddressDialog"
+    tools:layout="@layout/dailog_new_address" />
+
+  <fragment
+    android:id="@+id/addressDetailBottomSheet"
+    android:name="com.lifepharmacy.application.ui.address.dailog.AddressDetailBottomSheet"
+    android:label="AddressDetailBottomSheet"
+    tools:layout="@layout/bottom_sheet_address" />
+  <dialog
+    android:id="@+id/timeTypeBottomSheet"
+    android:name="com.lifepharmacy.application.ui.address.dailog.TimeBottomSheet"
+    android:label="AddressTypeBottomSheet"
+    tools:layout="@layout/bottom_sheet_address_type" />
+  <dialog
+    android:id="@+id/addressTypeBottomSheet"
+    android:name="com.lifepharmacy.application.ui.address.dailog.AddressTypeBottomSheet"
+    android:label="AddressTypeBottomSheet"
+    tools:layout="@layout/bottom_sheet_address_type" />
+
+  <fragment
+    android:id="@+id/pcrPaymentFragment"
+    tools:layout="@layout/fragment_pcr_payment"
+    android:name="com.lifepharmacy.application.ui.pcr.fragments.PcrPaymentFragment"
+    android:label="PcrPaymentFragment" />
+</navigation>

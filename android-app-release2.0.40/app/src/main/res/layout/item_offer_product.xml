@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isInCart"
+      type="Boolean" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.product.ProductDetails" />
+    <variable
+      name="position"
+      type="int" />
+    <variable
+      name="qty"
+      type="String" />
+    <variable
+      name="price"
+      type="com.lifepharmacy.application.model.home.Price" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.adapter.ClickCartProduct" />
+
+  </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/cl_main"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/cardView7">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_remove"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/remove"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider2"
+        app:layout_constraintStart_toStartOf="@+id/img_product"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_move_wishlist"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/move_to_wishlist"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_remove"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+        app:layout_constraintStart_toEndOf="@+id/divider2"
+        app:layout_constraintTop_toTopOf="@+id/tv_remove" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_product"
+        loadImageFromURl="@{item.images.featuredImage}"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/dimen_10dp"
+        android:layout_marginStart="@dimen/dimen_4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/grey" />
+
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_product_name"
+        style="@style/text_13_accent_dark_regular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:minHeight="@dimen/dimen_40dp"
+        android:text="@{item.title}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_product"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Puressentiel Purifying Antibacterial Lotion Spray Hands and Surfaces " />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_tags"
+        style="@style/text_8_accent_dark_semi_bole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_0dp"
+        android:layout_marginEnd="@dimen/dimen_6dp"
+        android:background="@drawable/ic_tag_rect"
+        android:paddingHorizontal="@dimen/dp_10"
+        android:paddingVertical="@dimen/dimen_6dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/tv_product_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_product_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_product_name"
+        tools:text="Buy 2 Get 1 " />
+
+      <!--    android:visibility="@{offers!=null &amp;&amp; offers.type.equals(`bxgy`) &amp;&amp; position == 0 ? View.VISIBLE: View.GONE}"-->
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_delivery2"
+        android:layout_width="@dimen/dimen_56dp"
+        android:layout_height="@dimen/dimen_16dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/img_product"
+        app:layout_constraintEnd_toEndOf="@+id/img_product"
+        app:layout_constraintStart_toStartOf="@+id/img_product"
+        app:layout_constraintTop_toBottomOf="@+id/img_product"
+        tools:src="@drawable/ic_instant_tag" />
+      <!--        android:src="@{item.productDetails.availability !=null &amp;&amp; item.productDetails.availability.instant.isAvailable ? @drawable/ic_instant_tag :@drawable/ic_express_tag}"-->
+
+      <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+        app:layout_constraintStart_toStartOf="@+id/tv_product_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tags">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          style="@style/text_10_accent_dark_regular"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:text="@{price.currency}"
+          tools:text="Dummy" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_price"
+          style="@style/text_12_accent_dark_semi_bole"
+          setFormatePrice="@{price.price.offerPrice}"
+          product="@{item}"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:layout_marginStart="@dimen/dimen_4dp"
+          tools:text="Dummy" />
+
+      </LinearLayout>
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/img_cart"
+        style="@style/text_12_white_semi_bold"
+        isInCart="@{isInCart}"
+        setAddCartVisibility="@{item}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dimen_4dp"
+        android:background="@drawable/bg_116_round"
+        android:drawableStart="@drawable/ic_cart_white"
+        android:drawablePadding="@dimen/dimen_4dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/dimen_8dp"
+        android:text="@string/add"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="@+id/img_product"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible" />
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:visibility="@{isInCart ? View.VISIBLE :View.GONE}"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout9"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout9"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/btn_minus"
+          android:layout_width="@dimen/dimen_24dp"
+          android:layout_height="@dimen/dimen_24dp"
+          android:src="@drawable/ic_basket_whit_border"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/tv_qty"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_qty"
+          style="@style/text_18_1d1d_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="@dimen/dimen_24dp"
+          android:layout_marginStart="@dimen/dimen_8dp"
+          android:layout_marginEnd="@dimen/dimen_8dp"
+          android:gravity="center"
+          android:text="@{qty}"
+          android:visibility="invisible"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+          app:layout_constraintStart_toEndOf="@+id/btn_minus"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="1" />
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/btn_plus"
+          android:layout_width="@dimen/dimen_24dp"
+          android:layout_height="@dimen/dimen_24dp"
+          android:background="@drawable/ic_plus_flate"
+          android:gravity="center"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/tv_qty"
+          app:layout_constraintTop_toTopOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_0.5dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/color_e8e8"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/tv_product_name"
+        app:layout_constraintStart_toStartOf="@+id/img_product"
+        app:layout_constraintTop_toBottomOf="@+id/img_product" />
+
+      <View
+        android:id="@+id/divider2"
+        android:layout_width="@dimen/dimen_0.5dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:background="@color/color_e8e8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_move_wishlist"
+        app:layout_constraintStart_toEndOf="@+id/tv_remove"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_notify"
+        style="@style/notifyMeBotton"
+        android:textSize="@dimen/text_size_10sp"
+        setNotifyBellVisibility="@{item}"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/img_product"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="gone" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView156"
+        style="@style/text_10_accent_dark_semi_bold"
+        setSoldOutTextVisibility="@{item}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="1"
+        android:text="@string/sold_out"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout9"
+        app:layout_constraintEnd_toStartOf="@+id/btn_notify"
+        app:textAllCaps="true" />
+
+      <View
+        android:id="@+id/divider37"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/color_e8e8"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout9" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

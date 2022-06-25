@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="Click"
+      type="com.lifepharmacy.application.ui.dashboard.fragments.ClickHomeTag" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/accent_blue">
+
+
+      <!--            <androidx.appcompat.widget.AppCompatTextView-->
+      <!--                android:id="@+id/textView108"-->
+      <!--                style="@style/text_12_white_semi_bold"-->
+      <!--                android:layout_width="match_parent"-->
+      <!--                android:layout_height="wrap_content"-->
+      <!--                android:layout_weight="1"-->
+      <!--                android:layout_marginBottom="@dimen/dimen_2dp"-->
+      <!--                android:paddingVertical="@dimen/dimen_4dp"-->
+      <!--                android:text="@string/express_delivery"-->
+      <!--                android:textAlignment="center" />-->
+
+      <!--            <androidx.appcompat.widget.AppCompatTextView-->
+      <!--                android:id="@+id/tv_location"-->
+      <!--                style="@style/text_12_white_semi_bold"-->
+      <!--                android:layout_width="match_parent"-->
+      <!--                android:layout_height="wrap_content"-->
+      <!--                android:layout_weight="1"-->
+      <!--                android:ellipsize="end"-->
+      <!--                android:maxLines="1"-->
+      <!--                android:paddingVertical="@dimen/dimen_4dp"-->
+      <!--                android:singleLine="true"-->
+      <!--                android:text="@string/secure_payments"-->
+      <!--                android:textAlignment="center"-->
+      <!--                android:textAllCaps="false"-->
+      <!--                app:layout_constraintBottom_toBottomOf="@+id/imageView_location"-->
+      <!--                app:layout_constraintEnd_toEndOf="parent"-->
+      <!--                app:layout_constraintStart_toEndOf="@+id/imageView_location"-->
+      <!--                app:layout_constraintTop_toTopOf="@+id/imageView_location" />-->
+
+      <!--            &lt;!&ndash;            <androidx.appcompat.widget.AppCompatImageView&ndash;&gt;-->
+      <!--            &lt;!&ndash;                android:id="@+id/imageView_location"&ndash;&gt;-->
+      <!--            &lt;!&ndash;                android:layout_width="@dimen/dimen_7dp"&ndash;&gt;-->
+      <!--            &lt;!&ndash;                android:layout_height="@dimen/dp_10"&ndash;&gt;-->
+      <!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+      <!--            &lt;!&ndash;                app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+      <!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+      <!--            &lt;!&ndash;                app:srcCompat="@drawable/ic_location" />&ndash;&gt;-->
+
+      <!--            <androidx.appcompat.widget.AppCompatTextView-->
+      <!--                android:id="@+id/textView109"-->
+      <!--                style="@style/text_12_white_semi_bold"-->
+      <!--                android:layout_width="match_parent"-->
+      <!--                android:layout_height="match_parent"-->
+      <!--                android:layout_weight="1"-->
+      <!--                android:paddingVertical="@dimen/dimen_4dp"-->
+      <!--                android:gravity="center"-->
+      <!--                android:paddingHorizontal="@dimen/dimen_6dp"-->
+      <!--                android:text="@string/free_shipping"-->
+      <!--                android:textAlignment="center"-->
+      <!--                app:textAllCaps="false" />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_tags"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:clipToPadding="false"
+      android:orientation="horizontal"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:listitem="@layout/item_home_tile" />
+
+    <com.airbnb.lottie.LottieAnimationView
+      android:id="@+id/animation_view"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:scaleType="centerCrop"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:lottie_autoPlay="true"
+      app:lottie_fileName="bar_animation.json"
+      app:lottie_loop="true" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

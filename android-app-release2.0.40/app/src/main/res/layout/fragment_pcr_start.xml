@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+    <import type="android.view.View" />
+
+    <variable
+      name="note"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="isThereImages"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="clickContact"
+      type="com.lifepharmacy.application.ui.prescription.fragments.ClickContactLayout" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.pcr.viewmodel.PcrListingViewModel" />
+
+    <variable
+      name="profileViewModel"
+      type="com.lifepharmacy.application.ui.profile.viewmodel.ProfileViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.prescription.fragments.ClickChoosePrescriptionFragment" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+      android:id="@+id/linearLayout23"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <include
+        android:id="@+id/toll_bar"
+        layout="@layout/layout_top_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/textView169"
+      android:layout_width="406dp"
+      android:layout_height="670dp"
+      android:gravity="center"
+      android:orientation="vertical"
+      android:visibility="@{profileViewModel.isLoggedIn() ? View.VISIBLE: View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/linearLayout23">
+      <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/prescription_start"
+        tools:ignore="MissingConstraints">
+
+      </androidx.appcompat.widget.AppCompatImageView>
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_complete_date"
+          style="@style/text_24_color_blue_1455ff_semi_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginBottom="1dp"
+          android:text="RT-PCR TEST"
+          android:padding="@dimen/dimen_10dp"
+          android:textAlignment="center"
+          android:textSize="@dimen/dimen_24dp" />
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:orientation="horizontal">
+          <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatImageView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              app:srcCompat="@drawable/accent_50_alpha_darkblue_full_round"
+              tools:ignore="MissingConstraints">
+            </androidx.appcompat.widget.AppCompatImageView>
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/text1"
+              style="@style/text_16_accent_dark_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_marginBottom="1dp"
+              android:text="Licensed by DHA"
+              android:padding="@dimen/dimen_8dp"
+              android:textAlignment="center"
+              android:textSize="@dimen/dimen_12dp"
+              app:layout_constraintBottom_toTopOf="@+id/img_barcode"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/textView73" />
+          </LinearLayout>
+          <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatImageView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              app:srcCompat="@drawable/accent_50_alpha_darkblue_full_round"
+              tools:ignore="MissingConstraints">
+            </androidx.appcompat.widget.AppCompatImageView>
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/text3"
+              style="@style/text_16_accent_dark_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_marginBottom="1dp"
+              android:text="Results within 24 hours"
+              android:padding="@dimen/dimen_8dp"
+              android:textAlignment="center"
+              android:textSize="@dimen/dimen_12dp"
+              app:layout_constraintBottom_toTopOf="@+id/img_barcode"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/textView73" />
+          </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:orientation="horizontal">
+          <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/accent_50_alpha_darkblue_full_round"
+            tools:ignore="MissingConstraints">
+          </androidx.appcompat.widget.AppCompatImageView>
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text2"
+            style="@style/text_16_accent_dark_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="1dp"
+            android:text="Accepted for international travel"
+            android:padding="@dimen/dimen_8dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/dimen_12dp"
+            app:layout_constraintBottom_toTopOf="@+id/img_barcode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView73" />
+        </LinearLayout>
+      </LinearLayout>
+
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_starts"
+        style="@style/whiteButton"
+        android:layout_width="150dp"
+        android:layout_height="51dp"
+        android:onClick="@{()->click.onClickHavePrescription()}"
+        android:text="start"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView59"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:visibility="@{!profileViewModel.isLoggedIn() ? View.VISIBLE: View.GONE}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/linearLayout23"
+      app:srcCompat="@drawable/ic_please_login_rtpcr"
+      tools:visibility="invisible" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView167"
+      style="@style/text_14_accent_dark_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dimen_16dp"
+      android:text="@string/please_login_to_upload_your_prescription"
+      android:textAlignment="center"
+      android:visibility="@{!profileViewModel.isLoggedIn() ? View.VISIBLE: View.GONE}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView59"
+      tools:visibility="invisible" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_login"
+      style="@style/blueBotton"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:layout_marginBottom="8dp"
+      tools:visibility="invisible"
+      android:onClick="@{()->click.onClickLogin()}"
+      android:text="@string/login"
+      android:textAlignment="center"
+      android:textAllCaps="false"
+      android:visibility="@{!profileViewModel.isLoggedIn() ? View.VISIBLE: View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+  <!--  android:textColor="@{isEnableProceedButton ? @color/accent_blue_darker:@color/color_93a3}"-->
+  <!--  android:enabled="@{isEnableProceedButton}"-->

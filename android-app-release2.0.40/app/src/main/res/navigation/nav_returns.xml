@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_returns"
+  app:startDestination="@id/requestedFragment">
+
+  <fragment
+    android:id="@+id/mainReturnedOrdersFragment"
+    tools:layout="@layout/fragment_main_orders"
+    android:name="com.lifepharmacy.application.ui.returned.fragments.MainReturnedOrdersFragment"
+    android:label="MainReturnedOrdersFragment" />
+  <dialog
+    android:id="@+id/returnOrderBottomSheet"
+    tools:layout="@layout/bottom_sheet_return_order"
+    android:name="com.lifepharmacy.application.ui.returned.fragments.ReturnOrderBottomSheet"
+    android:label="ReturnOrderReasonBottomSheet" >
+    <argument
+      android:name="returnOrder"
+      app:argType="com.lifepharmacy.application.model.orders.ReturnOrderModel"
+      app:nullable="true" />
+  </dialog>
+  <fragment
+    android:id="@+id/requestedFragment"
+    tools:layout="@layout/fragment_orders"
+    android:name="com.lifepharmacy.application.ui.returned.fragments.RequestedFragment"
+    android:label="RequestedFragment" />
+</navigation>

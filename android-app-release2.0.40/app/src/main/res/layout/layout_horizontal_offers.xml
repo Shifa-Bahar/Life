@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="title"
+      type="String" />
+
+    <variable
+      name="positions"
+      type="int" />
+
+    <variable
+      name="id"
+      type="String" />
+
+    <variable
+      name="type"
+      type="String" />
+
+    <variable
+      name="showTitle"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.home.adapters.ClickHomeOffers" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.home.HomeResponseItem" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F2F2F2"
+    android:minHeight="@dimen/dimen_200dp"
+    android:paddingVertical="@dimen/dimen_8dp">
+
+    <LinearLayout
+      android:id="@+id/linearLayout29"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout26"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_products_title"
+          style="@style/text_15_blue_dark_semi_bold"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:paddingStart="@dimen/dimen_12dp"
+          android:paddingEnd="@dimen/dimen_0dp"
+          android:text="@{title}"
+          android:textAlignment="viewStart"
+          android:visibility="@{item.showSectionTitle || showTitle ? View.VISIBLE: View.GONE}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/txtView_viewAll"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="Super Seller"
+          tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/txtView_viewAll"
+          style="@style/text_10_white_semi_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="end"
+          android:layout_marginEnd="8dp"
+          android:background="@drawable/bg_button_accent_dark"
+          android:gravity="center"
+          android:onClick="@{()->click.onClickOfferViewAll()}"
+          android:paddingHorizontal="@dimen/dimen_8dp"
+          android:paddingVertical="@dimen/dimen_6dp"
+          android:text="@string/view_all"
+          android:textAllCaps="true"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:visibility="visible" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_tags"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_4dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="1"
+        tools:itemCount="8"
+        tools:listitem="@layout/item_offer_categories" />
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_offers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_4dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="1"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_home_offer"
+        tools:visibility="visible" />
+
+    </LinearLayout>
+
+
+    <ProgressBar
+      android:id="@+id/progressBar"
+      style="?android:attr/progressBarStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/linearLayout29"
+      tools:visibility="visible" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

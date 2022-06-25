@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.OrderResponseModel" />
+
+    <variable
+      name="product"
+      type="com.lifepharmacy.application.model.product.ProductDetails" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.orders.adapters.ClickOrder" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cardView4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_4dp"
+      android:layout_marginTop="@dimen/dimen_4dp"
+      android:layout_marginBottom="@dimen/dimen_4dp"
+      android:onClick="@{()->click.onClickOrder(item)}"
+      app:cardCornerRadius="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_10dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_order_id"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@{@string/order.concat(item.orderId)}"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="Order #1234" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_status"
+          style="@style/text_12_b6b6_regular"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:minWidth="@dimen/dimen_70dp"
+          android:background="@drawable/bg_text_accent"
+          android:backgroundTint="@color/color_1e8f"
+          android:textAlignment="center"
+          android:paddingHorizontal="@dimen/dimen_6dp"
+          android:paddingVertical="@dimen/dimen_4dp"
+          android:text="@{item.statusLabel}"
+          setStatusBackColor="@{item.status}"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_date"
+          style="@style/text_12_93A_open_regular"
+          setDateFromServer="@{item.createdAt}"
+          startDateTitle="@{@string/placed_on}"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_2dp"
+          app:layout_constraintStart_toStartOf="@+id/tv_order_id"
+          app:layout_constraintTop_toBottomOf="@+id/tv_order_id"
+          tools:text="Placed on Jan 26, 2020" />
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_products"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop="@dimen/dimen_10dp"
+          android:orientation="horizontal"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="@+id/tv_order_id"
+          app:layout_constraintTop_toTopOf="@+id/divider17"
+          tools:itemCount="5"
+          tools:listitem="@layout/item_orders_product" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_amount"
+          style="@style/text_12_accent_dark_bold"
+          amount="@{item.total}"
+          prices="@{product.prices}"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_2dp"
+          android:textColor="@color/accent_blue"
+          app:layout_constraintEnd_toEndOf="@+id/tv_status"
+          app:layout_constraintStart_toStartOf="@+id/tv_status"
+          app:layout_constraintTop_toBottomOf="@+id/tv_status"
+          tools:text="AED 370" />
+
+        <View
+          android:id="@+id/divider17"
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:layout_marginTop="@dimen/dimen_10dp"
+          android:background="@color/color_e8e8"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+
+        <View
+          android:id="@+id/divider18"
+          android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:layout_marginTop="@dimen/dimen_16dp"
+          android:background="@color/color_e8e8"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/rv_products" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_modify"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:paddingVertical="@dimen/dimen_8dp"
+          android:text="@string/modify"
+          android:textColor="@color/accent_blue"
+          android:visibility="gone"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/divider19"
+          app:layout_constraintStart_toStartOf="@+id/tv_order_id"
+          app:layout_constraintTop_toBottomOf="@+id/divider18" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_view_detials"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:onClick="@{()->click.onClickViewOrder(item)}"
+          android:paddingVertical="@dimen/dimen_10dp"
+          android:text="@string/view_details"
+          android:textAlignment="center"
+          android:textColor="@color/accent_blue"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="@+id/rv_products"
+          app:layout_constraintTop_toBottomOf="@+id/divider18"
+          app:textAllCaps="true" />
+
+        <View
+          android:id="@+id/divider19"
+          android:layout_width="0.5dp"
+          android:layout_height="0dp"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:background="@color/color_e8e8"
+          android:visibility="gone"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/divider18" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

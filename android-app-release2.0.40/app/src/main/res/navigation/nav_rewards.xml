@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_rewards"
+  app:startDestination="@id/rewardsFragment">
+
+  <fragment
+    android:id="@+id/rewardsFragment"
+    android:name="com.lifepharmacy.application.ui.rewards.fragment.RewardsFragment"
+    android:label="RewardsFragment"
+    tools:layout="@layout/fragment_rewards" />
+  <fragment
+    android:id="@+id/rewardsDetailFragment"
+    android:name="com.lifepharmacy.application.ui.rewards.fragment.RewardsDetailFragment"
+    android:label="RewardsDetailFragment"
+    tools:layout="@layout/fragment_rewards_details" />
+  <dialog
+    android:id="@+id/dialogAnimationReward"
+    tools:layout="@layout/dailog_animation_reward"
+    android:name="com.lifepharmacy.application.ui.rewards.dialog.RewardsApplyDialog"
+    android:label="RewardApplyDialog" />
+<!--  <include app:graph="@navigation/nav_login_sheet" />-->
+
+  <dialog
+    android:id="@+id/dialogRewardBarcode"
+    tools:layout="@layout/dailog_reward_barcode"
+    android:name="com.lifepharmacy.application.ui.rewards.dialog.RewardsBarcodeDialog"
+    android:label="RewardBarcodeDialog" />
+
+
+</navigation>

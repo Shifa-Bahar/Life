@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.search.agolia.Hits" />
+
+    <variable
+      name="isChecked"
+      type="Boolean" />
+
+    <variable
+      name="afterPrefix"
+      type="String" />
+
+    <variable
+      name="term"
+      type="String" />
+
+    <variable
+      name="position"
+      type="int" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.search.adapters.ClickSearchSuggestionItem" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/white"
+      android:onClick="@{()->click.onClickProduct(item)}"
+      android:paddingHorizontal="@dimen/dimen_16dp"
+      android:paddingVertical="@dimen/dimen_8dp"
+      android:visibility="@{item.index.equals(`products`)?View.VISIBLE:View.GONE}">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView87"
+        android:layout_width="@dimen/dimen_35dp"
+        errorImage="@{@drawable/product_suggestion_place_holder}"
+        loadImageFromURl="@{item.images.featuredImage}"
+        android:layout_height="@dimen/dimen_35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView225"
+        style="@style/text_14_4848_open_regular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_8dp"
+        android:text="@{item.title}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView87"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/terms_and_condition" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/transparent"
+
+      android:gravity="center_vertical"
+      android:onClick="@{()->click.onClickSearchCategory(item)}"
+      android:paddingHorizontal="@dimen/dimen_16dp"
+      android:paddingVertical="@dimen/dimen_12dp"
+      android:visibility="@{item.index.equals(`products_query_suggestions`)?View.VISIBLE:View.GONE}">
+
+      <!--        android:src="@{isChecked ? @drawable/ic_checked :@drawable/check_square }"-->
+
+
+<!--      <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/textView209"-->
+<!--        style="@style/text_14_4848_semi_bold"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:drawableStart="@drawable/ic_search"-->
+<!--        android:drawablePadding="@dimen/dimen_8dp"-->
+<!--        android:text="@{term}"-->
+<!--        tools:text="Tag2...." />-->
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_type"
+        style="@style/text_14_4848_open_regular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="@dimen/dimen_4dp"
+        android:drawableStart="@drawable/ic_search"
+        android:drawableTint="@color/color_1d1d"
+        android:gravity="center_vertical"
+        android:onClick="@{()->click.onClickSearchCategory(item)}"
+        android:text="@{afterPrefix}"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Tag2...." />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:paddingHorizontal="@dimen/dimen_16dp"
+      android:visibility="gone"
+      tools:visibility="gone">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView210"
+        style="@style/text_14_4848_open_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/in" />
+
+      <!--      <androidx.appcompat.widget.AppCompatTextView-->
+      <!--        android:id="@+id/textView211"-->
+      <!--        style="@style/text_13_blue_opnesans_regular"-->
+      <!--        android:layout_width="wrap_content"-->
+      <!--        android:layout_height="wrap_content"-->
+      <!--        android:layout_weight="1"-->
+      <!--        android:paddingHorizontal="@dimen/dimen_4dp"-->
+      <!--        android:text="@{item.singleCategory}"-->
+      <!--        android:textAlignment="textStart"-->
+      <!--        tools:text="Medicine" />-->
+    </LinearLayout>
+
+    <View
+      android:id="@+id/divider47"
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/browser_actions_title_color" />
+  </LinearLayout>
+
+</layout>

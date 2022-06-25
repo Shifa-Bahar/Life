@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.pcr.fragments.ClickPcrProductFragment" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.pcr.viewmodel.PcrListingViewModel" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/dimen_8dp"
+    android:background="@drawable/white_with_top_round_corner"
+    android:orientation="vertical">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      android:paddingTop="@dimen/dimen_8dp">
+
+
+      <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="382dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          android:paddingBottom="@dimen/dimen_10dp">
+
+
+          <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+              android:layout_width="127dp"
+              android:layout_height="105dp"
+              android:layout_marginHorizontal="@dimen/dimen_12dp"
+              android:layout_marginTop="@dimen/dp_10"
+              android:layout_marginBottom="@dimen/dp_10"
+              app:cardCornerRadius="@dimen/dimen_10dp"
+              app:cardElevation="2dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent">
+
+
+              <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:id="@+id/imageCarousel_product"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:autoPlay="true"
+                app:autoPlayDelay="4000"
+                app:carouselBackground="@color/white"
+                app:carouselType="SHOWCASE"
+                app:imageScaleType="fitCenter"
+                android:scaleType="fitXY"
+                app:imageViewId="@id/image_view"
+                app:itemLayout="@layout/custom_fixed_size_item_layout"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:nextButtonId="@id/custom_btn_next"
+                app:nextButtonLayout="@layout/custom_next_button_layout"
+                app:nextButtonMargin="8dp"
+                app:previousButtonId="@id/custom_btn_previous"
+                app:previousButtonLayout="@layout/custom_previous_button_layout"
+                app:previousButtonMargin="8dp"
+                app:scaleOnScroll="true"
+                app:scalingFactor="0.0"
+                app:showBottomShadow="false"
+                app:showCaption="true"
+                app:showIndicator="false"
+                app:showNavigationButtons="false"
+                app:showTopShadow="false" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_margin="@dimen/dimen_5dp"
+              android:orientation="vertical">
+
+              <!--    -->
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_product_name"
+                style="@style/text_16_blue_dark_open_semi_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.previewProductMut.title}" />
+
+              <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/dimen_8dp"
+                android:padding="@dimen/dimen_5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/custom_indicator">
+
+                <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  tools:ignore="MissingConstraints">
+
+
+                  <LinearLayout
+                    android:id="@+id/ll_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      style="@style/text_16_accent_dark_regular"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@{viewModel.previewPrice.currency}"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/custom_indicator" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/tv_price"
+                      style="@style/text_16_accent_dark_semi_bold"
+                      offers="@{viewModel.previewProductMut.offers}"
+                      product="@{viewModel.previewProductMut}"
+                      setFormatePcrPrice="@{viewModel.previewPrice.price.regularPrice}"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/dimen_4dp"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/custom_indicator"
+                      tools:text="AED 40.00" />
+
+                  </LinearLayout>
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      style="@style/text_16_accent_dark_regular"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      tools:text="AED"
+                      android:text="@{viewModel.previewPrice.currency}"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/custom_indicator" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/tv_pricess"
+                      style="@style/text_16_accent_dark_semi_bold"
+                      tools:text="40.00"
+                      offers="@{viewModel.previewProductMut.offers}"
+                      product="@{viewModel.previewProductMut}"
+                      setFormatePcrPrice="@{viewModel.previewPrice.price.regularPrice}"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/dimen_4dp"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/custom_indicator" />
+                  </LinearLayout>
+
+                </LinearLayout>
+              </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+          </LinearLayout>
+
+
+          <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/layout_super"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_super">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/btn_overview"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="@dimen/dimen_40dp"
+              android:layout_marginStart="@dimen/dimen_12dp"
+              android:layout_weight="1"
+              android:background="@{viewModel.selectedDetails.name().toLowerCase().equals(`overview`) ? @drawable/white_with_top_round_corner : @drawable/grey_with_top_round_corner}"
+              android:elevation="@dimen/dimen_2dp"
+              android:gravity="center"
+              android:onClick="@{()->click.onClickOverview()}"
+              android:text="@string/overview"
+              android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/button6"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_marginStart="@dimen/dimen_5dp"
+              android:layout_weight="1"
+              android:background="@{viewModel.selectedDetails.name().toLowerCase().equals(`detail`) ? @drawable/white_with_top_round_corner : @drawable/grey_with_top_round_corner}"
+              android:elevation="@dimen/dimen_2dp"
+              android:gravity="center"
+              android:onClick="@{()->click.onClickDetails()}"
+              android:text="@string/details_title"
+              android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/button5"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_marginStart="@dimen/dimen_5dp"
+              android:layout_marginEnd="@dimen/dimen_12dp"
+              android:layout_weight="1"
+              android:background="@{viewModel.selectedDetails.name().toLowerCase().equals(`more_info`) ? @drawable/white_with_top_round_corner : @drawable/grey_with_top_round_corner}"
+              android:elevation="@dimen/dimen_2dp"
+              android:gravity="center"
+              android:onClick="@{()->click.onClickMoreInfo()}"
+              android:text="@string/more_info"
+              android:textAllCaps="false" />
+          </LinearLayout>
+
+          <include
+            android:id="@+id/ly_title"
+            layout="@layout/layout_overview_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_12dp"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+      </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  </LinearLayout>
+</layout>

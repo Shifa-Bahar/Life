@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_product_preview"
+  app:startDestination="@id/productPreviewBottomSheet">
+<!--  <include app:graph="@navigation/nav_login_sheet" />-->
+  <dialog
+    android:id="@+id/productPreviewBottomSheet"
+    android:name="com.lifepharmacy.application.ui.products.fragment.ProductPreviewBottomSheet"
+    android:label="ProductPreviewBottomSheet"
+    tools:layout="@layout/bottom_sheet_product_preview" />
+
+  <fragment
+    android:id="@+id/productFragment"
+    android:name="com.lifepharmacy.application.ui.products.fragment.ProductFragment"
+    android:label="ProductFragment"
+    tools:layout="@layout/fragment_product">
+    <argument
+      android:name="id"
+      android:defaultValue=""
+      app:argType="string" />
+  </fragment>
+  <dialog
+    android:id="@+id/productReviewsSheet"
+    android:name="com.lifepharmacy.application.ui.products.fragment.ProductReviewsSheet"
+    android:label="ProductReviewsSheet"
+    tools:layout="@layout/bottom_sheet_product_reviews" />
+</navigation>

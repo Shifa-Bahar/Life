@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickPreviewPaymentFragment" />
+    <variable
+      name="clicka"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickPaymentFragment" />
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+    <variable
+      name="clicktop"
+      type="com.lifepharmacy.application.ui.utils.topbar.ClickTool" />
+
+  </data>
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:background="@drawable/white_with_top_round_corner_new"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingHorizontal="@dimen/dimen_2dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dimen_4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintLayout22"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_toolbar_title"
+              style="@style/text_12_accent_dark_bold"
+              android:layout_width="216dp"
+              android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+              android:layout_marginHorizontal="@dimen/dp_10"
+              android:textAlignment="center"
+              android:textSize="@dimen/dimen_14dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="0.294"
+              app:layout_constraintStart_toEndOf="@+id/img_back"
+              app:layout_constraintTop_toTopOf="parent" />
+
+            <!--      android:visibility="@{!isBackVisible?View.INVISIBLE:View.VISIBLE}"-->
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/img_back"
+              android:layout_width="@dimen/dimen_40dp"
+              android:layout_height="@dimen/dimen_40dp"
+              android:layout_marginVertical="@dimen/dimen_2dp"
+              android:onClick="@{()->clicktop.onClickBack()}"
+              android:padding="@dimen/dimen_12dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintVertical_bias="0.444"
+              app:srcCompat="@drawable/ic_bluearrow" />
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        android:onClick="@{()->clicka.onClickPaymentpage()}"-->
+<!--        android:onClick="@{()->click.onClickSelectContinue()}"-->
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/button11"
+          style="@style/blueBotton"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_12dp"
+          android:layout_marginBottom="8dp"
+          android:onClick="@{()->click.onClickSelectContinue()}"
+          android:text="@string/selectandcontinue"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+          android:id="@+id/linearLayout43"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:paddingBottom="@dimen/dimen_60dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/constraintLayout22">
+
+          <include
+            android:id="@+id/ly_new_card_payment"
+            layout="@layout/layout_new_card_payment_methods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

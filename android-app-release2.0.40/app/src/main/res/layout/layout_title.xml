@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.notifications.InAppNotificationDataModel" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="@dimen/dimen_16dp"
+    android:layout_marginVertical="@dimen/dimen_16dp"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_title"
+      android:layout_width="0dp"
+      style="@style/text_16_accent_dark_semi_bold"
+      defaultColor="@{`#FF002579`}"
+      tvtextColor="@{item.content.textColor}"
+      android:layout_height="wrap_content"
+      android:text="@{item.content.text}"
+      android:textAlignment="center"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="TextView" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

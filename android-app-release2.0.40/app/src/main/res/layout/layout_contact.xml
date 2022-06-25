@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.prescription.fragments.ClickContactLayout" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_ca">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView171"
+      style="@style/text_16_accent_dark_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:drawableEnd="@drawable/ic_call_lady"
+      android:drawablePadding="@dimen/dimen_10dp"
+      android:gravity="center"
+      android:text="@string/can_t_wait"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/button13"
+      style="@style/purplButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:drawableStart="@drawable/ic_messenger"
+      android:drawablePadding="@dimen/dimen_10dp"
+      android:onClick="@{()->click.onClickChat()}"
+      android:paddingHorizontal="@dimen/dimen_32dp"
+      android:text="@string/chat_now"
+      android:textAllCaps="false"
+      app:layout_constraintBottom_toBottomOf="@+id/button15"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/button15"
+      app:layout_constraintTop_toTopOf="@+id/button15" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/button15"
+      style="@style/purplButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:layout_marginBottom="16dp"
+      android:drawableStart="@drawable/ic_call"
+      android:drawablePadding="@dimen/dimen_10dp"
+      android:onClick="@{()->click.onClickCall()}"
+      android:paddingHorizontal="@dimen/dimen_32dp"
+      android:text="@string/call_now"
+      android:textAllCaps="false"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/button13"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView171" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

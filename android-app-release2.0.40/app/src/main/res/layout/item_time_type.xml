@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.lifepharmacy.application.model.address.AddressTypeModel" />
+
+        <variable
+            name="click"
+            type="com.lifepharmacy.application.ui.address.adapters.ClickItemAddressType" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="@{()->click.onClickAddress(item)}">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ed_type"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_8dp"
+            android:layout_marginVertical="@dimen/dimen_8dp"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:inputType="phone"
+            android:onClick="@{()->click.onClickAddress(item)}"
+            android:paddingVertical="@dimen/dimen_8dp"
+            android:text="@{item.name}"
+            android:textAlignment="textStart"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider31"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_0.5dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/accent_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/ed_type"
+            app:layout_constraintStart_toStartOf="@+id/ed_type"
+            app:layout_constraintTop_toBottomOf="@+id/ed_type" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.blog.BlogModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.dashboard.adapter.ClickBlog" />
+
+  </data>
+
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/cl_main"
+    android:onClick="@{()->click.onClickBlog(item)}"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/dimen_2dp"
+    android:paddingEnd="@dimen/dimen_12dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/appCompatImageView"
+      android:layout_width="@dimen/dimen_145dp"
+      android:layout_height="@dimen/dimen_90dp"
+      android:scaleType="fitXY"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize15Percent"
+      app:srcCompat="@drawable/image_place_holder" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView110"
+      style="@style/text_10_blue_dark_open_regular"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:drawableStart="@drawable/ic_calender"
+      android:drawablePadding="@dimen/dimen_8dp"
+      android:singleLine="true"
+      android:visibility="visible"
+      setBlogDate="@{item.date}"
+      app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
+      app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
+      app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView112"
+      style="@style/text_12_accent_dark_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:singleLine="true"
+      android:text="@{item.title.rendered}" />
+  </LinearLayout>
+</layout>

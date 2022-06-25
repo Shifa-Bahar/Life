@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.notifications.NotificationModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.notifications.adapters.ClickItemNotification" />
+  </data>
+
+  <androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dimen_4dp"
+    android:layout_marginVertical="@dimen/dimen_8dp"
+    android:elevation="@dimen/dimen_4dp"
+    android:onClick="@{()->click.onClickNotification(item)}"
+    app:cardCornerRadius="@dimen/dimen_10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_icon"
+        android:layout_width="@dimen/dimen_50dp"
+        android:layout_height="@dimen/dimen_50dp"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:background="@drawable/bg_e8_border_full_round"
+        android:padding="@dimen/dimen_16dp"
+        android:src="@{item.type == `transactional` ? @drawable/ic_gift_ic : item.type == `promotional` ? @drawable/ic_discount : @drawable/ic_gift_ic}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        android:layout_marginVertical="@dimen/dimen_8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_icon"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_product_name"
+          style="@style/text_16_accent_dark_semi_bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@{item.title}"
+          tools:text="Delivered" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView69"
+          style="@style/text_12_blue_dark_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_4dp"
+          android:text="@{item.content}"
+          tools:text="Order Delivered" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView70"
+          style="@style/text_12_b6b6_regular"
+          setDateFromServer="@{item.createdAt}"
+          startDateTitle="@{``}"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_4dp" />
+
+      </LinearLayout>
+
+      <View
+        android:id="@+id/divider23"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView40"
+        android:layout_width="@dimen/dimen_20dp"
+        android:layout_height="@dimen/dimen_20dp"
+        android:layout_marginEnd="4dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close_fill_grey"
+        tools:visibility="invisible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.cardview.widget.CardView>
+
+</layout>

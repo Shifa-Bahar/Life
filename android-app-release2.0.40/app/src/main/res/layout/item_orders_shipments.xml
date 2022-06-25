@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="orderID"
+      type="String" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.orders.adapters.ClickOrderShipmentItem" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.SubOrderItem" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:onClick="@{()->click.onClickSubOrderViewDetail(item,orderID)}"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_4dp"
+      android:layout_marginVertical="@dimen/dimen_4dp"
+      android:background="@drawable/bg_rect_e8e8_10dp"
+      android:onClick="@{()->click.onClickSubOrderViewDetail(item,orderID)}"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/dimen_8dp"
+        android:paddingVertical="@dimen/dimen_8dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView228"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:drawableStart="@{item.fulfilmentType.equals(`instant`) ? @drawable/ic_instant_2_0 : @drawable/ic_express_2_0}"
+          android:drawablePadding="@dimen/dimen_8dp"
+          android:gravity="center_vertical"
+          android:text="@{@string/order.concat(item.subOrderId)}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:drawableStart="@drawable/ic_express_2_0"
+          tools:text="Order #1234" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView229"
+          style="@style/text_12_accent_dark_semi_bole"
+          setStatusBackColor="@{item.status}"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/bg_text_accent"
+          android:backgroundTint="@color/color_1e8f"
+          android:minWidth="@dimen/dimen_70dp"
+          android:paddingHorizontal="@dimen/dimen_6dp"
+          android:paddingVertical="@dimen/dimen_4dp"
+          android:text="@{item.statusLabel}"
+          android:textAlignment="center"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="TextView" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_products"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:spanCount="1"
+        tools:listitem="@layout/item_orders_shipments_product" />
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_bottom_round_grey_f4f4_10dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintLayout19"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:visibility="@{item.status == 5 ? View.VISIBLE : View.GONE}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/textView232"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:visibility="visible">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView231"
+            style="@style/text_12_accent_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/rete_it+` `}"
+            android:layout_marginEnd="@dimen/dimen_4dp"
+            android:visibility="@{item.rating == null ||  item.rating==0.0f ? View.VISIBLE: View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+          <com.willy.ratingbar.ScaleRatingBar
+            android:id="@+id/simpleRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView231"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srb_clearRatingEnabled="true"
+            app:srb_drawableEmpty="@drawable/ic_empty_star_2"
+            app:srb_drawableFilled="@drawable/ic_fill_start_2"
+            app:srb_minimumStars="0"
+            app:srb_numStars="5"
+            app:srb_rating="0"
+            app:srb_starHeight="@dimen/dimen_16dp"
+            app:srb_starPadding="2dp"
+            app:srb_starWidth="@dimen/dimen_16dp"
+            app:srb_stepSize="1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        android:clickable="@{item.rating == null ||  item.rating==0.0f ? true : false}"-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView232"
+          style="@style/text_12_accent_semi_bole"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:onClick="@{()->click.onClickSubOrderViewDetail(item,orderID)}"
+          android:paddingVertical="@dimen/dimen_8dp"
+          android:text="@string/view_details"
+          android:textAlignment="textEnd"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/constraintLayout19"
+          app:layout_constraintTop_toTopOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

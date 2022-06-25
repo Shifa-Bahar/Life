@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.prescription.fragments.ClickPrescriptionFragment" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+      android:id="@+id/btn_yes"
+      style="@style/text_10_blue_dark_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/dimen_56dp"
+
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="@dimen/dimen_8dp"
+      android:elevation="@dimen/dimen_2dp"
+      android:onClick="@{()->click.onClickClaimInsurance()}"
+      android:text="@string/yes_i_m_interested"
+      android:textAllCaps="false"
+      app:cornerRadius="@dimen/dimen_5dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/btn_no"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView19"
+      app:strokeColor="@color/color_e8e8"
+      app:strokeWidth="@dimen/dimen_1dp" />
+
+    <Button
+      android:id="@+id/btn_no"
+      style="@style/text_10_blue_dark_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/dimen_56dp"
+      android:layout_marginStart="8dp"
+      android:elevation="@dimen/dimen_2dp"
+      android:onClick="@{()->click.onClickMayBeLater()}"
+      android:text="@string/maybe_later"
+      android:textAllCaps="false"
+      app:cornerRadius="@dimen/dimen_5dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/btn_yes"
+      app:layout_constraintTop_toTopOf="@+id/btn_yes"
+      app:strokeColor="@color/color_e8e8"
+      app:strokeWidth="@dimen/dimen_1dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView53"
+      style="@style/text_16_accent_dark_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Check Out Some Insurance Deals!"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/imageView19"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/dimen_120dp"
+      android:layout_marginTop="16dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView53"
+      app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize15Percent"
+      app:srcCompat="@drawable/herbal_banner" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView54"
+      style="@style/text_10_8585_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/dimen_10dp"
+      android:text="Starting at only AED599"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView19"
+      app:layout_constraintEnd_toEndOf="@+id/imageView19"
+      app:layout_constraintStart_toStartOf="@+id/imageView19" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView55"
+      style="@style/text_10_8585_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="4dp"
+      android:text="Easy To Apply For Insurance "
+      app:layout_constraintBottom_toTopOf="@+id/textView54"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/imageView19" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

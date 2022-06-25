@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="click"
+            type="com.lifepharmacy.application.ui.products.adapter.Ratings" />
+
+        <variable
+            name="rating"
+            type="com.lifepharmacy.application.model.RatingModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/text_14_1d1d_open_semi_bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:text="@{rating.name}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView_star"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_11dp"
+            android:layout_weight="0.6"
+            android:src="@drawable/ic_star" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_stepsCompleted"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_4dp"
+            android:layout_marginStart="@dimen/dimen_4dp"
+            android:layout_weight="10"
+            android:max="100"
+            android:progress="@{rating.percentage}"
+            android:progressDrawable="@drawable/custom_progress" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/text_12_1d1d_semi_bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/dimen_4dp"
+            android:layout_weight="1.4"
+            android:text="@{rating.percentageText}" />
+
+    </LinearLayout>
+</layout>

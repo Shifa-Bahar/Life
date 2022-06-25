@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.profile.fragments.ClickProfileFragment" />
+
+    <variable
+      name="isLoggedIn"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="mVieModel"
+      type="com.lifepharmacy.application.ui.profile.viewmodel.ProfileViewModel" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:elevation="2dp"
+    android:paddingHorizontal="@dimen/dimen_16dp"
+    android:background="@drawable/white_with_round_corner_10">
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--      style="@style/text_12_accent_dark_semi_bole"-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:drawableStart="@drawable/ic_orders"-->
+<!--      android:drawableEnd="@drawable/ic_forward_arrow"-->
+<!--      android:drawablePadding="@dimen/dimen_20dp"-->
+<!--      android:onClick="@{()->click.onClickOrders()}"-->
+<!--      android:paddingVertical="@dimen/dimen_10dp"-->
+<!--      android:text="@string/orders"-->
+<!--      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />-->
+
+<!--    <View-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="0.5dp"-->
+<!--      android:background="@color/color_e8e8"-->
+<!--      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:drawableStart="@drawable/ic_address_pin"
+      android:drawableEnd="@drawable/ic_forward_arrow"
+      android:drawablePadding="@dimen/dimen_20dp"
+      android:onClick="@{()->click.onClickAddress()}"
+      android:paddingVertical="@dimen/dimen_16dp"
+      android:text="@string/address"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/color_e8e8"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:drawableStart="@drawable/ic_ecomerce_bag"
+      android:drawableEnd="@drawable/ic_forward_arrow"
+      android:drawablePadding="@dimen/dimen_20dp"
+      android:onClick="@{()->click.onClickBuyItAgain()}"
+      android:paddingVertical="@dimen/dimen_16dp"
+      android:text="@string/buy_it_again"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/color_e8e8"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:drawableStart="@drawable/ic_wallet_profile"
+      android:drawableEnd="@drawable/ic_forward_arrow"
+      android:drawablePadding="@dimen/dimen_20dp"
+      android:onClick="@{()->click.onClickWallet()}"
+      android:paddingVertical="@dimen/dimen_16dp"
+      android:text="@string/wallet"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/color_e8e8"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--      style="@style/text_12_accent_dark_semi_bole"-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:drawableStart="@drawable/ic_gift_ic"-->
+<!--      android:drawableEnd="@drawable/ic_forward_arrow"-->
+<!--      android:drawablePadding="@dimen/dimen_20dp"-->
+<!--      android:onClick="@{()->click.onClickVouchers()}"-->
+<!--      android:paddingVertical="@dimen/dimen_10dp"-->
+<!--      android:text="@string/vouchers"-->
+<!--      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />-->
+
+<!--    <View-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="0.5dp"-->
+<!--      android:background="@color/color_e8e8"-->
+<!--      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:drawableStart="@drawable/ic_resource_return"
+      android:drawableEnd="@drawable/ic_forward_arrow"
+      android:drawablePadding="@dimen/dimen_20dp"
+      android:onClick="@{()->click.onClickReturns()}"
+      android:paddingVertical="@dimen/dimen_16dp"
+      android:text="@string/returns"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+    <View
+
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/color_e8e8"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--      style="@style/text_12_accent_dark_semi_bole"-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:drawableStart="@drawable/ic_notifications"-->
+<!--      android:drawableEnd="@drawable/ic_forward_arrow"-->
+<!--      android:drawablePadding="@dimen/dimen_20dp"-->
+<!--      android:onClick="@{()->click.onClickNotifications()}"-->
+<!--      android:paddingVertical="@dimen/dimen_10dp"-->
+<!--      android:text="@string/notifications"-->
+<!--      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:drawableStart="@drawable/ic_appointment_icon"
+      android:drawableEnd="@drawable/ic_forward_arrow"
+      android:drawablePadding="@dimen/dimen_20dp"
+      android:onClick="@{()->click.onClickAppoinment()}"
+      android:paddingVertical="@dimen/dimen_16dp"
+      android:text="Appoinment"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+    <View
+
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/color_e8e8"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+<!--    android:visibility="@{mVieModel.isoutletEnabled &amp;&amp; isLoggedIn ? View.VISIBLE : View.GONE}"-->
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_membership"
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:drawableStart="@drawable/ic_membership"
+      android:drawableEnd="@drawable/ic_forward_arrow"
+      android:drawablePadding="@dimen/dimen_20dp"
+      android:onClick="@{()->click.onClickOutlet()}"
+      android:paddingVertical="@dimen/dimen_16dp"
+      android:text="Membership" />
+<!--    android:visibility="@{mVieModel.isoutletEnabled &amp;&amp; isLoggedIn ? View.VISIBLE : View.GONE}"-->
+    <View
+      android:id="@+id/tv_memview"
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/color_e8e8"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:drawableStart="@drawable/ic_heart"
+      android:drawableEnd="@drawable/ic_forward_arrow"
+      android:drawablePadding="@dimen/dimen_20dp"
+      android:onClick="@{()->click.onClickWishList()}"
+      android:paddingVertical="@dimen/dimen_16dp"
+      android:text="@string/wishlist"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+    <View
+
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/color_e8e8"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--      style="@style/text_12_accent_dark_semi_bole"-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:layout_marginStart="@dimen/dimen_4dp"-->
+<!--      android:drawableStart="@drawable/ic_documents"-->
+<!--      android:drawableEnd="@drawable/ic_forward_arrow"-->
+<!--      android:drawablePadding="@dimen/dimen_20dp"-->
+<!--      android:onClick="@{()->click.onClickDocuments()}"-->
+<!--      android:paddingVertical="@dimen/dimen_10dp"-->
+<!--      android:text="@string/documents"-->
+<!--      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />-->
+<!--    <View-->
+
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="0.5dp"-->
+<!--      android:background="@color/color_e8e8"-->
+<!--      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--      style="@style/text_12_accent_dark_semi_bole"-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:layout_marginStart="@dimen/dimen_4dp"-->
+<!--      android:drawableStart="@drawable/ic_phone"-->
+<!--      android:drawableEnd="@drawable/ic_forward_arrow"-->
+<!--      android:drawablePadding="@dimen/dimen_20dp"-->
+<!--      android:onClick="@{()->click.onClickContactUs()}"-->
+<!--      android:paddingVertical="@dimen/dimen_10dp"-->
+<!--      android:text="@string/contact_us" />-->
+
+<!--    <View-->
+
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="0.5dp"-->
+<!--      android:background="@color/color_e8e8" />-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:drawableStart="@drawable/ic_alert"
+      android:drawableEnd="@drawable/ic_forward_arrow"
+      android:drawablePadding="@dimen/dimen_20dp"
+      android:visibility="gone"
+      android:onClick="@{()->click.onClickAboutUs()}"
+      android:paddingVertical="@dimen/dimen_10dp"
+      android:text="@string/about_us" />
+    <View
+
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/color_e8e8"
+      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:drawableStart="@drawable/ic_phone"
+      android:drawableEnd="@drawable/ic_forward_arrow"
+      android:drawablePadding="@dimen/dimen_20dp"
+      android:onClick="@{()->click.onClickLiveChat()}"
+      android:paddingVertical="@dimen/dimen_16dp"
+      android:text="@string/chat_with_us" />
+
+<!--    <View-->
+
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="0.5dp"-->
+<!--      android:background="@color/color_e8e8" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--      style="@style/text_12_accent_dark_semi_bole"-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:layout_marginStart="@dimen/dimen_4dp"-->
+<!--      android:drawableStart="@drawable/ic_logout"-->
+<!--      android:drawablePadding="@dimen/dimen_20dp"-->
+<!--      android:onClick="@{()->click.onClickLogout()}"-->
+<!--      android:paddingTop="@dimen/dimen_10dp"-->
+<!--      android:text="@string/logout"-->
+<!--      android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />-->
+
+  </LinearLayout>
+</layout>

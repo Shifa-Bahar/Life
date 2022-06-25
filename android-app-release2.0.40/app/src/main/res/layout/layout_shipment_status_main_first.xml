@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.SubOrderItem" />
+  </data>
+
+  <androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dimen_6dp"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:orientation="horizontal"
+      android:weightSum="6">
+
+      <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dimen_2dp"
+        android:layout_weight="1"
+        android:background="@{item.status+2>1 ? @color/color_1ec :@color/grey }" />
+
+      <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dimen_2dp"
+        android:layout_weight="1"
+        android:background="@{item.status+2>2 ? @color/color_1ec :@color/grey }" />
+
+      <View
+        android:id="@+id/view5"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dimen_2dp"
+        android:layout_weight="1"
+        android:background="@{item.status+2>3 ? @color/color_1ec :@color/grey }" />
+
+      <View
+        android:id="@+id/view6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dimen_2dp"
+        android:layout_weight="1"
+        android:background="@{item.status+2>4 ? @color/color_1ec :@color/grey }" />
+
+      <View
+        android:id="@+id/view7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dimen_2dp"
+        android:layout_weight="1"
+        android:background="@{item.status+2>5 ? @color/color_1ec :@color/grey }" />
+
+      <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dimen_2dp"
+        android:layout_weight="1"
+        android:background="@{item.status+2>6 ? @color/color_1ec :@color/grey }" />
+
+      <!--          <kr.co.prnd.StepProgressBar-->
+      <!--            android:id="@+id/imageView30"-->
+      <!--            android:layout_width="match_parent"-->
+      <!--            android:layout_height="@dimen/dimen_6dp"-->
+
+      <!--            android:scaleType="fitXY"-->
+      <!--            app:max="6"-->
+      <!--            app:srcCompat="@drawable/green_status_bar"-->
+      <!--            app:step="2"-->
+      <!--            app:stepDoneColor="@color/color_1ec"-->
+      <!--            app:stepMargin="8dp"-->
+      <!--            app:stepUndoneColor="@color/grey" >-->
+      <!--          </kr.co.prnd.StepProgressBar>-->
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:orientation="horizontal">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView64"
+        style="@style/text_12_white_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@{item.statusLabel}"
+        android:textColor="@color/color_1ec"
+        app:textAllCaps="true" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView63"
+        style="@style/text_12_93A_open_regular"
+        setShipmentStatusDeliveryLabel="@{item}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAlignment="textEnd"
+        android:visibility="@{item.shipment == null ? View.GONE : View.VISIBLE}"
+        tools:text="Expected delivery" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_date"
+        style="@style/text_12_white_bold"
+        setShipmentStatusDeliveryDate="@{item}"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dimen_4dp"
+        android:textAlignment="textEnd"
+        android:textColor="@color/color_1ec"
+        android:visibility="@{item.shipment == null ? View.GONE : View.VISIBLE}"
+        tools:text="12345467" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:orientation="horizontal"
+      android:visibility="@{item.shipment.driver !=  null &amp;&amp; item.shipment.status == 5  ? View.VISIBLE : View.GONE}">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView66"
+        style="@style/text_12_93A_open_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@{item.statusLabel + ` by `}" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView65"
+        style="@style/text_12_93A_open_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@{item.shipment.driver.name}"
+        android:textAlignment="textEnd" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="@dimen/dimen_4dp"
+      android:orientation="horizontal"
+      android:visibility="@{item.status == 5 ? View.VISIBLE : View.GONE}"
+      tools:visibility="visible">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView68"
+        style="@style/text_12_93A_open_regular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:text="@string/rate_your_experience" />
+
+      <com.willy.ratingbar.ScaleRatingBar
+        android:id="@+id/simpleRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="@{item.shipment.rating == null ? true : false}"
+        app:srb_clearRatingEnabled="true"
+        app:srb_drawableEmpty="@drawable/ic_star"
+        app:srb_drawableFilled="@drawable/ic_star_fill"
+        app:srb_minimumStars="0"
+        app:srb_numStars="5"
+        app:srb_rating="0"
+        app:srb_starHeight="@dimen/dimen_16dp"
+        app:srb_starPadding="3dp"
+        app:srb_starWidth="@dimen/dimen_16dp"
+        app:srb_stepSize="1">
+
+      </com.willy.ratingbar.ScaleRatingBar>
+
+    </LinearLayout>
+
+    <View
+      android:id="@+id/divider45"
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:layout_marginTop="@dimen/dimen_16dp"
+      android:background="?android:attr/listDivider" />
+
+  </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

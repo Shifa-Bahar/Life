@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.cart.OffersCartModel" />
+
+    <variable
+      name="price"
+      type="com.lifepharmacy.application.model.home.Price" />
+
+    <variable
+      name="isChecked"
+      type="Boolean" />
+    <variable
+      name="position"
+      type="int" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.adapter.ClickOfferCartProduct" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      app:cardBackgroundColor="@color/color_e9f"
+      app:cardCornerRadius="@dimen/dimen_5dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@drawable/bg_info_border"
+        android:orientation="vertical"
+        >
+
+<!--        android:background="@{!item.valid?@drawable/bg_info_border : @drawable/bg_transparent}"-->
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_with_round_corner"
+            android:elevation="2dp"
+            android:paddingHorizontal="@dimen/dimen_16dp"
+            android:paddingVertical="@dimen/dimen_8dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/imageView49"
+              android:layout_width="@dimen/dimen_56dp"
+              android:visibility="@{item.instant ? View.VISIBLE : View.GONE}"
+              android:src="@{item.instant ? @drawable/ic_instant_tag : @drawable/ic_express_tag}"
+              android:layout_height="@dimen/dimen_16dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:srcCompat="@drawable/ic_instant_tag" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView135"
+              style="@style/text_12_accent_dark_semi_bole"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              setOffersTag="@{item.offers}"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:text="Buy 2 Get 2 " />
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintTop_toTopOf="parent">
+
+
+              <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:orientation="horizontal">
+
+
+              </LinearLayout>
+            </LinearLayout>
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_sub_items"
+          android:layout_width="match_parent"
+          android:layout_marginHorizontal="@dimen/dimen_8dp"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
+          tools:itemCount="3"
+          tools:listitem="@layout/item_cart_offers_sub" />
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:layout_marginHorizontal="@dimen/dimen_8dp"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          android:layout_marginTop="@dimen/dimen_4dp"
+          android:orientation="horizontal">
+
+          <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/dimen_4dp"
+            android:background="@drawable/bg_rect_e8e8"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/dimen_16dp"
+            android:paddingVertical="@dimen/dimen_8dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView140"
+              style="@style/text_10_accent_dark_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginHorizontal="@dimen/dimen_4dp"
+              android:layout_weight="1"
+              android:text="@string/you_saved"
+              android:textAlignment="textEnd" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_saved"
+              style="@style/text_10_00D_semi_bold"
+              setPriceWithPrefsCurrency="@{item.savedAmount}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text=""
+              android:textAlignment="textEnd"
+              tools:text="AED 40" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView8"
+              android:layout_weight="1"
+              style="@style/text_10_93a_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textAlignment="viewEnd"
+              android:layout_marginStart="@dimen/dimen_4dp"
+              android:text="@string/ex_vat"
+              tools:text="ex VAT" />
+            <!--            <androidx.appcompat.widget.AppCompatTextView-->
+            <!--              android:id="@+id/textView138"-->
+            <!--              style="@style/text_10_accent_dark_semi_bold"-->
+            <!--              android:layout_width="wrap_content"-->
+            <!--              android:layout_height="wrap_content"-->
+            <!--              android:text="@string/total" />-->
+
+            <!--            <androidx.appcompat.widget.AppCompatTextView-->
+            <!--              android:id="@+id/tv_total"-->
+            <!--              style="@style/text_10_accent_dark_semi_bold"-->
+            <!--              setPriceWithPrefsCurrency="@{item.completeTotal}"-->
+            <!--              android:layout_width="wrap_content"-->
+            <!--              android:layout_height="wrap_content"-->
+            <!--              android:layout_marginHorizontal="@dimen/dimen_4dp"-->
+            <!--              tools:text="AED 80" />-->
+
+            <!--            <androidx.appcompat.widget.AppCompatTextView-->
+            <!--              android:id="@+id/tv_payable"-->
+            <!--              style="@style/text_10_ff00_semi_bold"-->
+            <!--              setPriceWithPrefsCurrency="@{item.payableTotal}"-->
+            <!--              android:layout_width="wrap_content"-->
+            <!--              android:layout_height="wrap_content"-->
+            <!--              tools:text="AED 40" />-->
+          </LinearLayout>
+
+          <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_add_more"
+            style="@style/green36cBotton"
+            android:textSize="10sp"
+            android:layout_marginStart="@dimen/dimen_4dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_30dp"
+            android:text="@string/add_more_save_more"
+            android:textAllCaps="true"
+            android:onClick="@{()->click.onClickAddMore(item,position)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SmallSp" />
+
+        </LinearLayout>
+      </LinearLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

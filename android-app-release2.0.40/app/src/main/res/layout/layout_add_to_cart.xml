@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="qty"
+      type="androidx.databinding.ObservableField&lt;Double&gt;" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.product.ProductDetails" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.interfaces.ClickAddToCart" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_2dp"
+    android:background="@color/white"
+    android:elevation="@dimen/dimen_4dp">
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/button7"
+      setNotifyBellVisibility="@{item}"
+      android:layout_width="@dimen/dimen_120dp"
+      android:layout_height="@dimen/dimen_36dp"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      android:layout_marginEnd="@dimen/dimen_16dp"
+      android:background="@drawable/ic_notify_me"
+      android:onClick="@{()->click.onClickNotify()}"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView128"
+      style="@style/text_16_accent_dark_bold"
+      setSoldOutTextVisibility="@{item}"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:layout_marginBottom="@dimen/dimen_8dp"
+      android:text="@string/sold_out"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/btn_order"
+      app:layout_constraintTop_toTopOf="parent"
+      app:textAllCaps="true"
+      tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout_quantity"
+      setClQTyVisibility="@{item.availability}"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      android:layout_marginStart="@dimen/dimen_12dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="visible">
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_minus"
+        style="@style/text_18_0025_bold"
+        android:layout_width="@dimen/dimen_36dp"
+        android:layout_height="@dimen/dimen_36dp"
+        android:background="@drawable/ic_accent_minu"
+        android:onClick="@{()->click.onCLickMinus()}"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_qty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_qty"
+        style="@style/text_18_1d1d_open_regular"
+        setQty="@{qty}"
+        android:layout_width="@dimen/dimen_50dp"
+        android:layout_height="@dimen/dimen_24dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+        app:layout_constraintStart_toEndOf="@+id/btn_minus"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_plus"
+        style="@style/text_18_ff_regular"
+        android:layout_width="@dimen/dimen_36dp"
+        android:layout_height="@dimen/dimen_36dp"
+        android:background="@drawable/ic_accent_plus"
+        android:gravity="center"
+        android:onClick="@{()->click.onCLickAdd()}"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_qty"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_order"
+      style="@style/orderOutOfStock"
+      setOrderOutOfStockVisibility="@{item}"
+      android:layout_width="@dimen/dimen_120dp"
+      android:layout_height="@dimen/dimen_36dp"
+      android:layout_marginStart="8dp"
+      android:onClick="@{()->click.onClickOrderOutOfStock()}"
+      android:textSize="@dimen/text_size_14sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_addToCart"
+      style="@style/text_16_white_opnesans_regular"
+      setAddCartVisibility="@{item.availability}"
+      android:layout_width="wrap_content"
+      android:layout_height="@dimen/dimen_36dp"
+      android:layout_marginEnd="@dimen/dimen_16dp"
+      android:background="@drawable/bg_button_accent"
+      android:gravity="center"
+      android:onClick="@{()->click.onCLickAddToCart()}"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      android:text="@string/add_to_cart"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="visible" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+

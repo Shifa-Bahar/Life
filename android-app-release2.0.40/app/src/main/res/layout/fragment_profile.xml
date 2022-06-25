@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="build"
+      type="String" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.profile.fragments.ClickProfileFragment" />
+
+    <variable
+      name="clickSocial"
+      type="com.lifepharmacy.application.ui.profile.fragments.ClickSocialMedia" />
+
+    <variable
+      name="isLoggedIn"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backGroundColor">
+
+    <androidx.core.widget.NestedScrollView
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="@color/backGroundColor"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backGroundColor"
+        android:orientation="vertical">
+
+        <include
+          android:id="@+id/ly_header"
+          layout="@layout/layout_profile_header"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginHorizontal="@dimen/dimen_40dp"
+          android:orientation="horizontal"
+          android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}"
+          android:weightSum="3">
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="@{()->click.onClickOrders()}"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/imageView67"
+              android:layout_width="@dimen/dimen_60dp"
+              android:layout_height="@dimen/dimen_60dp"
+              android:background="@drawable/accent_50_alpha_full_round"
+              android:elevation="2dp"
+              android:padding="@dimen/dimen_20dp"
+              app:srcCompat="@drawable/ic_orders"
+              app:tint="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView41"
+              style="@style/text_14_accent_dark_semi_bold"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dimen_4dp"
+              android:onClick="@{()->click.onClickOrders()}"
+              android:text="@string/orders"
+              android:textAlignment="center" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="@{()->click.onClickVouchers()}"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/imageView68"
+              android:layout_width="@dimen/dimen_60dp"
+              android:layout_height="@dimen/dimen_60dp"
+              android:background="@drawable/accent_50_alpha_full_round"
+              android:elevation="2dp"
+              android:padding="@dimen/dimen_20dp"
+              app:srcCompat="@drawable/ic_gift_ic"
+              app:tint="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView177"
+              style="@style/text_14_accent_dark_semi_bold"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dimen_4dp"
+              android:text="@string/vouchers"
+              android:textAlignment="center" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="@{()->click.onClickRewards()}"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/imageView69"
+              android:layout_width="@dimen/dimen_60dp"
+              android:layout_height="@dimen/dimen_60dp"
+              android:background="@drawable/accent_50_alpha_full_round"
+              android:elevation="2dp"
+              android:padding="@dimen/dimen_20dp"
+              app:srcCompat="@drawable/ic_rewardicon"
+              app:tint="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView178"
+              style="@style/text_14_accent_dark_semi_bold"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dimen_4dp"
+              android:text="Rewards"
+              android:textAlignment="center" />
+          </LinearLayout>
+        </LinearLayout>
+
+        <include
+          android:id="@+id/ly_options"
+          layout="@layout/layout_profile_options"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_16dp"
+          android:layout_marginVertical="@dimen/dimen_16dp"
+          android:elevation="2dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/ly_header" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_16dp"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:background="@drawable/white_with_round_corner_10"
+          android:drawableStart="@drawable/ic_logout"
+          android:drawablePadding="@dimen/dimen_20dp"
+          android:elevation="2dp"
+          android:onClick="@{()->click.onClickLogout()}"
+          android:paddingHorizontal="@dimen/dimen_16dp"
+          android:paddingVertical="@dimen/dimen_16dp"
+          android:text="@string/logout"
+          android:visibility="@{isLoggedIn ? View.VISIBLE : View.GONE}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_40dp"
+          android:layout_marginTop="@dimen/dimen_16dp"
+          android:paddingHorizontal="@dimen/dimen_16dp"
+          android:paddingVertical="@dimen/dimen_8dp">
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView70"
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:onClick="@{()->clickSocial.onClickFacebook()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_facebook" />
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView71"
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:onClick="@{()->clickSocial.onClickTwitter()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_twitter" />
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView72"
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:onClick="@{()->clickSocial.onClickInstagram()}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView71"
+            app:layout_constraintEnd_toStartOf="@+id/imageView71"
+            app:layout_constraintStart_toEndOf="@+id/imageView73"
+            app:layout_constraintTop_toTopOf="@+id/imageView71"
+            app:srcCompat="@drawable/ic_instagram" />
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView73"
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:onClick="@{()->clickSocial.onClickLinkedIn()}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView70"
+            app:layout_constraintEnd_toStartOf="@+id/imageView72"
+            app:layout_constraintStart_toEndOf="@+id/imageView70"
+            app:layout_constraintTop_toTopOf="@+id/imageView70"
+            app:srcCompat="@drawable/ic_linkedin" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+          style="@style/text_12_blue_dark_open_regular"
+          android:layout_width="match_parent"
+          android:onClick="@{()->clickSocial.onClickTermsAndConditions()}"
+          android:layout_height="wrap_content"
+          android:paddingVertical="@dimen/dimen_8dp"
+          android:text="@string/terms_and_condition"
+          android:textAlignment="center" />
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView174"
+          style="@style/text_12_8585_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingVertical="@dimen/dimen_16dp"
+          android:text="@{build}"
+          android:textAlignment="center" />
+      </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_login"
+      style="@style/blueBotton"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:layout_marginBottom="8dp"
+      android:onClick="@{()->click.onClickLogin()}"
+      android:text="@string/login"
+      android:textAlignment="center"
+      android:textAllCaps="false"
+      android:visibility="@{!isLoggedIn ? View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:visibility="gone" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

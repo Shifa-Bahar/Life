@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isSelected"
+      type="Boolean" />
+
+    <variable
+      name="position"
+      type="int" />
+
+    <variable
+      name="isLast"
+      type="Boolean" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.config.DeliverySlot" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.adapter.ClickDeliverySlot" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      setConstraintLayoutAlpha="@{item.isActive}"
+      tools:alpha="1.0"
+      android:clickable="@{item.isActive?true:false}"
+      android:layout_marginTop="@dimen/dimen_4dp"
+      android:onClick="@{()->click.onClickSlot(item,position)}">
+
+      <ImageView
+        android:id="@+id/imageView95"
+        android:layout_width="@dimen/dimen_20dp"
+        android:layout_height="@dimen/dimen_20dp"
+        android:layout_marginEnd="8dp"
+        android:src="@{isSelected?@drawable/ic_checked_with_grey_circle:@drawable/ic_blue_cirle}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_blue_cirle" />
+
+      <ImageView
+        android:id="@+id/img_later"
+        android:layout_width="@dimen/dimen_30dp"
+        android:layout_height="@dimen/dimen_30dp"
+        android:src="@{item.slotId==1?@drawable/ic_ligting_round:@drawable/ic_clock_pink_round}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_ligting_round" />
+
+      <LinearLayout
+        android:id="@+id/linearLayout36"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView95"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/img_later"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            style="@style/text_14_accent_dark_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.title}"
+            tools:text="Deliver Later | Free" />
+
+          <TextView
+            android:id="@+id/textView251"
+            style="@style/text_12_color_1ec_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:background="@drawable/ic_green_border_rect"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/dimen_8dp"
+            android:paddingVertical="@dimen/dimen_2dp"
+            android:text="@{item.label}"
+            android:textAllCaps="true"
+            android:visibility="@{item.label == null || item.label.equals(``)?View.INVISIBLE  :View.VISIBLE}"
+            tools:text="Save aed 3" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+          style="@style/text_12_7070_regular"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_2dp"
+          android:text="@{item.subtitle}"
+          android:visibility="@{!item.isActive?View.GONE:View.VISIBLE}"
+          app:layout_constraintStart_toStartOf="parent"
+          tools:text="Get in 1-2 hours" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView252"
+          android:visibility="@{item.isActive?View.GONE:View.VISIBLE}"
+          android:textAllCaps="true"
+          style="@style/text_12_ff00_semi_bold"
+          android:layout_marginTop="@dimen/dimen_2dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/currently_unavailable" />
+      </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dimen_0.5dp"
+      android:layout_marginVertical="@dimen/dimen_10dp"
+      android:background="@color/grey_font"
+      android:visibility="@{isLast?View.GONE:View.VISIBLE}" />
+  </LinearLayout>
+
+
+</layout>

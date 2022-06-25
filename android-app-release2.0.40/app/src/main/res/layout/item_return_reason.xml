@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="type"
+      type="String" />
+
+    <variable
+      name="isChecked"
+      type="Boolean" />
+
+    <variable
+      name="position"
+      type="int" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.orders.adapters.ClickReturnReason" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:onClick="@{()->click.onClickReason(position,type)}">
+
+    <!--        android:src="@{isChecked ? @drawable/ic_checked :@drawable/check_square }"-->
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/img_icon"
+      android:layout_width="@dimen/dimen_15dp"
+      android:layout_height="@dimen/dimen_15dp"
+      android:layout_marginStart="8dp"
+      android:onClick="@{()->click.onClickReason(position,type)}"
+      android:src="@{isChecked ? @drawable/ic_checked :@drawable/ic_squar_rec_blue }"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_type"
+      style="@style/text_12_blue_dark_open_regular"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_weight="1"
+      android:background="@color/transparent"
+      android:inputType="phone"
+      android:onClick="@{()->click.onClickReason(position,type)}"
+      android:paddingVertical="@dimen/dimen_8dp"
+      android:text="@{type}"
+      android:textAlignment="textStart"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/img_icon"
+      app:layout_constraintTop_toTopOf="parent" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

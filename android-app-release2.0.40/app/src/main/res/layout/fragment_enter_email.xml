@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.auth.fragments.ClickEmailFragment" />
+
+    <variable
+      name="email"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/ic_med_back">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/ly_email"
+      style="@style/TextInputLayoutStyle"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      app:errorEnabled="true"
+      app:errorTextColor="@color/black"
+      app:hintAnimationEnabled="false"
+      app:hintEnabled="false"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/ly_top_bar">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ed_email"
+        style="@style/text_16_1d1d_semi_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/bg_rect_93_5_corner"
+        android:drawableEnd="@{email.value.empty ? @drawable/bg_oval : !email.error ? @drawable/ic_blue_checked : @drawable/ic_cancel}"
+        android:drawablePadding="@dimen/dimen_8dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="@dimen/dimen_12dp"
+        android:text="@={email.value}"
+        android:textAlignment="textStart"
+        android:textCursorDrawable="@drawable/black_cursor"
+        android:theme="@style/MyEditText"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ccp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:textChangedListener="@{email.textWatcher}" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <include
+      android:id="@+id/ly_top_bar"
+      layout="@layout/layout_toolbar_transparent"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView107"
+      style="@style/text_12_1d1d_regular"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:text="@string/code_send_email_title"
+      android:textAlignment="center"
+      app:layout_constraintEnd_toEndOf="@+id/ly_email"
+      app:layout_constraintStart_toStartOf="@+id/ly_email"
+      app:layout_constraintTop_toBottomOf="@+id/ly_email" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/button2"
+      style="@style/blueBotton"
+      setAlpha="@{!email.error}"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/button_height"
+      android:layout_marginBottom="@dimen/dimen_16dp"
+      android:onClick="@{()->click.onClickContinue()}"
+      android:text="@string/continue1"
+      android:textAllCaps="true"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/ly_email"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="@+id/ly_email"
+      app:layout_constraintVertical_bias="0.0" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

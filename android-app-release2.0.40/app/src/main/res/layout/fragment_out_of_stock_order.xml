@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="addressViewModel"
+      type="com.lifepharmacy.application.ui.address.AddressViewModel" />
+
+    <variable
+      name="topViewModel"
+      type="com.lifepharmacy.application.ui.wallet.viewmodels.TopViewModel" />
+
+    <variable
+      name="profileViewModel"
+      type="com.lifepharmacy.application.ui.profile.viewmodel.ProfileViewModel" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.outofstockorder.OutOfStockOrderViewModel" />
+
+    <variable
+      name="isLoggedIn"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.outofstockorder.ClickOrderOutOfStockFragment" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/backGroundColor">
+
+    <androidx.core.widget.NestedScrollView
+      android:id="@+id/nestedScrollView"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:fillViewport="true"
+      app:layout_constraintBottom_toTopOf="@+id/cardView2"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toll_bar">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_8dp"
+            android:layout_marginVertical="@dimen/dimen_8dp"
+            android:background="@drawable/bg_pink_ffe6e6_round_corner_10dp"
+            android:paddingVertical="@dimen/dimen_8dp"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView221"
+              style="@style/text_12_accent_dark_semi_bole"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_marginHorizontal="@dimen/dimen_8dp"
+              android:drawableStart="@drawable/ic_info_squar"
+              android:drawablePadding="@dimen/dimen_8dp"
+              android:gravity="center_vertical"
+              android:text="@string/out_of_stock_order_string"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent" />
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+          <androidx.cardview.widget.CardView
+            android:id="@+id/cl_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_8dp"
+            android:layout_marginVertical="@dimen/dimen_8dp"
+            android:animateLayoutChanges="true"
+            app:cardCornerRadius="@dimen/dimen_10dp"
+            tools:visibility="visible">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:id="@+id/constraintLayout4"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingHorizontal="@dimen/dimen_8dp"
+              android:paddingVertical="@dimen/dimen_8dp"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="@+id/cardView7">
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_remove"
+                style="@style/text_12_accent_dark_semi_bole"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="@string/remove"
+                android:textAlignment="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/divider2"
+                app:layout_constraintStart_toStartOf="@+id/img_product"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_move_wishlist"
+                style="@style/text_12_accent_dark_semi_bole"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/move_to_wishlist"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_remove"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+                app:layout_constraintStart_toEndOf="@+id/divider2"
+                app:layout_constraintTop_toTopOf="@+id/tv_remove" />
+
+              <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_product"
+                errorImage="@{@drawable/image_place_holder}"
+                loadImageFromURl="@{viewModel.outOfStockCartItem.productDetails.images.featuredImage}"
+                android:layout_width="@dimen/dimen_80dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="@dimen/dimen_4dp"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+              <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView24"
+                android:layout_width="@dimen/dimen_8dp"
+                android:layout_height="@dimen/dimen_8dp"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginBottom="@dimen/dimen_8dp"
+                android:visibility="@{viewModel.outOfStockCartItem.productDetails.getRatingInInt()>2.0?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/img_product"
+                app:layout_constraintStart_toStartOf="@+id/img_product"
+                app:srcCompat="@drawable/ic_star_fill" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_ratings"
+                style="@style/text_10_accent_dark_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_2dp"
+                android:layout_marginBottom="@dimen/dimen_6dp"
+                android:text="@{viewModel.outOfStockCartItem.productDetails.rating}"
+                android:visibility="@{viewModel.outOfStockCartItem.productDetails.getRatingInInt()>2.0?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/img_product"
+                app:layout_constraintStart_toEndOf="@+id/imageView24" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_product_name"
+                style="@style/text_13_accent_dark_regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:text="@{viewModel.outOfStockCartItem.productDetails.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_product"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Puressentiel Purifying Antibacterial Lotion Spray Hands and Surfaces " />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_tags"
+                style="@style/text_8_accent_dark_semi_bole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_0dp"
+                android:layout_marginEnd="@dimen/dimen_6dp"
+                android:background="@drawable/ic_tag_rect"
+
+                android:paddingHorizontal="@dimen/dp_10"
+                android:paddingVertical="@dimen/dimen_6dp"
+                android:text="@{@string/buy+` `+viewModel.outOfStockCartItem.productDetails.offers.xValue +` `+@string/get + ` `++viewModel.outOfStockCartItem.productDetails.offers.yValue}"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/tv_product_name"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_product_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_product_name"
+                tools:text="Buy 2 Get 1 " />
+
+              <LinearLayout
+                android:id="@+id/linearLayout9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/img_product"
+                app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+                app:layout_constraintStart_toStartOf="@+id/tv_product_name"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                  style="@style/text_14_accent_dark_open_regular"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_vertical"
+                  android:text="@{viewModel.price.currency}"
+                  tools:text="Dummy" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                  android:id="@+id/tv_price"
+                  style="@style/text_14_0025_open_semi_bold"
+                  android:text="@{viewModel.outOfStockCartItem.productDetails.unitPrice+``}"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_vertical"
+                  android:layout_marginStart="@dimen/dimen_4dp"
+                  tools:text="Dummy" />
+<!--                offers="@{viewModel.outOfStockCartItem.productDetails.offers}"-->
+<!--                product="@{viewModel.outOfStockCartItem.productDetails}"-->
+<!--                setFormatePrice="@{viewModel.price.price.offerPrice}"-->
+<!--                <androidx.appcompat.widget.AppCompatTextView-->
+<!--                  android:id="@+id/tv_orignal_price"-->
+<!--                  style="@style/text_10_8585_semi_bold"-->
+<!--                  offers="@{viewModel.outOfStockCartItem.productDetails.offers}"-->
+<!--                  product="@{viewModel.outOfStockCartItem.productDetails}"-->
+<!--                  setRegularPrice="@{viewModel.price.price.regularPrice}"-->
+<!--                  android:layout_width="wrap_content"-->
+<!--                  android:layout_height="wrap_content"-->
+<!--                  android:layout_gravity="center_vertical"-->
+<!--                  android:layout_marginStart="@dimen/dimen_6dp"-->
+<!--                  tools:text="Dummy" />-->
+              </LinearLayout>
+
+              <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout9"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout9"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                  android:id="@+id/btn_minus"
+                  loadMinusORBasket="@{viewModel.outOfStockCartItem.getQtyInString()}"
+                  android:layout_width="@dimen/dimen_24dp"
+                  android:layout_height="@dimen/dimen_24dp"
+                  android:onClick="@{()->click.onClickMinus()}"
+                  android:text="-"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toStartOf="@+id/tv_qty"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintVertical_bias="0.0" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                  android:id="@+id/tv_qty"
+                  style="@style/text_18_1d1d_bold"
+                  android:layout_width="wrap_content"
+                  android:layout_height="@dimen/dimen_24dp"
+                  android:layout_marginStart="@dimen/dimen_8dp"
+                  android:layout_marginEnd="@dimen/dimen_8dp"
+                  android:gravity="center"
+                  android:text="@{viewModel.outOfStockCartItem.qty+``}"
+                  android:visibility="visible"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+                  app:layout_constraintStart_toEndOf="@+id/btn_minus"
+                  app:layout_constraintTop_toTopOf="parent"
+                  tools:text="1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/btn_plus"
+                  android:layout_width="@dimen/dimen_24dp"
+                  android:layout_height="@dimen/dimen_24dp"
+                  android:background="@drawable/ic_plus_flate"
+                  android:gravity="center"
+                  android:onClick="@{()->click.onClickPlus()}"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toEndOf="@+id/tv_qty"
+                  app:layout_constraintTop_toTopOf="parent" />
+              </androidx.constraintlayout.widget.ConstraintLayout>
+
+              <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_0.5dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@color/color_e8e8"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/tv_product_name"
+                app:layout_constraintStart_toStartOf="@+id/img_product"
+                app:layout_constraintTop_toBottomOf="@+id/img_product" />
+
+              <View
+                android:id="@+id/divider2"
+                android:layout_width="@dimen/dimen_0.5dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:background="@color/color_e8e8"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_move_wishlist"
+                app:layout_constraintStart_toEndOf="@+id/tv_remove"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+          </androidx.cardview.widget.CardView>
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{isLoggedIn &amp;&amp; addressViewModel.isThereAnyAddress ?View.VISIBLE:View.GONE}">
+
+            <androidx.cardview.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginHorizontal="@dimen/dimen_8dp"
+              android:layout_marginVertical="@dimen/dimen_4dp"
+              app:cardCornerRadius="@dimen/dimen_5dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent">
+
+              <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_transparent"
+                android:padding="@dimen/dp_10">
+
+                <LinearLayout
+                  android:id="@+id/linearLayout4"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent">
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dimen_4dp"
+                    android:orientation="horizontal"
+                    tools:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/textView23"
+                      style="@style/text_14_0025_open_semi_bold"
+                      android:layout_width="0dp"
+                      android:layout_gravity="center_vertical"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:paddingVertical="@dimen/dimen_4dp"
+                      android:minLines="1"
+                      android:text="@string/ship_to" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                      android:id="@+id/tv_change"
+                      style="@style/text_12_white_regular"
+                      android:layout_width="@dimen/dimen_30dp"
+                      android:layout_height="@dimen/dimen_30dp"
+                      android:onClick="@{()->click.onClickChangeAddress()}"
+                      android:paddingHorizontal="@dimen/dimen_8dp"
+                      android:paddingVertical="@dimen/dimen_4dp"
+                      android:rotation="-90"
+                      android:src="@drawable/ic_arrow_down"
+                      android:text="@string/change"
+                      android:textAllCaps="true"
+                      app:tint="@color/accent_blue" />
+                  </LinearLayout>
+
+                  <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/tv_address_title"
+                      style="@style/text_14_0025_open_semi_bold"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:drawableStart="@{addressViewModel.deliveredAddressMut.type.equals(`Work`) ? @drawable/ic_work_location : addressViewModel.deliveredAddressMut.type.equals(`Home`) ? @drawable/ic_home_location : @drawable/ic_fav_location }"
+                      android:drawablePadding="@dimen/dp_10"
+                      android:minLines="1"
+                      android:text="@{addressViewModel.deliveredAddressMut.type}"
+                      android:visibility="@{addressViewModel.deliveredAddressMut.type == null ? View.GONE : View.VISIBLE}"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent"
+                      tools:drawableStart="@drawable/ic_work_location"
+                      tools:text="Work" />
+                    <!--                        android:drawableStart="@{item.type == `Work` ? @drawable/ic_work_location : item.type == `Home` ? @drawable/ic_home_location : @drawable/ic_fav_location }"-->
+                  </androidx.constraintlayout.widget.ConstraintLayout>
+
+                  <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_address"
+                    style="@style/text_12_8585_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:minLines="2"
+                    android:text="@{addressViewModel.deliveredAddressMut.streetAddress+`,`+addressViewModel.deliveredAddressMut.area+`,`+addressViewModel.deliveredAddressMut.city }"
+                    android:visibility="@{addressViewModel.deliveredAddressMut.type == null ? View.GONE : View.VISIBLE}"
+                    tools:text="Marasi Drive, Business Bay, Dubai  " />
+
+                  <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_phone"
+                    style="@style/text_12_1d1d_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:minLines="1"
+                    android:text="@{addressViewModel.deliveredAddressMut.phone}"
+                    android:visibility="@{addressViewModel.deliveredAddressMut.type == null ? View.GONE : View.VISIBLE}"
+                    tools:text="+971-54-1234567" />
+                </LinearLayout>
+
+              </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            tools:visibility="visible">
+
+            <androidx.cardview.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginHorizontal="@dimen/dimen_10dp"
+              android:layout_marginVertical="@dimen/dimen_6dp"
+              app:cardCornerRadius="@dimen/dimen_10dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent">
+
+              <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                  android:id="@+id/textView20"
+                  style="@style/text_14_0025_open_semi_bold"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/payment_method"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent" />
+
+
+                <!--            <androidx.cardview.widget.CardView-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content" />-->
+
+                <LinearLayout
+                  android:id="@+id/linearLayout11"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/dp_10"
+                  android:orientation="vertical"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="@+id/textView20"
+                  app:layout_constraintTop_toBottomOf="@+id/textView20">
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{!viewModel.appManager.storageManagers.config.isCardEnabled ? View.GONE : View.VISIBLE}"
+                    tools:background="@color/white"
+                    tools:visibility="visible">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                      android:id="@+id/rv_cards"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:nestedScrollingEnabled="false"
+                      android:orientation="vertical"
+                      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent"
+                      app:spanCount="1"
+                      tools:itemCount="2"
+                      tools:listitem="@layout/item_card"
+                      tools:visibility="visible">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+                  </LinearLayout>
+
+                  <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rg_new_card"
+                    style="@style/text_12_1d1d_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:button="@drawable/simple_radio_selector"
+                    android:checked="@{viewModel.selectedPaymentType.name().toLowerCase().equals(`new`)?true:false}"
+                    android:drawableStart="@drawable/ic_card"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:paddingHorizontal="@dimen/dimen_10dp"
+                    android:text="@string/pay_via_new_card"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                  <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="0dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout11"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout11"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
+                    tools:visibility="gone">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent">
+
+                      <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/rg_cash"
+                        style="@style/text_12_1d1d_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:button="@drawable/simple_radio_selector"
+                        android:checked="@{viewModel.selectedPaymentType.name().toLowerCase().equals(`cash`)?true:false}"
+                        android:drawableStart="@drawable/ic_cash"
+                        android:drawablePadding="@dimen/dimen_10dp"
+                        android:paddingHorizontal="@dimen/dimen_10dp"
+                        android:text="@string/pay_with_cash"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                  </androidx.cardview.widget.CardView>
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{!viewModel.appManager.storageManagers.config.isWalletEnabled ||viewModel.appManager.persistenceManager.loggedInUser.walletBalance ==null || viewModel.appManager.persistenceManager.loggedInUser.walletBalance == 0 ? View.GONE : View.VISIBLE}"
+                    tools:background="@color/white"
+                    tools:visibility="visible">
+
+                    <androidx.cardview.widget.CardView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      app:cardCornerRadius="0dp"
+                      app:cardElevation="0dp"
+                      app:layout_constraintEnd_toEndOf="@+id/linearLayout11"
+                      app:layout_constraintStart_toStartOf="@+id/linearLayout11"
+                      app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+                      <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <!--              viewModel.selectedPaymentType.value = PaymentType.CARD-->
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                          android:id="@+id/rg_wallet"
+                          style="@style/text_12_1d1d_regular"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:background="@color/white"
+                          android:button="@drawable/simple_radio_selector"
+                          android:checked="@{viewModel.selectedPaymentType.name().toLowerCase().equals(`wallet`)||viewModel.selectedPaymentType.name().toLowerCase().equals(`wallet_with_less`)|| viewModel.selectedPaymentType.name().toLowerCase().equals(`new_for_wallet`)?true:false}"
+                          android:drawableStart="@drawable/ic_wallet_payment"
+                          android:drawablePadding="@dimen/dimen_10dp"
+                          android:paddingHorizontal="@dimen/dimen_10dp"
+                          android:text="@string/pay_with_wallet"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                          android:id="@+id/textView130"
+                          style="@style/text_12_accent_dark_semi_bole"
+                          setPriceWithPrefsCurrency="@{profileViewModel.appManager.persistenceManager.loggedInUser.walletBalance}"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:elevation="@dimen/dimen_4dp"
+                          app:layout_constraintBottom_toBottomOf="@+id/rg_wallet"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintTop_toTopOf="parent"
+                          tools:text="AED 30" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                          android:id="@+id/textView230"
+                          style="@style/text_12_accent_dark_semi_bole"
+                          setNotEnoughBalance="@{viewModel.walletDifference}"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dimen_4dp"
+                          android:visibility="@{viewModel.selectedPaymentType.name().toLowerCase().equals(`wallet_with_less`)?View.VISIBLE:View.GONE}"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintTop_toBottomOf="@+id/rg_wallet"
+                          tools:text="TeNot enough credit, pay remaining with cardxtView" />
+                      </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!--            setNotEnoughBalance="@{amount.value}"-->
+                  </LinearLayout>
+
+                </LinearLayout>
+
+              </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="@dimen/dp_10"
+              app:cardCornerRadius="@dimen/dp_10"
+
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent">
+
+              <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp_10">
+
+                <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent">
+
+                  <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_item_title"
+                    style="@style/text_14_0025_open_semi_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.paymentDetailsTitle}"
+                    tools:text="Price Details (3 Items)" />
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/textView5"
+                      style="@style/text_13_1d1d_regular"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:text="@{viewModel.paymentDetailsSubTotalTitle}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/tv_order_amount"
+                      style="@style/text_13_1d1d_regular"
+                      setPriceWithPrefsCurrency="@{viewModel.amountWithoutDiscount}"
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:textAlignment="viewEnd"
+                      tools:text="AED193.80" />
+                  </LinearLayout>
+
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1">
+
+                      <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textView17"
+                        style="@style/text_13_1d1d_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/shipping"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/textView12"
+                      style="@style/text_13_1d1d_regular"
+                      setPriceWithPrefsCurrency="@{viewModel.shipmentCharges}"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:textAlignment="viewEnd" />
+
+                  </LinearLayout>
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal"
+                    android:visibility="@{viewModel.selectedPaymentType.name().toLowerCase().equals(`cash`) ? View.VISIBLE: View.GONE}">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/textView7"
+                      style="@style/text_13_1d1d_regular"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:text="@string/cod" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/tv_cod"
+                      style="@style/text_13_1d1d_regular"
+                      setPriceWithPrefsCurrency="@{viewModel.codCharges}"
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:textAlignment="viewEnd"
+                      tools:text="AED 193.80" />
+                  </LinearLayout>
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/textView11"
+                      style="@style/text_13_1d1d_regular"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:text="@string/estimate_vat" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/tv_vat_amount"
+                      style="@style/text_13_1d1d_regular"
+                      setPriceWithPrefsCurrency="@{viewModel.vatPrices}"
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:textAlignment="viewEnd"
+                      tools:text="AED 193.80" />
+                  </LinearLayout>
+
+                  <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5dp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@color/color_e8e8" />
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1">
+
+                      <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textView120"
+                        style="@style/text_14_0025_open_semi_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_amount"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                      <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_vat_title"
+                        style="@style/text_12_8585_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_6dp"
+                        android:layout_weight="1"
+                        android:text="@string/inclusive_of_vat"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView120"
+                        app:layout_constraintStart_toEndOf="@+id/textView120" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                      android:id="@+id/textView15"
+                      style="@style/text_14_0025_open_semi_bold"
+                      setPriceWithPrefsCurrency="@{viewModel.totalAmount}"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:textAlignment="viewEnd"
+                      tools:text="AED 30.00" />
+                  </LinearLayout>
+                </LinearLayout>
+              </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_terms"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:onClick="@{()->click.onClickTerms()}"
+            android:paddingVertical="@dimen/dimen_8dp"
+            android:textAlignment="center"
+            tools:text="@string/terms_and_condition_small" />
+        </LinearLayout>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cardView2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:cardMaxElevation="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/btn_confirm"
+          style="@style/blueBotton"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/button_height"
+          android:layout_marginHorizontal="@dimen/dimen_16dp"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          android:onClick="@{()->click.onClickProceed()}"
+          android:text="@string/proceed"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <include
+      android:id="@+id/toll_bar"
+      layout="@layout/layout_top_back"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

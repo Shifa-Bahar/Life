@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="title"
+      type="String" />
+
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dimen_8dp"
+    android:background="@drawable/white_with_round_corner"
+    android:elevation="2dp"
+    android:paddingTop="@dimen/dimen_16dp"
+    android:paddingBottom="@dimen/dimen_8dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_title"
+      style="@style/text_15_blue_dark_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:paddingStart="@dimen/dimen_12dp"
+      android:paddingEnd="@dimen/dimen_0dp"
+      android:text="@{title}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Super Seller" />
+
+
+    <co.lujun.androidtagview.TagContainerLayout
+      android:id="@+id/tag_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="0dp"
+      android:background="@color/white"
+      android:padding="10dp"
+      app:container_enable_drag="false"
+      app:horizontal_interval="10dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_title"
+      app:tag_border_color="@color/grey"
+      app:container_background_color="@color/white"
+      app:container_border_color="@color/white"
+      app:tag_background_color="@color/white"
+      app:tag_clickable="true"
+      app:tag_text_color="@color/accent_blue_darker"
+      app:tag_theme="none"
+      app:vertical_interval="10dp" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

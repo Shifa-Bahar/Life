@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isSelected"
+      type="Boolean" />
+
+    <variable
+      name="position"
+      type="int" />
+
+    <variable
+      name="parentPosition"
+      type="int" />
+
+    <variable
+      name="count"
+      type="String" />
+
+    <variable
+      name="subtitle"
+      type="String" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.filters.FilterTypeModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.filters.adapters.ClickFilterType" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_main"
+    android:layout_width="wrap_content"
+    android:layout_marginHorizontal="@dimen/dimen_4dp"
+    android:layout_height="wrap_content"
+    android:background="@{!isSelected ? @drawable/bg_transparent : @drawable/bg_button_accent_50_apha}"
+    android:onClick="@{()->click.onClickFilterType(item,position)}"
+    android:paddingHorizontal="@dimen/dimen_6dp"
+    tools:background="@drawable/bg_button_accent_50_apha">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_title"
+      style="@style/text_12_white_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingVertical="@dimen/dimen_4dp"
+      android:text="@{item.title}"
+      app:layout_constraintEnd_toStartOf="@+id/tv_count"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Categories" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_count"
+      style="@style/text_14_white_open_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingHorizontal="@dimen/dimen_4dp"
+      android:text="@{`(`+count+`)`}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="(5)"
+      tools:visibility="visible" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

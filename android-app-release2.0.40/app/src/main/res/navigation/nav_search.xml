@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_search"
+  app:startDestination="@id/searchFragment">
+
+  <fragment
+    android:id="@+id/searchFragment"
+    tools:layout="@layout/fragment_search"
+    android:name="com.lifepharmacy.application.ui.search.SearchFragment"
+    android:label="SearchFragment" />
+<!--  <include app:graph="@navigation/nav_product"/>-->
+  <include app:graph="@navigation/nav_product_preview" />
+  <fragment
+    android:id="@+id/orderOutOFStockFragment"
+    tools:layout="@layout/fragment_out_of_stock_order"
+    android:name="com.lifepharmacy.application.ui.outofstockorder.OrderOutOFStockFragment"
+    android:label="OrderOutOFStockFragment" />
+  <dialog
+    android:id="@+id/orderWalletTopUpBottomSheet"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderWalletTopUpBottomSheet"
+    android:label="OrderWalletTopUpBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_wallet_top" />
+<!--  <include app:graph="@navigation/nav_product_listing" >-->
+<!--    <argument-->
+<!--      android:name="title"-->
+<!--      android:defaultValue="Super Sellers"-->
+<!--      app:argType="string" />-->
+<!--    <argument-->
+<!--      android:name="type"-->
+<!--      android:defaultValue=""-->
+<!--      app:argType="string" />-->
+<!--    <argument-->
+<!--      android:name="id"-->
+<!--      android:defaultValue=""-->
+<!--      app:argType="string" />-->
+<!--    <argument-->
+<!--      android:name="isSearch"-->
+<!--      app:argType="boolean"-->
+<!--      android:defaultValue="false" />-->
+<!--  </include>-->
+  <dialog
+    android:id="@+id/orderSummaryOutOfStockBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_summary_out_stock"
+    android:name="com.lifepharmacy.application.ui.outofstockorder.fragments.OrderSummaryOutOfStockBottomSheet"
+    android:label="OrderSummaryOutOfStockBottomSheet" />
+  <dialog
+    android:id="@+id/orderPlacedDialog"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderPlacedDialog"
+    android:label="OrderPlacedDialog"
+    tools:layout="@layout/dailog_order_placed" />
+</navigation>

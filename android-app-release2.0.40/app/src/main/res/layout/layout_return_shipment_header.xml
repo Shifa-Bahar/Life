@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isApproved"
+            type="Boolean" />
+
+        <variable
+            name="click"
+            type="com.lifepharmacy.application.ui.orders.adapters.ClickShipmentItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textView62"
+                        style="@style/text_14_accent_dark_semi_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Return  #123456789"
+                        android:textAlignment="textStart"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_date"
+                        style="@style/text_12_93A_open_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Placed on Jan 26, 2020"
+                        android:textAlignment="textStart"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/divider29"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="@dimen/dimen_8dp"
+                    android:background="@color/color_e8e8" />
+
+                <kr.co.prnd.StepProgressBar
+                    android:id="@+id/imageView30"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_6dp"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:scaleType="fitXY"
+                    android:visibility="@{!isApproved ? View.VISIBLE : View.GONE}"
+                    app:max="7"
+                    app:srcCompat="@drawable/green_status_bar"
+                    app:step="2"
+                    app:stepDoneColor="@color/accent_blue_darker"
+                    app:stepMargin="8dp"
+                    app:stepUndoneColor="@color/color_8585" >
+
+                </kr.co.prnd.StepProgressBar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:visibility="@{!isApproved ? View.VISIBLE : View.GONE}"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textView64"
+                        style="@style/text_12_accent_bole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Will be collected"
+                        app:textAllCaps="true" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textView63"
+                        style="@style/text_12_93A_open_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Will be collected "
+                        android:textAlignment="textEnd" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textView67"
+                        style="@style/text_12_accent_bole"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:text="Sat, Jan 26"
+                        android:textAlignment="textEnd" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_address_title2"
+                    style="@style/text_14_0025_open_semi_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:text="Pick Up address" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_address3"
+                    style="@style/text_12_8585_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:layout_marginEnd="@dimen/dimen_16dp"
+                    android:text="Name " />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_address2"
+                    style="@style/text_12_8585_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_16dp"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:text="Marasi Drive, Business Bay, Dubai address address address address  " />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_phone2"
+                    style="@style/text_12_1d1d_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:text="+971-54-1234567" />
+
+                <View
+                    android:id="@+id/divider22"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:background="?android:attr/listDivider" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

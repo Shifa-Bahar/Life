@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.rating.RatingsViewModel" />
+
+    <variable
+      name="review"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.rating.fragments.ClickProductReviewBottom" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_with_top_round_corner"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dimen_8dp"
+    android:paddingVertical="@dimen/dimen_16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView_icon"
+        errorImage="@{@drawable/image_place_holder}"
+        loadImageFromURl="@{viewModel.selectedSubOrderProductItem.productDetails.images.featuredImage}"
+        android:layout_width="@dimen/dimen_50dp"
+        android:layout_height="@dimen/dimen_50dp"
+        android:padding="@dimen/dimen_4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize15Percent"
+        app:srcCompat="@mipmap/dummy_image"
+        app:strokeColor="@color/color_93a3"
+        app:strokeWidth="1dp" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_product_name"
+        style="@style/text_12_blue_dark_open_regular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:text="@{viewModel.selectedSubOrderProductItem.productDetails.title}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_icon"
+        app:layout_constraintTop_toTopOf="@+id/imageView_icon"
+        tools:text="@string/product_added_to_cart" />
+
+      <com.willy.ratingbar.ScaleRatingBar
+        android:id="@+id/simpleRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_icon"
+        app:layout_constraintStart_toStartOf="@+id/tv_product_name"
+        app:srb_clearRatingEnabled="true"
+        app:srb_clickable="true"
+        app:srb_drawableEmpty="@drawable/ic_empty_start_3"
+        app:srb_drawableFilled="@drawable/ic_fill_star_3"
+        app:srb_isIndicator="false"
+        app:srb_minimumStars="0"
+        app:srb_numStars="5"
+        app:srb_scrollable="true"
+        app:srb_starHeight="@dimen/dimen_16dp"
+        app:srb_starPadding="3dp"
+        app:srb_starWidth="@dimen/dimen_16dp"
+        app:srb_stepSize="1">
+
+      </com.willy.ratingbar.ScaleRatingBar>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+      android:id="@+id/sw_anonymous"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:minHeight="@dimen/dimen_0dp"
+      android:paddingVertical="@dimen/dimen_6dp"
+      style="@style/text_12_93A_open_regular"
+      android:text="@string/review_anonymously" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginVertical="@dimen/dimen_10dp">
+
+      <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ed_review"
+        style="@style/text_12_black_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rect_e8e8"
+        android:gravity="start"
+        android:hint="@string/write_review"
+        android:minHeight="@dimen/dimen_120dp"
+        android:padding="@dimen/dimen_16dp"
+        android:text="@={review.value}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:textChangedListener="@{review.textWatcher}" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button8"
+        style="@style/blueBotton14SemiBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen_10dp"
+        android:onClick="@{()->click.onClickSubmit()}"
+        android:text="@string/submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_review" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </LinearLayout>
+</layout>

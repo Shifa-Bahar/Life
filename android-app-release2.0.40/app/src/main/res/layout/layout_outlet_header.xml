@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isHeartVisible"
+      type="Boolean" />
+    <variable
+      name="isLoggedIn"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="mVieModel"
+      type="com.lifepharmacy.application.ui.outlet.viewmodel.OutletViewModel" />
+
+    <variable
+      name="vieModel"
+      type="com.lifepharmacy.application.ui.outlet.viewmodel.OutletViewModel" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.profile.fragments.ClickProfileHeader" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cv_address"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginVertical="@dimen/dimen_4dp"
+      app:cardCornerRadius="@dimen/dimen_5dp"
+      app:cardBackgroundColor="@color/accent_blue_darker"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+
+<LinearLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical">
+
+<RelativeLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="horizontal">
+
+  <androidx.appcompat.widget.AppCompatImageView
+    android:id="@+id/outletlifelogo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dimen_4dp"
+    android:layout_marginTop="12dp"
+    android:padding="@dimen/dimen_4dp"
+    android:visibility="visible"
+    app:layout_constraintVertical_bias="0.423"
+    app:srcCompat="@drawable/ic_outletlifelogo"
+    tools:visibility="visible" />
+
+  <androidx.appcompat.widget.AppCompatImageView
+    android:id="@+id/iv_settings"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_marginStart="@dimen/dimen_4dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="@dimen/dimen_8dp"
+    android:padding="@dimen/dimen_4dp"
+    android:visibility="visible"
+    app:layout_constraintVertical_bias="0.423"
+    app:srcCompat="@drawable/ic_outletdelivery"
+    tools:visibility="visible" />
+
+</RelativeLayout>
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/color_e8e8"
+    android:layout_marginBottom="@dimen/dimen_4dp"
+    android:visibility="visible" />
+<LinearLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginTop="@dimen/dimen_14dp"
+  android:paddingBottom="@dimen/dimen_4dp"
+  android:layout_marginBottom="@dimen/dimen_4dp"
+  android:orientation="horizontal">
+<!--  loadImageFromURl="@{vieModel.userObjectMut.photo}"-->
+  <com.google.android.material.imageview.ShapeableImageView
+    android:id="@+id/iv_profile"
+    errorImage="@{@drawable/ic_profile_placeholder}"
+    android:layout_width="@dimen/dimen_80dp"
+    android:layout_height="@dimen/dimen_80dp"
+    android:layout_marginStart="@dimen/dimen_16dp"
+    android:scaleType="centerCrop"
+    app:layout_constraintBottom_toTopOf="@+id/divider13"
+    app:layout_constraintStart_toStartOf="parent"
+    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+    app:srcCompat="@drawable/ic_profile_placeholder"
+    tools:visibility="visible" />
+    <LinearLayout
+      android:id="@+id/linearLayout3"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:padding="@dimen/dimen_8dp"
+      android:layout_marginStart="@dimen/dimen_14dp"
+      android:onClick="@{()->click.onClickEdit()}"
+      android:orientation="vertical"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+      app:layout_constraintStart_toEndOf="@+id/iv_profile"
+      app:layout_constraintTop_toTopOf="@+id/iv_profile"
+      tools:visibility="visible">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/username"
+        style="@style/text_16_white_opnesans_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/dimen_8dp"
+        android:drawableTint="@color/white"
+        tools:text="Sarah Conner" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_date"
+        style="@style/text_12_white_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_4dp"
+        tools:text="valid till 14-04-2022" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+</LinearLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

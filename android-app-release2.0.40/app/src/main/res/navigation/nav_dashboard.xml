@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_dashboard"
+  app:startDestination="@id/nav_home">
+
+  <include app:graph="@navigation/nav_cart" />
+  <include app:graph="@navigation/nav_categories" />
+  <include app:graph="@navigation/nav_prescription" />
+  <include app:graph="@navigation/nav_home" />
+<!--  <navigation-->
+<!--    android:id="@+id/nav_home"-->
+<!--    app:startDestination="@id/nav_home">-->
+<!--    <include app:graph="@navigation/nav_home" />-->
+<!--    <fragment-->
+<!--      android:id="@+id/home"-->
+<!--      android:name="com.lifepharmacy.application.ui.home.fragments.HomeRecyclerFragment"-->
+<!--      android:label="dashboomeFragme"-->
+<!--      tools:layout="@layout/fragment_home_recyclerview">-->
+<!--      <deepLink-->
+<!--        android:id="@+id/deepLink4"-->
+<!--        app:uri="https://beta.lifepharmacy.com/" />-->
+<!--    </fragment>-->
+<!--    <argument-->
+<!--      android:name="id"-->
+<!--      android:defaultValue=""-->
+<!--      app:argType="string" />-->
+<!--    <include app:graph="@navigation/nav_login_sheet" />-->
+<!--    <include app:graph="@navigation/nav_search" />-->
+<!--    <include app:graph="@navigation/nav_product" />-->
+<!--    <include app:graph="@navigation/nav_product_listing" />-->
+<!--    <fragment-->
+<!--      android:id="@+id/offerListingFragment"-->
+<!--      android:name="com.lifepharmacy.application.ui.offers.fragments.OfferListingFragment"-->
+<!--      android:label="OfferListingFragment"-->
+<!--      tools:layout="@layout/fragment_offer_listing" />-->
+<!--    <fragment-->
+<!--      android:id="@+id/homeLandingFragment"-->
+<!--      android:name="com.lifepharmacy.application.ui.home.fragments.HomeLandingFragment"-->
+<!--      android:label="HomeLandingFragment"-->
+<!--      tools:layout="@layout/fragment_landing_page">-->
+<!--      <argument-->
+<!--        android:name="title"-->
+<!--        android:defaultValue=""-->
+<!--        app:argType="string" />-->
+<!--      <argument-->
+<!--        android:name="id"-->
+<!--        android:defaultValue=""-->
+<!--        app:argType="string" />-->
+<!--    </fragment>-->
+<!--  </navigation>-->
+  <include app:graph="@navigation/nav_profile" />
+  <include app:graph="@navigation/nav_wallet" />
+
+  <action
+    android:id="@+id/toProfile"
+    app:destination="@id/nav_profile"
+    app:enterAnim="@anim/mainfadein"
+    app:exitAnim="@anim/mainfadeout"
+
+    app:launchSingleTop="true"
+    app:popEnterAnim="@anim/mainfadein"
+    app:popExitAnim="@anim/mainfadeout"
+    app:popUpTo="@id/nav_profile"
+    app:popUpToInclusive="true" />
+  <action
+    android:id="@+id/toCategories"
+    app:destination="@id/nav_categories"
+    app:enterAnim="@anim/mainfadein"
+    app:exitAnim="@anim/mainfadeout"
+    app:launchSingleTop="true"
+    app:popEnterAnim="@anim/mainfadein"
+    app:popExitAnim="@anim/mainfadeout"
+    app:popUpTo="@id/nav_categories"
+    app:popUpToInclusive="true"
+    app:restoreState="true" />
+  <action
+    android:id="@+id/toCart"
+    app:destination="@id/nav_cart"
+    app:enterAnim="@anim/mainfadein"
+    app:exitAnim="@anim/mainfadeout"
+    app:launchSingleTop="true"
+    app:popEnterAnim="@anim/mainfadein"
+    app:popExitAnim="@anim/mainfadeout"
+    app:popUpTo="@id/nav_cart"
+    app:popUpToInclusive="true"
+    app:restoreState="true" />
+  <action
+    android:id="@+id/toPrescription"
+    app:destination="@id/nav_prescription"
+    app:enterAnim="@anim/mainfadein"
+    app:exitAnim="@anim/mainfadeout"
+    app:launchSingleTop="true"
+    app:popEnterAnim="@anim/mainfadein"
+    app:popExitAnim="@anim/mainfadeout"
+    app:popUpTo="@id/nav_prescription"
+    app:popUpToInclusive="true"
+    app:restoreState="true" />
+  <action
+    android:id="@+id/toHome"
+    app:destination="@id/home"
+    app:enterAnim="@anim/mainfadein"
+    app:exitAnim="@anim/mainfadeout"
+    app:launchSingleTop="true"
+    app:popEnterAnim="@anim/mainfadein"
+    app:popExitAnim="@anim/mainfadeout"
+    app:popUpTo="@id/nav_home"
+    app:popUpToInclusive="true"
+    app:restoreState="true" />
+  <include app:graph="@navigation/nav_offers" />
+  <dialog
+    android:id="@+id/animationComboBoxDialog"
+    android:name="com.lifepharmacy.application.ui.utils.dailogs.AnimationComboBoxDialog"
+    android:label="AnimationComboBoxDialog"
+    tools:layout="@layout/dailog_animation_combo_box">
+    <argument
+      android:name="offerTitle"
+      android:defaultValue="Buy 2 Get 1"
+      app:argType="string" />
+  </dialog>
+
+  <action
+    android:id="@+id/toComboBox"
+    app:destination="@id/animationComboBoxDialog"
+    app:enterAnim="@anim/side_slide_in"
+    app:exitAnim="@anim/side_slide_in"
+    app:popEnterAnim="@anim/side_slide_in"
+    app:popExitAnim="@anim/side_slide_in" />
+  <dialog
+    android:id="@+id/animationOfferCompleteDialog"
+    android:name="com.lifepharmacy.application.ui.utils.dailogs.AnimationOfferCompleteDialog"
+    android:label="AnimationOfferCompleteDialog"
+    tools:layout="@layout/dailog_animation_offer_complete">
+    <argument
+      android:name="amountTitle"
+      android:defaultValue="You have saved AED 30"
+      app:argType="string" />
+  </dialog>
+  <include app:graph="@navigation/nav_docs" />
+  <include app:graph="@navigation/nav_voucher" />
+  <!--  <fragment-->
+  <!--    android:id="@+id/orderDetailFragment"-->
+  <!--    android:name="com.lifepharmacy.application.ui.orders.fragments.OrderDetailFragment"-->
+  <!--    android:label="OrderDetailFragment"-->
+  <!--    tools:layout="@layout/fragment_order_detail" />-->
+  <include app:graph="@navigation/nav_order_details">
+    <argument
+      android:name="order"
+      android:defaultValue=" "
+      app:argType="string" />
+    <argument
+      android:name="sub_orderId"
+      android:defaultValue=" "
+      app:argType="string" />
+  </include>
+  <include app:graph="@navigation/nav_orders" />
+  <include app:graph="@navigation/nav_product_listing" />
+  <include app:graph="@navigation/nav_product" />
+  <dialog
+    android:id="@+id/inAppPopupDialog"
+    android:name="com.lifepharmacy.application.ui.in_app_popup.InAppPopupDialog"
+    android:label="InAppPopupDialog"
+    tools:layout="@layout/dailog_in_app_popup" />
+  <fragment
+    android:id="@+id/homeLandingFragment"
+    android:name="com.lifepharmacy.application.ui.home.fragments.HomeLandingFragment"
+    android:label="HomeLandingFragment"
+    tools:layout="@layout/fragment_landing_page">
+    <argument
+      android:name="title"
+      android:defaultValue=""
+      app:argType="string" />
+    <argument
+      android:name="id"
+      android:defaultValue=""
+      app:argType="string" />
+  </fragment>
+  <fragment
+    android:id="@+id/askPermissionDialog"
+    android:name="com.lifepharmacy.application.ui.utils.dailogs.AskPermissionDialog"
+    android:label="AskPermissionDialog" />
+  <include app:graph="@navigation/nav_rating" >
+    <argument
+      android:name="subOrderId"
+      android:defaultValue=""
+      app:argType="string" />
+  </include>
+  <include app:graph="@navigation/nav_search" />
+
+</navigation>
+
+
+  <!--    app:enterAnim="@anim/slide_from_right"-->
+  <!--    app:exitAnim="@anim/slide_to_left"-->

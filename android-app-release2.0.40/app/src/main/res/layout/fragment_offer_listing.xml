@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.dashboard.fragments.ClickHomeFragment" />
+
+    <variable
+      name="place"
+      type="androidx.databinding.ObservableField&lt;com.google.android.libraries.places.api.model.Place&gt;" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include
+      android:id="@+id/ll_top"
+      layout="@layout/layout_top_back"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clipToPadding="false"
+      android:orientation="horizontal"
+      android:id="@+id/rv_tags"
+      android:paddingHorizontal="@dimen/dimen_4dp"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:spanCount="1"
+      tools:itemCount="8"
+      tools:listitem="@layout/item_offer_categories"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:layout_width="match_parent"
+      android:clipToPadding="false"
+      android:id="@+id/recyclerView_offers"
+      android:orientation="vertical"
+      android:paddingHorizontal="@dimen/dimen_4dp"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:spanCount="1"
+      tools:itemCount="4"
+      tools:listitem="@layout/item_home_offer"
+      android:layout_height="wrap_content" />
+  </LinearLayout>
+</layout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.payment.CardMainModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.card.ClickCard" />
+
+    <variable
+      name="type"
+      type="String" />
+
+    <variable
+      name="position"
+      type="int" />
+    <variable
+      name="pg"
+      type="int" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/rg_card"
+      style="@style/text_12_blue_dark_open_regular"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:background="@color/white"
+      android:button="@drawable/radio_simple_button_insert"
+      android:drawableStart="@{item.cardData.paymentInfo.cardScheme.toLowerCase().equals(`visa`)?@drawable/ic_visa:@drawable/ic_master_card}"
+      android:drawablePadding="@dimen/dp_10"
+      android:elevation="@dimen/dimen_2dp"
+      android:onClick="@{()->click.onCardSelect(position,item,pg)}"
+      android:paddingVertical="@dimen/dimen_10dp"
+      android:text="@{item.cardData.paymentInfo.paymentDescription}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+      android:id="@+id/divider6"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dimen_0.5dp"
+      android:background="@color/color_e8e8"
+      android:visibility="@{type != `Wallet` ? View.VISIBLE : View.GONE}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/rg_card" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView37"
+      android:layout_width="@dimen/dimen_15dp"
+      android:layout_height="@dimen/dimen_15dp"
+      android:layout_margin="@dimen/dimen_4dp"
+      android:elevation="@dimen/dimen_4dp"
+      tools:visibility="gone"
+      android:onClick="@{()->click.onDeleteCard(position,item)}"
+      android:visibility="@{type == `Manage` ? View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_delete" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView38"
+      android:layout_width="@dimen/dimen_15dp"
+      android:layout_height="@dimen/dimen_15dp"
+      android:layout_margin="@dimen/dimen_4dp"
+      android:elevation="@dimen/dimen_4dp"
+      tools:visibility="gone"
+      android:visibility="@{type == `TOP` ? View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_forward_arrow" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

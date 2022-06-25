@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.SubOrderProductItem" />
+
+    <variable
+      name="position"
+      type="int" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/dimen_4dp"
+    android:padding="@dimen/dimen_2dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/iv_loaded"
+      errorImage="@{@drawable/image_place_holder}"
+      loadImageFromURl="@{item.productDetails.images.featuredImage}"
+      android:layout_width="@dimen/dimen_50dp"
+      android:layout_height="@dimen/dimen_50dp"
+      android:padding="@dimen/dimen_4dp"
+      android:background="@drawable/bg_rect_e8e8"
+      android:scaleType="centerCrop"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+      android:id="@+id/textView207"
+      style="@style/text_10_white_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/bg_rect_1e8f"
+      android:paddingHorizontal="@dimen/dimen_6dp"
+      android:paddingVertical="@dimen/dimen_4dp"
+      android:text="@{`x`+item.qty}"
+      app:layout_constraintBottom_toBottomOf="@+id/iv_loaded"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/iv_loaded"
+      tools:text="x002" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

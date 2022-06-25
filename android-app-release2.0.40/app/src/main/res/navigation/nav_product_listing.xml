@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  app:startDestination="@id/productList"
+  android:id="@+id/nav_product_listing">
+  <fragment
+    android:id="@+id/productList"
+    android:name="com.lifepharmacy.application.ui.productList.ProductListFragment"
+    android:label="SuperSellersFragment"
+    tools:layout="@layout/fragment_product_list">
+    <argument
+      android:name="title"
+      android:defaultValue=""
+      app:nullable="true"
+      app:argType="string" />
+    <argument
+      android:name="type"
+      android:defaultValue=""
+      app:nullable="true"
+      app:argType="string" />
+    <argument
+      android:name="id"
+      android:defaultValue=""
+      app:nullable="true"
+      app:argType="string" />
+    <argument
+      android:name="isSearch"
+      android:defaultValue="false"
+      app:argType="boolean" />
+    <deepLink
+      android:id="@+id/deepLink13"
+      app:uri="https://www.lifepharmacy.com/products?categories={slug}" />
+    <deepLink
+      android:id="@+id/deepLink14"
+      app:uri="https://www.lifepharmacy.com/products?collections={slug}" />
+    <deepLink
+      android:id="@+id/deepLink15"
+      app:uri="https://www.lifepharmacy.com/products?brands={slug}" />
+    <deepLink
+      android:id="@+id/deepLink9"
+      app:uri="https://lifepharmacy.com/products?categories={slug}" />
+    <deepLink
+      android:id="@+id/deepLink10"
+      app:uri="https://lifepharmacy.com/products?collections={slug}" />
+    <deepLink
+      android:id="@+id/deepLink11"
+      app:uri="https://lifepharmacy.com/products?brands={slug}" />
+    <deepLink
+      android:id="@+id/deepLink2"
+      app:uri="https://beta.lifepharmacy.com/products?categories={slug}" />
+    <deepLink
+      android:id="@+id/deepLink7"
+      app:uri="https://beta.lifepharmacy.com/products?collections={slug}" />
+    <deepLink
+      android:id="@+id/deepLink8"
+      app:uri="https://beta.lifepharmacy.com/products?brands={slug}" />
+    <deepLink
+      android:id="@+id/deepLink18"
+      app:uri="lifeapp://category/{slug}" />
+    <deepLink
+      android:id="@+id/deepLink16"
+      app:uri="lifeapp://collection/{slug}" />
+    <deepLink
+      android:id="@+id/deepLink23"
+      app:uri="lifeapp://products" />
+    <deepLink
+      android:id="@+id/deepLink17"
+      app:uri="lifeapp://brand/{slug}" />
+    <argument
+      android:name="listing_type"
+      app:argType="string"
+      android:defaultValue=""/>
+    <argument
+      android:name="slug"
+      app:argType="string"
+      app:nullable="true"
+      android:defaultValue="@null" />
+  </fragment>
+  <dialog
+    android:id="@+id/orderWalletTopUpBottomSheet"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderWalletTopUpBottomSheet"
+    android:label="OrderWalletTopUpBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_wallet_top" />
+  <fragment
+    android:id="@+id/orderOutOFStockFragment"
+    tools:layout="@layout/fragment_out_of_stock_order"
+    android:name="com.lifepharmacy.application.ui.outofstockorder.OrderOutOFStockFragment"
+    android:label="OrderOutOFStockFragment" />
+  <include app:graph="@navigation/nav_product" >
+    <argument
+      android:name="id"
+      android:defaultValue=""
+      app:nullable="true"
+      app:argType="string" />
+  </include>
+  <dialog
+    android:id="@+id/orderSummaryOutOfStockBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_summary_out_stock"
+    android:name="com.lifepharmacy.application.ui.outofstockorder.fragments.OrderSummaryOutOfStockBottomSheet"
+    android:label="OrderSummaryOutOfStockBottomSheet" />
+  <dialog
+    android:id="@+id/orderPlacedDialog"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderPlacedDialog"
+    android:label="OrderPlacedDialog"
+    tools:layout="@layout/dailog_order_placed" />
+
+</navigation>

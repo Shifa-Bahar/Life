@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="isOldType"
+      type="Boolean" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.SubOrderItem" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include
+      android:id="@+id/ll_first_type"
+      layout="@layout/layout_shipment_status_main_first"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="@{isOldType?View.VISIBLE:View.GONE}" />
+
+    <include
+      android:id="@+id/ll_status"
+      android:visibility="@{isOldType?View.GONE:View.VISIBLE}"
+      layout="@layout/layout_shipment_status"
+      android:elevation="2dp"
+      android:background="@drawable/white_with_round_corner"
+      android:layout_margin="@dimen/dimen_4dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+    <include
+      android:id="@+id/ll_rating"
+      layout="@layout/layout_shipment_rating"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dimen_4dp"
+      android:background="@drawable/white_with_round_corner"
+      android:elevation="2dp"
+      android:visibility="@{isOldType || item.shipment.driver == null || item.status != 5 ?View.GONE:View.VISIBLE}"
+      tools:visibility="visible" />
+  </LinearLayout>
+</layout>

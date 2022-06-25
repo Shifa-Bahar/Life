@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="mView"
+      type="com.lifepharmacy.application.ui.utils.dailogs.ImageActionBottomSheet" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_with_top_round_corner">
+
+    <LinearLayout
+      android:id="@+id/linearLayout5"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_camera"
+        style="@style/text_16_1d1d_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{()->mView.onView()}"
+        android:text="@string/view"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+      <View
+        android:id="@+id/divider12"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginHorizontal="@dimen/dimen_50dp"
+        android:layout_marginVertical="@dimen/dimen_10dp"
+        android:background="@color/color_b6b6" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_gallery"
+        style="@style/text_16_accent_dark_regular"
+        android:textColor="@color/color_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{()->mView.onDelete()}"
+        android:text="@string/delete"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+      <View
+        android:id="@+id/divider14"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginHorizontal="@dimen/dimen_50dp"
+        android:layout_marginBottom="@dimen/dimen_20dp"
+        android:background="@color/color_b6b6" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        style="@style/text_16_accent_dark_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{()->mView.onDismiss()}"
+        android:text="@string/cancel"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

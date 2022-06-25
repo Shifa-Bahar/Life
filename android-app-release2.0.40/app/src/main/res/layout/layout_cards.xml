@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="mViewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+    <variable
+      name="isNewCardSelected"
+      type="Boolean" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_cards"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:spanCount="1"
+      tools:itemCount="2"
+      tools:listitem="@layout/item_card"
+      tools:visibility="visible">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/divider5"
+      android:layout_height="wrap_content">
+
+      <androidx.appcompat.widget.AppCompatRadioButton
+        android:id="@+id/rg_card"
+        style="@style/text_14_1d1d_open_semi_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:button="@drawable/radio_button_insert_card_right"
+        android:checked="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`new_for_wallet`) || mViewModel.selectedPaymentType.name().toLowerCase().equals(`new`)?true:false}"
+        android:drawableStart="@drawable/ic_card"
+        android:drawablePadding="@dimen/dp_10"
+        android:elevation="@dimen/dimen_2dp"
+        android:padding="@dimen/dp_10"
+        android:text="@string/pay_via_new_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <View
+        android:id="@+id/divider6"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0.5dp"
+        android:background="@color/color_e8e8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_card" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+      android:id="@+id/divider5"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/dimen_0.5dp"
+      android:layout_marginTop="@dimen/dp_10"
+      android:background="@color/color_e8e8"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/rv_cards" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

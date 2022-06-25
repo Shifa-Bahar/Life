@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="title"
+      type="String" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.home.HomeResponseItem" />
+
+    <variable
+      name="positions"
+      type="int" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/dimen_8dp">
+
+    <TextView
+      android:id="@+id/textView208"
+      style="@style/text_15_blue_dark_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="@{title}"
+      android:textAlignment="center"
+      android:visibility="@{item.showSectionTitle ? View.VISIBLE: View.GONE}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Shop by Category" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView_options"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginTop="8dp"
+      android:clipToPadding="false"
+      android:orientation="horizontal"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView208"
+      app:spanCount="3"
+      tools:itemCount="9"
+      tools:listitem="@layout/item_offers_tags" />
+
+    <com.rd.PageIndicatorView
+      android:id="@+id/pageIndicatorView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/recyclerView_options"
+      app:piv_animationType="scale"
+      app:piv_dynamicCount="true"
+      app:piv_interactiveAnimation="true"
+      app:piv_padding="@dimen/dimen_4dp"
+      app:piv_radius="@dimen/dimen_6dp"
+      app:piv_selectedColor="@color/back_alpha_medium"
+      app:piv_unselectedColor="@color/grey" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

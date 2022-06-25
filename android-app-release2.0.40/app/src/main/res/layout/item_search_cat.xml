@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.search.SearchCategory" />
+    <variable
+      name="term"
+      type="String" />
+
+<!--    <variable-->
+<!--      name="isChecked"-->
+<!--      type="Boolean" />-->
+
+<!--    <variable-->
+<!--      name="position"-->
+<!--      type="int" />-->
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.search.adapters.ClickSearchCategoryItem" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:onClick="@{()->click.onClickSearchCategory(item,term)}"
+    >
+
+    <!--        android:src="@{isChecked ? @drawable/ic_checked :@drawable/check_square }"-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_type"
+      style="@style/text_14_accent_dark_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginVertical="@dimen/dimen_4dp"
+      android:onClick="@{()->click.onClickSearchCategory(item,term)}"
+      android:layout_weight="1"
+      android:drawableEnd="@drawable/ic_forward_arrow"
+      android:elevation="@dimen/dimen_2dp"
+      android:inputType="phone"
+      android:paddingHorizontal="@dimen/dimen_2dp"
+      android:paddingVertical="@dimen/dimen_4dp"
+      android:text="@{item.categoryName}"
+      android:textAlignment="textStart"
+      android:textAllCaps="true"
+      android:visibility="visible"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/tv_type2"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Mother Care" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_type2"
+      style="@style/text_12_accent_semi_bole"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginVertical="@dimen/dimen_4dp"
+      android:onClick="@{()->click.onClickSearchCategory(item,term)}"
+      android:layout_weight="1"
+      android:elevation="@dimen/dimen_2dp"
+      android:inputType="phone"
+      android:paddingHorizontal="@dimen/dimen_2dp"
+      android:paddingVertical="@dimen/dimen_4dp"
+      android:text="@{term+` `+@string/in}"
+      android:textAlignment="textStart"
+      android:textAllCaps="true"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Mother Care" />
+
+    <View
+      android:id="@+id/divider33"
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:layout_marginTop="8dp"
+      android:background="@color/color_93a3"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/tv_type"
+      app:layout_constraintStart_toStartOf="@+id/tv_type2"
+      app:layout_constraintTop_toBottomOf="@+id/tv_type" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

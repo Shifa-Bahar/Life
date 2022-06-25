@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.lifepharmacy.application.model.ProductModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView_icon"
+            android:layout_width="@dimen/dimen_70dp"
+            android:layout_height="@dimen/dimen_72dp"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize15Percent"
+            app:strokeColor="@color/color_93a3"
+            app:strokeWidth="0.5dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@mipmap/dummy_image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_product_name"
+            style="@style/text_12_blue_dark_open_regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/puressentiel_purifying_antibacterial_lotion_spray_hands_and_surfaces"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_icon"
+            app:layout_constraintTop_toTopOf="@+id/imageView_icon" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView69"
+            style="@style/text_12_blue_dark_open_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AED 12.2"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_icon"
+            app:layout_constraintStart_toStartOf="@+id/tv_product_name" />
+
+        <View
+            android:id="@+id/divider23"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:visibility="invisible"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_icon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

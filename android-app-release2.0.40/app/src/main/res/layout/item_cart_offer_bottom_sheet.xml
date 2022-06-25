@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isEmpty"
+      type="Boolean" />
+
+    <variable
+      name="isFree"
+      type="Boolean" />
+
+    <variable
+      name="isFirstEmpty"
+      type="Boolean" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.cart.CartModel" />
+
+
+    <variable
+      name="price"
+      type="com.lifepharmacy.application.model.home.Price" />
+
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/dimen_4dp"
+    android:padding="@dimen/dimen_2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout16"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="@{isEmpty ? View.GONE : View.VISIBLE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="visible">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_loaded"
+        errorImage="@{@drawable/image_place_holder}"
+        loadImageFromURl="@{item.productDetails.images.featuredImage}"
+        android:layout_width="@dimen/dimen_90dp"
+        android:layout_height="@dimen/dimen_90dp"
+        android:background="@drawable/white_with_round_corner"
+        android:padding="@dimen/dimen_4dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_loaded">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_price"
+          style="@style/text_10_accent_dark_semi_bold"
+          setPriceWithPrefsCurrency="@{price.price.offerPrice}"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_4dp"
+          android:textAlignment="center"
+          tools:text="AED 100" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView111"
+          style="@style/text_10_ff00_semi_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dimen_4dp"
+          android:text="@string/free"
+          android:layout_marginTop="@dimen/dimen_4dp"
+          android:visibility="@{isFree ? View.VISIBLE : View.GONE}"
+          tools:visibility="gone" />
+      </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/iv_cross"
+      android:layout_width="@dimen/dimen_24dp"
+      android:visibility="@{isEmpty ? View.GONE : View.VISIBLE}"
+      android:layout_height="@dimen/dimen_24dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_cross" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/cl_main"
+      android:layout_width="@dimen/dimen_90dp"
+      android:layout_height="@dimen/dimen_90dp"
+      android:background="@{isFirstEmpty ? @drawable/bg_rect_blue_border : @drawable/white_with_round_corner}"
+      android:visibility="@{isEmpty ? View.VISIBLE : View.GONE}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:background="@drawable/bg_rect_blue_border"
+      tools:visibility="gone">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView138"
+        style="@style/text_10_accent_dark_semi_bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@{isFree ? @string/select_your_free_item :@string/add_more_save_more }"
+        android:textAlignment="center"
+        android:textColor="@{isFree ? @color/accent_blue_darker : @color/color_8585}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/add_more_save_more" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

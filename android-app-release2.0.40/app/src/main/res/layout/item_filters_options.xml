@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+            name="isSelected"
+            type="Boolean" />
+        <variable
+            name="position"
+            type="int" />
+        <variable
+            name="parentPosition"
+            type="int" />
+        <variable
+            name="subtitle"
+            type="String" />
+        <variable
+            name="item"
+            type="com.lifepharmacy.application.model.filters.FilterTypeModel" />
+        <variable
+            name="click"
+            type="com.lifepharmacy.application.ui.filters.adapters.ClickFilterType" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@color/color_e9f"
+        android:onClick="@{()->click.onClickFilterType(item,position)}"
+        android:background="@{!isSelected ? @color/color_e9f : @color/white}">
+
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout15"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen_16dp"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_title"
+          style="@style/text_14_1d1d_open_regular"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:text="@{item.title}"
+          android:minLines="1"
+          android:textColor="@color/color_102"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_description"
+          style="@style/text_10_blue_dark_open_regular"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:text="@{subtitle}"
+          android:minLines="1"
+          android:visibility="@{subtitle != null ? View.VISIBLE  : View.INVISIBLE}"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tv_title"
+          tools:text="Price: Low to high" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/divider14"
+            android:layout_width="@dimen/dimen_5dp"
+            android:layout_height="0dp"
+            android:background="@color/accent_blue"
+            android:visibility="@{isSelected ? View.VISIBLE  : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_filter_count"
+        style="@style/text_8_white_bold"
+        android:layout_width="@dimen/dimen_8dp"
+        android:layout_height="@dimen/dimen_8dp"
+        android:layout_marginHorizontal="@dimen/dimen_2dp"
+        android:background="@drawable/red_full_round"
+        android:elevation="2dp"
+        android:gravity="center"
+        android:minWidth="0dp"
+        android:minHeight="@dimen/dimen_0dp"
+        android:padding="@dimen/dimen_0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout15"
+        tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

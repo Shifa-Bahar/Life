@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isSelected"
+      type="Boolean" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.googleplaces.Result" />
+
+    <variable
+      name="position"
+      type="int" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.address.adapters.ClickItemNearByAddress" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:onClick="@{()->click.onClickNearBy(item,position)}"
+    android:paddingHorizontal="@dimen/dimen_8dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/img_selector"
+      android:layout_width="@dimen/dimen_24dp"
+      android:padding="@dimen/dimen_4dp"
+      android:layout_height="@dimen/dimen_24dp"
+      android:src="@{isSelected ? @drawable/ic_blue_checked_filled : @drawable/ic_grey_circle}"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:src="@drawable/ic_blue_checked_filled" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView234"
+      style="@style/text_12_blue_dark_open_regular"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:text="@{item.name}"
+      android:textAllCaps="true"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/img_selector"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Dubai" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView235"
+      style="@style/text_10_8585_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dimen_4dp"
+      android:text="@{item.vicinity}"
+      android:maxLines="1"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/textView234"
+      app:layout_constraintTop_toBottomOf="@+id/textView234"
+      tools:text="Business Bay" />
+
+    <View
+      android:id="@+id/divider49"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/dimen_0.5dp"
+      android:layout_marginTop="8dp"
+      android:background="@color/color_8585"
+      app:layout_constraintEnd_toEndOf="@+id/textView234"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="@+id/textView234"
+      app:layout_constraintTop_toBottomOf="@+id/textView235" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

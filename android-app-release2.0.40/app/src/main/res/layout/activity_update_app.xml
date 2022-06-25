@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.MainActivity">
+
+    <include
+      android:id="@+id/ll_loading"
+      layout="@layout/layout_loading"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+      android:id="@+id/imageView80"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toTopOf="@+id/textView205"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:src="@drawable/ic_enhancing_icon"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.48000002" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView205"
+      style="@style/text_20_accent_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="32dp"
+      android:text="@string/we_ve_enhanced_couple_of_things_for_you"
+      android:textAlignment="center"
+      app:layout_constraintBottom_toTopOf="@+id/textView206"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView80" />
+
+    <TextView
+      android:id="@+id/textView206"
+      style="@style/text_14_accent_dark_open_regular"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/update_now_to_keep_your_life_app_running_smoothly_and_check_out_latest_features"
+      android:textAlignment="center"
+      app:layout_constraintBottom_toTopOf="@+id/btn_update"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView205" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_update"
+      style="@style/blueBotton"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:text="@string/update_now"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView206" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

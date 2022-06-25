@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.payment.TransactionMainModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.transactions.adapters.ClickTransaction" />
+
+    <variable
+      name="selected"
+      type="Boolean" />
+
+    <variable
+      name="position"
+      type="int" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:onClick="@{()->click.onClickTransaction(item)}"
+    android:paddingVertical="@dimen/dimen_2dp">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView36"
+      android:layout_width="@dimen/dimen_45dp"
+      android:layout_height="@dimen/dimen_45dp"
+      android:background="@drawable/bg_e8_border_full_round"
+      android:padding="@dimen/dimen_10dp"
+      setTransactionLogo="@{item}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_walletarrow_down"
+      tools:src="@drawable/ic_arrow_up_dark_accent" />
+
+    <LinearLayout
+      android:id="@+id/linearLayout15"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_10dp"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageView36"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView83"
+        style="@style/text_12_accent_dark_semi_bole"
+        setTransactionTitle="@{item}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Purchase" />
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView84"
+          style="@style/text_12_8585_open_regular"
+          setTransactionTitle="@{item}"
+          trailingText="@{@string/on}"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          tools:text="Purchased on" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          style="@style/text_12_8585_open_regular"
+          setDateWithOutTime="@{item.createdAt}"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dimen_4dp"
+          tools:text="23 Jan, 2021" />
+      </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView132"
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/dimen_4dp"
+      android:text="@{item.purpose != null &amp;&amp; item.purpose.equals(`wallet_recharge`)?`+`:item.type.equals(`refund`)?`+`: `-`}"
+      app:layout_constraintBottom_toBottomOf="@+id/textView85"
+      app:layout_constraintEnd_toStartOf="@+id/textView85"
+      app:layout_constraintTop_toTopOf="@+id/textView85"
+      tools:text="-" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView85"
+      style="@style/text_12_accent_dark_semi_bole"
+      setPriceWithPrefsCurrency="@{item.amount != null ? Double.valueOf(item.amount) : Double.valueOf(`0.0`)}"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/linearLayout15"
+      tools:text="AED 130.45" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView137"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@{item.status==1?(@string/status_colon+` `+@string/success):(@string/status_colon+` `+@string/pending)}"
+      tools:text="Status: Success"
+      style="@style/text_12_accent_dark_semi_bole"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView85" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

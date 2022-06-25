@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="mViewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+
+    <variable
+      name="topViewModel"
+      type="com.lifepharmacy.application.ui.wallet.viewmodels.TopViewModel" />
+
+    <variable
+      name="profileViewModel"
+      type="com.lifepharmacy.application.ui.profile.viewmodel.ProfileViewModel" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dimen_10dp"
+      app:cardCornerRadius="@dimen/dimen_10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView20"
+          style="@style/text_14_0025_open_semi_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/payment_method"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--            <androidx.cardview.widget.CardView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content" />-->
+
+        <LinearLayout
+          android:id="@+id/linearLayout11"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp_10"
+          android:orientation="vertical"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="@+id/textView20"
+          app:layout_constraintTop_toBottomOf="@+id/textView20">
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:visibility="visible"
+            android:visibility="@{!mViewModel.appManager.storageManagers.config.isCardEnabled ? View.GONE : View.VISIBLE}"
+            tools:background="@color/white">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+              android:id="@+id/rg_card"
+              style="@style/text_12_accent_dark_semi_bole"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginHorizontal="@dimen/dimen_4dp"
+              android:layout_marginTop="@dimen/dimen_4dp"
+              android:layout_marginBottom="@dimen/dimen_4dp"
+              android:background="@drawable/white_with_round_corner_10"
+              android:button="@drawable/radio_button_insert"
+              android:checked="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`card`) || mViewModel.selectedPaymentType.name().toLowerCase().equals(`new`)?true:false}"
+              android:drawableEnd="@drawable/ic_card"
+              android:elevation="@dimen/dimen_2dp"
+              android:padding="@dimen/dimen_10dp"
+              android:text="@string/card_samsung_pay"
+              app:layout_constraintBottom_toTopOf="@+id/ly_cards"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent" />
+            <include
+              android:id="@+id/ly_cards"
+              layout="@layout/layout_cards"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginHorizontal="@dimen/dp_10"
+              android:layout_marginTop="@dimen/dimen_4dp"
+              android:visibility="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`new`)||mViewModel.selectedPaymentType.name().toLowerCase().equals(`card`)?View.VISIBLE:View.GONE}"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/rg_card"
+              tools:visibility="visible" />
+          </LinearLayout>
+
+          <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_4dp"
+            android:layout_marginVertical="@dimen/dimen_8dp"
+            android:elevation="@dimen/dimen_5dp"
+            android:visibility="@{!mViewModel.appManager.storageManagers.config.isCodeEnabled ? View.GONE : View.VISIBLE}"
+            tools:visibility="visible"
+            app:cardCornerRadius="@dimen/dimen_10dp"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout11"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout11"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+              <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rg_cash"
+                style="@style/text_12_accent_dark_semi_bole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio_button_insert"
+                android:checked="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`cash`)?true:false}"
+                android:drawableEnd="@drawable/ic_cash"
+                android:elevation="@dimen/dimen_2dp"
+                android:padding="@dimen/dimen_10dp"
+                android:text="@string/cash"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_cod"
+                style="@style/text_10_93a_regular"
+                setPriceWithPrefsCurrency="@{mViewModel.codCharges}"
+                sign="@{@string/plus}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAlignment="viewEnd"
+                android:textSize="@dimen/text_size_10sp"
+                android:visibility="@{mViewModel.codCharges>0?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/rg_cash"
+                app:layout_constraintHorizontal_bias="0.297"
+                app:layout_constraintStart_toStartOf="@+id/rg_cash"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.533"
+                tools:text="AED 193.80" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+          </androidx.cardview.widget.CardView>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:visibility="visible"
+            android:visibility="@{!mViewModel.appManager.storageManagers.config.isWalletEnabled ? View.GONE : View.VISIBLE}"
+            tools:background="@color/white">
+            <androidx.cardview.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginHorizontal="@dimen/dimen_4dp"
+              android:layout_marginVertical="@dimen/dimen_8dp"
+              android:elevation="@dimen/dimen_5dp"
+              app:cardCornerRadius="@dimen/dimen_10dp"
+              app:layout_constraintEnd_toEndOf="@+id/linearLayout11"
+              app:layout_constraintStart_toStartOf="@+id/linearLayout11"
+              app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+              <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <!--              viewModel.selectedPaymentType.value = PaymentType.CARD-->
+                <androidx.appcompat.widget.AppCompatRadioButton
+                  android:id="@+id/rg_wallet"
+                  style="@style/text_12_accent_dark_semi_bole"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:button="@drawable/radio_button_insert"
+                  android:checked="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`wallet`)||mViewModel.selectedPaymentType.name().toLowerCase().equals(`wallet_with_less`)|| mViewModel.selectedPaymentType.name().toLowerCase().equals(`new_for_wallet`)?true:false}"
+                  android:drawableEnd="@drawable/ic_wallet_payment"
+                  android:elevation="@dimen/dimen_2dp"
+                  android:padding="@dimen/dimen_10dp"
+                  android:text="@string/wallet"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                  android:id="@+id/textView130"
+                  style="@style/text_12_accent_dark_semi_bole"
+                  setPriceWithPrefsCurrency="@{profileViewModel.userObjectMut.walletBalance}"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="@dimen/dimen_46dp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  tools:text="AED 30" />
+
+              </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_remaing_amount"
+              style="@style/text_12_accent_dark_semi_bole"
+              setNotEnoughBalance="@{mViewModel.walletDifference}"
+              android:layout_width="match_parent"
+              android:layout_height="0dp"
+              android:layout_marginHorizontal="@dimen/dimen_4dp"
+              android:layout_marginVertical="@dimen/dimen_8dp"
+              android:layout_weight="1"
+              android:textAlignment="center"
+              android:textSize="@dimen/text_size_10sp"
+              android:visibility="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`wallet_with_less`)||mViewModel.selectedPaymentType.name().toLowerCase().equals(`wallet_with_less`)|| mViewModel.selectedPaymentType.name().toLowerCase().equals(`new_for_wallet`)?View.VISIBLE:View.GONE}"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="@+id/rg_cash"
+              app:layout_constraintHorizontal_bias="0.3"
+              app:layout_constraintStart_toStartOf="@+id/rg_cash"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:text="AED 193.80" />
+            <!--            setNotEnoughBalance="@{amount.value}"-->
+            <include
+              android:id="@+id/ly_cards_for_top_up"
+              layout="@layout/layout_cards"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginHorizontal="@dimen/dp_10"
+              android:layout_marginTop="@dimen/dimen_4dp"
+              android:visibility="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`wallet_with_less`)|| mViewModel.selectedPaymentType.name().toLowerCase().equals(`new_for_wallet`)?View.VISIBLE:View.GONE}"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/rg_card"
+              tools:visibility="visible" />
+          </LinearLayout>
+        </LinearLayout>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

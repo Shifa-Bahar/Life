@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="latest_offer"
+      type="com.lifepharmacy.application.model.LatestOfferModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.dashboard.adapter.LatestOffer" />
+
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_132dp"
+    android:layout_marginEnd="@dimen/dimen_8dp"
+    android:background="@drawable/bg_rect_1e8f">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/txtView_offer_title"
+      style="@style/text_23_white_open_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/dimen_25dp"
+      android:layout_marginTop="@dimen/dimen_24dp"
+      android:text="@string/_60_off"
+      android:textAlignment="center"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/txtView_offer_sub_title"
+      style="@style/text_15_white_open_regular"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dimen_7dp"
+      android:text="@string/on_prescription_drugs"
+      android:textAlignment="center"
+      app:layout_constraintStart_toStartOf="@+id/txtView_offer_title"
+      app:layout_constraintTop_toBottomOf="@+id/txtView_offer_title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/txtView_offer_tag_line"
+      style="@style/text_15_white_open_regular"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dimen_3dp"
+      android:text="@string/gif_aimation"
+      android:textAlignment="center"
+      app:layout_constraintStart_toStartOf="@+id/txtView_offer_title"
+      app:layout_constraintTop_toBottomOf="@+id/txtView_offer_sub_title" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/image_view"
+      android:layout_width="@dimen/dimen_90dp"
+      android:layout_height="@dimen/dimen_90dp"
+      android:layout_marginEnd="@dimen/dimen_27dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:shapeAppearanceOverlay="@style/circleImageView"
+      app:srcCompat="@mipmap/dummy_offer" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

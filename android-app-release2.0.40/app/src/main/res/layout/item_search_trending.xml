@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="term"
+      type="com.lifepharmacy.application.model.search.agolia.Hits" />
+
+    <variable
+      name="isChecked"
+      type="Boolean" />
+
+    <variable
+      name="position"
+      type="int" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.search.adapters.ClickTrendsSearchItem" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dimen_2dp"
+    android:layout_marginVertical="@dimen/dimen_2dp"
+    android:background="@drawable/white_with_round_corner_10"
+    android:elevation="2dp"
+    android:onClick="@{()->click.onClickTrend(term)}">
+
+    <!--        android:src="@{isChecked ? @drawable/ic_checked :@drawable/check_square }"-->
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_type2"
+      style="@style/text_14_accent_dark_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_weight="1"
+      android:drawableStart="@drawable/ic_trending"
+      android:drawablePadding="@dimen/dimen_8dp"
+      android:drawableTint="@color/accent_blue_darker"
+      android:inputType="phone"
+      android:onClick="@{()->click.onClickTrend(term)}"
+      android:paddingHorizontal="@dimen/dimen_2dp"
+      android:paddingVertical="@dimen/dimen_4dp"
+      android:text="@{term.query}"
+      android:textAlignment="textStart"
+      android:textAllCaps="true"
+      android:visibility="visible"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Mother Care" />
+
+    <View
+      android:id="@+id/divider33"
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:layout_marginTop="8dp"
+      android:background="@color/color_93a3"
+      android:visibility="invisible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/tv_type2"
+      app:layout_constraintStart_toStartOf="@+id/tv_type2"
+      app:layout_constraintTop_toBottomOf="@+id/tv_type" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

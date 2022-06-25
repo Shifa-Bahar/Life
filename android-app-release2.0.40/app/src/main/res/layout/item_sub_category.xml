@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="String" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.categories.adapters.ClickSubCategory" />
+
+    <variable
+      name="position"
+      type="int" />
+
+    <variable
+      name="isExpanded"
+      type="Boolean" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/ml_sub_cat"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/cl_title"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        style="@style/text_14_0025_open_semi_bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_5dp"
+        android:onClick="@{()->click.onClickSubCategory(position)}"
+        android:paddingVertical="@dimen/dimen_8dp"
+        android:text="@{item}"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toStartOf="@+id/imageView16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Bath &amp; Body Care" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView16"
+        android:layout_width="@dimen/dp_10"
+        android:layout_height="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dimen_8dp"
+        android:onClick="@{()->click.onClickSubCategory(position)}"
+        android:visibility="@{!isExpanded ? View.VISIBLE :View.GONE}"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_down"
+        tools:visibility="gone" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView31"
+        android:layout_width="@dimen/dp_10"
+        android:layout_height="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dimen_8dp"
+        android:onClick="@{()->click.onClickSubCategory(position)}"
+        android:rotation="180"
+        android:visibility="@{isExpanded ? View.VISIBLE :View.GONE}"
+        app:layout_constraintBottom_toBottomOf="@+id/cl_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_down" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--        <com.google.android.material.imageview.ShapeableImageView-->
+    <!--            android:id="@+id/iv_banner"-->
+    <!--            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize15Percent"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="@dimen/dimen_80dp"-->
+    <!--            android:layout_marginHorizontal="@dimen/dimen_5dp"-->
+    <!--            android:scaleType="centerCrop"-->
+    <!--            android:visibility="@{isCollapsed ? View.GONE : View.VISIBLE}"-->
+    <!--            android:layout_marginTop="@dimen/dimen_8dp"-->
+    <!--            app:layout_constraintHorizontal_bias="1.0"-->
+    <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--            app:layout_constraintRight_toRightOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/title"-->
+    <!--            android:src="@drawable/banner2" />-->
+
+
+    <!--        <androidx.recyclerview.widget.RecyclerView-->
+    <!--            android:id="@+id/rv_sub_sub_category"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="@dimen/dimen_8dp"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:visibility="@{isCollapsed ? View.GONE : View.VISIBLE}"-->
+    <!--            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/iv_banner"-->
+    <!--            app:spanCount="3"-->
+    <!--            tools:itemCount="5"-->
+    <!--            tools:listitem="@layout/item_sub_sub_category" />-->
+
+    <include
+      android:id="@+id/ly_sub_colapsable"
+      layout="@layout/layout_sub_colapsable"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:visibility="@{!isExpanded ? View.GONE :View.VISIBLE}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/cl_title"
+      tools:visibility="visible" />
+
+    <View
+      android:id="@+id/divider8"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dimen_1dp"
+      android:background="@color/color_e8e8"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/ly_sub_colapsable" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

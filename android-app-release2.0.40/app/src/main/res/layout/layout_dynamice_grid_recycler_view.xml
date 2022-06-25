@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="title"
+      type="String" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.home.HomeResponseItem" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+      android:id="@+id/textView208"
+      style="@style/text_15_blue_dark_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="@{title}"
+      android:textAlignment="center"
+      android:visibility="@{item.showSectionTitle ? View.VISIBLE: View.GONE}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Shop by Category" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_sections"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:background="@color/backGroundColor"
+      android:orientation="vertical"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView208"
+      app:spanCount="1"
+      tools:itemCount="1"
+      tools:listitem="@layout/item_dynamice_vertical_grid"
+      tools:visibility="visible" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

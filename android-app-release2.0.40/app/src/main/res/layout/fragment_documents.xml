@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="showEmpty"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.documents.fragment.ClickDocumentFragment" />
+
+    <variable
+      name="doc_name"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.documents.viewmodel.DocumentsViewModel" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backGroundColor">
+
+    <include
+      android:id="@+id/toll_bar"
+      layout="@layout/layout_top_back"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_docs"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:clipToPadding="false"
+      android:nestedScrollingEnabled="true"
+      android:orientation="vertical"
+      android:paddingTop="@dimen/dimen_8dp"
+      android:paddingBottom="@dimen/dimen_80dp"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:layout_constraintBottom_toTopOf="@+id/cardView"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toll_bar"
+      app:layout_constraintVertical_bias="0.0"
+      app:spanCount="2"
+      tools:itemCount="2"
+      tools:listitem="@layout/item_docs">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cardView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="@{viewModel.showBottomView ? View.VISIBLE : View.GONE}"
+      app:cardBackgroundColor="@color/color_cee7f7"
+      app:cardMaxElevation="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:visibility="visible">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_16dp"
+        android:paddingTop="@dimen/dimen_8dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView163"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/upload_a_document" />
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/ed_doc_name"
+          style="@style/text_12_blue_dark_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:layout_weight="1"
+          android:background="@drawable/white_with_round_corner"
+          android:hint="@string/document_name"
+          android:inputType="textPersonName"
+          android:paddingHorizontal="@dimen/dimen_10dp"
+          android:paddingVertical="@dimen/dimen_10dp"
+          android:text="@={doc_name.value}"
+          android:textAlignment="textStart"
+          android:textCursorDrawable="@drawable/black_cursor"
+          android:visibility="visible"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/ccp"
+          app:layout_constraintTop_toTopOf="parent"
+          app:textChangedListener="@{doc_name.textWatcher}"
+          tools:text="Document Name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView164"
+          style="@style/text_12_blue_dark_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:background="@drawable/white_with_round_corner"
+          android:drawableEnd="@drawable/ic_arrow_down"
+          android:onClick="@{()->click.onClickDocType()}"
+          android:paddingHorizontal="@dimen/dimen_10dp"
+          android:paddingVertical="@dimen/dimen_10dp"
+          android:text="@{viewModel.docType != null &amp;&amp; !viewModel.docType.equals(``) ? viewModel.docType : @string/document_type}"
+          tools:text="Document Type" />
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/btn_confirm"
+          style="@style/blueBotton"
+          setAlpha="@{!doc_name.error &amp;&amp; viewModel.docType != null &amp;&amp; !viewModel.docType.equals(``) ? true : false}"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/button_height"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:layout_marginBottom="@dimen/dimen_32dp"
+          android:onClick="@{()->click.onClickUpload()}"
+          android:text="@string/upload_a_document"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+      </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView157"
+      style="@style/text_14_accent_dark_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:layout_height="wrap_content"
+      android:text="@string/no_documents_found"
+      android:visibility="@{showEmpty?View.VISIBLE:View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="No Docs found" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView61"
+      android:layout_width="@dimen/dimen_24dp"
+      android:layout_height="@dimen/dimen_24dp"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:layout_marginTop="@dimen/dimen_4dp"
+      android:elevation="2dp"
+      android:onClick="@{()->click.onClickCloseBottomView()}"
+      android:visibility="@{viewModel.showBottomView ? View.VISIBLE : View.GONE}"
+      android:padding="@dimen/dimen_2dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/rv_docs"
+      app:srcCompat="@drawable/ic_close_fill_grey" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_pick"
+      style="@style/blueBotton"
+      android:layout_width="match_parent"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:visibility="@{!viewModel.showBottomView ? View.VISIBLE : View.GONE}"
+      android:layout_height="@dimen/button_height"
+      android:layout_marginBottom="8dp"
+      android:onClick="@{()->click.onClickUpload()}"
+      android:text="@string/upload_a_new_document"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

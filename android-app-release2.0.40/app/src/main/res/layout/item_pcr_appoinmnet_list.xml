@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isSelected"
+      type="Boolean" />
+
+    <variable
+      name="isShipment"
+      type="Boolean" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.pcr.appoinmentlist.AppoinmentList" />
+
+    <variable
+      name="clicklayout"
+      type="com.lifepharmacy.application.ui.address.dailog.ClickLayoutAddress" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.pcr.adapters.ClickAppoinmentDetails" />
+
+    <variable
+      name="position"
+      type="int" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/dimen_8dp"
+      android:layout_height="wrap_content">
+<!--    android:onClick="@{()->click.onClickPcrAddress(item,position)}"-->
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cv_address"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginVertical="@dimen/dimen_4dp"
+      app:cardCornerRadius="@dimen/dimen_5dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/dimen_3dp"
+        android:background="@drawable/ic_rectangle"
+        android:padding="@dimen/dp_10">
+
+        <LinearLayout
+          android:id="@+id/linearLayout4"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_4dp"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_app"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="0dp"
+              android:minLines="1"
+              android:layout_gravity="start"
+              android:paddingLeft="@dimen/dimen_4dp"
+              android:layout_height="wrap_content"
+              android:textColor="@color/back_alpha"
+              android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_placedon"
+              android:layout_width="0dp"
+              style="@style/text_14_0025_open_semi_bold"
+              android:gravity="end"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textColor="@color/back_alpha"
+              android:minLines="1"
+              />
+
+          </LinearLayout>
+          <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_e8e8" />
+          <LinearLayout
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_head"
+              style="@style/text_16_accent_dark_semi_bold"
+              android:layout_width="0dp"
+              android:minLines="1"
+              android:textSize="@dimen/dimen_15dp"
+              android:paddingLeft="@dimen/dimen_4dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="0.7"
+              android:text="Covid 19 RT-PCR Test" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_total"
+              style="@style/text_16_accent_dark_semi_bold"
+              android:layout_width="0dp"
+              android:textSize="@dimen/dimen_13dp"
+              android:gravity="center"
+              android:layout_height="wrap_content"
+              android:layout_weight="0.3"
+              android:minLines="1"
+              tools:text="AED 200" />
+
+
+          </LinearLayout>
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_date"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="0dp"
+              android:minLines="1"
+              android:textColor="@color/back_alpha"
+              android:paddingLeft="@dimen/dimen_4dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="0.7"
+              tools:text="Date:Thusday,10 Feb 2022"
+              android:text="Covid 19 RT-PCR Test"
+              tools:ignore="MissingConstraints" />
+
+            <!--                        android:drawableStart="@{item.type == `Work` ? @drawable/ic_work_location : item.type == `Home` ? @drawable/ic_home_location : @drawable/ic_fav_location }"-->
+          </androidx.constraintlayout.widget.ConstraintLayout>
+          <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_start_time"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="178dp"
+              android:layout_height="wrap_content"
+              android:layout_gravity="start"
+              android:layout_weight="0.8"
+              android:paddingLeft="@dimen/dimen_4dp"
+              android:text="Start Time:10:00 AM "
+              android:textColor="@color/back_alpha" />
+
+            <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/button25"
+              style="@style/blueBotton"
+              android:layout_width="124dp"
+              android:layout_height="29dp"
+              android:layout_alignParentEnd="true"
+              android:layout_marginStart="50dp"
+              android:layout_marginEnd="0dp"
+              android:layout_toEndOf="@+id/tv_start_time"
+              android:layout_weight="0.2"
+              android:onClick="@{()->click.onClickAppoinmentDetails(item.id)}"
+              android:text="View Details"
+              android:textColor="@color/white"
+              android:textSize="@dimen/dimen_8dp" />
+
+          </RelativeLayout>
+
+        </LinearLayout>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

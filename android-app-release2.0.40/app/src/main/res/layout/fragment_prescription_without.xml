@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="note"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="isThereImages"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.prescription.viewmodel.PrescriptionViewModel" />
+
+    <variable
+      name="profileViewModel"
+      type="com.lifepharmacy.application.ui.profile.viewmodel.ProfileViewModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.prescription.fragments.ClickPrescriptionWithoutFragment" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backGroundColor">
+
+    <include
+      android:id="@+id/toll_bar"
+      layout="@layout/layout_top_back"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <androidx.appcompat.widget.AppCompatButton-->
+    <!--      android:id="@+id/btn_login"-->
+    <!--      style="@style/blueBotton"-->
+    <!--      android:layout_width="0dp"-->
+    <!--      android:layout_height="wrap_content"-->
+    <!--      android:layout_marginHorizontal="@dimen/dimen_16dp"-->
+    <!--      android:layout_marginBottom="8dp"-->
+    <!--      android:onClick="@{()->click.onClickLogin()}"-->
+    <!--      android:text="@string/login"-->
+    <!--      android:textAlignment="center"-->
+    <!--      android:textAllCaps="false"-->
+    <!--      android:visibility="@{profileViewModel.isLoggedIn() ? View.GONE: View.VISIBLE}"-->
+    <!--      app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--      app:layout_constraintEnd_toEndOf="parent"-->
+    <!--      app:layout_constraintStart_toStartOf="parent" />-->
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView60"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:src="@drawable/ic_small_banner_with_text"
+      app:layout_constraintDimensionRatio="344:54"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toll_bar" />
+
+    <androidx.core.widget.NestedScrollView
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="@color/backGroundColor"
+      app:layout_constraintBottom_toTopOf="@+id/ll_contact"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView60"
+      tools:visibility="visible">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+          android:id="@+id/ed_note"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/dimen_8dp"
+          android:background="@drawable/white_with_round_corner"
+          android:elevation="2dp"
+          android:gravity="start"
+          android:hint="@string/tell_us"
+          android:minHeight="@dimen/dimen_80dp"
+          android:paddingHorizontal="@dimen/dimen_16dp"
+          android:paddingVertical="@dimen/dimen_8dp"
+          android:text="@={note.value}"
+          android:textColorHint="@color/grey_font"
+          android:visibility="@{profileViewModel.isLoggedIn() ? View.VISIBLE: View.GONE}"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:textChangedListener="@{note.textWatcher}" />
+
+        <androidx.cardview.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/dimen_8dp"
+          android:onClick="@{()->click.onClickUploadImage()}"
+          android:visibility="@{profileViewModel.isLoggedIn() ? View.VISIBLE: View.GONE}"
+          app:cardCornerRadius="@dimen/dimen_5dp"
+          app:cardElevation="2dp">
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/dimen_8dp"
+            android:paddingVertical="@dimen/dimen_8dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView162"
+              style="@style/text_12_accent_dark_semi_bole"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:drawableStart="@drawable/ic_general_image"
+              android:drawablePadding="@dimen/dimen_16dp"
+              android:gravity="center"
+              android:text="@string/upload_images"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:textAllCaps="false" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+              android:id="@+id/imageView57"
+              android:layout_width="@dimen/dimen_40dp"
+              android:layout_height="0dp"
+              android:onClick="@{()->click.onClickUploadImage()}"
+              android:scaleType="centerCrop"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintDimensionRatio="50:50"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent"
+              app:srcCompat="@drawable/ic_pluse_white_with_blue_back" />
+
+          </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_images"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop="8dp"
+          android:clipToPadding="false"
+          android:orientation="horizontal"
+          android:paddingHorizontal="@dimen/dimen_16dp"
+          android:visibility="@{isThereImages? View.VISIBLE :View.GONE}"
+          app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/textView51"
+          app:spanCount="1"
+          tools:itemCount="3"
+          tools:listitem="@layout/item_images"
+          tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/btn_proceed"
+          style="@style/whiteButton"
+          setAlpha="@{isThereImages || !note.error ? true : false}"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen_46dp"
+          android:layout_margin="@dimen/dimen_8dp"
+          android:elevation="2dp"
+          android:onClick="@{()->click.onClickProceed()}"
+          android:text="@string/proceed"
+          android:visibility="@{profileViewModel.isLoggedIn() ? View.VISIBLE: View.GONE}" />
+      </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+      android:id="@+id/ll_contact"
+      layout="@layout/layout_contact"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_10dp"
+      android:layout_marginBottom="16dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout><!--  android:textColor="@{isEnableProceedButton ? @color/accent_blue_darker:@color/color_93a3}"-->
+  <!--  android:enabled="@{isEnableProceedButton}"-->

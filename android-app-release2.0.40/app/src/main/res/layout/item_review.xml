@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.product.ProductReview" />
+
+    <variable
+      name="defaultComment"
+      type="String" />
+
+    <variable
+      name="selected"
+      type="Boolean" />
+
+    <variable
+      name="position"
+      type="int" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/iv_profile"
+      errorImage="@{@drawable/ic_profile_placeholder}"
+      loadImageFromURl="@{item.userDetails.photo}"
+      android:layout_width="@dimen/dimen_60dp"
+      android:layout_height="@dimen/dimen_60dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:scaleType="centerCrop"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+      app:srcCompat="@drawable/ic_profile_placeholder"
+      tools:visibility="visible" />
+
+    <com.willy.ratingbar.ScaleRatingBar
+      android:id="@+id/simpleRatingBar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      app:layout_constraintStart_toEndOf="@+id/iv_profile"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srb_clearRatingEnabled="true"
+      app:srb_clickable="false"
+      app:srb_drawableEmpty="@drawable/ic_star"
+      app:srb_drawableFilled="@drawable/ic_star_fill"
+      app:srb_isIndicator="false"
+      app:srb_minimumStars="1"
+      app:srb_numStars="5"
+      app:srb_rating="2"
+      app:srb_scrollable="false"
+      app:srb_starHeight="@dimen/dimen_16dp"
+      app:srb_starPadding="3dp"
+      app:srb_starWidth="@dimen/dimen_16dp"
+      app:srb_stepSize="1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView42"
+      style="@style/text_12_1d1d_italic"
+      setDateWithOutTime="@{item.createdAt}"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/dp_10"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/simpleRatingBar"
+      tools:text="John wick posted on01/01/2021" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_review_title"
+      style="@style/text_12_1d1d_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dp_10"
+      android:layout_marginEnd="@dimen/dp_10"
+      android:paddingHorizontal="@dimen/dimen_3dp"
+      android:text="@{!item.isAnonymouns?item.userDetails.name:`Anonymous`}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/simpleRatingBar"
+      app:layout_constraintTop_toBottomOf="@+id/simpleRatingBar"
+      tools:text="No Commnets..." />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_review_desc"
+      style="@style/text_12_1d1d_regular"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dp_10"
+      android:layout_marginEnd="@dimen/dp_10"
+      android:paddingHorizontal="@dimen/dimen_3dp"
+      android:text="@{item.description!=null?item.description:defaultComment}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/simpleRatingBar"
+      app:layout_constraintTop_toBottomOf="@+id/tv_review_title"
+      tools:text="@string/no_feedback_given"
+      tools:visibility="visible" />
+
+    <View
+      android:id="@+id/divider7"
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:layout_marginTop="@dimen/dp_10"
+      android:background="@color/color_b6b6"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_review_desc" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

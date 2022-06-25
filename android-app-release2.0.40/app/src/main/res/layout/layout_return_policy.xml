@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:visibility="@{viewModel.appManager.storageManagers.config.refundPolicyText==null?View.GONE:View.VISIBLE}">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_10dp"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      android:background="@drawable/white_with_round_corner_10"
+      android:elevation="@dimen/dimen_2dp"
+      android:orientation="vertical"
+      android:padding="@dimen/dimen_10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <ImageView
+        android:id="@+id/imageView96"
+        android:layout_width="@dimen/dimen_30dp"
+        android:layout_height="@dimen/dimen_30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_return_policy" />
+
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/dimen_8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView96"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView253"
+          style="@style/text_14_0025_open_semi_bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/return_policy" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView254"
+            style="@style/text_12_8585_regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.appManager.storageManagers.config.refundPolicyText}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/orders_once_placed_cannot_be_returned_or_exchanged" />
+          <!--          android:text="@{viewModel.appManager.storageManagers.config.refundPolicyText == null?@string/orders_once_placed_cannot_be_returned_or_exchanged: viewModel.appManager.storageManagers.config.refundPolicyText}"-->
+          <!--          <androidx.appcompat.widget.AppCompatTextView-->
+          <!--            android:id="@+id/textView255"-->
+          <!--            style="@style/text_12_accent_bole"-->
+          <!--            android:layout_width="wrap_content"-->
+          <!--            android:layout_height="wrap_content"-->
+          <!--            android:layout_marginStart="8dp"-->
+          <!--            android:text="@string/return_policies"-->
+          <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+          <!--            app:layout_constraintStart_toEndOf="@+id/textView254"-->
+          <!--            app:layout_constraintTop_toTopOf="parent" />-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+      </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

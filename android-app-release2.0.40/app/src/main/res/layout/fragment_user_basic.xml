@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isPhoneVerified"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.profile.fragments.ClickBasicProfile" />
+
+    <variable
+      name="numberValid"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="mVieModel"
+      type="com.lifepharmacy.application.ui.profile.viewmodel.ProfileViewModel" />
+
+    <variable
+      name="phone"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="email"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="name"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="codeSent"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+  </data>
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBottomSheetBackground"
+    android:paddingBottom="@dimen/dimen_20dp">
+
+    <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@+id/btn_apply"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+          android:id="@+id/ll_otp"
+          layout="@layout/layout_user_otp"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:visibility="@{codeSent ? View.VISIBLE : View.GONE}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/iv_profile"
+          tools:visibility="gone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/ly_name"
+          style="@style/TextInputLayoutStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp_10"
+          android:layout_marginEnd="16dp"
+          android:visibility="@{!codeSent ? View.VISIBLE : View.GONE}"
+          app:errorEnabled="true"
+          app:errorTextColor="@color/black"
+          app:hintAnimationEnabled="false"
+          app:hintEnabled="false"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="@+id/textView57"
+          app:layout_constraintTop_toBottomOf="@+id/textView57"
+          tools:visibility="visible">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_name"
+            style="@style/text_12_blue_dark_open_regular"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_38dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_rect_sevety"
+            android:drawableEnd="@{!name.error ? @drawable/ic_user_icon : @drawable/ic_cancel}"
+            android:drawablePadding="@dimen/dimen_8dp"
+            android:hint="@string/full_name"
+            android:inputType="textPersonName"
+            android:padding="@dimen/dimen_12dp"
+            android:text="@={name.value}"
+            android:textAlignment="textStart"
+            android:textColorHint="@color/grey_font"
+            android:textCursorDrawable="@drawable/black_cursor"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ccp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textChangedListener="@{name.textWatcher}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/ly_email"
+          style="@style/TextInputLayoutStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="16dp"
+          android:visibility="@{!codeSent ? View.VISIBLE : View.GONE}"
+          app:errorEnabled="true"
+          app:errorTextColor="@color/black"
+          app:hintAnimationEnabled="false"
+          app:hintEnabled="false"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="@+id/textView57"
+          app:layout_constraintTop_toBottomOf="@+id/ly_name"
+          tools:visibility="visible">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_email"
+            style="@style/text_12_blue_dark_open_regular"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_38dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_rect_sevety"
+            android:drawableEnd="@{!email.error ? @drawable/ic_email_icon : @drawable/ic_cancel}"
+            android:drawablePadding="@dimen/dimen_8dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/dimen_12dp"
+            android:text="@={email.value}"
+            android:textAlignment="textStart"
+            android:textColorHint="@color/grey_font"
+            android:textCursorDrawable="@drawable/black_cursor"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ccp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textChangedListener="@{email.textWatcher}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/ly_phone"
+          style="@style/TextInputLayoutStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="16dp"
+          android:layout_weight="1"
+          android:enabled="false"
+          android:visibility="gone"
+          app:errorEnabled="true"
+          app:errorTextColor="@color/black"
+          app:hintAnimationEnabled="false"
+          app:hintEnabled="false"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="@+id/textView57"
+          app:layout_constraintTop_toBottomOf="@+id/ly_email"
+          tools:visibility="gone">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_phone"
+            style="@style/text_12_blue_dark_open_regular"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_38dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_rect_sevety"
+            android:drawableEnd="@{!phone.error ? @drawable/ic_icon_phon : @drawable/ic_cancel}"
+            android:drawablePadding="@dimen/dimen_8dp"
+            android:enabled="false"
+            android:focusable="false"
+            android:hint="@string/mobile_number"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/dimen_12dp"
+            android:text="@={phone.value}"
+            android:textAlignment="textStart"
+            android:textColorHint="@color/grey_font"
+            android:textCursorDrawable="@drawable/black_cursor"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ccp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textChangedListener="@{phone.textWatcher}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+          android:id="@+id/imageView22"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/dimen_200dp"
+          android:scaleType="centerCrop"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.BottomCorner.5Per"
+          app:srcCompat="@drawable/ic_basic_detail_bg" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+          android:id="@+id/iv_profile"
+          errorImage="@{@drawable/ic_profile_placeholder}"
+          loadImageFromURl="@{mVieModel.userObjectMut.photo}"
+          android:layout_width="@dimen/dimen_80dp"
+          android:layout_height="@dimen/dimen_80dp"
+          android:layout_marginHorizontal="@dimen/dimen_16dp"
+          android:onClick="@{()->click.onClickUploadImage()}"
+          android:scaleType="centerCrop"
+          app:layout_constraintBottom_toBottomOf="@+id/imageView22"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/imageView22"
+          app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+          app:srcCompat="@drawable/ic_profile_placeholder" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView57"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dimen_16dp"
+          android:layout_marginTop="@dimen/dp_10"
+          android:text="@string/edit_details"
+          android:visibility="@{!codeSent ? View.VISIBLE : View.GONE}"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/iv_profile"
+          tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView165"
+          android:layout_width="0dp"
+          style="@style/text_12_blue_dark_open_regular"
+          android:layout_height="wrap_content"
+          android:text="@{mVieModel.gender != null &amp;&amp; !mVieModel.gender.equals(``) ? mVieModel.gender : @string/gender }"
+          android:hint="@string/gender"
+          android:onClick="@{()->click.onClickGender()}"
+          android:paddingVertical="@dimen/dimen_12dp"
+          android:paddingHorizontal="@dimen/dimen_6dp"
+          android:background="@drawable/bg_rect_sevety"
+          app:layout_constraintEnd_toEndOf="@+id/ly_name"
+          app:layout_constraintStart_toStartOf="@+id/ly_name"
+          app:layout_constraintTop_toBottomOf="@+id/ly_phone" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView166"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          style="@style/text_12_blue_dark_open_regular"
+          android:layout_marginTop="@dimen/dimen_12dp"
+          android:onClick="@{()->click.onClickDOB()}"
+          android:hint="@string/dob"
+          android:paddingVertical="@dimen/dimen_12dp"
+          android:paddingHorizontal="@dimen/dimen_6dp"
+          android:text="@{mVieModel.dateOfBirth != null &amp;&amp; !mVieModel.dateOfBirth.equals(``) ? mVieModel.dateOfBirth : @string/dob}"
+          android:background="@drawable/bg_rect_sevety"
+          app:layout_constraintEnd_toEndOf="@+id/textView165"
+          app:layout_constraintStart_toStartOf="@+id/textView165"
+          app:layout_constraintTop_toBottomOf="@+id/textView165" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/imageView74"
+          android:src="@drawable/ic_arrow_back"
+          android:onClick="@{()->click.onClickBack()}"
+          android:layout_margin="@dimen/dimen_8dp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_apply"
+      style="@style/blueBotton"
+      setAlpha="@{!phone.error &amp;&amp; !email.error &amp;&amp; numberValid ? true : false}"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/button_height"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      android:layout_marginBottom="28dp"
+      android:elevation="@dimen/dimen_5dp"
+      android:onClick="@{()->click.onClickSave()}"
+      android:text="@string/save"
+      android:textSize="@dimen/text_size_12sp"
+      android:visibility="@{!codeSent ? View.VISIBLE : View.GONE}"
+      app:cornerRadius="@dimen/dimen_16dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:visibility="visible" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

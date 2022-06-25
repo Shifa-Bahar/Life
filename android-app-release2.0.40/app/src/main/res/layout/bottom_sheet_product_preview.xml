@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.products.fragment.ClickPreviewProductFragment" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.products.viewmodel.ProductViewModel" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:background="@drawable/white_with_top_round_corner"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      android:paddingTop="@dimen/dimen_8dp">
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button11"
+        style="@style/blueBotton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_12dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="@{()->click.onAllDetails()}"
+        android:text="@string/view_details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+      <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:paddingBottom="@dimen/dimen_60dp">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_product_name"
+            style="@style/text_16_blue_dark_open_semi_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dimen_1dp"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:gravity="start"
+            android:text="@{viewModel.previewProductMut.title}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+          <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_12dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            app:cardCornerRadius="@dimen/dimen_10dp"
+            app:cardElevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="@dimen/dp_10">
+
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtView_rating"
+                style="@style/text_13_white_semi_bole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@drawable/bg_button_8ba5"
+                android:drawableStart="@drawable/ic_star_fill"
+                android:drawablePadding="4dp"
+                android:drawableTint="@color/white"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/dimen_4dp"
+                android:paddingVertical="@dimen/dimen_4dp"
+                android:text="@{viewModel.previewProductMut.rating}"
+                app:layout_constraintStart_toStartOf="@+id/imageCarousel_product"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="4.8" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_tags"
+                style="@style/text_8_accent_dark_semi_bole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@drawable/ic_tag_rect"
+                android:paddingHorizontal="@dimen/dp_10"
+                android:paddingVertical="@dimen/dimen_6dp"
+                android:text="@{@string/buy+` `+viewModel.previewProductMut.offers.xValue +` `+@string/get + ` `++viewModel.previewProductMut.offers.yValue}"
+                android:visibility="@{viewModel.previewProductMut.offers!=null &amp;&amp; viewModel.previewProductMut.offers.type.equals(`bxgy`) ? View.VISIBLE: View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/custom_indicator"
+                app:layout_constraintStart_toStartOf="@+id/imageCarousel_product"
+                tools:text="Buy 2 Get 1 " />
+
+              <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView_heart"
+                android:layout_width="@dimen/dimen_24dp"
+                android:layout_height="@dimen/dimen_24dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:onClick="@{()->click.onClickAddToWishList()}"
+                android:src="@{viewModel.isInWishList ? @drawable/ic_red_heart : @drawable/ic_heart}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+              <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:id="@+id/imageCarousel_product"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_300dp"
+                android:layout_weight="1"
+                app:autoPlay="true"
+                app:autoPlayDelay="4000"
+                app:carouselBackground="@color/white"
+                app:carouselType="SHOWCASE"
+                app:imageScaleType="fitCenter"
+                app:imageViewId="@id/image_view"
+                app:itemLayout="@layout/custom_fixed_size_item_layout"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtView_rating"
+                app:nextButtonId="@id/custom_btn_next"
+                app:nextButtonLayout="@layout/custom_next_button_layout"
+                app:nextButtonMargin="8dp"
+                app:previousButtonId="@id/custom_btn_previous"
+                app:previousButtonLayout="@layout/custom_previous_button_layout"
+                app:previousButtonMargin="8dp"
+                app:scaleOnScroll="true"
+                app:scalingFactor="0.0"
+                app:showBottomShadow="false"
+                app:showCaption="true"
+                app:showIndicator="false"
+                app:showNavigationButtons="false"
+                app:showTopShadow="false" />
+
+              <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView_share"
+                android:layout_width="@dimen/dimen_20dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:layout_marginTop="@dimen/dimen_11dp"
+                android:onClick="@{()->click.onClickShare()}"
+                android:src="@drawable/ic_share"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_heart" />
+
+              <me.relex.circleindicator.CircleIndicator2
+                android:id="@+id/custom_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                app:ci_animator="@animator/scale_with_alpha"
+                app:ci_drawable="@drawable/dot"
+                app:ci_drawable_unselected="@drawable/dot"
+                app:layout_constraintTop_toBottomOf="@+id/imageCarousel_product">
+
+              </me.relex.circleindicator.CircleIndicator2>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+          </androidx.cardview.widget.CardView>
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_indicator">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:id="@+id/constraintLayout_quantity"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:visibility="@{viewModel.isPreviewProductCart ? View.VISIBLE :View.INVISIBLE}"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintRight_toRightOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:visibility="visible">
+
+              <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_minus"
+                loadMinusORBasket="@{viewModel.previewQTY}"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:onClick="@{()->click.onClickMinus()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_qty"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_qty"
+                style="@style/text_18_1d1d_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_24dp"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:gravity="center"
+                android:text="@{viewModel.previewQTY}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+                app:layout_constraintStart_toEndOf="@+id/btn_minus"
+                app:layout_constraintTop_toTopOf="parent" />
+
+              <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_plus"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:background="@drawable/ic_plus_flate"
+                android:gravity="center"
+                android:onClick="@{()->click.onClickPlus()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_qty"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/imageView_delivery"
+              availabilityForDetails="@{viewModel.previewProductMut.availability}"
+              enteredQty="@{viewModel.previewQTY}"
+              setShippingTagVisibility="@{viewModel.previewProductMut}"
+              android:layout_width="@dimen/dimen_56dp"
+              android:layout_height="@dimen/dimen_16dp"
+              android:layout_marginEnd="8dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toStartOf="@+id/constraintLayout_quantity"
+              app:layout_constraintTop_toTopOf="@+id/ll_price"
+              tools:src="@drawable/ic_express_tag" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/img_cart"
+              style="@style/text_14_white_open_semi_bold"
+              isInCart="@{viewModel.isPreviewProductCart}"
+              setAddCartVisibility="@{viewModel.previewProductMut}"
+              android:layout_width="wrap_content"
+              android:layout_height="@dimen/dimen_30dp"
+              android:background="@drawable/bg_116_round"
+              android:drawableStart="@drawable/ic_cart_white"
+              android:drawablePadding="@dimen/dimen_4dp"
+              android:gravity="center_vertical"
+              android:onClick="@{()->click.onClickAddToCart()}"
+              android:paddingHorizontal="@dimen/dimen_8dp"
+              android:text="@string/add"
+              android:textAllCaps="true"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:visibility="visible" />
+
+            <LinearLayout
+              android:id="@+id/ll_price"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintTop_toTopOf="parent">
+
+              <androidx.appcompat.widget.AppCompatTextView
+                style="@style/text_16_accent_dark_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.previewPrice.currency}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/custom_indicator"
+                tools:text="Dummy" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_price"
+                style="@style/text_16_accent_dark_semi_bold"
+                product="@{viewModel.previewProductMut}"
+                offers="@{viewModel.previewProductMut.offers}"
+                setFormatePrice="@{viewModel.previewPrice.price.regularPrice}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_4dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/custom_indicator"
+                tools:text="AED 40.00" />
+
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_orignal_price"
+              style="@style/text_14_979c_semi_bold"
+              offers="@{viewModel.previewProductMut.offers}"
+              setRegularPrice="@{viewModel.previewPrice.price.regularPrice}"
+              product="@{viewModel.previewProductMut}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dimen_2dp"
+              app:layout_constraintBottom_toBottomOf="@+id/txtView_discount"
+              app:layout_constraintStart_toStartOf="@+id/ll_price"
+              app:layout_constraintTop_toTopOf="@+id/txtView_discount"
+              tools:text="AED 40.00"
+              tools:visibility="visible" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/txtView_discount"
+              style="@style/text_10_white_semi_bold"
+              setPercentage="@{viewModel.previewProductMut.offers}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/bg_button_green"
+              android:gravity="center"
+              android:paddingHorizontal="@dimen/dimen_4dp"
+              android:paddingVertical="@dimen/dimen_4dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="@+id/ll_price"
+              app:layout_constraintTop_toBottomOf="@+id/ll_price"
+              tools:visibility="visible" />
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+          <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/layout_super"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_super">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/btn_overview"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="@dimen/dimen_40dp"
+              android:layout_marginStart="@dimen/dimen_12dp"
+              android:layout_weight="1"
+              android:background="@{viewModel.selectedDetails.name().toLowerCase().equals(`overview`) ? @drawable/white_with_top_round_corner : @drawable/grey_with_top_round_corner}"
+              android:elevation="@dimen/dimen_2dp"
+              android:gravity="center"
+              android:onClick="@{()->click.onClickOverview()}"
+              android:text="@string/overview"
+              android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/button6"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_marginStart="@dimen/dimen_5dp"
+              android:layout_weight="1"
+              android:background="@{viewModel.selectedDetails.name().toLowerCase().equals(`detail`) ? @drawable/white_with_top_round_corner : @drawable/grey_with_top_round_corner}"
+              android:elevation="@dimen/dimen_2dp"
+              android:gravity="center"
+              android:onClick="@{()->click.onClickDetails()}"
+              android:text="@string/details_title"
+              android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/button5"
+              style="@style/text_14_0025_open_semi_bold"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_marginStart="@dimen/dimen_5dp"
+              android:layout_marginEnd="@dimen/dimen_12dp"
+              android:layout_weight="1"
+              android:background="@{viewModel.selectedDetails.name().toLowerCase().equals(`more_info`) ? @drawable/white_with_top_round_corner : @drawable/grey_with_top_round_corner}"
+              android:elevation="@dimen/dimen_2dp"
+              android:gravity="center"
+              android:onClick="@{()->click.onClickMoreInfo()}"
+              android:text="@string/more_info"
+              android:textAllCaps="false" />
+          </LinearLayout>
+
+          <include
+            android:id="@+id/ly_title"
+            layout="@layout/layout_overview_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_12dp"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+      </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  </LinearLayout>
+</layout>

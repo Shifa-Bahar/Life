@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.config.Title" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:id="@+id/cl_main"
+    android:layout_height="wrap_content"
+    tools:background="@color/accent_blue_darker"
+    android:background="@color/transparent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_title"
+      style="@style/text_12_white_semi_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:paddingHorizontal="@dimen/dimen_10dp"
+      android:paddingVertical="@dimen/dimen_4dp"
+      android:gravity="center"
+      android:singleLine="true"
+      android:text="@{item.text}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="@string/express_delivery" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

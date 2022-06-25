@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.productList.FilterOption" />
+
+    <variable
+      name="isGridSelected"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/grey_e5eb_with_round_corner_30dp"
+    android:paddingHorizontal="@dimen/dimen_8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/linearLayout_filters"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_vertical"
+      android:orientation="horizontal"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <LinearLayout
+        android:id="@+id/linearLayout17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen_10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_6dp"
+        android:elevation="2dp"
+        android:background="@drawable/white_with_round_corner"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout16"
+        app:layout_constraintStart_toEndOf="@+id/txtView_filter"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <CheckBox
+          android:id="@+id/checkbox_instant_only"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="@dimen/dimen_8dp"
+          android:minWidth="0dp"
+          android:minHeight="0dp"
+          android:text=""
+          android:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/imageView_delivery"
+          android:layout_width="@dimen/dimen_50dp"
+          android:layout_height="@dimen/dimen_18dp"
+          android:src="@drawable/ic_instant_tag" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView134"
+          style="@style/text_12_1d1d_semi_bold"
+          android:layout_width="0dp"
+          android:visibility="gone"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dimen_8dp"
+          android:layout_weight="1"
+          android:text="@string/only" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/linearLayout16"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/dimen_8dp"
+        android:background="@drawable/white_with_round_corner"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:onClick="@{()->click.gridSelectionValue(isGridSelected)}"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_8dp"
+        android:paddingVertical="@dimen/dimen_2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout17"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout17">
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/imageView_grid"
+          android:layout_width="@dimen/dimen_18dp"
+          android:layout_height="@dimen/dimen_18dp"
+          android:onClick="@{()->click.gridSelectionValue(isGridSelected)}"
+          android:padding="@dimen/dimen_4dp"
+          android:src="@{isGridSelected ? @drawable/ic_list :@drawable/ic_grid}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:src="@drawable/ic_list" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView133"
+          style="@style/text_12_1d1d_semi_bold"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:layout_marginStart="@dimen/dimen_6dp"
+          android:layout_weight="1"
+          android:text="@{isGridSelected ? @string/list :@string/grid}"
+          tools:text="Grid" />
+      </LinearLayout>
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtView_filter"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:background="@drawable/white_with_round_corner"
+        android:drawableStart="@drawable/ic_filter_icon"
+        android:drawablePadding="@dimen/dimen_4dp"
+        android:drawableTint="@color/accent_blue_darker"
+        android:elevation="2dp"
+        android:gravity="center"
+        android:onClick="@{()->click.onClickFilters()}"
+        android:paddingHorizontal="@dimen/dimen_8dp"
+        android:text="@string/filter"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout17"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout17" />
+
+      <View
+        android:id="@+id/divider34"
+        android:layout_width="@dimen/dimen_0.5dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/dimen_8dp"
+        android:background="@color/color_8585"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout17"
+        app:layout_constraintStart_toEndOf="@+id/txtView_filter"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <View
+        android:id="@+id/divider36"
+        android:layout_width="@dimen/dimen_0.5dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/dimen_8dp"
+        android:background="@color/color_8585"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout16"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout17"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_filter_count"
+        style="@style/text_8_white_bold"
+        android:layout_width="@dimen/dimen_16dp"
+        android:layout_height="@dimen/dimen_16dp"
+        android:layout_marginHorizontal="@dimen/dimen_8dp"
+        android:background="@drawable/red_full_round"
+        android:gravity="center"
+        android:minWidth="0dp"
+        android:elevation="2dp"
+        android:minHeight="@dimen/dimen_0dp"
+        android:padding="@dimen/dimen_0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/txtView_filter"
+        app:layout_constraintEnd_toEndOf="@+id/txtView_filter"
+        app:layout_constraintStart_toEndOf="@+id/txtView_filter"
+        app:layout_constraintTop_toTopOf="@+id/txtView_filter"
+        tools:text="3"
+        tools:visibility="visible" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView_quickOption"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/dimen_8dp"
+      android:layout_marginTop="@dimen/dimen_8dp"
+      android:layout_marginBottom="@dimen/dimen_16dp"
+      android:orientation="horizontal"
+      android:visibility="gone"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/linearLayout_filters"
+      tools:itemCount="4"
+      tools:listitem="@layout/item_filters" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+

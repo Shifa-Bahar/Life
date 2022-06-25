@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
+        <variable
+            name="position"
+            type="int" />
+        <variable
+            name="filter"
+            type="com.lifepharmacy.application.model.filters.FilterModel" />
+
+        <variable
+            name="click"
+            type="com.lifepharmacy.application.ui.productList.FilterOption" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtView_filterName"
+            style="@style/text_13_8585_open_regular"
+            android:layout_width="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_2dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_6dp"
+            android:background="@{isSelected ? @drawable/bg_e9_e_dp_round_corner_with_border : @drawable/bg_e9_e_dp_round_corner}"
+            android:paddingHorizontal="@dimen/dp_10"
+            android:paddingVertical="@dimen/dimen_2dp"
+            android:onClick="@{()->click.onItemClick(filter,position)}"
+            android:text="@{filter.name}"
+            android:textColor="@{isSelected ? @color/accent_blue : @color/color_8585}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Sanitizers" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

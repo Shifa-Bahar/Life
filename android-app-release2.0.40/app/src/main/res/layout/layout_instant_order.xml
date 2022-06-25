@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="title"
+      type="String" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.dashboard.ClickInstantOrderFloating" />
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.dashboard.viewmodel.DashboardViewModel" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.home.HomeResponseItem" />
+    <variable
+      name="positions"
+      type="int" />
+  </data>
+
+  <androidx.constraintlayout.motion.widget.MotionLayout
+    android:id="@+id/constraintLayout18"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/dimen_4dp"
+    app:layoutDescription="@xml/layout_instant_order_xml_constraintlayout18_scene">
+
+    <LinearLayout
+      android:id="@+id/linearLayout34"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="@drawable/bg_f74747_30_dp"
+      android:gravity="end"
+      android:orientation="horizontal"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      android:paddingVertical="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="@+id/linearLayout30"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/linearLayout30"
+      app:layout_constraintTop_toTopOf="@+id/linearLayout30"
+      tools:visibility="visible">
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/linearLayout35"
+      android:layout_width="wrap_content"
+      android:layout_height="0dp"
+      android:layout_marginHorizontal="@dimen/dimen_8dp"
+      android:layout_marginEnd="10dp"
+      android:layout_marginVertical="@dimen/dimen_2dp"
+      android:background="@drawable/white_with_round_corner_30dp"
+      android:gravity="center"
+      android:orientation="horizontal"
+      android:paddingHorizontal="@dimen/dimen_20dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/linearLayout34"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <TextView
+        android:id="@+id/textView204"
+        style="@style/text_12_color_004f6C_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arrives in:" />
+
+      <TextView
+        android:id="@+id/textView203"
+        style="@style/text_12_color_004f6C_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_4dp"
+        android:text="30 min" />
+    </LinearLayout>
+
+    <TextView
+      android:id="@+id/textView202"
+      style="@style/text_12_white_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_vertical"
+      android:text="Your Order is Confirmed"
+      android:textAlignment="center"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/linearLayout35"
+      app:layout_constraintStart_toEndOf="@+id/linearLayout30"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+      android:id="@+id/linearLayout30"
+      android:layout_width="@dimen/dimen_50dp"
+      android:layout_height="@dimen/dimen_50dp"
+      android:background="@drawable/bg_f74747_full_round"
+      android:gravity="center"
+      android:onClick="@{()->click.onClickExpand()}"
+      android:orientation="vertical"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      android:paddingVertical="@dimen/dimen_6dp"
+      app:layout_constraintDimensionRatio="w,1:1"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation"
+        android:layout_width="@dimen/dimen_25dp"
+        android:layout_height="@dimen/dimen_25dp"
+        app:srcCompat="@drawable/ic_scooter_2" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView201"
+        style="@style/text_8_white_semi_bole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30 mins"
+        android:textAlignment="center"
+        android:visibility="@{viewModel.isExpanded?View.GONE:View.VISIBLE}"
+        tools:visibility="invisible" />
+
+    </LinearLayout>
+
+  </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

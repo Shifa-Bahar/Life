@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  package="com.lifepharmacy.application">
+
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.VIBRATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-feature
+    android:name="android.hardware.camera.autofocus"
+    android:required="false" />
+  <uses-feature
+    android:name="android.hardware.camera"
+    android:required="false" />
+  <uses-feature
+    android:name="android.hardware.camera.front"
+    android:required="false" />
+
+  <uses-feature
+    android:glEsVersion="0x00020000"
+    android:required="true" />
+
+  <queries>
+    <intent>
+      <action android:name="android.media.action.IMAGE_CAPTURE" />
+    </intent>
+  </queries>
+  <queries>
+    <intent>
+      <action android:name="android.support.customtabs.action.CustomTabsService" />
+    </intent>
+  </queries>
+
+  <application
+    android:name="com.lifepharmacy.application.MyApplication"
+    tools:replace = "android:fullBackupContent,android:theme"
+    android:allowBackup = "true"
+    android:fullBackupContent = "true"
+    android:icon="@drawable/app_icon_ramadan"
+    android:label="@string/app_name"
+    android:requestLegacyExternalStorage="true"
+    android:roundIcon="@drawable/app_icon_ramadan_round"
+    android:supportsRtl="true"
+    android:theme="@style/Theme.LifePharmacy">
+    <service
+      android:name=".services.MyCustomMessagingService"
+      >
+      <intent-filter android:priority="1">
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+      </intent-filter>
+<!--      <intent-filter>-->
+<!--        <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
+<!--        <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+<!--      </intent-filter>-->
+    </service>
+    <meta-data
+      android:name="com.facebook.sdk.ApplicationId"
+      android:value="@string/facebook_app_id" />
+    <activity
+      android:name="com.facebook.FacebookActivity"
+      android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+      android:label="@string/app_name" />
+    <!--    <meta-data-->
+    <!--      android:name="firebase_performance_logcat_enabled"-->
+    <!--      android:value="true" />-->
+    <!--    android:usesCleartextTraffic="true"-->
+    <!--    <input-method-->
+    <!--      xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--      android:supportsInlineSuggestions="true"/>-->
+    <!--    <autofill-service-->
+    <!--      xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--      android:supportsInlineSuggestions="true"/>-->
+    <!--    <meta-data android:name="com.onesignal.NotificationServiceExtension"-->
+    <!--      android:value="com.company.NotificationServiceExtension" />-->
+    <provider
+      android:name="androidx.core.content.FileProvider"
+      android:authorities="com.lifepharmacy.application.fileprovider"
+      android:exported="false"
+      android:grantUriPermissions="true">
+      <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/provider_paths" />
+    </provider>
+
+
+    <meta-data
+      android:name="com.bugsnag.android.API_KEY"
+      android:value="e5cc967d97916c3a9d96137ff36baa68" />
+    <meta-data
+      android:name="com.google.android.geo.API_KEY"
+      android:value="@string/google_Api_Key" />
+    <meta-data
+      android:name="com.google.android.gms.version"
+      android:value="@integer/google_play_services_version" />
+    <meta-data
+      android:name="com.onesignal.NotificationServiceExtension"
+      android:value="com.company.NotificationServiceExtension" />
+
+    <activity android:name="com.lifepharmacy.application.ui.dashboard.DashboardActivity">
+      <!--      <intent-filter>-->
+      <!--        <action android:name="android.intent.action.MAIN" />-->
+
+      <!--        <category android:name="android.intent.category.LAUNCHER" />-->
+      <!--      </intent-filter>-->
+    </activity>
+    <activity android:name="com.lifepharmacy.application.ui.MainActivity"></activity>
+    <activity
+      android:name=".ui.payment.WebViewPaymentActivity"
+      android:hardwareAccelerated="false">
+
+    </activity>
+    <activity
+      android:name=".ui.payment.WebViewPaymentActivityNew"
+      android:hardwareAccelerated="false">
+
+    </activity>
+    <activity android:name=".ui.webActivity.WebViewActivity">
+
+    </activity>
+    <!--    <activity-->
+    <!--      android:name="zendesk.messaging.MessagingActivity"-->
+    <!--      android:theme="@style/zenDeskStyling" />-->
+    <!--    <activity-->
+    <!--      android:name="zendesk.support.requestlist.RequestListActivity"-->
+    <!--      android:theme="@style/zenDeskStyling" />-->
+    <!--    <activity-->
+    <!--      android:name="zendesk.support.request.RequestActivity"-->
+    <!--      android:theme="@style/zenDeskStyling" />-->
+    <activity
+      android:name="com.yalantis.ucrop.UCropActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    <activity
+      android:name="com.lifepharmacy.application.ui.splash.SplashActivity"
+      android:theme="@style/splashTheme.Launcher">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity android:name="com.lifepharmacy.application.ui.auth.AuthActivity">
+      <nav-graph android:value="@navigation/nav_auth" />
+    </activity>
+    <activity android:name=".ui.dashboard.DashboardWithNativeBottomActivity">
+      <!--      <intent-filter android:label="@string/app_name">-->
+      <!--        <action android:name="android.intent.action.VIEW" />-->
+      <!--        <category android:name="android.intent.category.DEFAULT" />-->
+      <!--        <category android:name="android.intent.category.BROWSABLE" />-->
+      <!--        &lt;!&ndash; Accepts URIs that begin with "example://gizmos” &ndash;&gt;-->
+      <!--        <data-->
+      <!--          android:host="beta.lifepharmacy.com"-->
+      <!--          android:scheme="https" />-->
+      <!--      </intent-filter>-->
+      <!--      <data android:scheme="https"-->
+      <!--        android:host="beta.lifepharmacy.com" />-->
+      <intent-filter android:label="@string/app_name">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <!-- Accepts URIs that begin with "example://gizmos” -->
+<!--       url- lifeapp://home-->
+        <data android:scheme="lifeapp"
+          android:host="home" />
+      </intent-filter>
+
+      <intent-filter android:label="@string/app_name">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <!-- Accepts URIs that begin with "example://gizmos” -->
+        <!--       url- lifeapp://products-->
+        <data android:scheme="lifeapp"
+          android:host="products" />
+      </intent-filter>
+
+      <nav-graph android:value="@navigation/nav_home" />
+      <nav-graph android:value="@navigation/nav_product" />
+      <nav-graph android:value="@navigation/nav_product_listing" />
+      <nav-graph android:value="@navigation/nav_categories" />
+      <nav-graph android:value="@navigation/nav_rating" />
+      <!--            <nav-graph android:value="@navigation/nav_dashboard" />-->
+
+
+      <!--      <intent-filter>-->
+      <!--        <action android:name="android.intent.action.MAIN" />-->
+
+      <!--        <category android:name="android.intent.category.LAUNCHER" />-->
+      <!--      </intent-filter>-->
+    </activity>
+    <activity
+      android:name="com.livechatinc.inappchat.ChatWindowActivity"
+      android:configChanges="orientation|screenSize" />
+    <activity android:name=".ui.UpdateAppActivity" />
+    <activity android:name=".ui.livechat.LiveChatActivity" />
+    <activity android:name=".ui.address.AddressSelectionActivity" />
+  </application>
+
+</manifest>
+

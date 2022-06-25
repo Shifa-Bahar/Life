@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.products.fragment.ClickPreviewProductFragment" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.products.viewmodel.ProductViewModel" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_with_top_round_corner"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_product_name"
+      style="@style/text_16_blue_dark_open_semi_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/dp_10"
+      android:layout_marginTop="@dimen/dp_10"
+      android:layout_marginEnd="@dimen/dp_10"
+      android:gravity="start"
+      android:text="@string/product_review"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_reviews"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dp_10"
+      android:orientation="vertical"
+      android:paddingHorizontal="@dimen/dimen_10dp"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:spanCount="1"
+      tools:itemCount="4"
+      tools:listitem="@layout/item_review_card" />
+  </LinearLayout>
+</layout>

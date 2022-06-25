@@ -1,0 +1,51 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <!-- Base application theme. -->
+  <style name="Theme.LifePharmacy" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <!-- Primary brand color. -->
+    <item name="colorPrimary">@color/accent_blue</item>
+    <item name="colorPrimaryVariant">@color/accent_blue</item>
+    <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    <item name="colorOnPrimary">@color/accent_blue</item>
+
+    <!-- Secondary brand color. -->
+    <item name="colorSecondary">@color/accent_blue</item>
+    <item name="colorSecondaryVariant">@color/accent_blue_darker</item>
+    <item name="colorOnSecondary">@color/accent_blue</item>
+<!--    <item name="android:windowBackground">@drawable/ic_splash_full</item>-->
+    <!-- Status bar color. -->
+    <item name="android:statusBarColor" tools:targetApi="l">
+      ?attr/colorPrimaryVariant
+    </item>
+    <item name="android:windowDisablePreview">true</item>
+    <!-- Customize your theme here. -->
+
+  </style>
+<!--  <style name="splashTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+<!--    &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--    <item name="colorPrimary">@color/white</item>-->
+<!--    <item name="colorPrimaryDark">@color/white</item>-->
+<!--    <item name="colorAccent">@color/white</item>-->
+<!--    <item name="android:windowBackground">@null</item>-->
+<!--  </style>-->
+
+<!--  <style name="splashTheme.CenterAnimation">-->
+<!--    <item name="colorSecondary">@color/accent_blue</item>-->
+<!--    <item name="colorSecondaryVariant">@color/accent_blue_darker</item>-->
+<!--    <item name="colorOnSecondary">@color/accent_blue</item>-->
+<!--    <item name="colorPrimary">@color/accent_blue</item>-->
+<!--    <item name="colorPrimaryVariant">@color/accent_blue</item>-->
+<!--    <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>-->
+<!--    <item name="android:windowBackground">@drawable/ic_splash_full</item>-->
+<!--  </style>-->
+
+  <style name="splashTheme.Launcher" parent="Theme.LifePharmacy">
+    <item name="colorSecondaryVariant">@color/accent_blue_darker</item>
+    <item name="colorOnSecondary">@color/accent_blue</item>
+    <item name="colorPrimary">@color/accent_blue</item>
+    <item name="colorPrimaryVariant">@color/accent_blue</item>
+    <item name="android:windowLightStatusBar">false</item>
+    <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    <item name="android:windowBackground">@drawable/ic_splash_full</item>
+  </style>
+
+</resources>

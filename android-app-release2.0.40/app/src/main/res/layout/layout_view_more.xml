@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="title"
+      type="String" />
+
+    <variable
+      name="isShow"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.dashboard.fragments.ClickHomeFragment" />
+
+    <variable
+      name="positions"
+      type="int" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.home.HomeResponseItem" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="false"
+    android:paddingVertical="@dimen/dimen_8dp"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_products_title"
+      style="@style/text_15_blue_dark_semi_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingStart="@dimen/dimen_12dp"
+      android:textAlignment="viewStart"
+      android:paddingEnd="@dimen/dimen_0dp"
+      android:visibility="@{item.showSectionTitle ? View.VISIBLE: View.GONE}"
+
+      android:text="@{title}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Trendings" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_offers"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dimen_6dp"
+      android:orientation="vertical"
+      android:nestedScrollingEnabled="false"
+      android:paddingStart="@dimen/dimen_12dp"
+      android:paddingEnd="@dimen/dimen_12dp"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_products_title"
+      app:spanCount="4"
+      tools:itemCount="4"
+      tools:listitem="@layout/item_offers_view_more" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_offers_hidden"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dimen_6dp"
+      android:orientation="vertical"
+      android:paddingStart="@dimen/dimen_12dp"
+      android:nestedScrollingEnabled="false"
+      android:paddingEnd="@dimen/dimen_12dp"
+      android:visibility="@{isShow ? View.VISIBLE : View.GONE}"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_products_title"
+      app:spanCount="4"
+      tools:itemCount="4"
+      tools:listitem="@layout/item_offers_view_more" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_show"
+      style="@style/text_10_blue_dark_semi_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginVertical="@dimen/dimen_16dp"
+      android:layout_marginStart="@dimen/dimen_16dp"
+      android:layout_marginEnd="@dimen/dimen_20dp"
+      android:background="@drawable/white_with_round_corner"
+      android:elevation="2dp"
+      android:paddingVertical="@dimen/dimen_8dp"
+      android:text="@{isShow ? @string/show_less : @string/view_more}"
+      android:textAlignment="center"
+      app:textAllCaps="true" />
+  </LinearLayout>
+</layout>

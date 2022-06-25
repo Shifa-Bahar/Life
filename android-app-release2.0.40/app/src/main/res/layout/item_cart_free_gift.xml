@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.cart.CartModel" />
+
+  </data>
+
+  <androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:id="@+id/cl_main"
+    android:animateLayoutChanges="true"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dimen_8dp"
+    app:cardBackgroundColor="@color/color_green_efffdd"
+    android:layout_marginVertical="@dimen/dimen_8dp"
+    app:cardCornerRadius="@dimen/dimen_10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/cardView7">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_product"
+        errorImage="@{@drawable/image_place_holder}"
+        loadImageFromURl="@{item.productDetails.images.featuredImage}"
+        android:layout_width="@dimen/dimen_40dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/dimen_8dp"
+        android:layout_marginStart="@dimen/dimen_4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/quantum_indigoA100" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_product_name"
+        style="@style/text_13_accent_dark_regular"
+        android:layout_width="0dp"
+        android:gravity="center_vertical"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="@{item.productDetails.title}"
+        app:layout_constraintBottom_toBottomOf="@+id/img_product"
+        app:layout_constraintEnd_toStartOf="@+id/textView216"
+        app:layout_constraintStart_toEndOf="@+id/img_product"
+        app:layout_constraintTop_toTopOf="@+id/img_product"
+        tools:text="Puressentiel Purifying Antibacterial Lotion Spray Hands and Surfaces " />
+
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView216"
+        style="@style/text_14_accent_dark_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:text="@{`x`+item.qty}"
+        app:layout_constraintBottom_toBottomOf="@+id/img_product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_product"
+        tools:text="x2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.cardview.widget.CardView>
+
+</layout>

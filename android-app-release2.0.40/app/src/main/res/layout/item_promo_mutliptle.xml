@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.home.SectionData" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.dashboard.adapter.ClickHomeSubItem" />
+
+  </data>
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/shapeableImageView1"
+      loadImageFromURl="@{item.parent.imageUrl}"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginVertical="@dimen/dimen_6dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="@dimen/dimen_4dp"
+      android:onClick="@{()->click.onClickHomeSubItem(item.parent.title,item.parent.id,item.parent.type,item)}"
+      android:scaleType="fitXY"
+      app:layout_constraintDimensionRatio="312:94"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/grey_e5eb_with_round_corner_30dp" />
+
+    <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="@dimen/dimen_2dp"
+      android:orientation="horizontal"
+      android:weightSum="3"
+      app:layout_constraintDimensionRatio="294:72"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/shapeableImageView1">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/shapeableImageView2"
+        loadImageFromURl="@{item.children[0].imageUrl}"
+        android:layout_width="match_parent"
+        android:onClick="@{()->click.onClickHomeSubItem(item.children[0].title,item.children[0].id,item.children[0].type,item.children[0])}"
+
+        android:layout_height="match_parent"
+        android:layout_marginVertical="@dimen/dimen_2dp"
+        android:layout_marginEnd="@dimen/dimen_4dp"
+        android:layout_weight="1"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/image_place_holder" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/shapeableImageView3"
+        loadImageFromURl="@{item.children[1].imageUrl}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="@dimen/dimen_2dp"
+        android:onClick="@{()->click.onClickHomeSubItem(item.children[1].title,item.children[1].id,item.children[1].type,item.children[1])}"
+
+        android:layout_marginEnd="@dimen/dimen_4dp"
+        android:layout_weight="1"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/image_place_holder" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/shapeableImageView4"
+        loadImageFromURl="@{item.children[2].imageUrl}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="@{()->click.onClickHomeSubItem(item.children[2].title,item.children[2].id,item.children[2].type,item.children[2])}"
+        android:layout_marginVertical="@dimen/dimen_2dp"
+        android:layout_marginEnd="@dimen/dimen_4dp"
+        android:layout_weight="1"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/image_place_holder" />
+    </LinearLayout>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout><!--    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize15Percent"-->
+
+  <!--    com.google.android.material.imageview.ShapeableImageView-->

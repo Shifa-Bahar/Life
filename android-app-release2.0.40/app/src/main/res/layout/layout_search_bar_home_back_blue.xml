@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.interfaces.ClickSearchBar" />
+
+    <variable
+      name="location"
+      type="androidx.databinding.ObservableField&lt;android.location.Address&gt;" />
+
+    <variable
+      name="place"
+      type="androidx.databinding.ObservableField&lt;com.google.android.libraries.places.api.model.Place&gt;" />
+
+    <variable
+      name="hint"
+      type="String" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/accent_blue"
+    android:paddingHorizontal="@dimen/dimen_10dp"
+    android:paddingVertical="@dimen/dimen_10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout_location"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/dimen_10dp"
+      android:orientation="horizontal"
+
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageView_logo"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView108"
+        style="@style/text_12_1d1d_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        android:text="@string/deliver_to_colan"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_location"
+        style="@style/text_13_blue_dark_open_regular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_6dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="@{place != null ? place.name : location.adminArea !=null  &amp;&amp;  location.subLocality != null ? location.subLocality+`,`+location.adminArea  : location.getAddressLine(0)}"
+        android:textAlignment="viewStart"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_location"
+        app:layout_constraintEnd_toStartOf="@+id/textView109"
+        app:layout_constraintStart_toEndOf="@+id/textView108"
+        app:layout_constraintTop_toTopOf="@+id/imageView_location"
+        tools:text=" Dubai" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_location"
+        android:layout_width="@dimen/dimen_7dp"
+        android:layout_height="@dimen/dp_10"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_location" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView109"
+        style="@style/text_12_white_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="end"
+        android:layout_weight="1"
+        android:background="@color/accent_blue_darker"
+        android:gravity="center"
+        android:onClick="@{()->click.onClickAddress()}"
+        android:paddingHorizontal="@dimen/dimen_6dp"
+        android:text="@string/change"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:textAllCaps="true" />
+
+      <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_3dp"
+        android:background="@drawable/line_dashes"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/tv_location"
+        app:layout_constraintStart_toStartOf="@+id/imageView_location"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout_search"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/dimen_10dp"
+      android:layout_marginTop="@dimen/dimen_6dp"
+      android:background="@drawable/bg_rect_home_search"
+      android:visibility="invisible"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageView_logo"
+      app:layout_constraintTop_toBottomOf="@+id/constraintLayout_location">
+
+      <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_search"
+        style="@style/text_13_8585_open_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_6dp"
+        android:layout_marginEnd="@dimen/dimen_26dp"
+        android:background="@color/transparent"
+        android:focusable="false"
+        android:hint="@{hint}"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_search"
+        app:layout_constraintTop_toTopOf="@+id/imageView_search"
+        tools:text="@string/search_medicine_and_healthcare_products" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_search"
+        android:layout_width="@dimen/dimen_14dp"
+        android:layout_height="@dimen/dimen_14dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginBottom="@dimen/dimen_9dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_search" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView_logo"
+      android:layout_width="@dimen/dimen_34dp"
+      android:layout_height="@dimen/dimen_60dp"
+      android:visibility="invisible"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_life_logo" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

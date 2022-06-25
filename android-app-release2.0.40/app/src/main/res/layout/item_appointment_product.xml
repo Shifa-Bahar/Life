@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isDelivered"
+      type="Boolean" />
+    <variable
+      name="itemp"
+      type="com.lifepharmacy.application.model.pcr.appointmentdetailnew.Product_details" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.pcr.appointmentdetailnew.Products" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_4dp">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginVertical="@dimen/dimen_4dp"
+      app:cardCornerRadius="@dimen/dimen_2dp"
+      android:elevation="@dimen/dimen_5dp"
+      tools:ignore="MissingConstraints">
+
+
+      <!--    android:background="@{isSelected ? @drawable/bg_rect_blue_border : @drawable/bg_transparent}"-->
+      <!--      android:background="@drawable/ic_rectangle"-->
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/dimen_2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+        <!--      loadImageFromURl="@{item.images.featured_image}"-->
+        <com.google.android.material.imageview.ShapeableImageView
+          android:id="@+id/img_product"
+          loadImageFromURl="@{itemp.images.featured_image}"
+          android:layout_width="@dimen/dimen_70dp"
+          android:layout_height="@dimen/dimen_72dp"
+          app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize15Percent"
+          app:srcCompat="@mipmap/dummy_image"
+          app:strokeColor="@color/color_93a3"
+          app:strokeWidth="1dp" />
+<!--          <androidx.appcompat.widget.AppCompatImageView-->
+<!--            android:id="@+id/img_product"-->
+<!--            loadImageFromURl="@{itemp.images.featured_image}"-->
+<!--            android:layout_width="108dp"-->
+<!--            android:layout_height="98dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:scaleType="fitXY"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        <!--      setAddCartVisibility="@{item}"-->
+        <!--      isInCart="@{isInCart}"-->
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:padding="@dimen/dimen_4dp"
+          android:layout_marginStart="@dimen/dimen_8dp"
+          android:layout_marginTop="@dimen/dimen_2dp"
+          android:orientation="vertical">
+
+          <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_product_name"
+              style="@style/text_12_accent_dark_semi_bole"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="@dimen/dimen_3dp"
+              android:layout_marginTop="@dimen/dimen_3dp"
+              android:layout_marginEnd="@dimen/dimen_3dp"
+              android:layout_marginBottom="@dimen/dimen_3dp"
+              android:textAlignment="gravity"
+              tools:layout_editor_absoluteX="115dp"
+              tools:layout_editor_absoluteY="12dp"
+              tools:text="individual text" />
+
+
+          </RelativeLayout>
+
+
+
+            <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="@dimen/dimen_4dp"
+              android:orientation="horizontal">
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_qty"
+                style="@style/text_8_accent_dark_semi_bole"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/dimen_12dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                tools:text="x5"
+                android:layout_marginStart="@dimen/dimen_4dp"
+                android:gravity="center" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_price"
+                style="@style/text_8_accent_dark_semi_bole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dimen_4dp"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/dimen_12dp"
+                tools:text="AED 300" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+      </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

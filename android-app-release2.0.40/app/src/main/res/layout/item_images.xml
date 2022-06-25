@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="String" />
+
+    <variable
+      name="position"
+      type="int" />
+    <variable
+      name="isEdit"
+      type="Boolean" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.prescription.adapters.ClickItemImage" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:padding="@dimen/dimen_4dp"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent">
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/iv_loaded"
+      loadImageFromURl="@{item}"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/dimen_70dp"
+      android:onClick="@{()->click.onClickImage(item)}"
+      android:scaleType="centerCrop"
+      app:layout_constraintDimensionRatio="w,1:1"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize15Percent"
+      tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/iv_cross"
+      android:layout_width="@dimen/dimen_24dp"
+      android:layout_height="@dimen/dimen_24dp"
+      android:onClick="@{()->click.onClickCross(item)}"
+      android:visibility="@{isEdit ? View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toBottomOf="@+id/iv_loaded"
+      app:layout_constraintEnd_toEndOf="@+id/iv_loaded"
+      app:layout_constraintStart_toEndOf="@+id/iv_loaded"
+      app:layout_constraintTop_toBottomOf="@+id/iv_loaded"
+      app:srcCompat="@drawable/ic_cross" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

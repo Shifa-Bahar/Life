@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isDelivered"
+      type="Boolean" />
+    <variable
+      name="itemp"
+      type="com.lifepharmacy.application.model.pcr.appointmentdetailnew.Product_details" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.pcr.appointmentdetailnew.Reports" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.pcr.adapters.ClickAppoinymenttem" />
+  </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dimen_4dp"
+      android:padding="@dimen/dimen_4dp"
+      android:orientation="horizontal">
+<!--      android:text="@{@string/suborder_hash + item.subOrderId}"-->
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_rep"
+        style="@style/text_14_accent_dark_semi_bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toStartOf="@+id/downloadbtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Download " />
+<!--      android:onClick="@{()->click.onClickInvoice(item.id)}"-->
+      android:visibility="@{item.status == 4 ||  item.status == 5 ? View.VISIBLE : View.GONE}"
+<!--      android:onClick="@{()->click.onClickInvoice()}"-->
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/downloadbtn"
+        style="@style/text_12_white_semi_bold"
+        android:layout_width="wrap_content"
+        android:paddingVertical="@dimen/dimen_4dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_6dp"
+
+        android:background="@drawable/bg_button_accent"
+        android:drawableEnd="@drawable/ic_download"
+        android:drawablePadding="@dimen/dimen_6dp"
+        android:text="Download"
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+      <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_e8e8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="4dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

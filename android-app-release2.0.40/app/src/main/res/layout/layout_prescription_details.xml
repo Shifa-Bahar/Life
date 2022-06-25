@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.prescription.fragments.ClickPrescriptionFragment" />
+
+    <variable
+      name="isClaimingInsurance"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="isNotClaimingInsurance"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="isThereImages"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="insuranceNumber"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+    <variable
+      name="eRxNumber"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dimen_4dp"
+      app:cardCornerRadius="@dimen/dimen_5dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/dimen_8dp"
+        android:paddingVertical="@dimen/dimen_8dp">
+
+        <include
+          android:id="@+id/layout_insurance"
+          layout="@layout/layout_insurance_promo"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:layout_marginBottom="16dp"
+          android:visibility="@{isNotClaimingInsurance ? View.VISIBLE : View.GONE}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/divider10"
+          tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView50"
+          style="@style/text_16_accent_dark_semi_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/prescription_details"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+          android:id="@+id/textView51"
+          style="@style/text_10_979c_semi_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_4dp"
+          android:text="@string/or"
+          android:textAllCaps="true"
+          app:layout_constraintEnd_toEndOf="@+id/ly_rxnumber"
+          app:layout_constraintStart_toStartOf="@+id/ly_rxnumber"
+          app:layout_constraintTop_toBottomOf="@+id/ly_rxnumber" />
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/ly_rxnumber"
+          style="@style/TextInputLayoutStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          app:errorEnabled="true"
+          app:errorTextColor="@color/black"
+          app:hintAnimationEnabled="false"
+          app:hintEnabled="false"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/textView50">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_rxnumber"
+            style="@style/text_10_93a_regular"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_weight="1"
+            android:text="@={eRxNumber.value}"
+            app:textChangedListener="@{eRxNumber.textWatcher}"
+            android:background="@drawable/bg_rect_sevety"
+            android:theme="@style/MyEditText"
+            android:drawablePadding="@dimen/dimen_8dp"
+            android:drawableTint="@color/color_93a3"
+            android:hint="@string/enter_erx_number"
+            android:inputType="phone"
+            android:padding="@dimen/dimen_12dp"
+            android:maxLength="10"
+            android:textAlignment="textStart"
+            android:textCursorDrawable="@drawable/black_cursor"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ccp"
+            app:layout_constraintTop_toTopOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
+<!--        android:drawableEnd="@drawable/ic_information"-->
+        <Button
+          android:id="@+id/btn_upload"
+          style="@style/text_10_blue_dark_semi_bold"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/dimen_46dp"
+          android:layout_marginTop="8dp"
+          android:elevation="@dimen/dimen_2dp"
+          android:onClick="@{()->click.onClickUploadImage()}"
+          android:text="@string/upload_prescription"
+          app:cornerRadius="@dimen/dimen_5dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/rv_images"
+          app:strokeColor="@color/color_e8e8"
+          app:strokeWidth="@dimen/dimen_1dp" />
+
+        <View
+          android:id="@+id/divider10"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/dimen_0.5dp"
+          android:layout_marginTop="16dp"
+          android:background="@color/color_e8e8"
+          app:layout_constraintEnd_toEndOf="@+id/textView52"
+          app:layout_constraintStart_toStartOf="@+id/textView52"
+          app:layout_constraintTop_toBottomOf="@+id/btn_upload" />
+
+        <TextView
+          android:id="@+id/textView52"
+          style="@style/text_16_accent_dark_semi_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:text="@string/you_want_to_claim_insurance"
+          android:visibility="@{!isNotClaimingInsurance ? View.VISIBLE : View.GONE}"
+          app:layout_constraintEnd_toEndOf="@+id/btn_upload"
+          app:layout_constraintStart_toStartOf="@+id/btn_upload"
+          app:layout_constraintTop_toBottomOf="@+id/divider10" />
+
+        <View
+          android:id="@+id/divider11"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/dimen_0.5dp"
+          android:layout_marginTop="16dp"
+          android:background="@color/white"
+          android:visibility="invisible"
+          app:layout_constraintEnd_toEndOf="@+id/textView52"
+          app:layout_constraintStart_toStartOf="@+id/textView52"
+          app:layout_constraintTop_toBottomOf="@+id/textView52" />
+
+        <Button
+          android:id="@+id/btn_yes"
+          style="@style/text_10_blue_dark_semi_bold"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/dimen_56dp"
+
+          android:layout_marginEnd="8dp"
+          android:layout_marginBottom="@dimen/dimen_8dp"
+          android:elevation="@dimen/dimen_2dp"
+          android:onClick="@{()->click.onClickClaimInsurance()}"
+          android:text="@string/yes"
+          android:textAllCaps="false"
+          android:visibility="@{!isClaimingInsurance &amp;&amp; !isNotClaimingInsurance  ? View.VISIBLE : View.GONE}"
+          app:cornerRadius="@dimen/dimen_5dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/btn_no"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/divider11"
+          app:strokeColor="@color/color_e8e8"
+          app:strokeWidth="@dimen/dimen_1dp"
+          tools:visibility="visible" />
+
+        <Button
+          android:id="@+id/btn_no"
+          style="@style/text_10_blue_dark_semi_bold"
+          android:layout_width="0dp"
+          android:layout_height="@dimen/dimen_56dp"
+          android:layout_marginStart="8dp"
+          android:elevation="@dimen/dimen_2dp"
+          android:onClick="@{()->click.onNotClaimInsurance()}"
+          android:text="@string/no"
+          android:textAllCaps="false"
+          android:visibility="@{!isClaimingInsurance &amp;&amp; !isNotClaimingInsurance ? View.VISIBLE : View.GONE}"
+          app:cornerRadius="@dimen/dimen_5dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/btn_yes"
+          app:layout_constraintTop_toTopOf="@+id/btn_yes"
+          app:strokeColor="@color/color_e8e8"
+          app:strokeWidth="@dimen/dimen_1dp"
+          tools:visibility="visible" />
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/ly_insurance"
+          style="@style/TextInputLayoutStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/dimen_8dp"
+          android:visibility="@{isClaimingInsurance ? View.VISIBLE : View.GONE}"
+          app:errorEnabled="true"
+          app:errorTextColor="@color/black"
+          app:hintAnimationEnabled="false"
+          app:hintEnabled="false"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/divider11"
+          tools:visibility="visible">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_insurance"
+            style="@style/text_10_93a_regular"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:theme="@style/MyEditText"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dimen_8dp"
+            android:drawableTint="@color/color_93a3"
+            android:hint="@string/enter_your_member_id"
+            android:inputType="phone"
+            android:padding="@dimen/dimen_12dp"
+            android:text="@={insuranceNumber.value}"
+            android:textAlignment="textStart"
+            android:textCursorDrawable="@drawable/black_cursor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ccp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textChangedListener="@{insuranceNumber.textWatcher}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_images"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_marginTop="8dp"
+          android:orientation="horizontal"
+          android:visibility="@{isThereImages? View.VISIBLE :View.GONE}"
+          app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/textView51"
+          app:spanCount="1"
+          tools:itemCount="3"
+          tools:listitem="@layout/item_images"
+          tools:visibility="visible" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

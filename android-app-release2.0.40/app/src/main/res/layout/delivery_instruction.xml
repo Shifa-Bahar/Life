@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="items"
+      type="String" />
+
+    <variable
+      name="itemselected"
+      type="String" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.cart.DeliveryInstructions" />
+
+    <variable
+      name="position"
+      type="int" />
+    <variable
+      name="isEdit"
+      type="Boolean" />
+
+    <variable
+      name="isSelected"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickPaymentFragment" />
+
+  </data>
+  <!--  android:onClick="@{()->click.onClickPcrDateTime(position,item)}"-->
+  <!--  app:cardBackgroundColor="@{isSelected ? @color/color_eff : @color/white }"-->
+<!--  android:background="@{isSelected ? @drawable/bg_rect_blue_border : @drawable/bg_transparent}"-->
+<!--  android:background="@{isSelected ? @drawable/bg_square_blue_border_bluefill : @drawable/bg_rect_no_border}"-->
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+<!--    android:layout_marginEnd="@dimen/dimen_4dp"-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/cl_delivery"
+      android:layout_width="80dp"
+      android:layout_height="90dp"
+      android:layout_marginVertical="@dimen/dimen_6dp"
+      android:layout_marginRight="@dimen/dimen_8dp"
+      android:layout_marginLeft="@dimen/dimen_2dp"
+      android:background="@drawable/bg_rect_no_border"
+      android:elevation="@dimen/dimen_2dp"
+      android:padding="@dimen/dimen_2dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+
+<!--          <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/cl_delivery"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="90dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:background="@color/white"-->
+<!--            android:elevation="@dimen/dimen_4dp"-->
+<!--            app:cardCornerRadius="@dimen/dimen_5dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+          <!--  loadImageFromURl="@{isSelected ? itemselected : items}"-->
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_icon"
+            errorImage="@{@drawable/image_place_holder}"
+            loadImageFromURl="@{items}"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dimen_2dp"
+            android:layout_marginTop="@dimen/dimen_2dp"
+            android:paddingLeft="@dimen/dimen_4dp"
+            app:srcCompat="@drawable/ic_calling" />
+          <!--  android:onClick="@{()->click.onClickLater()}"-->
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_cross"
+            android:layout_width="@dimen/dimen_20dp"
+            android:layout_height="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/dimen_4dp"
+            android:layout_marginEnd="@dimen/dimen_2dp"
+            android:layout_toEndOf="@+id/img_icon"
+            android:elevation="@dimen/dimen_4dp"
+            android:padding="@dimen/dimen_2dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_simple_cross"
+            tools:visibility="visible" />
+        </RelativeLayout>
+
+        <!--  android:onClick="@{()->click.onClickPcrDateTime(position,item)}"-->
+        <!--  android:background="@{isSelected ? @drawable/bg_text_accent : @drawable/bg_8b_border}"-->
+        <!--  android:onClick="@{()->click.onClickSubQuickSelection(item,position)}"-->
+        <!--      android:background="@{isSelected ? @drawable/accent_alpha_rectangle_white_blue_border : @drawable/accent_50_alpha_rectangle_white}"-->
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_delivery"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="start"
+          android:layout_margin="@dimen/dimen_2dp"
+          android:elevation="@dimen/dimen_2dp"
+          android:minLines="2"
+          android:padding="@dimen/dimen_4dp"
+          android:textAlignment="textStart"
+          android:textSize="@dimen/dimen_9dp"
+          tools:text="leave at the door" />
+
+      </LinearLayout>
+<!--          </androidx.cardview.widget.CardView>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

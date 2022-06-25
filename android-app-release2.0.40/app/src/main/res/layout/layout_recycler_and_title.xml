@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="title"
+      type="String" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:elevation="2dp"
+    android:layout_margin="@dimen/dimen_4dp"
+    android:background="@drawable/white_with_round_corner"
+    android:paddingHorizontal="@dimen/dimen_16dp"
+    android:paddingVertical="@dimen/dimen_16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_title"
+      style="@style/text_12_accent_dark_semi_bole"
+      android:textAllCaps="true"
+      android:layout_width="match_parent"
+      tools:text="item Details"
+      android:layout_height="wrap_content"
+      android:text="@{title}" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/white_with_round_corner"
+      android:orientation="vertical"
+      android:paddingBottom="@dimen/dimen_16dp"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/ly_shipment_header"
+      app:spanCount="1"
+      tools:itemCount="2"
+      tools:listitem="@layout/item_order_shipment_product" />
+  </LinearLayout>
+
+</layout>

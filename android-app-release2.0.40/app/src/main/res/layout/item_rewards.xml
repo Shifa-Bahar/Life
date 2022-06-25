@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.rewards.RewardItem" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.rewards.adapters.ClickItemRewards" />
+
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_132dp"
+    android:layout_marginVertical="@dimen/dimen_8dp"
+    android:layout_marginHorizontal="@dimen/dimen_8dp"
+    android:background="@drawable/ic_voucher_bback"
+    android:elevation="@dimen/dp_10"
+    android:onClick="@{()->click.onClickRewards(item.id)}">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/linearLayout6"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginStart="@dimen/dimen_20dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="8dp"
+      android:paddingVertical="@dimen/dimen_10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_image"
+        android:layout_width="137dp"
+        android:layout_height="136dp"
+        android:background="@drawable/bg_rect_e8e8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--        loadImageFromURlString="@{item.reward_campaign.banner}"-->
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/imageView_icon"
+          errorImage="@{@drawable/image_rewards_paceholder}"
+          loadImageFromURl="@{item.reward_campaign.banner}"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_marginHorizontal="@dimen/dimen_8dp"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.888"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:srcCompat="@drawable/image_rewards_paceholder" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+      <!--        bindStartingDate="@{item.vALIDFROM}"-->
+
+      <!--        bindEndDate="@{item.eXPIRYDATE}"-->
+      <!--        bindVoucher="@{item}"-->
+
+
+      <!--      setPriceStringWithPrefsCurrency="@{item.iSSUEVALUE}"-->
+      <!--      setVoucherStatus="@{item}"-->
+
+      <!--      -->
+      <!--      bindEndDate="@{item.reward_campaign.end_at}"-->
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_amount"
+        style="@style/text_12_accent_dark_semi_bole"
+        android:layout_width="145dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:background="@drawable/ic_tag_rect_reward"
+        android:gravity="center"
+        android:text=" In store purchace only"
+        android:textSize="@dimen/dimen_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457" />
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout_image"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="start"
+          android:layout_marginStart="@dimen/dimen_12dp"
+          android:layout_marginTop="@dimen/dimen_10dp"
+          android:orientation="horizontal"
+          app:layout_constraintTop_toBottomOf="@+id/tv_amount">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView73"
+            style="@style/text_26_accent_dark_semi_bold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:text="AED "
+            android:gravity="center_vertical"
+            android:textSize="@dimen/dimen_25dp" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView777"
+            style="@style/text_26_accent_dark_semi_bold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:layout_marginStart="@dimen/dimen_2dp"
+            android:text="@{item.amount}"
+            android:textAlignment="center"
+            android:textSize="@dimen/dimen_25dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_amount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        </LinearLayout>
+
+        <!--      android:onClick="@{()->click.onClickRewards(item)}"-->
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dimen_12dp"
+          android:layout_marginTop="@dimen/dimen_5dp"
+          android:layout_marginBottom="@dimen/dimen_5dp"
+          android:orientation="horizontal">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_valid_start_date"
+            android:layout_weight="0.4"
+            android:textSize="@dimen/dimen_9dp"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+          <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button25"
+            style="@style/rewardBotton"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_weight="0.6"
+            android:layout_marginEnd="@dimen/dimen_2dp"
+            android:layout_marginStart="@dimen/dimen_3dp"
+            android:onClick="@{()->click.onClickRewards(item.id)}"
+            android:text="Redeem Now"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.849" />
+        </LinearLayout>
+      </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

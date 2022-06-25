@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.orders.viewmodels.OrderDetailViewModel" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dp_10"
+      android:layout_marginTop="@dimen/dimen_4dp"
+      android:layout_marginBottom="@dimen/dimen_4dp"
+      app:cardCornerRadius="@dimen/dp_10"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_title"
+            style="@style/text_16_accent_dark_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_summary" />
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView5"
+              style="@style/text_12_blue_dark_open_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/order_details" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_order_amount"
+              style="@style/text_12_blue_dark_open_regular"
+              setPriceWithPrefsCurrency="@{viewModel.subOrderItemMut.subTotal}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:id="@+id/ll_discount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView6"
+              style="@style/text_13_1d1d_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="Itmes Discount" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView8"
+              style="@style/text_13_1d1d_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="AED 30.00"
+              android:textAlignment="viewEnd" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:id="@+id/ll_coupon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView10"
+              style="@style/text_13_1d1d_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/coupon_discount" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView9"
+              style="@style/text_13_1d1d_regular"
+              android:layout_width="wrap_content"
+
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="-AED 10.00"
+              android:textAlignment="viewEnd" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:visibility="@{viewModel.subOrderItemMut.discount == null || viewModel.subOrderItemMut.getDiscountInString().equals(`0.00`) ? View.GONE: View.VISIBLE}"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              style="@style/text_12_blue_dark_open_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/itmes_discount" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              style="@style/text_13_1d1d_regular"
+              setPriceWithPrefsCurrency="@{viewModel.subOrderItemMut.discount}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd"
+              tools:text="AED 30.00" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_weight="1">
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_know_more_part1"
+                style="@style/text_12_blue_dark_open_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shipping_fee"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView12"
+              style="@style/text_13_1d1d_regular"
+              setPriceWithPrefsCurrencyForOrderItem="@{viewModel.subOrderItemMut.deliveryFee}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd"
+              android:textColor="@color/color_1ec" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:visibility="@{viewModel.subOrderItemMut.codCharge == null || viewModel.subOrderItemMut.getCodeInString().equals(`0.00`) ? View.GONE: View.VISIBLE}">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView7"
+              style="@style/text_12_blue_dark_open_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/cod" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_cod"
+              style="@style/text_13_1d1d_regular"
+              setPriceWithPrefsCurrency="@{viewModel.subOrderItemMut.codCharge}"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd"
+              tools:text="AED 193.80" />
+          </LinearLayout>
+
+          <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0.5dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/color_e8e8" />
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_weight="1">
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView120"
+                style="@style/text_14_accent_dark_semi_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_vat_title"
+                style="@style/text_12_8585_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_6dp"
+                android:layout_weight="1"
+
+                android:text="@string/inclusive_of_vat"
+                app:layout_constraintBottom_toBottomOf="@+id/textView120"
+                app:layout_constraintStart_toEndOf="@+id/textView120" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView15"
+              style="@style/text_14_0025_open_semi_bold"
+              setPriceWithPrefsCurrency="@{viewModel.subOrderItemMut.total}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd" />
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView11"
+              style="@style/text_13_accent_dark_regular"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/estimated_vat" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_vat_amount"
+              style="@style/text_13_accent_dark_regular"
+              setPriceWithPrefsCurrency="@{viewModel.subOrderItemMut.tax}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textAlignment="viewEnd" />
+          </LinearLayout>
+
+          <!--                <androidx.recyclerview.widget.RecyclerView-->
+          <!--                    android:layout_width="match_parent"-->
+          <!--                    android:layout_height="wrap_content" />-->
+
+        </LinearLayout>
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

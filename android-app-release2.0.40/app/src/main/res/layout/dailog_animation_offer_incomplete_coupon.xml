@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="amountTitle"
+      type="String" />
+
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.utils.dailogs.ClickAnimationComboActionDialog" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_alpha"
+    app:layoutDescription="@xml/dailog_animation_combo_box_xml_constraintlayout10_scene">
+
+<!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--      android:id="@+id/backAnimation"-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="match_parent"-->
+<!--      android:scaleType="centerInside"-->
+<!--      app:layout_constraintBottom_toBottomOf="parent"-->
+<!--      app:layout_constraintEnd_toEndOf="parent"-->
+<!--      app:layout_constraintStart_toStartOf="parent"-->
+<!--      app:layout_constraintTop_toTopOf="parent"-->
+<!--      app:lottie_autoPlay="true"-->
+<!--      app:lottie_loop="true"-->
+<!--      tools:visibility="visible" />-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/cl_main"
+      android:layout_width="305dp"
+      android:layout_height="200dp"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/white_with_round_corner_15dp"
+      android:elevation="@dimen/dimen_4dp"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <!--      <androidx.constraintlayout.widget.ConstraintLayout-->
+      <!--        android:id="@+id/constraintLayout9"-->
+      <!--        android:layout_width="0dp"-->
+      <!--        android:layout_height="wrap_content"-->
+      <!--        app:layout_constraintEnd_toEndOf="parent"-->
+      <!--        app:layout_constraintStart_toStartOf="parent"-->
+      <!--        app:layout_constraintTop_toTopOf="parent">-->
+
+      <!--        <com.airbnb.lottie.LottieAnimationView-->
+      <!--          android:id="@+id/animation_view"-->
+      <!--          android:layout_width="0dp"-->
+      <!--          android:layout_height="@dimen/dimen_80dp"-->
+      <!--          android:layout_marginHorizontal="@dimen/dimen_8dp"-->
+      <!--          android:scaleType="centerInside"-->
+      <!--          app:layout_constraintBottom_toBottomOf="parent"-->
+      <!--          app:layout_constraintEnd_toEndOf="parent"-->
+      <!--          app:layout_constraintStart_toStartOf="parent"-->
+      <!--          app:layout_constraintTop_toTopOf="parent" />-->
+      <!--      </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_10dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.695">
+        <!--        android:background="@drawable/accent_50_alpha_full_round_white"-->
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/imagereward"
+          android:layout_width="@dimen/dimen_60dp"
+          android:layout_height="@dimen/dimen_60dp"
+          android:layout_margin="@dimen/dimen_15dp"
+          android:elevation="2dp"
+          android:padding="@dimen/dimen_15dp"
+          app:srcCompat="@drawable/ic_yelloi" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView151"
+          style="@style/text_15_blue_dark_semi_bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="OOOPS!"
+          android:textAlignment="center"
+          android:textAllCaps="true" />
+
+        <View
+          android:id="@+id/divider35"
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginTop="@dimen/dimen_10dp"
+          android:background="@color/color_e8e8" />
+<!--        android:text="coupon not found"-->
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView155"
+          android:layout_marginVertical="@dimen/dimen_2dp"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingVertical="@dimen/dp_10"
+          android:text="@{amountTitle}"
+          android:textAlignment="center" />
+
+      </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView29"
+      android:layout_width="@dimen/dimen_30dp"
+      android:layout_height="@dimen/dimen_30dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:background="@drawable/white_full_round"
+      android:elevation="6dp"
+      android:onClick="@{()->click.onClickLater()}"
+      android:padding="@dimen/dimen_8dp"
+      app:layout_constraintEnd_toEndOf="@+id/cl_main"
+      app:layout_constraintTop_toTopOf="@+id/cl_main"
+      app:srcCompat="@drawable/ic_simple_cross" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+  <!--  app:layout_constraintDimensionRatio="w,1:1"-->
+</layout>

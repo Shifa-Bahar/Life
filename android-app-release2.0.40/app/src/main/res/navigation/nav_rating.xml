@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_rating"
+  app:startDestination="@id/mainRatingFragment">
+  <fragment
+    android:id="@+id/mainRatingFragment"
+    android:name="com.lifepharmacy.application.ui.rating.fragments.MainRatingFragment"
+    android:label="MainRatingFragment"
+    tools:layout="@layout/fragment_rating_main">
+    <argument
+      android:name="subOrderId"
+      android:defaultValue=""
+      app:argType="string" />
+    <deepLink
+      android:id="@+id/deepLink22"
+      app:uri="https://www.lifepharmacy.com/order/rate/{slug}" />
+    <argument
+      android:name="slug"
+      app:argType="string"
+      app:nullable="true"
+      android:defaultValue="@null" />
+  </fragment>
+  <dialog
+    android:id="@+id/productReviewSheet"
+    tools:layout="@layout/bottom_product_review"
+    android:name="com.lifepharmacy.application.ui.rating.fragments.ProductReviewSheet"
+    android:label="ProductReviewSheet" >
+    <argument
+      android:name="rating"
+      app:argType="float"
+      android:defaultValue="0F" />
+    <argument
+      android:name="position"
+      app:argType="integer"
+      android:defaultValue="0" />
+    <argument
+      android:name="subOrderId"
+      app:argType="string"
+      android:defaultValue="" />
+    <argument
+      android:name="selectedSubOrderItem"
+      app:argType="com.lifepharmacy.application.model.orders.SubOrderProductItem" />
+  </dialog>
+</navigation>

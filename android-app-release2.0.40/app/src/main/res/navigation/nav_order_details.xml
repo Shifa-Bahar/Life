@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  app:startDestination="@id/orderDetailFragment"
+  android:id="@+id/nav_order_details">
+  <fragment
+    android:id="@+id/orderDetailFragment"
+    android:name="com.lifepharmacy.application.ui.orders.fragments.OrderDetailFragment"
+    android:label="OrderDetailFragment"
+    tools:layout="@layout/fragment_order_detail">
+    <argument
+      android:name="order"
+      android:defaultValue=" "
+      app:argType="string" />
+    <argument
+      android:name="sub_orderId"
+      android:defaultValue=" "
+      app:argType="string" />
+  </fragment>
+  <dialog
+    android:id="@+id/invoiceBottomSheet"
+    tools:layout="@layout/bottom_pdf_reader"
+    android:name="com.lifepharmacy.application.ui.orders.dailogs.InvoiceBottomSheet"
+    android:label="InvoiceBottomSheet" />
+  <dialog
+    android:id="@+id/shipmentStatusBottomSheet"
+    tools:layout="@layout/bottom_sheet_shipment_status"
+    android:name="com.lifepharmacy.application.ui.orders.dailogs.ShipmentStatusBottomSheet"
+    android:label="ShipmentStatusBottomSheet" />
+  <dialog
+    android:id="@+id/returnReasonBottomSheet"
+    android:name="com.lifepharmacy.application.ui.orders.dailogs.ReturnReasonBottomSheet"
+    android:label="ReturnReasonBottomSheet"
+    tools:layout="@layout/bottom_sheet_return_reason" />
+  <dialog
+    android:id="@+id/returnProcessingDialog"
+    android:name="com.lifepharmacy.application.ui.orders.dailogs.ReturnProcessingDialog"
+    android:label="ReturnProcessingDialog"
+    tools:layout="@layout/dailog_return_processing" />
+
+  <dialog
+    android:id="@+id/ratingBottomSheet"
+    android:name="com.lifepharmacy.application.ui.orders.dailogs.RatingBottomSheet"
+    android:label="RatingBottomSheet"
+    tools:layout="@layout/bottom_rating">
+    <argument
+      android:name="orderID"
+      android:defaultValue="0"
+      app:argType="integer" />
+    <argument
+      android:name="subOrderID"
+      android:defaultValue="0"
+      app:argType="integer" />
+    <argument
+      android:name="shipmentId"
+      android:defaultValue="0"
+      app:argType="integer" />
+    <argument
+      android:name="rating"
+      android:defaultValue="0F"
+      app:argType="float" />
+  </dialog>
+  <fragment
+    android:id="@+id/returningProductsFragment"
+    android:name="com.lifepharmacy.application.ui.orders.fragments.ReturningProductsFragment"
+    android:label="ReturningProductsFragment"
+    tools:layout="@layout/fragment_returning_products" />
+  <include app:graph="@navigation/nav_returns" />
+  <include app:graph="@navigation/nav_login_sheet" />
+  <include app:graph="@navigation/nav_rating" >
+    <argument
+      android:name="subOrderId"
+      android:defaultValue=""
+      app:argType="string" />
+  </include>
+  <dialog
+    android:id="@+id/productReviewSheet"
+    tools:layout="@layout/bottom_product_review"
+    android:name="com.lifepharmacy.application.ui.rating.fragments.ProductReviewSheet"
+    android:label="ProductReviewSheet" >
+    <argument
+      android:name="rating"
+      app:argType="float"
+      android:defaultValue="0F" />
+    <argument
+      android:name="position"
+      app:argType="integer"
+      android:defaultValue="0" />
+    <argument
+      android:name="subOrderId"
+      app:argType="string"
+      android:defaultValue="" />
+    <argument
+      android:name="selectedSubOrderItem"
+      app:argType="com.lifepharmacy.application.model.orders.SubOrderProductItem" />
+    <argument
+      android:name="insideReview"
+      app:argType="boolean"
+      android:defaultValue="false" />
+  </dialog>
+</navigation>

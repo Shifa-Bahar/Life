@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="amountTitle"
+      type="String" />
+    <variable
+      name="backcolor"
+      type="String" />
+    <variable
+      name="imageTitle"
+      type="String" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.inappmsg.Inapp_data" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.home.fragments.ClickInappmsg" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_alpha"
+    app:layoutDescription="@xml/dailog_animation_combo_box_xml_constraintlayout10_scene">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/cl_main"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="@dimen/dimen_32dp"
+      android:layout_marginEnd="32dp"
+      android:layout_marginBottom="@dimen/dimen_32dp"
+      android:background="@drawable/white_with_round_corner"
+      android:elevation="@dimen/dimen_4dp"
+      android:padding="@dimen/dimen_6dp"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/dimen_2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/dimen_2dp"
+          android:background="@color/white"
+          android:padding="@dimen/dimen_4dp"
+          app:cardCornerRadius="@dimen/dimen_5dp"
+          app:layout_constraintDimensionRatio="343:115"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+<!--          loadImageFromURl="@{imageTitle}"-->
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            loadImageFromURl="@{imageTitle}"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:layout_weight="1"
+             />
+<!--            loadImageFromURl="@{imageTitle}"-->
+<!--            app:imagePlaceholder="@drawable/popup"-->
+<!--          app:srcCompat="@drawable/popup"-->
+<!--          app:srcCompat="@drawable/inapp"-->
+          </LinearLayout>
+        </androidx.cardview.widget.CardView>
+      </androidx.constraintlayout.widget.ConstraintLayout>
+<!--      android:visibility="@{item.action_button_label ==null || item.action_button_label.equals(``)? View.GONE : View.VISIBLE}"-->
+      <LinearLayout
+        android:id="@+id/ln_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_4dp"
+        android:paddingVertical="@dimen/dimen_4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/btn"
+          setTextBackTint="@{backcolor}"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingVertical="@dimen/dp_10"
+          android:text="@{amountTitle}"
+          android:onClick="@{()->click.onClickContinue()}"
+          android:textAlignment="center"
+          tools:text="View offer" />
+
+      </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView29"
+      android:layout_width="@dimen/dimen_30dp"
+      android:layout_height="@dimen/dimen_30dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:background="@drawable/white_full_round"
+      android:elevation="6dp"
+      android:onClick="@{()->click.onClickLater()}"
+      android:padding="@dimen/dimen_8dp"
+      app:layout_constraintEnd_toEndOf="@+id/cl_main"
+      app:layout_constraintTop_toTopOf="@+id/cl_main"
+      app:srcCompat="@drawable/ic_simple_cross" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+  <!--  app:layout_constraintDimensionRatio="w,1:1"-->
+</layout>

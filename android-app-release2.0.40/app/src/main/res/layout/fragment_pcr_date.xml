@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="note"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+    <variable
+      name="isLoggedIn"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+    <variable
+      name="isThereImages"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.pcr.viewmodel.PcrListingViewModel" />
+    <variable
+      name="showEmpty"
+      type="Boolean" />
+    <variable
+      name="profileViewModel"
+      type="com.lifepharmacy.application.ui.profile.viewmodel.ProfileViewModel" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.pcr.adapters.ClickPcrDate" />
+    <variable
+      name="clicka"
+      type="com.lifepharmacy.application.ui.pcr.fragments.ClickPcrAddressFragment" />
+    <variable
+      name="isSelected"
+      type="Boolean" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.pcr.pcrdatetime.Booking_slots" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backGroundColor"
+    tools:ignore="MissingClass">
+
+    <include
+      android:id="@+id/toll_bar"
+      layout="@layout/layout_top_back"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+      android:id="@+id/layout_pcr_navigation"
+      layout="@layout/layout_pcr_nav2"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toll_bar"
+      tools:visibility="visible" />
+
+    <androidx.core.widget.NestedScrollView
+      android:id="@+id/nestedScrollView3"
+      android:layout_width="match_parent"
+      android:layout_height="559dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/layout_pcr_navigation"
+      tools:visibility="visible">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_datetime"
+          style="@style/text_10_accent_dark_semi_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dimen_5dp"
+          android:layout_marginBottom="1dp"
+          android:background="@drawable/ic_tag_rect_date"
+          android:padding="@dimen/dimen_8dp"
+          android:text="@string/selectdateandtime"
+          android:textAlignment="center"
+          android:textSize="@dimen/dimen_12dp"
+          app:layout_constraintBottom_toTopOf="@+id/img_barcode"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/textView73" />
+        <!--        android:visibility="@{isThereImages? View.VISIBLE :View.GONE}"-->
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_date"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_margin="@dimen/dimen_3dp"
+          android:background="@color/backGroundColor"
+          android:orientation="horizontal"
+          app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/textView51"
+          app:spanCount="1"
+          tools:itemCount="7"
+          tools:listitem="@layout/item_date"
+          tools:visibility="visible" />
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_time"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_margin="@dimen/dimen_3dp"
+          android:orientation="horizontal"
+          app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/textView51"
+          app:spanCount="1"
+          tools:itemCount="4"
+          tools:listitem="@layout/item_time"
+          tools:visibility="visible" />
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:background="@{@drawable/bg_rect_blue_border}"
+          android:orientation="horizontal"
+          android:layout_marginBottom="@dimen/dimen_4dp"
+          android:paddingHorizontal="@dimen/dimen_6dp">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_complete_date"
+            style="@style/text_10_accent_dark_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/dimen_4dp"
+            android:background="@drawable/ic_tag_rect_date"
+            android:paddingVertical="@dimen/dimen_8dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/dimen_12dp"
+            app:layout_constraintBottom_toTopOf="@+id/img_barcode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView73" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_complete_time"
+            style="@style/text_10_accent_dark_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/dimen_4dp"
+            android:background="@drawable/ic_tag_rect_date"
+            android:paddingVertical="@dimen/dimen_8dp"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/dimen_12dp"
+            app:layout_constraintBottom_toTopOf="@+id/img_barcode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView73"
+            tools:ignore="RtlCompat" />
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_address"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:nestedScrollingEnabled="false"
+          android:orientation="vertical"
+          app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:spanCount="1"
+          tools:itemCount="2"
+          tools:listitem="@layout/item_pcr_address">
+
+        </androidx.recyclerview.widget.RecyclerView>
+        <!--        -->
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_add_new_address"
+          style="@style/text_16_accent_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/button_height"
+          android:layout_marginHorizontal="@dimen/dp_10"
+          android:layout_marginTop="@dimen/dp_10"
+          android:layout_marginBottom="@dimen/dp_10"
+          android:background="@drawable/lightblue_with_round_corner_new"
+          android:elevation="@dimen/dimen_2dp"
+          android:gravity="center"
+          android:onClick="@{()->click.onClickAddNew()}"
+          android:padding="@dimen/dp_10"
+          android:text="@string/add_a_new_address"
+          android:textAllCaps="false" />
+
+
+      </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cardView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+
+      app:cardMaxElevation="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:visibility="visible">
+      <!--      android:visibility="@{viewModel.isThereCart ? View.VISIBLE : View.GONE}"-->
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="visible">
+
+        <LinearLayout
+          android:id="@+id/linearLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dimen_16dp"
+          android:gravity="center"
+
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="@+id/btn_check_out"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="@+id/btn_check_out">
+          <!--          setPriceWithPrefsCurrency="@{viewModel.totalAmount}"-->
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_amount"
+            style="@style/text_14_0025_open_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="AED 228.3" />
+<!--           android:onClick="@{()->click.onClickVieDetails()}"-->
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_subto"
+            style="@style/text_13_accent_dark_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:textAllCaps="true" />
+
+        </LinearLayout>
+        <!--        setAlpha="@{viewModel.isThereCart &amp;&amp; !viewModel.isUpdatingCart &amp;&amp; viewModel.isOrderTotalGreaterThanMinimumOrder}"-->
+        <!--        android:text="@{viewModel.isUpdatingCart ? @string/loading :@string/proceed_to_checkout }"-->
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/btn_check_out"
+          style="@style/blueBotton"
+          android:onClick="@{()->click.onClickcrPayment()}"
+          android:layout_width="0dp"
+          android:text="NEXT"
+          android:layout_height="@dimen/button_height"
+          android:layout_marginHorizontal="@dimen/dimen_16dp"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/linearLayout"
+          app:layout_constraintTop_toTopOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout><!--  android:textColor="@{isEnableProceedButton ? @color/accent_blue_darker:@color/color_93a3}"-->
+  <!--  android:enabled="@{isEnableProceedButton}"-->

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickUserDetailBottom" />
+
+    <variable
+      name="value"
+      type="String" />
+  </data>
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingBottom="@dimen/dimen_80dp">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView123"
+      style="@style/text_16_accent_dark_semi_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="@{()->click.onClickEditDetails()}"
+      android:paddingHorizontal="@dimen/dimen_26dp"
+      android:text="@string/edit_details"
+      app:layout_constraintEnd_toEndOf="@+id/linearLayout12"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+      android:id="@+id/linearLayout12"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.491"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView28"
+        style="@style/text_16_accent_dark_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_26dp"
+        android:text="@string/verify_phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_show_number"
+        style="@style/text_12_1d1d_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_14dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:hint="@string/code_is_sent"
+        android:text="@{@string/code_is_sent+` +`+value}"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toll_bar" />
+      <!--            android:text="@{@string/code_is_sent.concat(value)}"-->
+      <com.chaos.view.PinView
+        android:id="@+id/pinView"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimen_30dp"
+        android:cursorVisible="true"
+        android:fontFamily="@font/opensans_bold"
+        android:inputType="number"
+        android:itemBackground="@drawable/pin_item_background"
+        android:textColor="@color/accent_blue_darker"
+        android:textColorHint="@color/color_7070"
+        android:textSize="@dimen/text_size_15sp"
+        app:cursorWidth="2dp"
+        app:hideLineWhenFilled="true"
+        app:itemCount="4"
+        app:itemHeight="@dimen/dimen_50dp"
+        app:itemRadius="4dp"
+        app:itemSpacing="@dimen/dimen_10dp"
+        app:itemWidth="@dimen/dimen_70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_show_number"
+        app:lineColor="@color/transparent"
+        app:lineWidth="2dp"
+        app:viewType="none"
+        tools:ignore="MissingConstraints"
+        tools:text="1234" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView7"
+        style="@style/text_14_a8a8_open_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_40dp"
+        android:text="@string/didn_t_receive_code"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/tv_show_number"
+        app:layout_constraintStart_toStartOf="@+id/tv_show_number"
+        app:layout_constraintTop_toBottomOf="@+id/pinView" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_send_again"
+        style="@style/text_14_0025_open_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_10"
+        android:onClick="@{()->click.onClickResend()}"
+        android:text="@string/request_again"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_count_down"
+        style="@style/text_12_b6b6_semi_bole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/tv_send_again"
+        app:layout_constraintStart_toStartOf="@+id/tv_send_again"
+        app:layout_constraintTop_toBottomOf="@+id/tv_send_again" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_confirm"
+        style="@style/blueBotton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginHorizontal="@dimen/dimen_26dp"
+        android:layout_marginVertical="@dimen/dimen_16dp"
+        android:text="@string/continue1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

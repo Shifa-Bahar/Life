@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="orderID"
+      type="String" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.SubOrderItem" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickOrderSummarySheet" />
+    <variable
+      name="clickdetail"
+      type="com.lifepharmacy.application.ui.orders.adapters.ClickOrderShipmentItem" />
+    <variable
+      name="clickrating"
+      type="com.lifepharmacy.application.ui.home.fragments.ClickOrderRatingInapp" />
+
+    <variable
+      name="addressViewModel"
+      type="com.lifepharmacy.application.ui.address.AddressViewModel" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.rating.RatingsViewModel" />
+  </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dimen_8dp"
+      android:padding="@dimen/dimen_4dp">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_with_top_round_corner"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_20dp"
+        android:paddingTop="@dimen/dimen_8dp"
+        android:paddingBottom="@dimen/dimen_12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+<RelativeLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:paddingHorizontal="@dimen/dimen_4dp"
+  android:orientation="horizontal">
+
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/textView218"
+    style="@style/text_12_accent_dark_bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/dimen_10dp"
+    android:textSize="@dimen/dimen_12dp"
+    android:layout_marginStart="@dimen/dimen_4dp"
+    android:padding="@dimen/dimen_4dp"
+    android:text="Please rate your experience"
+    android:textAlignment="center" />
+
+  <ImageView
+    android:id="@+id/imageView86"
+    android:layout_width="@dimen/dimen_36dp"
+    android:layout_height="@dimen/dimen_36dp"
+    android:layout_marginEnd="@dimen/dimen_2dp"
+    android:padding="@dimen/dimen_2dp"
+    android:layout_marginVertical="@dimen/dimen_4dp"
+    android:layout_alignParentEnd="true"
+    android:onClick="@{()->click.onClickClose()}"
+    app:srcCompat="@drawable/ic_close_fill_whit_with_grey_cross" />
+</RelativeLayout>
+<!--        android:background="@drawable/bg_rect_e8e8_10dp"-->
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+
+          android:orientation="vertical"
+          android:paddingHorizontal="@dimen/dimen_8dp"
+          android:paddingVertical="@dimen/dimen_8dp">
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_order_id"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:padding="@dimen/dimen_4dp"
+            tools:text="order# 5021" />
+
+<!--          <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/dimen_0.5dp"-->
+<!--            android:layout_marginTop="@dimen/dimen_6dp"-->
+<!--            android:background="@color/color_e8e8"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/rg_card" />-->
+
+
+            <!--            android:visibility="@{item.status == 5 ? View.VISIBLE : View.GONE}"-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:id="@+id/constraintLayout19"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginHorizontal="@dimen/dimen_6dp"
+              android:padding="@dimen/dimen_4dp"
+              android:visibility="visible"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:visibility="visible">
+              <!--              android:visibility="@{item.rating == null ||  item.rating==0.0f ? View.VISIBLE: View.GONE}"-->
+
+
+              <com.willy.ratingbar.ScaleRatingBar
+                android:id="@+id/simpleRatingBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:onClick="@{()->clickrating.onClickSubmit()}"
+                android:padding="@dimen/dimen_4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srb_clearRatingEnabled="true"
+                app:srb_drawableEmpty="@drawable/ic_empty_star_2"
+                app:srb_drawableFilled="@drawable/ic_fill_start_2"
+                app:srb_minimumStars="0"
+                app:srb_numStars="5"
+                app:srb_rating="0"
+                app:srb_starHeight="@dimen/dimen_40dp"
+                app:srb_starPadding="2dp"
+                app:srb_starWidth="@dimen/dimen_40dp"
+                app:srb_stepSize="1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--        android:clickable="@{item.rating == null ||  item.rating==0.0f ? true : false}"-->
+
+        </LinearLayout>
+
+
+      </LinearLayout>
+      <!--    android:visibility="@{!viewModel.selectedPaymentType.name().toLowerCase().equals(`card`) ? View.VISIBLE : View.GONE}"-->
+
+      <include
+        android:id="@+id/ll_loading"
+        layout="@layout/layout_loading"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

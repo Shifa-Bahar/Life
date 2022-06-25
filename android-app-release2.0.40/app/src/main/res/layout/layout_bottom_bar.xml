@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+            name="title"
+            type="String" />
+        <variable
+            name="positions"
+            type="int" />
+        <variable
+            name="click"
+            type="com.lifepharmacy.application.ui.dashboard.ClickBottomNav" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="5"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/ll_home"
+                android:onClick="@{()->click.onClickHome()}"
+                layout="@layout/item_bottom_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/ll_category"
+                android:onClick="@{()->click.onClickCategory()}"
+
+                layout="@layout/item_bottom_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/ll_Prescription"
+                android:onClick="@{()->click.onClickPrescription()}"
+
+                layout="@layout/item_bottom_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/ll_profile"
+                android:onClick="@{()->click.onClickProfile()}"
+                layout="@layout/item_bottom_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/ll_cart"
+                android:onClick="@{()->click.onClickCart()}"
+                layout="@layout/item_bottom_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

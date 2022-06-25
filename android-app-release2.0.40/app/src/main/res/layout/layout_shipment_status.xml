@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.orders.adapters.ClickShipmentItem" />
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.SubOrderItem" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="2dp"
+    android:layout_margin="@dimen/dimen_4dp"
+    android:background="@drawable/white_with_round_corner"
+    android:paddingHorizontal="@dimen/dimen_16dp"
+    android:paddingVertical="@dimen/dimen_16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView182"
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/status_colon"
+      android:textAllCaps="true"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_status"
+      android:layout_width="match_parent"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      android:orientation="vertical"
+      tools:itemCount="2"
+      android:layout_marginTop="@dimen/dimen_16dp"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      tools:listitem="@layout/item_shipment_detail_status"
+      android:layout_height="match_parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView182" />
+
+    <View
+      android:id="@+id/divider43"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/dimen_0.5dp"
+      android:layout_marginTop="@dimen/dimen_10dp"
+      android:visibility="visible"
+      android:background="@color/color_e8e8"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/rv_status" />
+
+    <TextView
+      android:id="@+id/textView195"
+      style="@style/text_12_accent_dark_semi_bole"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:onClick="@{()->click.onClickViewStatusDetails(item)}"
+      android:paddingVertical="@dimen/dimen_10dp"
+      android:text="@string/view_more"
+      android:textAllCaps="true"
+      android:textAlignment="center"
+      app:layout_constraintEnd_toEndOf="@+id/rv_status"
+      app:layout_constraintStart_toStartOf="@+id/rv_status"
+      app:layout_constraintTop_toBottomOf="@+id/divider43" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

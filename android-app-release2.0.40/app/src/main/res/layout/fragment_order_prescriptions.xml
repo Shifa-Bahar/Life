@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="note"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="isThereImages"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.orders.viewmodels.OrdersViewModel" />
+
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backGroundColor">
+
+    <include
+      android:id="@+id/toll_bar"
+      layout="@layout/layout_top_back"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="@color/backGroundColor"
+      app:layout_constraintBottom_toTopOf="@+id/ll_contact"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toll_bar"
+      tools:visibility="visible">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+          android:id="@+id/ll_item_prescription"
+          layout="@layout/item_orders_prescription"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+
+        <include
+          android:id="@+id/ll_prescription_images"
+          layout="@layout/layout_prescription_images"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+
+
+      </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+      android:id="@+id/ll_contact"
+      layout="@layout/layout_contact"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/dimen_16dp"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout><!--  android:textColor="@{isEnableProceedButton ? @color/accent_blue_darker:@color/color_93a3}"-->
+  <!--  android:enabled="@{isEnableProceedButton}"-->

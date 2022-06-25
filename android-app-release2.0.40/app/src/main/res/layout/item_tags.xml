@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+<!--      <variable-->
+<!--        name="item"-->
+<!--        type="com.lifepharmacy.application.model.product.ProductDetails" />-->
+
+        <variable
+            name="cart"
+            type="com.lifepharmacy.application.model.cart.CartModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+<!--      setOfferTypeTag="@{item.offers}"-->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/button3"
+            style="@style/text_8_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_6dp"
+            android:background="@drawable/ic_tag_rect"
+            android:paddingHorizontal="@dimen/dp_10"
+            android:paddingVertical="@dimen/dimen_6dp"
+            android:text="Buy 2 Get 1 "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

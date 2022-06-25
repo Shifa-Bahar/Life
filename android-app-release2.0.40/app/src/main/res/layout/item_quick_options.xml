@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+            name="isSelected"
+            type="Boolean" />
+        <variable
+            name="position"
+            type="int" />
+        <variable
+            name="item"
+            type="com.lifepharmacy.application.model.category.Section" />
+
+        <variable
+            name="click"
+            type="com.lifepharmacy.application.ui.productList.adapter.SuperSellerQuickOption" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_18dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_location"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.name}"
+            android:textAlignment="center"
+            android:onClick="@{()->click.onClickQuickSelection(item,position)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Express Shipping" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_marginTop="@dimen/dimen_2dp"
+            android:layout_width="0dp"
+            android:visibility="@{isSelected ? View.VISIBLE : View.GONE}"
+            android:background="@color/accent_blue_darker"
+            android:layout_height="@dimen/dimen_0.5dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_location"
+            app:layout_constraintStart_toStartOf="@+id/tv_location"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

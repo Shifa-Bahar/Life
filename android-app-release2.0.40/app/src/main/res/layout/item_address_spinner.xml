@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+            name="click"
+            type="com.lifepharmacy.application.ui.address.dailog.ClickAddressBottomSheet" />
+        <variable
+            name="addressType"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+
+        android:onClick="@{()->click.onClickSelectType()}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_e9_round_corner"
+            android:onClick="@{()->click.onClickSelectType()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/ed_type_title"
+                style="@style/text_12_accent_dark_semi_bole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:hint="Type"
+                android:inputType="phone"
+                android:onClick="@{()->click.onClickSelectType()}"
+                android:paddingHorizontal="@dimen/dimen_8dp"
+                android:textAlignment="textStart"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/ed_type"
+                style="@style/text_12_accent_dark_semi_bole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:hint="Home"
+                android:inputType="phone"
+                android:onClick="@{()->click.onClickSelectType()}"
+                android:paddingHorizontal="@dimen/dimen_8dp"
+                android:text="@{addressType}"
+                android:textAlignment="textStart"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_type_title" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView10"
+                android:layout_width="@dimen/dimen_14dp"
+                android:layout_height="@dimen/dimen_14dp"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:onClick="@{()->click.onClickSelectType()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_forward_arrow" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

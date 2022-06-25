@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.address.ClickSelectedAddress" />
+
+    <variable
+      name="mViewModel"
+      type="com.lifepharmacy.application.ui.address.AddressViewModel" />
+
+    <variable
+      name="selectedAddress"
+      type="androidx.databinding.ObservableField&lt;com.lifepharmacy.application.model.address.AddressModel&gt;" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="2dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/cl_main2"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@drawable/accent_with_bottom_round_corner"
+      android:elevation="2dp"
+      android:paddingTop="@dimen/dimen_4dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView16"
+        style="@style/text_12_white_regular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_10"
+        android:drawableStart="@{mViewModel.deliveredAddressMut.type.equals(`Work`) ? @drawable/ic_work_location : mViewModel.deliveredAddressMut.type.equals(`Home`) ? @drawable/ic_home_location : @drawable/ic_fav_location }"
+        android:drawablePadding="@dimen/dp_10"
+        android:drawableTint="@color/white"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        setAddress="@{mViewModel.deliveredAddressMut}"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintEnd_toStartOf="@+id/tv_change"
+        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintTop_toTopOf="@+id/textView18"
+        tools:drawableStart="@drawable/ic_work_location"
+        tools:text="Sample Text" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView18"
+        style="@style/text_14_white_open_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:text="@string/deliver_to_colan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_change"
+        style="@style/text_12_white_semi_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:onClick="@{()->click.onClickChangeAddress()}"
+        android:text="@string/change"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:textAllCaps="true" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

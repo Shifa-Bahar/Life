@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+    
+    <import type="android.view.View" />
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.rewards.viewmodels.RewardsViewModel" />
+
+    <variable
+      name="clickview"
+      type="com.lifepharmacy.application.ui.rewards.dialog.ClickRewardsDialog" />
+    <variable
+      name="offerTitle"
+      type="String" />
+
+    <variable
+      name="isFreeGift"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.utils.dailogs.ClickAnimationComboActionDialog" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout122"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_alpha"
+    app:layoutDescription="@xml/dailog_animation_combo_box_xml_constraintlayout10_scene">
+    <com.airbnb.lottie.LottieAnimationView
+      android:id="@+id/backAnimation"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerInside"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:lottie_autoPlay="true"
+      app:lottie_loop="true"
+      tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/dl_main"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginVertical="@dimen/dimen_8dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/white_with_round_corner_15dp"
+      android:elevation="@dimen/dimen_4dp"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutRewards"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_4dp"
+        android:paddingVertical="@dimen/dimen_4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutRewards">
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/imagereward"
+          android:layout_width="@dimen/dimen_60dp"
+          android:layout_height="@dimen/dimen_60dp"
+          android:background="@drawable/accent_50_alpha_full_round_white"
+          android:elevation="2dp"
+          android:padding="@dimen/dimen_15dp"
+          android:layout_margin="@dimen/dimen_15dp"
+          app:srcCompat="@drawable/ic_reward_blue" />
+
+        <!--        <LinearLayout-->
+<!--          android:layout_width="wrap_content"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          android:layout_marginTop="@dimen/dimen_8dp"-->
+<!--          android:gravity="center">-->
+
+<!--          <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/textCON"-->
+<!--            style="@style/text_12_accent_dark_semi_bole"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/dimen_2dp"-->
+<!--            android:paddingHorizontal="@dimen/dimen_8dp"-->
+<!--            android:paddingVertical="@dimen/dimen_4dp"-->
+<!--            tools:text=" Congrats you received a reward" />-->
+<!--          &lt;!&ndash;                    android:text="@{offerTitle}"&ndash;&gt;-->
+<!--          &lt;!&ndash;          android:text="@{isFreeGift?@string/you_have_received:@string/you_have_unlocked}"&ndash;&gt;-->
+<!--          &lt;!&ndash;          <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+<!--          &lt;!&ndash;            android:id="@+id/textView125"&ndash;&gt;-->
+<!--          &lt;!&ndash;            style="@style/text_12_accent_dark_semi_bole"&ndash;&gt;-->
+<!--          &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--          &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--          &lt;!&ndash;            android:layout_marginStart="@dimen/dimen_2dp"&ndash;&gt;-->
+<!--          &lt;!&ndash;            android:paddingHorizontal="@dimen/dimen_8dp"&ndash;&gt;-->
+<!--          &lt;!&ndash;            android:paddingVertical="@dimen/dimen_4dp"&ndash;&gt;-->
+<!--          &lt;!&ndash;            tools:text=" Congrats you received a reward" />&ndash;&gt;-->
+
+
+<!--        </LinearLayout>-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_amount"
+          style="@style/text_12_accent_dark_semi_bole"
+          android:layout_width="152dp"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/dimen_15dp"
+          android:layout_marginStart="@dimen/dimen_20dp"
+          android:gravity="center"
+          android:text="Congratulations!\nYou have won a Voucher."
+          android:textSize="@dimen/dimen_10dp"
+          app:layout_constraintBottom_toTopOf="@+id/tv_number"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.176"
+          app:layout_constraintStart_toEndOf="@+id/constraintLayout_image"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.457" />
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/button14"
+          style="@style/blueBotton1"
+          android:layout_width="@dimen/dimen_100dp"
+          android:layout_height="30dp"
+          android:layout_margin="@dimen/dimen_4dp"
+          android:layout_marginEnd="16dp"
+          android:elevation="@dimen/dimen_2dp"
+          android:onClick="@{()->click.onClickClaim()}"
+          android:text="View Now"
+          android:textColor="@color/white"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.849" />
+
+        <!--        <LinearLayout-->
+<!--          android:layout_width="@dimen/dimen_145dp"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          android:layout_marginTop="@dimen/dimen_10dp">-->
+
+<!--          <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/button14"-->
+<!--            style="@style/blueBotton1"-->
+<!--            android:layout_width="151dp"-->
+<!--            android:layout_height="38dp"-->
+<!--            android:layout_margin="@dimen/dimen_4dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:elevation="@dimen/dimen_2dp"-->
+<!--            android:onClick="@{()->click.onClickClaim()}"-->
+<!--            android:text="View Now"-->
+<!--            android:textColor="@color/white" />-->
+          <!--          android:visibility="@{!isFreeGift?View.GONE:View.VISIBLE}"-->
+          <!--          <androidx.appcompat.widget.AppCompatButton-->
+          <!--            android:id="@+id/button15"-->
+          <!--            style="@style/blueBotton1"-->
+          <!--            android:layout_width="0dp"-->
+          <!--            android:layout_height="wrap_content"-->
+          <!--            android:layout_margin="@dimen/dimen_4dp"-->
+          <!--            android:layout_weight="1"-->
+          <!--            android:elevation="@dimen/dimen_2dp"-->
+          <!--            android:onClick="@{()->click.onClickLater()}"-->
+          <!--            android:text="View Now"-->
+          <!--            android:textColor="@color/white" />-->
+        </LinearLayout>
+<!--      </LinearLayout>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/imageView29"
+      android:layout_width="@dimen/dimen_30dp"
+      android:layout_height="@dimen/dimen_30dp"
+      android:background="@drawable/white_full_round"
+      android:elevation="@dimen/dimen_4dp"
+      android:onClick="@{()->click.onClickLater()}"
+      android:padding="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toTopOf="@+id/dl_main"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.794"
+      app:srcCompat="@drawable/ic_simple_cross" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+  <!--  app:layout_constraintDimensionRatio="w,1:1"-->
+</layout>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="isHeartVisible"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.profile.fragments.ClickProfileHeader" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.pcr.viewmodel.PcrListingViewModel" />
+    <variable
+      name="itemadd"
+      type="com.lifepharmacy.application.model.pcr.appointmentdetailnew.Address" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dp_10"
+      android:layout_marginTop="@dimen/dimen_4dp"
+      android:layout_marginBottom="@dimen/dimen_4dp"
+      app:cardCornerRadius="@dimen/dp_10"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10">
+
+        <LinearLayout
+          android:id="@+id/linearLayout4"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+<!--          android:text="@{@string/order + viewModel.subOrderItemMut.orderId}"-->
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_apporderid"
+            style="@style/text_12_accent_dark_bold"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/dimen_14dp"
+            android:padding="@dimen/dimen_4dp"
+            tools:text="Appointment"
+            android:layout_height="wrap_content"
+            android:textAlignment="center" />
+<!--          setDateFromServer="@{viewModel.subOrderItemMut.createdAt}"-->
+<!--          startDateTitle="@{@string/placed_on}"-->
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_date"
+            style="@style/text_12_93A_open_regular"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/dimen_12dp"
+            android:padding="@dimen/dimen_2dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_2dp"
+            android:textAlignment="center"
+            tools:text="Placed on Jan 26, 2020,12:12 pm" />
+
+<!--          <View-->
+<!--            android:id="@+id/divider21"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0.5dp"-->
+<!--            android:layout_marginVertical="@dimen/dimen_8dp"-->
+<!--            android:background="@color/color_93a3" />-->
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView60"
+            style="@style/text_12_accent_dark_bold"
+            android:textSize="@dimen/dimen_12dp"
+            android:padding="@dimen/dimen_2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/samplecollection"
+            android:textAllCaps="true"/>
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_address_title"
+            style="@style/text_14_0025_open_semi_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_2dp"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:drawableStart="@{itemadd.type.equals(`Work`) ? @drawable/ic_work_location : itemadd.type.equals(`Home`) ? @drawable/ic_home_location : @drawable/ic_fav_location }"
+            android:drawablePadding="@dimen/dp_10"
+            />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/addressname"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:padding="@dimen/dimen_2dp"
+            style="@style/text_12_8585_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_streetaddress"
+            style="@style/text_12_8585_regular"
+            android:layout_width="match_parent"
+            android:padding="@dimen/dimen_2dp"
+            android:layout_height="wrap_content"
+            tools:text="Marasi Drive, Business Bay, Dubai address address address address  "
+            />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_phone"
+            style="@style/text_12_1d1d_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:padding="@dimen/dimen_2dp"
+            android:drawablePadding="@dimen/dp_10"
+            tools:text="+971-54-1234567"
+            />
+        </LinearLayout>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

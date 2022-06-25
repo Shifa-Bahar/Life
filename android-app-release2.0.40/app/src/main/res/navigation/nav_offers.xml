@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_offers"
+  app:startDestination="@id/offersBottomSheet">
+
+  <dialog
+    android:id="@+id/productReviewsSheet"
+    android:name="com.lifepharmacy.application.ui.products.fragment.ProductReviewsSheet"
+    android:label="ProductReviewsSheet"
+    tools:layout="@layout/bottom_sheet_product_reviews" />
+  <dialog
+    android:id="@+id/offersBottomSheet"
+    android:name="com.lifepharmacy.application.ui.offers.fragments.OffersBottomSheet"
+    android:label="OffersBottomSheet"
+    tools:layout="@layout/bottom_sheet_offers">
+    <!--  <argument-->
+    <!--    android:name="offerId"-->
+    <!--    android:defaultValue=""-->
+    <!--    app:argType="string" />-->
+  </dialog>
+  <dialog
+    android:id="@+id/productPreviewBottomSheet"
+    android:name="com.lifepharmacy.application.ui.products.fragment.ProductPreviewBottomSheet"
+    android:label="ProductPreviewBottomSheet"
+    tools:layout="@layout/bottom_sheet_product_preview" />
+  <fragment
+    android:id="@+id/productFragment"
+    android:name="com.lifepharmacy.application.ui.products.fragment.ProductFragment"
+    android:label="ProductFragment"
+    tools:layout="@layout/fragment_product" />
+  <include app:graph="@navigation/nav_product_preview" />
+  <include app:graph="@navigation/nav_search" />
+  <include app:graph="@navigation/nav_login_sheet" />
+</navigation>

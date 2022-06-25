@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="orderID"
+      type="String" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.cart.fragmets.ClickPaymentFragment" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/translucent_black">
+
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cardView6"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_32dp"
+      app:cardCornerRadius="@dimen/dp_10"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.23000002">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingBottom="@dimen/dimen_20dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+          android:id="@+id/animation_view"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen_80dp"
+          android:layout_marginHorizontal="@dimen/dimen_8dp"
+          android:layout_marginTop="@dimen/dimen_16dp"
+          android:scaleType="centerInside"
+          app:layout_constraintDimensionRatio="w,1:2"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView22"
+          style="@style/text_20_accent_bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:gravity="center"
+          android:text="@string/thank_you" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView114"
+          style="@style/text_14_1d1d_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_16dp"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:gravity="center"
+          android:text="@{@string/your_order_id+` #`+orderID+` `+@string/order_delivered}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/imageView45"
+          android:layout_width="@dimen/dimen_80dp"
+          android:layout_height="@dimen/dimen_80dp"
+          android:layout_gravity="center"
+          android:layout_marginVertical="@dimen/dimen_16dp"
+          app:srcCompat="@drawable/scooter" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_goto_orders"
+          style="@style/text_14_accent_dark_open_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:onClick="@{()->click.onClickGotoOrders()}"
+          android:paddingVertical="@dimen/dimen_8dp"
+          android:text="@string/go_to_orders" />
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tv_continue_shoping"
+          style="@style/text_14_white_open_semi_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:background="@drawable/bg_button_accent"
+          android:onClick="@{()->click.onClickContinueShopping()}"
+          android:paddingVertical="@dimen/dimen_8dp"
+          android:text="@string/continue_shopping" />
+      </LinearLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

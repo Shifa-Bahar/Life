@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="amount"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.wallet.fragments.ClickTopAmountFragment" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBottomSheetBackground"
+    android:paddingBottom="@dimen/dimen_20dp">
+
+    <include
+      android:id="@+id/ly_top_bar"
+      layout="@layout/layout_top_round_back"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+      android:id="@+id/ly_amount"
+      layout="@layout/layout_top_amount"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_6dp"
+      android:layout_marginTop="@dimen/dimen_6dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.461"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/ly_top_bar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_top_up"
+      style="@style/blueBotton"
+      setAlpha="@{!amount.error}"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/button_height"
+      android:layout_marginHorizontal="@dimen/dimen_16dp"
+      android:onClick="@{()->click.onClickTopUp()}"
+      android:text="@string/top_up"
+      android:textSize="@dimen/text_size_12sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

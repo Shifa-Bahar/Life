@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.SubOrderItem" />
+
+    <variable
+      name="pickLatLong"
+      type="com.google.android.gms.maps.model.LatLng" />
+
+    <variable
+      name="dropLatLong"
+      type="com.google.android.gms.maps.model.LatLng" />
+
+    <variable
+      name="isInstant"
+      type="Boolean" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.orders.adapters.ClickShipmentItem" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+      android:id="@+id/linearLayout4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingHorizontal="@dimen/dimen_10dp"
+      android:paddingVertical="@dimen/dimen_10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView62"
+          style="@style/text_14_accent_dark_semi_bold"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:text="@{@string/suborder_hash + item.subOrderId}"
+          android:textAlignment="textStart"
+          app:layout_constraintEnd_toStartOf="@+id/textView61"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="Suborder# 1234" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView61"
+          style="@style/text_12_white_semi_bold"
+          android:layout_width="wrap_content"
+          android:paddingVertical="@dimen/dimen_4dp"
+          android:layout_height="wrap_content"
+          android:paddingHorizontal="@dimen/dimen_6dp"
+          android:background="@drawable/bg_button_accent"
+          android:drawableEnd="@drawable/ic_download"
+          android:drawablePadding="@dimen/dimen_6dp"
+          android:onClick="@{()->click.onClickInvoice(item.id)}"
+          android:text="@string/tax_invoice"
+          android:textAlignment="viewStart"
+          android:visibility="@{item.status == 4 ||  item.status == 5 ? View.VISIBLE : View.GONE}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:visibility="visible" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView28"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="@dimen/dimen_8dp"
+        android:src="@{isInstant ? @drawable/ic_instant_tag : @drawable/ic_express_tag}"
+        tools:src="@drawable/ic_instant_tag" />
+
+      <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:layout_marginBottom="@dimen/dimen_8dp"
+        app:cardCornerRadius="@dimen/dimen_10dp">
+
+        <com.google.android.gms.maps.MapView
+          android:id="@+id/mapView"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen_160dp"
+          android:elevation="@dimen/dimen_4dp"
+          android:visibility="@{isInstant &amp;&amp; item.shipment != null ? View.VISIBLE : View.GONE}"
+          app:layout_constraintBottom_toTopOf="@+id/cardView"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/toll_bar" />
+      </androidx.cardview.widget.CardView>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--          <com.google.android.material.imageview.ShapeableImageView-->
+        <!--            android:id="@+id/imageView31"-->
+        <!--            dropLatLong="@{dropLatLong}"-->
+        <!--            pickLatLong="@{pickLatLong}"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:visibility="@{isInstant &amp;&amp; item.shipment != null ? View.VISIBLE : View.GONE}"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintDimensionRatio="6:2"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize15Percent" />-->
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <include
+        android:id="@+id/ll_shipment_main"
+        layout="@layout/layout_shipment_status_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+      <!--        isInstant &amp;&amp;-->
+      <!--        loadImageFromURl="https://image.shutterstock.com/image-photo/creative-layout-made-green-leaves-260nw-602721920.jpg"-->
+
+      <!--        dropLatLong="@{dropLatLong}"-->
+      <!--        pickLatLong="@{pickLatLong}"-->
+      <!--        <com.google.android.gms.maps.MapView-->
+      <!--          android:id="@+id/mapView"-->
+      <!--          android:layout_width="match_parent"-->
+      <!--          android:layout_marginTop="@dimen/dimen_8dp"-->
+      <!--          android:layout_height="@dimen/dimen_80dp"-->
+      <!--          android:visibility="@{isInstant ? View.VISIBLE : View.GONE}"-->
+      <!--          app:layout_constraintBottom_toTopOf="@+id/cardView"-->
+      <!--          app:layout_constraintEnd_toEndOf="parent"-->
+      <!--          app:layout_constraintHorizontal_bias="0.0"-->
+      <!--          app:layout_constraintStart_toStartOf="parent"-->
+      <!--          app:layout_constraintTop_toBottomOf="@+id/toll_bar" />-->
+
+
+      <!--        app:step="@{item.status+1}"-->
+
+    </LinearLayout>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

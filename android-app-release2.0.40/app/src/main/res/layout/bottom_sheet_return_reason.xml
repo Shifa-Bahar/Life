@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.orders.dailogs.ClickReturnReasonBottom" />
+
+    <variable
+      name="viewModel"
+      type="com.lifepharmacy.application.ui.orders.viewmodels.OrderDetailViewModel" />
+
+    <variable
+      name="returnNotes"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="isThereImages"
+      type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+  </data>
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:paddingHorizontal="@dimen/dimen_8dp"
+      android:paddingVertical="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <TextView
+        android:id="@+id/textView93"
+        style="@style/text_16_accent_dark_semi_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:text="@string/please_tell_us_the_reason_of_the_return"
+        android:textAlignment="center" />
+
+      <View
+        android:id="@+id/divider28"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="@dimen/dimen_10dp"
+        android:background="@color/color_e8e8" />
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_reasons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_8dp"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:spanCount="1"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_return_reason" />
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:visibility="@{viewModel.isThereFiles ? View.VISIBLE: View.GONE}"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView51"
+        app:spanCount="1"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_images" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_return"
+        style="@style/blueBotton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:onClick="@{()->click.onClickAddImage()}"
+        android:text="@string/add_images" />
+      <!--      <Button-->
+      <!--        android:id="@+id/btn_images"-->
+      <!--        style="@style/text_12_accent_dark_semi_bole"-->
+      <!--        android:layout_width="match_parent"-->
+      <!--        android:layout_height="@dimen/dimen_56dp"-->
+      <!--        android:onClick="@{()->click.onClickAddImage()}"-->
+      <!--        android:text="@string/add_images"-->
+      <!--        app:strokeColor="@color/color_e8e8"-->
+      <!--        app:strokeWidth="@dimen/dimen_1dp" />-->
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_100dp"
+        android:background="@drawable/bg_rect_e8e8">
+
+        <androidx.appcompat.widget.AppCompatEditText
+          android:id="@+id/ed_return_note"
+          style="@style/text_12_black_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_4dp"
+          android:layout_marginVertical="@dimen/dimen_4dp"
+          android:background="@color/white"
+          android:gravity="start"
+          android:hint="@string/tell_us_more"
+          android:minHeight="@dimen/dimen_80dp"
+          android:padding="@dimen/dimen_16dp"
+          android:text="@={returnNotes.value}"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:textChangedListener="@{returnNotes.textWatcher}" />
+
+        <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/button8"
+          style="@style/blueBotton14SemiBold"
+          setAlpha="@{!returnNotes.error  ? true : false}"
+          android:layout_width="wrap_content"
+          android:layout_height="@dimen/dimen_20dp"
+          android:layout_marginEnd="@dimen/dimen_8dp"
+          android:onClick="@{()->click.onClickSubmit()}"
+          android:text="@string/submit"
+          app:layout_constraintBottom_toBottomOf="@+id/ed_return_note"
+          app:layout_constraintEnd_toEndOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <include
+      android:id="@+id/ll_loading"
+      layout="@layout/layout_loading"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="gone" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

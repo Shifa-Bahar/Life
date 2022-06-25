@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_prescription"
+    app:startDestination="@id/choosePrescriptionFragment">
+
+    <fragment
+        android:id="@+id/prescriptionFragment"
+        tools:layout="@layout/fragment_prescriptions"
+        android:name="com.lifepharmacy.application.ui.prescription.fragments.PrescriptionFragment"
+        android:label="PrescriptionFragment" />
+    <dialog
+        android:id="@+id/dialogPrescriptionUploaded"
+        tools:layout="@layout/dailog_prescription_upload"
+        android:name="com.lifepharmacy.application.ui.prescription.dialog.PrescriptionUploadedDialog"
+        android:label="AddNewAddressDialog" />
+  <include app:graph="@navigation/nav_login_sheet" />
+  <fragment
+    android:id="@+id/choosePrescriptionFragment"
+    tools:layout="@layout/fragment_choose_prescriptions"
+    android:name="com.lifepharmacy.application.ui.prescription.fragments.ChoosePrescriptionFragment"
+    android:label="ChoosePrescriptionFragment" />
+  <fragment
+    android:id="@+id/prescriptionWithoutFragment"
+    tools:layout="@layout/fragment_prescription_without"
+    android:name="com.lifepharmacy.application.ui.prescription.fragments.PrescriptionWithoutFragment"
+    android:label="PrescriptionWithoutFragment" />
+  <include app:graph="@navigation/nav_orders" />
+<!--  <fragment-->
+<!--    android:id="@+id/addressFragment"-->
+<!--    tools:layout="@layout/fragment_address"-->
+<!--    android:name="com.lifepharmacy.application.ui.address.dailog.AddressFragment"-->
+<!--    android:label="AddressFragment" />-->
+</navigation>

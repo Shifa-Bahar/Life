@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.OrderResponseModel" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.orders.adapters.ClickOrder" />
+
+    <variable
+      name="transaction"
+      type="com.lifepharmacy.application.model.payment.OrderPayment" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+      android:id="@+id/cardView4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_4dp"
+      android:layout_marginTop="@dimen/dimen_4dp"
+      android:layout_marginBottom="@dimen/dimen_4dp"
+      android:onClick="@{()->click.onClickOrder(item)}"
+      app:cardCornerRadius="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@color/white"
+          android:paddingHorizontal="@dimen/dimen_8dp"
+          android:paddingVertical="@dimen/dimen_8dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dimen_8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView227"
+              style="@style/text_12_accent_semi_bole"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@{transaction.getPaymentMethodTitle}"
+              android:textColor="@color/accent_blue"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:text="Cash" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/tv_amount"
+              style="@style/text_12_accent_dark_bold"
+              setPriceWithPrefsCurrency="@{item.total}"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="@color/accent_blue"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="@+id/textView227"
+              app:layout_constraintTop_toBottomOf="@+id/textView227"
+              tools:text="AED 370" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView238"
+              style="@style/text_12_accent_semi_bole"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="@dimen/dimen_2dp"
+              android:text="@{`#`+transaction.cardInfo.getLastForDigitsOfCard()}"
+              android:visibility="@{transaction.method.equals(`card`)?View.VISIBLE:View.GONE}"
+              app:layout_constraintStart_toEndOf="@+id/textView227"
+              app:layout_constraintTop_toTopOf="@+id/textView227"
+              tools:text="#12345" />
+
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_date"
+            style="@style/text_12_blue_dark_open_regular"
+            setDateFromServer="@{item.createdAt}"
+            startDateTitle="@{@string/placed_on}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/tv_order_id"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_id"
+            tools:text="Placed on Jan 26, 2020" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_order_id"
+            style="@style/text_12_accent_dark_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/order.concat(item.orderId)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Order #1234" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!--        <androidx.appcompat.widget.AppCompatTextView-->
+        <!--          android:id="@+id/tv_status"-->
+        <!--          style="@style/text_12_accent_dark_semi_bole"-->
+        <!--          android:layout_width="wrap_content"-->
+        <!--          android:layout_height="wrap_content"-->
+        <!--          android:minWidth="@dimen/dimen_70dp"-->
+        <!--          android:background="@drawable/bg_text_accent"-->
+        <!--          android:backgroundTint="@color/color_1e8f"-->
+        <!--          android:textAlignment="center"-->
+        <!--          android:paddingHorizontal="@dimen/dimen_6dp"-->
+        <!--          android:paddingVertical="@dimen/dimen_4dp"-->
+        <!--          android:text="@{item.statusLabel}"-->
+        <!--          setStatusBackColor="@{item.status}"-->
+        <!--          app:layout_constraintEnd_toEndOf="parent"-->
+        <!--          app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_shipments"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          app:spanCount="1"
+          tools:itemCount="2"
+          tools:listitem="@layout/item_orders_shipments" />
+
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--          android:layout_width="match_parent"-->
+        <!--          android:layout_height="match_parent"-->
+        <!--          android:background="@color/color_blue_f0f9ff"-->
+        <!--          android:paddingHorizontal="@dimen/dimen_8dp"-->
+        <!--          android:paddingVertical="@dimen/dimen_8dp">-->
+
+        <!--          <androidx.appcompat.widget.AppCompatTextView-->
+        <!--            android:id="@+id/tv_amount"-->
+        <!--            style="@style/text_12_accent_dark_bold"-->
+        <!--            setPriceWithPrefsCurrency="@{item.total}"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textColor="@color/accent_blue"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            tools:text="AED 370" />-->
+
+        <!--          <androidx.appcompat.widget.AppCompatTextView-->
+        <!--            android:id="@+id/textView227"-->
+        <!--            style="@style/text_12_accent_dark_bold"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="@{transaction.getPaymentMethodTitle}"-->
+        <!--            android:textColor="@color/accent_blue"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            tools:text="Cash" />-->
+        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+      </LinearLayout>
+    </androidx.cardview.widget.CardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

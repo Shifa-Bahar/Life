@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.auth.fragments.ClickNumberFragment" />
+
+    <variable
+      name="phone"
+      type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+
+    <variable
+      name="isShowBottom"
+      type="Boolean" />
+    <variable
+      name="isArabicEnabled"
+      type="Boolean" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="@{()->click.onClickParent()}"
+    android:animateLayoutChanges="true">
+
+
+    <include
+      layout="@layout/layout_splash_back"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="@{()->click.onClickParent()}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+      android:id="@+id/scrollView6"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:onClick="@{()->click.onClickParent()}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->click.onClickParent()}"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+          android:id="@+id/imageView5"
+          android:layout_width="@dimen/dimen_66dp"
+          android:layout_height="@dimen/dimen_120dp"
+          android:layout_gravity="center"
+          android:layout_marginTop="@dimen/dimen_30dp"
+          app:srcCompat="@drawable/ic_life_logo" />
+
+        <androidx.cardview.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/dimen_8dp"
+          android:layout_marginTop="@dimen/dimen_50dp"
+          android:layout_marginBottom="@dimen/dimen_8dp"
+          app:cardCornerRadius="@dimen/dimen_10dp"
+          app:cardElevation="@dimen/dimen_4dp">
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/button"
+              style="@style/greyDarkButton"
+              android:layout_width="@dimen/dimen_100dp"
+              android:layout_height="@dimen/button_height"
+              android:layout_marginStart="24dp"
+              android:layout_marginBottom="@dimen/dimen_8dp"
+              android:onClick="@{()->click.onClickSkip()}"
+              android:text="@string/skip"
+              android:textAllCaps="true"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/button2"
+              style="@style/blueBotton"
+              setAlpha="@{!phone.error}"
+              android:layout_width="0dp"
+              android:layout_height="@dimen/button_height"
+              android:layout_marginStart="@dimen/dimen_8dp"
+              android:layout_marginEnd="@dimen/dimen_24dp"
+              android:onClick="@{()->click.onClickContinue()}"
+              android:text="@string/continue1"
+              android:textAllCaps="true"
+              app:layout_constraintBottom_toBottomOf="@+id/button"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="1.0"
+              app:layout_constraintStart_toEndOf="@+id/button"
+              app:layout_constraintTop_toTopOf="@+id/button"
+              app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dimen_8dp"
+
+              app:layout_constraintBottom_toTopOf="@+id/button2"
+              app:layout_constraintEnd_toEndOf="@+id/button2"
+              app:layout_constraintStart_toStartOf="@+id/button"
+              app:layout_constraintTop_toTopOf="parent">
+
+              <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ly_phone"
+                style="@style/TextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true"
+                android:layoutDirection="ltr"
+                app:errorTextColor="@color/black"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                  android:id="@+id/ed_phone"
+                  style="@style/text_16_1d1d_semi_bold"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:autofillHints="phoneNational"
+                  android:background="@drawable/bg_rect_sevety"
+                  android:drawableEnd="@{phone.value.empty ? @drawable/bg_oval : !phone.error ? @drawable/ic_blue_checked : @drawable/ic_cancel}"
+                  android:drawablePadding="@dimen/dimen_8dp"
+                  android:inputType="phone"
+                  android:padding="@dimen/dimen_12dp"
+                  android:textAlignment="viewStart"
+                  android:textCursorDrawable="@drawable/black_cursor"
+                  android:theme="@style/MyEditText"
+                  android:visibility="visible"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toEndOf="@+id/ccp"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:textChangedListener="@{phone.textWatcher}" />
+              </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+          </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView2"
+          style="@style/text_14_accent_dark_semi_bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_16dp"
+          android:onClick="@{()->click.onClickTroubleSignIn()}"
+          android:text="@string/trouble_signing_in"
+          android:textAlignment="center" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/textView3"
+          style="@style/text_14_accent_dark_semi_bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_10dp"
+          android:onClick="@{()->click.onClickPrivacy()}"
+          android:text="@string/how_we_keep_your_data_secure"
+          android:textAlignment="center" />
+      </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textView104"
+      style="@style/text_12_blue_dark_open_regular"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:onClick="@{()->click.onClickTerms()}"
+      android:text="@string/by_continuing_you_agree_to_terms_amp_condition"
+      android:textAlignment="center"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+      android:id="@+id/linearLayout21"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/white_with_top_round_corner"
+      android:elevation="@dimen/dimen_40dp"
+      android:orientation="vertical"
+      android:paddingHorizontal="@dimen/dimen_16dp"
+      android:paddingVertical="@dimen/dimen_10dp"
+      android:visibility="@{isShowBottom ? View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:visibility="visible">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView105"
+        style="@style/text_14_accent_dark_semi_bold"
+        android:layout_width="match_parent"
+        android:textAlignment="viewStart"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_forward_arrow"
+        android:onClick="@{()->click.onClickLoginUsingEmail()}"
+        android:paddingVertical="@dimen/dimen_10dp"
+        android:text="@string/login_with_email" />
+
+      <View
+        android:id="@+id/divider30"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_e8e8" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView106"
+        style="@style/text_14_accent_dark_semi_bold"
+        android:layout_width="match_parent"
+        android:textAlignment="viewStart"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        android:drawableEnd="@drawable/ic_forward_arrow"
+        android:onClick="@{()->click.onClickContactUS()}"
+        android:paddingVertical="@dimen/dimen_10dp"
+        android:text="@string/contact_support_title" />
+    </LinearLayout>
+
+    <info.hoang8f.android.segmented.SegmentedGroup
+      android:id="@+id/segmented2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp"
+      android:layoutDirection="ltr"
+      android:orientation="horizontal"
+      tools:visibility="gone"
+      android:visibility="@{isArabicEnabled ? View.VISIBLE : View.GONE}"
+      app:layout_constraintBottom_toTopOf="@+id/linearLayout21"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/scrollView6"
+      app:sc_border_width="1dp"
+      app:sc_checked_text_color="@color/white"
+      app:sc_tint_color="@color/accent_blue">
+
+      <RadioButton
+        android:id="@+id/btn_english"
+        style="@style/RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="@string/english" />
+
+      <RadioButton
+        android:id="@+id/btn_arabic"
+        style="@style/RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/arabic" />
+    </info.hoang8f.android.segmented.SegmentedGroup>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.orders.OrderItem" />
+
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="@dimen/dimen_250dp"
+    android:layout_height="wrap_content">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/imageView_icon"
+      errorImage="@{@drawable/image_place_holder}"
+      loadImageFromURl="@{item.productDetails.images.featuredImage}"
+      android:layout_width="@dimen/dimen_70dp"
+      android:layout_height="@dimen/dimen_70dp"
+      android:layout_marginStart="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize15Percent"
+      app:srcCompat="@mipmap/dummy_image"
+      app:strokeColor="@color/color_93a3"
+      app:strokeWidth="1dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_product_name"
+      style="@style/text_12_blue_dark_open_regular"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:text="@{item.productDetails.title}"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageView_icon"
+      app:layout_constraintTop_toTopOf="@+id/imageView_icon"
+      tools:text="@string/puressentiel_purifying_antibacterial_lotion_spray_hands_and_surfaces" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_qty"
+      style="@style/text_12_blue_dark_open_regular"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+
+      android:text="@{@string/axe.concat(String.valueOf(item.qty))}"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView_icon"
+      app:layout_constraintStart_toStartOf="@+id/tv_product_name"
+      tools:text="x2" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

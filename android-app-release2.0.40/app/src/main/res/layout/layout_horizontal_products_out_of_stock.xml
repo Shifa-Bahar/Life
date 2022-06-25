@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="title"
+      type="String" />
+
+    <variable
+      name="positions"
+      type="int" />
+
+    <variable
+      name="id"
+      type="String" />
+
+    <variable
+      name="type"
+      type="String" />
+
+    <variable
+      name="click"
+      type="com.lifepharmacy.application.ui.dashboard.adapter.ClickLayoutHorizontalProducts" />
+
+    <variable
+      name="item"
+      type="com.lifepharmacy.application.model.home.HomeResponseItem" />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_yellow_fffce3"
+    android:paddingVertical="@dimen/dimen_8dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_products_title"
+      style="@style/text_15_blue_dark_semi_bold"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:textAlignment="viewStart"
+      android:paddingStart="@dimen/dimen_12dp"
+      android:drawablePadding="@dimen/dimen_8dp"
+      android:drawableStart="@drawable/ic_info_button"
+      android:paddingEnd="@dimen/dimen_0dp"
+      android:text="@string/items_that_are_no_longer_available"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Items that are no longer available" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView_products"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clipToPadding="false"
+      android:orientation="horizontal"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_products_title"
+      app:spanCount="1"
+      tools:itemCount="4"
+      tools:listitem="@layout/item_cart_out_of_stock" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

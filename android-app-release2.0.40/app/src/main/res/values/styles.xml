@@ -1,0 +1,1219 @@
+<resources xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+
+
+  <style name="text_8_accent_dark_regular">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_12_b6b6_regular">
+    <item name="android:textColor">@color/color_b6b6</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_b6b6_semi_bold">
+    <item name="android:textColor">@color/color_b6b6</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_10_8585_semi_bold">
+    <item name="android:textColor">@color/color_8585</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_10_8585_regular">
+    <item name="android:textColor">@color/color_8585</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_7_blue_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">7sp</item>
+  </style>
+
+  <style name="text_7_white_semi_bold">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">7sp</item>
+  </style>
+
+  <style name="text_13_8585_opnesans_regular">
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">@dimen/text_size_11sp</item>
+    <item name="android:lineSpacingExtra">2.5sp</item>
+    <item name="android:textColor">@color/color_8585</item>
+  </style>
+
+  <style name="text_8_blue_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_10_white_opnesans_regular">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_16_white_opnesans_regular">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_16_white_opnesans_semi_bold">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_10_white_semi_bold">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_11_blue_dark_open_regular">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_9sp</item>
+  </style>
+
+  <style name="text_12_93A_open_regular">
+    <item name="android:textColor">@color/color_93a3</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_13_blue_dark_opnesans_regular">
+    <item name="android:gravity">end</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">@dimen/text_size_11sp</item>
+    <item name="android:lineSpacingExtra">2.5sp</item>
+    <item name="android:textColor">@color/accent_blue_darker</item>
+  </style>
+
+  <style name="text_13_blue_opnesans_regular">
+    <item name="android:gravity">end</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">@dimen/text_size_11sp</item>
+    <item name="android:lineSpacingExtra">2.5sp</item>
+    <item name="android:textColor">@color/accent_blue</item>
+  </style>
+
+  <style name="text_9_blue_dark_opnesans_regular">
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="android:lineSpacingExtra">0.5sp</item>
+    <item name="android:textColor">@color/accent_blue_darker</item>
+  </style>
+
+  <style name="text_15_blue_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_13sp</item>
+  </style>
+
+  <style name="text_15_white_semi_bold">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_13sp</item>
+  </style>
+
+  <style name="text_15_1d1d_semi_bold">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_13sp</item>
+  </style>
+
+  <style name="text_15_1d1d_open_regular">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_13sp</item>
+  </style>
+
+  <style name="text_9_white_semi_bold">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_9_blue_semi_bold">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_14_0025_open_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+
+  <style name="text_14_0025_open_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+
+  <style name="text_14_1d1d_open_semi_bold">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+
+  <style name="text_14_white_open_semi_bold">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+
+  <style name="text_14_2BA_open_bold">
+    <item name="android:textColor">@color/color_2BA</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+
+  <style name="text_14_93A_open_bold">
+    <item name="android:textColor">@color/color_93a3</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+  <style name="text_14_93A_open_regular">
+    <item name="android:textColor">@color/color_93a3</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+  <style name="text_23_white_open_bold">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_20sp</item>
+  </style>
+
+  <style name="text_14_a8a8_open_regular">
+    <item name="android:textColor">@color/color_a8a8</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+  <style name="text_14_4848_open_regular">
+    <item name="android:textColor">@color/color_4848</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+  <style name="text_14_4848_semi_bold">
+    <item name="android:textColor">@color/color_4848</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+  <style name="text_18_1d1d_regular">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:hint">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/centurt_gothic_regurlar</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_18_1d1d_open_regular">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:hint">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_15_white_open_regular">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_13sp</item>
+  </style>
+
+  <style name="text_12_8585_open_regular">
+    <item name="android:textColor">@color/color_8585</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_blue_dark_open_regular">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="circleImageView" parent="">
+    <item name="cornerFamily">rounded</item>
+    <item name="cornerSize">50%</item>
+    <item name="android:background">@color/color_1e8f</item>
+  </style>
+
+  <style name="BottomNav" parent="Theme.MaterialComponents.Light.Bridge">
+    <item name="colorPrimary">@color/accent_blue_darker</item>
+    <item name="colorOnSurface">@color/color_8585</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="textAppearanceCaption">@style/text_10_8585_semi_bold</item>
+  </style>
+
+
+  <style name="text_18_1d1d_bold">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textColorHint">@color/color_7070</item>
+    <item name="android:textSize">@dimen/text_size_16sp</item>
+  </style>
+
+  <style name="text_18_1d1d_semi_bold">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textColorHint">@color/color_7070</item>
+    <item name="android:textSize">@dimen/text_size_16sp</item>
+  </style>
+
+  <style name="text_18_accent_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textColorHint">@color/color_7070</item>
+    <item name="android:textSize">@dimen/text_size_16sp</item>
+  </style>
+  <style name="text_18_93_semi_bold">
+    <item name="android:textColor">@color/color_93a3</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textColorHint">@color/color_93a3</item>
+    <item name="android:textSize">@dimen/text_size_16sp</item>
+  </style>
+
+  <style name="text_16_1d1d_regular">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/centurt_gothic_regurlar</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_16_accent_open_regular">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/centurt_gothic_regurlar</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_16_1d1d_open_regular">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_16_1d1d_semi_bold">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_7_979c_open_regular">
+    <item name="android:textColor">@color/color_979c</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">7sp</item>
+  </style>
+
+  <style name="text_10_1d1d_open_semi_bold">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_16_blue_dark_open_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_13_blue_dark_open_regular">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_11sp</item>
+  </style>
+
+  <style name="text_10_blue_dark_open_regular">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_10_blue_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_14_blue_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+
+  <style name="text_10_979c_semi_bold">
+    <item name="android:textColor">@color/color_979c</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_accent_bold">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+  <style name="text_14_979c_semi_bold">
+    <item name="android:textColor">@color/color_979c</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+
+  <style name="text_14_979c_regular">
+    <item name="android:textColor">@color/color_979c</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+  <style name="text_13_8585_open_regular">
+    <item name="android:textColor">@color/color_8585</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_11sp</item>
+  </style>
+
+
+  <style name="text_8_accent_dark_semi_bole">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_13_white_semi_bole">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_11sp</item>
+  </style>
+
+  <style name="text_6_white_semi_bole">
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">6sp</item>
+    <item name="android:lineSpacingExtra">1sp</item>
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+
+  <style name="text_8_white_semi_bole">
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="android:lineSpacingExtra">1sp</item>
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="text_8_white_bold">
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="android:lineSpacingExtra">1sp</item>
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="text_10_white_bold">
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="android:lineSpacingExtra">1sp</item>
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="text_12_b6b6_semi_bole">
+    <item name="android:textColor">@color/color_b6b6</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_accent_semi_bole">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_accent_bole">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_8585_regular">
+    <item name="android:textColor">@color/color_8585</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_7070_regular">
+    <item name="android:textColor">@color/color_7070</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_1d1d_regular">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_1d1d_italic">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_light_italic</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_1d1d_semi_bold">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_1d1d_light_italic">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_light_italic</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+
+  <style name="text_33_accent_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_30sp</item>
+  </style>
+
+  <style name="text_22_8585_semi_bold">
+    <item name="android:textColor">@color/color_8585</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_18sp</item>
+  </style>
+
+  <style name="text_13_1d1d_semi_bold">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_11sp</item>
+  </style>
+
+  <style name="text_13_blue_semi_bold">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_11sp</item>
+  </style>
+
+  <style name="text_12_black_regular">
+    <item name="android:textColor">@color/black</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_black_semi_bold">
+    <item name="android:textColor">@color/back_alpha_lite</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+  <style name="text_12_accent_dark_semi_bole">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+  <style name="text_12_color_1ec_semi_bold">
+    <item name="android:textColor">@color/color_1ec</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+  <style name="text_12_color_1ec_bold">
+    <item name="android:textColor">@color/color_1ec</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+  <style name="text_12_accent_dark_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+  <style name="text_12_white_semi_bold">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+  <style name="text_12_color_004f6C_semi_bold">
+    <item name="android:textColor">@color/color_004f6C</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_white_bold">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_white_regular">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_13_accent_dark_regular">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_16_accent_dark_regular">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_17_accent_dark_regular">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_15sp</item>
+  </style>
+
+  <style name="text_10_accent_dark_regular">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_10_accent_regular">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+  <style name="text_10_accent_dark_semi_bold.">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+  <style name="text_10_accent_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+  <style name="text_10__accent_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+  <style name="text_10_color_blue_1455ff_semi_bold">
+    <item name="android:textColor">@color/color_blue_1455ff</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+  <style name="text_24_color_blue_1455ff_semi_bold">
+    <item name="android:textColor">@color/color_blue_1455ff</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+  <style name="text_10_ff00_semi_bold">
+    <item name="android:textColor">@color/color_ff00</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_10_00D_semi_bold">
+    <item name="android:textColor">@color/color_00D64</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_10_7070_regular">
+    <item name="android:textColor">@color/color_7070</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+  <style name="text_10_93a_regular">
+    <item name="android:textColor">@color/color_93a3</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+  <style name="text_12_ff00_semi_bold">
+    <item name="android:textColor">@color/color_ff00</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_ff00_bold">
+    <item name="android:textColor">@color/color_ff00</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_12_color_499001_bold">
+    <item name="android:textColor">@color/color_499001</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_13_1d1d_regular">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_13_accent_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+  <style name="text_13_accent_semi_bold">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+  </style>
+
+
+  <style name="text_14_1d1d_open_regular">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+
+  <style name="text_14_accent_dark_open_regular">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+
+  <style name="text_14_accent_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+  <style name="text_14_accent_semi_bold">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+  </style>
+  <style name="text_11_1d1d_semi_bold">
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_9sp</item>
+  </style>
+
+
+  <style name="text_18_0025_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:hint">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/centurt_gothic_regurlar</item>
+    <item name="android:textSize">@dimen/text_size_16sp</item>
+  </style>
+
+  <style name="text_18_ff_regular">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:hint">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_16sp</item>
+  </style>
+
+
+  <style name="text_16_accent_dark_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_16_accent_bold">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_24_8585open_semi_bold">
+    <item name="android:textColor">@color/color_8585</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_22sp</item>
+  </style>
+
+  <style name="text_24_ff_semi_bold">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_22sp</item>
+  </style>
+
+  <style name="text_26_8585open_semi_bold">
+    <item name="android:textColor">@color/color_8585</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_24sp</item>
+  </style>
+
+  <style name="text_26_accent_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_24sp</item>
+  </style>
+
+  <style name="text_32_0025_open_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_30sp</item>
+  </style>
+
+  <style name="text_16_accent_dark_semi_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_14sp</item>
+  </style>
+
+  <style name="text_20_accent_dark_bold">
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_18sp</item>
+  </style>
+
+  <style name="text_20_accent_bold">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_18sp</item>
+  </style>
+  <style name="text_20_accent_semi_bold">
+    <item name="android:textColor">@color/accent_blue</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_18sp</item>
+  </style>
+  <style name="greyButton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_grey</item>
+  </style>
+  <style name="darkGreyButton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_grey</item>
+  </style>
+
+  <style name="greyDarkButton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_4dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_7070</item>
+  </style>
+  <style name="grey98b3cbButton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_4dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_98b3cb</item>
+  </style>
+  <style name="grey98b3cbButtonTextField" >
+    <item name="android:elevation">@dimen/dimen_4dp</item>
+    <item name="android:textColor">@color/white</item>
+
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_98b3cb</item>
+  </style>
+  <style name="color_errorButtonTextField" >
+    <item name="android:elevation">@dimen/dimen_4dp</item>
+    <item name="android:textColor">@color/color_error</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_error_border</item>
+  </style>
+  <style name="blueBotton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_accent</item>
+  </style>
+  <style name="blueBottonWithoutPadding" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_accent_without_padding</item>
+  </style>
+  <style name="blueBoldBotton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+    <item name="android:background">@drawable/bg_button_accent</item>
+  </style>
+  <style name="purplButton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:backgroundTint">@color/color_6164</item>
+    <item name="android:background">@drawable/bg_button_accent</item>
+  </style>
+  <style name="blueLightBotton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_accent</item>
+  </style>
+  <style name="whiteButton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/white_with_round_corner</item>
+  </style>
+  <style name="whiteButtonsmall" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_3dp</item>
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="android:background">@drawable/white_with_round_corner</item>
+  </style>
+  <style name="notifyMeBotton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">2dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:layout_height">@dimen/dimen_25dp</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="android:text">@string/notify_me</item>
+    <item name="android:drawablePadding">5dp</item>
+    <item name="android:background">@drawable/bg_button_11c3d2</item>
+  </style>
+  <style name="notifyMeBottons" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">2dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:layout_height">@dimen/dimen_15dp</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="android:text">@string/notify_me</item>
+    <item name="android:drawablePadding">3dp</item>
+    <item name="android:background">@drawable/bg_button_11c3d2</item>
+  </style>
+  <style name="rewardBotton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">2dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:layout_height">@dimen/dimen_20dp</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="android:background">@drawable/bg_button_reward</item>
+  </style>
+  <style name="orderOutOfStock" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">2dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:layout_height">@dimen/dimen_25dp</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="android:text">@string/pre_order</item>
+    <item name="android:drawablePadding">5dp</item>
+    <item name="android:background">@drawable/bg_button_green_87</item>
+  </style>
+  <style name="orderOutOfStocks" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">2dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:layout_height">@dimen/dimen_15dp</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+    <item name="android:text">@string/pre_order</item>
+    <item name="android:drawablePadding">3dp</item>
+    <item name="android:background">@drawable/bg_button_green_87</item>
+  </style>
+<!--  <item name="android:drawableEnd">@drawable/ic_icon___action___bell</item>-->
+  <style name="green36C963Button" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_36c963_30_dp</item>
+
+  </style>
+  <style name="yellowFFF7CEButton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_fff7ce_30_dp</item>
+  </style>
+
+  <style name="blueBotton1" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_blue_dp</item>
+  </style>
+
+  <style name="green36C963ButtonGradiant30dp" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_36c963_gradiant_horizontal_30_dp</item>
+  </style>
+  <style name="LightBlueButton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/color_1d1d</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_accent_light</item>
+  </style>
+
+  <style name="green36cBotton" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">@dimen/dimen_5dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_10sp</item>
+    <item name="android:background">@drawable/bg_button_36c</item>
+  </style>
+
+  <style name="blueBotton14SemiBold" parent="Widget.AppCompat.Button.Borderless">
+    <item name="android:elevation">2dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_semi_bold</item>
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+    <item name="android:background">@drawable/bg_button_accent</item>
+  </style>
+
+  <style name="productRatingBar" parent="Widget.AppCompat.RatingBar">
+    <item name="android:progressDrawable">@drawable/product_rating_bar</item>
+    <item name="android:minHeight">23dip</item>
+    <item name="android:maxHeight">25dip</item>
+  </style>
+
+
+  <style name="FullScreenDialogTheme" parent="@android:style/Theme.Dialog">
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/transparent</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:backgroundDimEnabled">false</item>
+    <item name="android:windowFullscreen">true</item>
+  </style>
+
+  <style name="FullScreenTransDialogTheme" parent="@android:style/Theme.Dialog">
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/back_alpha</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:backgroundDimEnabled">false</item>
+    <item name="android:windowFullscreen">true</item>
+  </style>
+
+  <style name="FullScreenTransAlpha" parent="@android:style/Theme.Dialog">
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/back_alpha_lite</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:backgroundDimEnabled">false</item>
+    <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+    <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    <item name="android:windowFullscreen">false</item>
+    <item name="android:statusBarColor">@color/back_alpha_lite</item>
+  </style>
+
+  <style name="FullScreenLoading" parent="@android:style/Theme.Dialog">
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/back_alpha_lite</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:backgroundDimEnabled">false</item>
+    <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+    <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    <item name="android:windowFullscreen">false</item>
+    <!--    <item name="android:statusBarColor">@color/white</item>-->
+    <!--    <item name="android:windowTranslucentStatus">true</item>-->
+    <!--    <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>-->
+
+  </style>
+
+  <style name="FullScreenTransparentDialogTheme" parent="@android:style/Theme.Dialog">
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/transparent</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:backgroundDimEnabled">false</item>
+    <item name="android:statusBarColor">@color/white</item>
+    <item name="android:windowFullscreen">false</item>
+  </style>
+
+  <style name="comboBoxDialogTheme" parent="@android:style/Theme.Dialog">
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/transparent</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:backgroundDimEnabled">false</item>
+    <item name="android:statusBarColor">@color/white</item>
+    <item name="android:windowFullscreen">false</item>
+    <item name="android:windowAnimationStyle">@style/comboBoxAnimation</item>
+  </style>
+<!--  <style name="comboBoxAnimation">-->
+<!--    <item name="android:windowEnterAnimation">@anim/slide_from_left</item>-->
+<!--    <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>-->
+<!--  </style>-->
+  <style
+    name="comboBoxAnimation" >
+    <item name="android:windowEnterAnimation">@anim/slide_from_left</item>
+    <item name="android:windowExitAnimation">@anim/slide_to_right</item>
+  </style>
+  <style name="TextInputLayoutStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" tools:ignore="PrivateResource">
+    <item name="hintTextColor">@color/white</item>
+    <item name="android:background">@null</item>
+  </style>
+
+  <style name="TextInputLayoutStyleBlue_b6b6hint" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" tools:ignore="PrivateResource">
+    <item name="hintTextColor">@color/color_b6b6</item>
+    <item name="android:background">@null</item>
+  </style>
+
+  <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored" />
+
+  <style name="customRatingBar" parent="android:style/Widget.Material.RatingBar.Indicator">
+    <item name="android:startColor">@color/accent_blue</item>
+    <item name="android:backgroundTint">@color/accent_blue</item>
+    <item name="colorControlActivated">@color/accent_blue</item>
+    <item name="colorControlNormal">@color/accent_blue</item>
+    <item name="android:colorControlNormal">@color/accent_blue</item>
+    <item name="android:progressBackgroundTint">@color/accent_blue</item>
+    <item name="android:progressTint">@color/accent_blue_darker</item>
+  </style>
+
+
+  <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+    <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+  </style>
+
+  <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+    <item name="android:background">@android:color/transparent</item>
+  </style>
+
+  <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+    <item name="textAllCaps">false</item>
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="fontFamily">@font/opensans_semi_bold</item>
+
+  </style>
+
+  <style name="AppTabLayout" parent="TextAppearance.Design.Tab">
+    <item name="android:textSize">@dimen/text_size_12sp</item>
+    <item name="textAllCaps">false</item>
+    <item name="android:textColor">@color/accent_blue_darker</item>
+    <item name="fontFamily">@font/opensans_semi_bold</item>
+
+  </style>
+
+  <style name="ShapeAppearanceOverlay.App.CornerSize15Percent" parent="">
+    <item name="cornerSize">12%</item>
+  </style>
+  <style name="ShapeAppearanceOverlay.App.CornerSize8Percent" parent="">
+    <item name="cornerSize">8%</item>
+  </style>
+  <style name="ShapeAppearanceOverlay.App.CornerSize0Percent" parent="">
+    <item name="cornerSize">0%</item>
+  </style>
+
+  <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+    <item name="cornerSize">50%</item>
+    <item name="colorOnBackground">@color/white</item>
+  </style>
+
+  <style name="ShapeAppearanceOverlay.App.CornerSize12Bottom" parent="">
+
+    <item name="cornerSizeBottomLeft">12%</item>
+    <item name="cornerSizeBottomRight">12%</item>
+
+  </style>
+
+  <style name="ShapeAppearanceOverlay.App.BottomCorner" parent="">
+    <item name="cornerSizeTopLeft">0%</item>
+    <item name="cornerSizeTopRight">0%</item>
+    <item name="cornerSizeBottomLeft">15%</item>
+    <item name="cornerSizeBottomRight">15%</item>
+  </style>
+
+  <style name="ShapeAppearanceOverlay.App.BottomCorner.5Per" parent="">
+    <item name="cornerSizeTopLeft">0%</item>
+    <item name="cornerSizeTopRight">0%</item>
+    <item name="cornerSizeBottomLeft">5%</item>
+    <item name="cornerSizeBottomRight">5%</item>
+  </style>
+
+  <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+    <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Button_negative</item>
+    <item name="buttonBarNeutralButtonStyle">@style/Widget.App.Button</item>
+    <item name="buttonBarNegativeButtonStyle">@style/Widget.App.Button</item>
+  </style>
+
+  <style name="ThemeOverlay.App.MaterialInfoDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+    <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Button</item>
+    <item name="buttonBarNeutralButtonStyle">@style/Widget.App.Button</item>
+    <item name="buttonBarNegativeButtonStyle">@style/Widget.App.Button</item>
+  </style>
+
+  <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+    <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>
+    <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+  </style>
+
+  <style name="Widget.App.Button_negative" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+    <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button_negative</item>
+    <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+  </style>
+
+  <style name="ThemeOverlay.App.Button" parent="">
+    <item name="colorPrimary">@color/color_1d1d</item>
+  </style>
+
+  <style name="ThemeOverlay.App.Button_negative" parent="">
+    <item name="colorPrimary">@color/color_error</item>
+  </style>
+
+  <style name="ThemeOverlay.App.Button.TextButton" parent="">
+    <item name="android:textColor">@color/color_1d1d</item>
+  </style>
+
+  <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+    <item name="cornerFamily">cut</item>
+    <item name="cornerSize">8dp</item>
+  </style>
+
+  <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+    <item name="cornerFamily">cut</item>
+    <item name="cornerSize">4dp</item>
+  </style>
+
+  <style name="ShapeAppearanceOverlay.App.CornerSize15PercentWitStroke" parent="">
+    <item name="cornerSize">12%</item>
+    <item name="strokeColor">@color/color_8585</item>
+    <item name="strokeWidth">4dp</item>
+  </style>
+
+  <style name="MyEditText" parent="Theme.AppCompat.Light">
+    <item name="colorControlNormal">@color/color_1d1d</item>
+    <item name="colorControlActivated">@color/color_1d1d</item>
+  </style>
+
+<!--  <style name="zenDeskStyling" parent="ZendeskSdkTheme.Light">-->
+<!--    <item name="colorPrimary">@color/accent_blue</item>-->
+<!--    <item name="colorPrimaryDark">@color/accent_blue_darker</item>-->
+<!--    <item name="colorAccent">@color/accent_blue</item>-->
+<!--  </style>-->
+  <style name="DialogTheme" parent="Theme.AppCompat.Light">
+    <item name="colorAccent">@color/accent_blue_darker</item>
+  </style>
+  <style name="MyTooltip" parent="Widget.MaterialComponents.Tooltip">
+    <item name="backgroundTint">@color/accent_blue</item>
+    <item name="android:textAppearance">@style/MyTooltip.TextAppearance</item>
+  </style>
+
+  <style name="MyTooltip.TextAppearance" parent="@style/TextAppearance.MaterialComponents.Tooltip">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/opensans_regular</item>
+    <item name="fontFamily">@font/opensans_regular</item>
+    <item name="android:textSize">@dimen/text_size_8sp</item>
+  </style>
+
+</resources>

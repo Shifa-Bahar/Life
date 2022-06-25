@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="addressType"
+            type="String" />
+        <variable
+            name="time"
+            type="String" />
+        <variable
+            name="state"
+            type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+        <variable
+            name="city"
+            type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+        <variable
+            name="street"
+            type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+        <variable
+            name="flat"
+            type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+        <variable
+            name="building"
+            type="com.lifepharmacy.application.utils.universal.InputEditTextValidator" />
+        <variable
+            name="address"
+            type="androidx.databinding.ObservableField&lt;android.location.Address&gt;" />
+
+        <variable
+            name="click"
+            type="com.lifepharmacy.application.ui.address.dailog.ClickAddressBottomSheet" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            app:cardCornerRadius="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textView29"
+                    style="@style/text_16_accent_dark_semi_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address_details"
+                    app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_e9_round_corner"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView29">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_location_type"
+                            android:layout_width="@dimen/dimen_18dp"
+                            android:layout_height="@dimen/dimen_18dp"
+                            android:layout_marginHorizontal="@dimen/dimen_16dp"
+                            android:layout_marginVertical="@dimen/dimen_14dp"
+                            android:src="@drawable/ic_home_location"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="2"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ly_type"
+                            android:layout_weight="1"
+                            style="@style/TextInputLayoutStyleBlue_b6b6hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_4dp"
+                            android:background="@drawable/bg_e9_round_corner"
+                            android:clickable="@{addressType != `Others`? true : false }"
+                            android:onClick="@{()->click.onClickSelectType()}"
+                            android:paddingTop="@dimen/dimen_4dp"
+                            android:textColorHint="@color/color_b6b6"
+                            app:errorEnabled="false"
+                            app:hintAnimationEnabled="false"
+                            app:hintEnabled="true"
+                            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+                            app:layout_constraintTop_toTopOf="@+id/constraintLayout">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ed_type"
+                                style="@style/text_12_accent_dark_semi_bole"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@color/transparent"
+                                android:clickable="@{addressType != `Others`? true : false }"
+                                android:focusable="@{addressType == `Others`? true : false }"
+                                android:hint="@string/type"
+                                android:inputType="phone"
+                                android:onClick="@{()->click.onClickSelectType()}"
+                                android:padding="@dimen/dimen_8dp"
+                                android:text="@{addressType != null ? addressType : `Work`}"
+                                android:textAlignment="textStart"
+                                android:textCursorDrawable="@drawable/black_cursor"
+                                android:visibility="visible"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/ccp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="Business Bay" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ly_time"
+                            android:layout_weight="1"
+                            style="@style/TextInputLayoutStyleBlue_b6b6hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_4dp"
+                            android:background="@drawable/bg_e9_round_corner"
+                            android:onClick="@{()->click.onClickSelectTime()}"
+                            android:paddingTop="@dimen/dimen_4dp"
+                            android:textColorHint="@color/color_b6b6"
+                            app:errorEnabled="false"
+                            app:hintAnimationEnabled="false"
+                            app:hintEnabled="true"
+                            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+                            app:layout_constraintTop_toTopOf="@+id/constraintLayout">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ed_time"
+                                style="@style/text_12_accent_dark_semi_bole"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@color/transparent"
+                                android:hint="@string/preferred_time"
+                                android:inputType="phone"
+                                android:focusable="false"
+                                android:onClick="@{()->click.onClickSelectTime()}"
+                                android:padding="@dimen/dimen_8dp"
+                                android:text="@{time != null ? time : `Morning`}"
+                                android:textAlignment="textStart"
+                                android:textCursorDrawable="@drawable/black_cursor"
+                                android:visibility="visible"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/ccp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="Morning" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ly_state"
+                        android:layout_weight="1"
+                        style="@style/TextInputLayoutStyleBlue_b6b6hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        android:layout_marginEnd="@dimen/dimen_4dp"
+                        android:background="@drawable/bg_e9_round_corner"
+                        android:paddingTop="@dimen/dimen_4dp"
+                        android:textColorHint="@color/color_b6b6"
+                        app:errorEnabled="false"
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/color_b6b6"
+                        app:layout_constraintEnd_toStartOf="@+id/ly_area"
+                        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/ed_state"
+                            style="@style/text_12_accent_dark_semi_bole"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/transparent"
+                            android:hint="@string/emirate"
+                            android:inputType="textPersonName"
+                            android:padding="@dimen/dimen_8dp"
+                            android:textAlignment="textStart"
+                            android:textCursorDrawable="@drawable/black_cursor"
+                            android:visibility="visible"
+                            app:hintTextColor="@color/color_b6b6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ccp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:text="@={state.value}"
+                            app:textChangedListener="@{state.textWatcher}"
+                            tools:text="@string/dubai" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ly_city"
+                        android:layout_weight="1"
+                        style="@style/TextInputLayoutStyleBlue_b6b6hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        android:layout_marginEnd="@dimen/dimen_4dp"
+                        android:background="@drawable/bg_e9_round_corner"
+                        android:paddingTop="@dimen/dimen_4dp"
+                        android:textColorHint="@color/color_b6b6"
+                        app:errorEnabled="false"
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/color_b6b6"
+                        app:layout_constraintEnd_toStartOf="@+id/ly_area"
+                        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/ed_city"
+                            style="@style/text_12_accent_dark_semi_bole"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/transparent"
+                            android:hint="@string/city"
+                            android:inputType="textPersonName"
+                            android:padding="@dimen/dimen_8dp"
+                            android:textAlignment="textStart"
+                            android:textCursorDrawable="@drawable/black_cursor"
+                            android:visibility="visible"
+                            app:hintTextColor="@color/color_b6b6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ccp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:text="@={city.value}"
+                            app:textChangedListener="@{city.textWatcher}"
+                            tools:text="@string/dubai" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ly_area"
+                    style="@style/TextInputLayoutStyleBlue_b6b6hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:background="@drawable/bg_e9_round_corner"
+                    android:paddingTop="@dimen/dimen_4dp"
+                    android:textColorHint="@color/color_b6b6"
+                    app:errorEnabled="false"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ly_state"
+                    app:layout_constraintTop_toTopOf="@+id/ly_state">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_area"
+                        style="@style/text_12_accent_dark_semi_bole"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:hint="@string/street_address"
+                        android:inputType="textPersonName"
+                        android:padding="@dimen/dimen_8dp"
+                        android:textAlignment="textStart"
+                        android:textCursorDrawable="@drawable/black_cursor"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ccp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Business Bay"
+                        android:text="@={street.value}"
+                        app:textChangedListener="@{street.textWatcher}"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--                <include-->
+                <!--                    android:id="@+id/ly_address_type"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="0dp"-->
+                <!--                    android:layout_marginStart="@dimen/dimen_8dp"-->
+                <!--                    android:onClick="@{()->click.onClickSelectType()}"-->
+
+                <!--                    layout="@layout/item_address_spinner"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"-->
+                <!--                    app:layout_constraintEnd_toEndOf="@+id/ly_area"-->
+                <!--                    app:layout_constraintStart_toEndOf="@+id/constraintLayout"-->
+                <!--                    app:layout_constraintTop_toTopOf="@+id/constraintLayout" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="2"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ly_flat"
+
+                        android:layout_weight="1"
+                        style="@style/TextInputLayoutStyleBlue_b6b6hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/dimen_2dp"
+                        android:background="@drawable/bg_e9_round_corner"
+                        android:paddingTop="@dimen/dimen_4dp"
+                        android:textColorHint="@color/color_b6b6"
+                        app:errorEnabled="false"
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/ly_state"
+                        app:layout_constraintTop_toBottomOf="@+id/ly_state">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/ed_flat"
+                            style="@style/text_12_accent_dark_semi_bole"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/transparent"
+                            android:hint="@string/flat_villa_no"
+                            android:inputType="phone"
+                            android:padding="@dimen/dimen_8dp"
+                            android:textAlignment="textStart"
+                            android:textCursorDrawable="@drawable/black_cursor"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ccp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="305"
+                            android:text="@={flat.value}"
+                            app:textChangedListener="@{flat.textWatcher}"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ly_building"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/dimen_2dp"
+                        style="@style/TextInputLayoutStyleBlue_b6b6hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_e9_round_corner"
+                        android:paddingTop="@dimen/dimen_4dp"
+                        android:textColorHint="@color/color_b6b6"
+                        app:errorEnabled="false"
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/ly_state"
+                        app:layout_constraintTop_toBottomOf="@+id/ly_state">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/ed_building"
+                            style="@style/text_12_accent_dark_semi_bole"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/transparent"
+                            android:hint="@string/building_name"
+                            android:inputType="textPersonName"
+                            android:padding="@dimen/dimen_8dp"
+                            android:text="@={building.value}"
+                            android:textAlignment="textStart"
+                            android:textCursorDrawable="@drawable/black_cursor"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ccp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:textChangedListener="@{building.textWatcher}"
+                            tools:text="@string/building_name" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ly_additional"
+                    style="@style/TextInputLayoutStyleBlue_b6b6hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:background="@drawable/bg_e9_round_corner"
+                    android:paddingTop="@dimen/dimen_4dp"
+                    android:textColorHint="@color/color_b6b6"
+                    app:errorEnabled="false"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/ly_state"
+                    app:layout_constraintTop_toBottomOf="@+id/ly_building">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_additional"
+                        style="@style/text_12_accent_dark_semi_bole"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:hint="@string/additional_information"
+                        android:inputType="phone"
+                        android:padding="@dimen/dimen_8dp"
+                        android:textAlignment="textStart"
+                        android:textCursorDrawable="@drawable/black_cursor"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ccp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="@string/additional_information" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

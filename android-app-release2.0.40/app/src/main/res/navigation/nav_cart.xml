@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_cart"
+  app:startDestination="@id/cartFragment">
+
+  <fragment
+    android:id="@+id/cartFragment"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.CartFragment"
+    android:label="CartFragment"
+    tools:layout="@layout/fragment_cart" />
+  <fragment
+    android:id="@+id/paymentFragment"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.PaymentFragment"
+    android:label="PaymentFragment"
+    tools:layout="@layout/fragment_payment" />
+  <dialog
+    android:id="@+id/paymentPreviewBottomSheet"
+    tools:layout="@layout/bottom_sheet_payment_preview"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.PaymentPreviewBottomSheet"
+    android:label="ProductPreviewBottomSheet" />
+
+  <dialog
+    android:id="@+id/cardDetailsBottomSheet"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.CardDetailsBottomSheet"
+    android:label="CardDetailsBottomSheet"
+    tools:layout="@layout/bottom_sheet_card_deatils" />
+
+  <dialog
+    android:id="@+id/animationCompleteCouponDialog"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.AnimationOfferCompleteCouponDialog"
+    android:label="AnimationCompleteCouponDialog"
+    tools:layout="@layout/dailog_animation_offer_complete_coupon"/>
+  <dialog
+    android:id="@+id/animationInCompleteCouponDialog"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.AnimationOfferInCompleteCouponDialog"
+    android:label="AnimationInCompleteCouponDialog"
+    tools:layout="@layout/dailog_animation_offer_incomplete_coupon"/>
+
+  <include app:graph="@navigation/nav_orders" />
+  <dialog
+    android:id="@+id/shipmentProductList"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.ShipmentProductListBottomSheet"
+    android:label="ShipmentProductList"
+    tools:layout="@layout/bottom_sheet_shipment_product_list" />
+  <include app:graph="@navigation/nav_login_sheet" />
+  <include app:graph="@navigation/nav_offers" />
+  <fragment
+    android:id="@+id/pageFragment"
+    android:name="com.lifepharmacy.application.ui.pages.fragment.PageFragment"
+    android:label="PageFragment"
+    tools:layout="@layout/fragment_page" />
+  <include app:graph="@navigation/nav_product_preview" />
+  <dialog
+    android:id="@+id/offerIncompleteDialog"
+    android:name="com.lifepharmacy.application.ui.cart.dailog.OfferIncompleteDialog"
+    android:label="OfferIncompleteDialog"
+    tools:layout="@layout/dailog_offer_incomplete" />
+  <include app:graph="@navigation/nav_product" />
+  <dialog
+    android:id="@+id/orderSummaryBottomSheet"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderSummaryBottomSheet"
+    android:label="OrderSummaryBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_summary" />
+  <dialog
+    android:id="@+id/orderPlacedDialog"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderPlacedDialog"
+    android:label="OrderPlacedDialog"
+    tools:layout="@layout/dailog_order_placed" />
+  <dialog
+    android:id="@+id/orderWalletTopUpBottomSheet"
+    android:name="com.lifepharmacy.application.ui.cart.fragmets.OrderWalletTopUpBottomSheet"
+    android:label="OrderWalletTopUpBottomSheet"
+    tools:layout="@layout/bottom_sheet_order_wallet_top" />
+</navigation>

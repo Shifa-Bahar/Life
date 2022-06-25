@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+
+        <variable
+            name="click"
+            type="com.lifepharmacy.application.ui.auth.fragments.ClickOTPFragment" />
+        <variable
+            name="value"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_med_back">
+
+        <include
+            android:id="@+id/toll_bar"
+            layout="@layout/layout_toolbar_transparent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_show_number"
+            style="@style/text_12_1d1d_regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_14dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:hint="@string/code_is_sent"
+            android:text="@{@string/code_is_sent.concat(value)}"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toll_bar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_send_again"
+            style="@style/text_14_0025_open_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:onClick="@{()->click.onClickSendAgain()}"
+            android:text="@string/request_again"
+            app:layout_constraintEnd_toEndOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="@+id/textView7"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_count_down"
+            style="@style/text_12_b6b6_semi_bole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintEnd_toEndOf="@+id/tv_send_again"
+            app:layout_constraintStart_toStartOf="@+id/tv_send_again"
+            app:layout_constraintTop_toBottomOf="@+id/tv_send_again" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView7"
+            style="@style/text_14_a8a8_open_regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_40dp"
+            android:text="@string/didn_t_receive_code"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@+id/tv_show_number"
+            app:layout_constraintStart_toStartOf="@+id/tv_show_number"
+            app:layout_constraintTop_toBottomOf="@+id/pinView" />
+
+        <com.chaos.view.PinView
+            android:id="@+id/pinView"
+            style="@style/PinWidget.PinView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:cursorVisible="true"
+            android:elevation="@dimen/dimen_4dp"
+            android:fontFamily="@font/opensans_bold"
+            android:inputType="number"
+            android:itemBackground="@drawable/pin_item_background"
+            android:textColor="@color/accent_blue_darker"
+            android:textColorHint="@color/color_7070"
+            android:textSize="@dimen/text_size_15sp"
+            app:cursorWidth="2dp"
+            app:hideLineWhenFilled="true"
+            app:itemCount="4"
+            app:itemHeight="@dimen/dimen_50dp"
+            app:itemRadius="4dp"
+            app:itemSpacing="@dimen/dimen_10dp"
+            app:itemWidth="@dimen/dimen_70dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_show_number"
+            app:lineColor="@color/transparent"
+            app:lineWidth="2dp"
+            app:viewType="none"
+            tools:ignore="MissingConstraints" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_count_down"
+            app:layout_constraintVertical_bias="1.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    app:cardBackgroundColor="@color/transparent"
+                    app:cardElevation="@dimen/dimen_0dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/button2"
+                            style="@style/blueBotton"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/button_height"
+                            android:layout_marginHorizontal="@dimen/dimen_14dp"
+                            android:layout_marginVertical="@dimen/dimen_14dp"
+                            android:onClick="@{()->click.onCLickLogin()}"
+                            android:text="@string/continue1"
+                            android:textAllCaps="true"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

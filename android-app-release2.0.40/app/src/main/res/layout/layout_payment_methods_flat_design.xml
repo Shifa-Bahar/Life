@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+      name="mViewModel"
+      type="com.lifepharmacy.application.ui.cart.viewmodel.CartViewModel" />
+
+    <variable
+      name="topViewModel"
+      type="com.lifepharmacy.application.ui.wallet.viewmodels.TopViewModel" />
+
+    <variable
+      name="profileViewModel"
+      type="com.lifepharmacy.application.ui.profile.viewmodel.ProfileViewModel" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dimen_10dp"
+      android:paddingLeft="@dimen/dimen_2dp"
+      android:paddingRight="@dimen/dimen_2dp"
+      android:paddingTop="@dimen/dimen_2dp"
+      android:paddingBottom="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+
+
+
+        <!--            <androidx.cardview.widget.CardView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content" />-->
+
+        <LinearLayout
+          android:id="@+id/linearLayout11"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="@{!mViewModel.appManager.storageManagers.config.isCardEnabled ? View.GONE : View.VISIBLE}"
+            tools:background="@color/white"
+            tools:visibility="visible">
+
+            <androidx.recyclerview.widget.RecyclerView
+              android:id="@+id/rv_cards"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:spanCount="1"
+              tools:itemCount="2"
+              tools:listitem="@layout/item_card"
+              tools:visibility="visible" />
+          </LinearLayout>
+
+          <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rg_new_card"
+            style="@style/text_12_1d1d_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:button="@drawable/simple_radio_selector"
+            android:checked="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`new`)?true:false}"
+            android:drawableStart="@drawable/ic_card"
+            android:drawablePadding="@dimen/dp_10"
+            android:paddingHorizontal="@dimen/dimen_10dp"
+            android:paddingVertical="@dimen/dimen_10dp"
+            android:text="@string/pay_via_new_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+          <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rg_cash"
+            style="@style/text_12_1d1d_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@color/white"
+            android:button="@drawable/simple_radio_selector"
+            android:checked="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`cash`)?true:false}"
+            android:drawableStart="@drawable/ic_cash"
+            android:drawablePadding="@dimen/dimen_10dp"
+            android:paddingHorizontal="@dimen/dimen_10dp"
+            android:text="@string/pay_with_cash"
+            android:visibility="@{!mViewModel.appManager.storageManagers.config.isCodeEnabled ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_6dp"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_2dp"
+            android:visibility="@{!mViewModel.appManager.storageManagers.config.isWalletEnabled ||mViewModel.appManager.persistenceManager.loggedInUser.walletBalance ==null || mViewModel.appManager.persistenceManager.loggedInUser.walletBalance == 0 ? View.GONE : View.VISIBLE}"
+            tools:background="@color/white"
+            tools:visibility="visible">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+              <!--              viewModel.selectedPaymentType.value = PaymentType.CARD-->
+              <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rg_wallet"
+                style="@style/text_12_1d1d_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:background="@color/white"
+                android:button="@drawable/simple_radio_selector"
+                android:checked="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`wallet`)||mViewModel.selectedPaymentType.name().toLowerCase().equals(`wallet_with_less`)|| mViewModel.selectedPaymentType.name().toLowerCase().equals(`new_for_wallet`)?true:false}"
+                android:drawableStart="@drawable/ic_wallet_payment"
+                android:drawablePadding="@dimen/dimen_10dp"
+                android:paddingHorizontal="@dimen/dimen_10dp"
+                android:text="@string/pay_with_wallet"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView130"
+                style="@style/text_12_accent_dark_semi_bole"
+                setPriceWithPrefsCurrency="@{profileViewModel.appManager.persistenceManager.loggedInUser.walletBalance}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:elevation="@dimen/dimen_4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/rg_wallet"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.484"
+                tools:text="AED 30" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView230"
+                style="@style/text_12_accent_dark_semi_bole"
+                setNotEnoughBalance="@{mViewModel.walletDifference}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:visibility="@{mViewModel.selectedPaymentType.name().toLowerCase().equals(`wallet_with_less`)?View.VISIBLE:View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rg_wallet"
+                tools:text="TeNot enough credit, pay remaining with cardxtView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--            setNotEnoughBalance="@{amount.value}"-->
+          </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
